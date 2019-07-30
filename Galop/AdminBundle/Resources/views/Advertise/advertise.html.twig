@@ -1,0 +1,39 @@
+{% extends 'SonataAdminBundle:CRUD:base_edit.html.twig' %}
+{% block javascripts %}
+{{ parent() }}
+		<script>
+		    $(document).ready(function () {
+                $('#sonata-ba-field-container-s31e6caf0a2_name').css("display", "none");
+                $('#sonata-ba-field-container-s31e6caf0a2_address').css("display", "none");
+                $('#sonata-ba-field-container-s31e6caf0a2_ZipCode').css("display", "none");
+                $('#sonata-ba-field-container-s31e6caf0a2_city').css("display", "none");
+                $('#sonata-ba-field-container-s31e6caf0a2_country').css("display", "none");
+                $('#sonata-ba-field-container-s31e6caf0a2_phoneNumber').css("display", "none");
+                $('#sonata-ba-field-container-s31e6caf0a2_email').css("display", "none");
+                $(document).on('change', '.zonecls',function() {
+                  var data = $('option:selected',this).text();
+                  if(data == 'Yellow pages')
+                  {
+                    $('#sonata-ba-field-container-s31e6caf0a2_name').css("display", "block");
+                    $('#sonata-ba-field-container-s31e6caf0a2_address').css("display", "block");
+                    $('#sonata-ba-field-container-s31e6caf0a2_ZipCode').css("display", "block");
+                    $('#sonata-ba-field-container-s31e6caf0a2_city').css("display", "block");
+                    $('#sonata-ba-field-container-s31e6caf0a2_country').css("display", "block");
+                    $('#sonata-ba-field-container-s31e6caf0a2_phoneNumber').css("display", "block");
+                    $('#sonata-ba-field-container-s31e6caf0a2_email').css("display", "block");
+                  }
+                  else
+                  {
+                    $('#sonata-ba-field-container-s31e6caf0a2_name').css("display", "none");
+                    $('#sonata-ba-field-container-s31e6caf0a2_address').css("display", "none");
+                    $('#sonata-ba-field-container-s31e6caf0a2_ZipCode').css("display", "none");
+                    $('#sonata-ba-field-container-s31e6caf0a2_city').css("display", "none");
+                    $('#sonata-ba-field-container-s31e6caf0a2_country').css("display", "none");
+                    $('#sonata-ba-field-container-s31e6caf0a2_phoneNumber').css("display", "none");
+                    $('#sonata-ba-field-container-s31e6caf0a2_email').css("display", "none");
+                  }
+                });
+
+            });
+		</script>
+{% endblock %}

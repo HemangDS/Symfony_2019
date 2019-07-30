@@ -1,0 +1,19 @@
+{% extends 'SonataAdminBundle::standard_layout.html.twig' %}
+
+{% block side_bar_after_nav %}
+<ul class="sidebar-menu" data-widget="tree">
+  <li class="treeview active"> <a href="#"><i class="fa fa-folder"></i><span>Image Editor</span><span class="pull-right-container"><i class="fa pull-right fa-angle-left"></i></span></a>               
+      <ul class="active treeview-menu menu_level_1 menu-open" style="display: block;">
+        <li class="first last">            
+          <a href="{{ path('editor_list') }}" target="_blank"><i class="fa fa-angle-double-right" aria-hidden="true"></i>System Editor</a>        
+        </li>
+        <li class="first last">            
+          <a href="https://ui.toast.com/tui-image-editor/" target="_blank"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Advance Editor</a>        
+        </li>
+        <li class="first last">            
+          <a href="https://www.photopea.com/" target="_blank"><i class="fa fa-angle-double-right" aria-hidden="true"></i>Express Editor</a>        
+        </li>
+      </ul>
+  </li>
+</ul>
+{% endblock %}

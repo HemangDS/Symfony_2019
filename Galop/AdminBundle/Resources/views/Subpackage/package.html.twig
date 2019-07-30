@@ -1,0 +1,22 @@
+
+{% extends 'SonataAdminBundle:CRUD:base_edit.html.twig' %}
+{% block javascripts %}
+{{ parent() }}
+		<script>
+		    $(document).ready(function(){
+                $('.box-body').on('keyup keypress blur change click', function(e) {
+                    var price = $('#s95f1c044f8_price').val();
+                    var vat = $('#s95f1c044f8_vat').val();
+                    var sum = parseFloat(parseFloat(price)+ (parseFloat(price) * (parseFloat(vat) / 100 ))).toFixed(2);
+
+                    if(vat != '' && sum !=''){
+                      $('#s95f1c044f8_totalprice').val(sum);
+                    }
+
+                    if(price == '' && vat ==''){
+                      $('#s95f1c044f8_totalprice').val('');
+                    }
+                });
+		    });
+		</script>
+{% endblock %}

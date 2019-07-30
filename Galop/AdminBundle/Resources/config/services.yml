@@ -1,0 +1,120 @@
+services:
+  galop.admin.news:
+    class: Galop\AdminBundle\Admin\NewsAdmin
+    arguments: [~, Galop\AdminBundle\Entity\News, GalopAdminBundle:NewsAdmin]
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: News, group: Manage News }
+    calls:
+      - [setTemplate, ['edit', 'GalopAdminBundle:News:create.html.twig']]
+    public: true
+  galop.admin.newscategory:
+    class: Galop\AdminBundle\Admin\NewsCategoryAdmin
+    arguments: [~, Galop\AdminBundle\Entity\NewsCategory, ~]
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Category, group: Manage News }
+    public: true
+  galop.admin.newsdescipline:
+    class: Galop\AdminBundle\Admin\NewsDesciplineAdmin
+    arguments: [~, Galop\AdminBundle\Entity\NewsDescipline, ~]
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Discipline, group: Manage News }
+    public: true
+  galop.admin.newsregion:
+    class: Galop\AdminBundle\Admin\NewsRegionAdmin
+    arguments: [~, Galop\AdminBundle\Entity\NewsRegion, ~]
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Region, group: Manage News }
+    public: true
+  galop_admin.advertisement:
+    class: Galop\AdminBundle\Admin\AdvertisementAdmin
+    arguments: [~, Galop\AdminBundle\Entity\Advertisement, ~]
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: Manage Advertisement, label: Advertisement }
+    public: true
+  galop_admin.subscription_package:
+    class: Galop\AdminBundle\Admin\SubscriptionPackageAdmin
+    arguments: [~, Galop\AdminBundle\Entity\SubscriptionPackage, ~]
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: Manage Subscription Package, label: Subscription Package }
+    public: true
+  advertisement_user.listener:
+    class: Galop\AdminBundle\EventListener\AdvertisementUserUpdater
+    arguments: ['@security.token_storage']
+    tags:
+      - { name: doctrine.event_listener, event: preUpdate, method: preUpdate }
+      - { name: doctrine.event_listener, event: prePersist, method: prePersist }
+  galop.admin.tag:
+    class: Galop\AdminBundle\Admin\TagAdmin
+    arguments: [~, Galop\AdminBundle\Entity\Tag, ~]
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Tag, group: Manage Tags }
+    public: true
+  galop.admin.taggroup:
+    class: Galop\AdminBundle\Admin\TagGroupAdmin
+    arguments: [~, Galop\AdminBundle\Entity\TagGroup, ~]
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Group, group: Manage Tags }
+    public: true
+
+  advertisement_email.listener:
+    class: Galop\AdminBundle\EventListener\AdvertisementEmail
+    arguments: [ "@security.token_storage", "@mailer", "@twig", "@request_stack", "@service_container" ]
+    tags:
+      - { name: doctrine.orm.entity_listener, event: preUpdate, method: preUpdate }
+      # - { name: doctrine.orm.entity_listener, event: kernel.request, method: preUpdate }
+  galop_admin.events:
+    class: Galop\AdminBundle\Admin\EventsAdmin
+    arguments: [~, Galop\AdminBundle\Entity\Events, ~]
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: Manage Events, label: Events }
+    public: true
+
+  event_user.listener:
+    class: Galop\AdminBundle\EventListener\EventUserUpdate
+    arguments: ['@security.token_storage']
+    tags:
+      - { name: doctrine.event_listener, event: preUpdate, method: preUpdate }
+      - { name: doctrine.event_listener, event: prePersist, method: prePersist }
+  global_user.listener:
+    class: Galop\AdminBundle\EventListener\GlobalUserUpdater
+    arguments: ['@security.token_storage','@kernel']
+    tags:
+      - { name: doctrine.event_listener, event: preUpdate, method: preUpdate }
+      - { name: doctrine.event_listener, event: prePersist, method: prePersist }
+      - { name: doctrine.event_listener, event: postPersist, method: postPersist }
+      - { name: doctrine.event_listener, event: postUpdate, method: postUpdate }
+      - { name: doctrine.event_listener, event: postRemove, method: postRemove }
+  page.router:
+    class: Galop\AdminBundle\Routing\PageRouteLoader
+    tags:
+      - { name: routing.loader }
+    arguments: 
+        ["@doctrine.orm.entity_manager"]
+  galop.admin.pages:
+    class: Galop\AdminBundle\Admin\PagesAdmin
+    arguments: [~, Galop\AdminBundle\Entity\Pages, ~]
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Pages, group: Manage Pages }
+    public: true
+  galop_admin.api_user:
+    class: Galop\AdminBundle\Admin\ApiUserAdmin
+    arguments: [~, Galop\AdminBundle\Entity\ApiUser, ~]
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: API, label: API User }
+    public: true
+
+  galop_admin.admin.api_article:
+    class: Galop\AdminBundle\Admin\ApiArticleAdmin
+    arguments: [~, Galop\AdminBundle\Entity\ApiArticle, GalopAdminBundle:ApiArticleAdmin]
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: API, label: API Articles }
+    calls:
+      - [setTemplate, ['edit', 'GalopAdminBundle:ApiArticle:create.html.twig']]  
+    public: true
+
+  galop_admin.admin.system_editor:
+    class: Galop\AdminBundle\Admin\SystemEditorAdmin
+    arguments: [~, Galop\AdminBundle\Entity\SystemEditor, Galop\AdminBundle\Controller\ImageController]
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: Image Editor, label: System Editor, show_in_dashboard: false }
+    public: true

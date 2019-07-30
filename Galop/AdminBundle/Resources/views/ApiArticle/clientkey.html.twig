@@ -1,0 +1,24 @@
+{% extends 'SonataAdminBundle:CRUD:base_edit.html.twig' %}
+{% block javascripts %}
+{{ parent() }}
+        <script>
+            $(document).ready(function(){
+                $(".btn-success").addClass( "keycls" );
+                $( "#sonata-ba-field-container-sf43d6436de_ArticleTitle" ).before( "<div class='form-group' id='sonata-ba-field-container-clientkey'><label class='control-label required' for='clientkey'>Enter Client Key</label><div class='sonata-ba-field sonata-ba-field-standard-natural'><input type='text' id='clientkey' name='clientkey' required='required' class='form-control'></div></div>" )
+            });
+            $(document).on("click",".keycls",function(){
+              var clientkey = $("#clientkey").val();
+              alert();
+                /*$.ajax({
+                  url:"{{ (path('client_key_route')) }}",
+                  data:{'clientkey':clientkey},
+                  type: "POST",
+                  success:function(data)
+                  {
+                    alert(data);
+                  }
+
+                });*/
+            });
+        </script>
+{% endblock %}
