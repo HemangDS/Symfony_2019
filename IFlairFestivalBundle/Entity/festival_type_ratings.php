@@ -1,0 +1,220 @@
+<?php
+
+namespace IFlairFestivalBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * festival_type_ratings
+ *
+ * @ORM\Table(name="festival_type_ratings")
+ * @ORM\Entity(repositoryClass="IFlairFestivalBundle\Repository\festival_type_ratingsRepository")
+ */
+class festival_type_ratings
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="IFlairFestivalBundle\Entity\festival", inversedBy="festival_type_ratings")
+     * @ORM\JoinColumn(name = "festival_id", referencedColumnName = "id")
+     */
+    private $festivalId;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="settings")
+     * @ORM\JoinColumn(name = "user_id", referencedColumnName = "id")
+     */
+    private $userId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="user_ratings", type="string", length=255)
+     */
+    private $userRatings;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="IFlairFestivalBundle\Entity\festival_rating_type", inversedBy="festival_type_ratings")
+     * @ORM\JoinColumn(name = "festival_type_id", referencedColumnName = "id")
+     */
+    private $festivalTypeId;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="modified_date", type="datetime")
+     */
+    private $modifiedDate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="avg_ratings", type="string", length=255)
+     */
+    private $avgRatings;
+
+    public function __construct()
+    {
+        $this->modifiedDate = new \DateTime();
+    }
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set modifiedDate
+     *
+     * @param \DateTime $modifiedDate
+     *
+     * @return festival_type_ratings
+     */
+    public function setModifiedDate($modifiedDate)
+    {
+        $this->modifiedDate = $modifiedDate;
+
+        return $this;
+    }
+
+    /**
+     * Get modifiedDate
+     *
+     * @return \DateTime
+     */
+    public function getModifiedDate()
+    {
+        return $this->modifiedDate;
+    }
+
+    /**
+     * Set festivalId
+     *
+     * @param \IFlairFestivalBundle\Entity\festival $festivalId
+     *
+     * @return festival_type_ratings
+     */
+    public function setFestivalId(\IFlairFestivalBundle\Entity\festival $festivalId = null)
+    {
+        $this->festivalId = $festivalId;
+
+        return $this;
+    }
+
+    /**
+     * Get festivalId
+     *
+     * @return \IFlairFestivalBundle\Entity\festival
+     */
+    public function getFestivalId()
+    {
+        return $this->festivalId;
+    }
+
+    /**
+     * Set festivalTypeId
+     *
+     * @param \IFlairFestivalBundle\Entity\festival_rating_type $festivalTypeId
+     *
+     * @return festival_type_ratings
+     */
+    public function setFestivalTypeId(\IFlairFestivalBundle\Entity\festival_rating_type $festivalTypeId = null)
+    {
+        $this->festivalTypeId = $festivalTypeId;
+
+        return $this;
+    }
+
+    /**
+     * Get festivalTypeId
+     *
+     * @return \IFlairFestivalBundle\Entity\festival_rating_type
+     */
+    public function getFestivalTypeId()
+    {
+        return $this->festivalTypeId;
+    }
+
+    /**
+     * Set userRatings
+     *
+     * @param string $userRatings
+     *
+     * @return festival_type_ratings
+     */
+    public function setUserRatings($userRatings)
+    {
+        $this->userRatings = $userRatings;
+
+        return $this;
+    }
+
+    /**
+     * Get userRatings
+     *
+     * @return string
+     */
+    public function getUserRatings()
+    {
+        return $this->userRatings;
+    }
+
+    /**
+     * Set userId
+     *
+     * @param \AppBundle\Entity\User $userId
+     *
+     * @return festival_type_ratings
+     */
+    public function setUserId(\AppBundle\Entity\User $userId = null)
+    {
+        $this->userId = $userId;
+
+        return $this;
+    }
+
+    /**
+     * Get userId
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUserId()
+    {
+        return $this->userId;
+    }
+
+    /**
+     * Set avgRatings
+     *
+     * @param string $avgRatings
+     *
+     * @return festival_type_ratings
+     */
+    public function setAvgRatings($avgRatings)
+    {
+        $this->avgRatings = $avgRatings;
+
+        return $this;
+    }
+
+    /**
+     * Get avgRatings
+     *
+     * @return string
+     */
+    public function getAvgRatings()
+    {
+        return $this->avgRatings;
+    }
+}

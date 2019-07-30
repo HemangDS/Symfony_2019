@@ -1,0 +1,43 @@
+i_flair_festival_festivallisting:
+     path:     /soap/v2/festivallisting
+     defaults: { _controller: IFlairFestivalBundle:Festivallisting:festivallisting }
+
+i_flair_festival_searchfestival:
+     path:     /soap/v2/searchfestival
+     defaults: { _controller: IFlairFestivalBundle:Searchfestival:searchfestival }
+
+i_flair_festival_viewfestival:
+     path:     /soap/v2/viewfestival
+     defaults: { _controller: IFlairFestivalBundle:Viewfestival:viewfestival }
+
+i_flair_festival_searchlistfestival:
+     path:     /soap/v2/searchlistfestival
+     defaults: { _controller: IFlairFestivalBundle:Searchlistfestival:searchlistfestival }
+
+i_flair_festival_festivalsetfavourite:
+     path:     /soap/v2/festivalsetfavourite
+     defaults: { _controller: IFlairFestivalBundle:Festivalfavourite:setfavourite}
+
+i_flair_festival_festivalvisited:
+     path:     /soap/v2/festivalvisited
+     defaults: { _controller: IFlairFestivalBundle:Festivalvisited:setvisit}
+
+i_flair_festival_contributionadddfestival:
+     path:     /soap/v2/contributionadddfestival
+     defaults: { _controller: IFlairFestivalBundle:Contributionadddfestival:contributionadddfestival}
+
+i_flair_festival_festivalinfoeditconfirmation:
+     path:     /soap/v2/festivalinfoeditconfirmation
+     defaults: { _controller: IFlairFestivalBundle:Festivalinfoeditconfirmation:festivalinfoeditconfirmation}
+
+i_flair_festival_festivalinnerview:
+     path:     /soap/v2/festivalinnerview
+     defaults: { _controller: IFlairFestivalBundle:Festivalinnerview:festivalinnerview}
+
+i_flair_festival_festivalinprogressuploadmultipleimage:
+     path:     /soap/v2/festivalinprogressuploadmultipleimage
+     defaults: { _controller: IFlairFestivalBundle:Festivalinprogressuploadmultipleimage:festivalinprogressuploadmultipleimage}
+
+i_flair_festival_festivalinprogresssave:
+     path:     /soap/v2/festivalinprogresssave
+     defaults: { _controller: IFlairFestivalBundle:Festivalinprogresssave:festivalinprogresssave}

@@ -1,0 +1,247 @@
+<?php
+
+namespace IFlairFestivalBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ContributionAdddFestival
+ *
+ * @ORM\Table(name="contribution_addd_festival")
+ * @ORM\Entity(repositoryClass="IFlairFestivalBundle\Repository\ContributionAdddFestivalRepository")
+ */
+class ContributionAdddFestival
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="contribution_add_festival")
+     * @ORM\JoinColumn(name = "user_id", referencedColumnName = "id")
+     */
+    private $userId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="festival_name", type="string", length=255)
+     */
+    private $festivalName;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="IFlairSoapBundle\Entity\Partyfindercountry", inversedBy="contribution_add_festival")
+     * @ORM\JoinColumn(name = "country_id", referencedColumnName = "id")
+     */
+    private $countryId;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="IFlairSoapBundle\Entity\Partyfindercity", inversedBy="contribution_add_festival")
+     * @ORM\JoinColumn(name = "city_id", referencedColumnName = "id")
+     */
+    private $cityId;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="start_date", type="datetime")
+     */
+    private $startDate;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="end_date", type="datetime")
+     */
+    private $endDate;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="IFlairSoapBundle\Entity\ContributionStatus", inversedBy="contribution_status")
+     * @ORM\JoinColumn(name = "status_id", referencedColumnName = "id")
+     */
+    private $status_id;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set festivalName
+     *
+     * @param string $festivalName
+     *
+     * @return ContributionAdddFestival
+     */
+    public function setFestivalName($festivalName)
+    {
+        $this->festivalName = $festivalName;
+
+        return $this;
+    }
+
+    /**
+     * Get festivalName
+     *
+     * @return string
+     */
+    public function getFestivalName()
+    {
+        return $this->festivalName;
+    }
+
+    /**
+     * Set startDate
+     *
+     * @param \DateTime $startDate
+     *
+     * @return ContributionAdddFestival
+     */
+    public function setStartDate($startDate)
+    {
+        $this->startDate = $startDate;
+
+        return $this;
+    }
+
+    /**
+     * Get startDate
+     *
+     * @return \DateTime
+     */
+    public function getStartDate()
+    {
+        return $this->startDate;
+    }
+
+    /**
+     * Set endDate
+     *
+     * @param \DateTime $endDate
+     *
+     * @return ContributionAdddFestival
+     */
+    public function setEndDate($endDate)
+    {
+        $this->endDate = $endDate;
+
+        return $this;
+    }
+
+    /**
+     * Get endDate
+     *
+     * @return \DateTime
+     */
+    public function getEndDate()
+    {
+        return $this->endDate;
+    }
+
+    /**
+     * Set userId
+     *
+     * @param \AppBundle\Entity\User $userId
+     *
+     * @return ContributionAdddFestival
+     */
+    public function setUserId(\AppBundle\Entity\User $userId = null)
+    {
+        $this->userId = $userId;
+
+        return $this;
+    }
+
+    /**
+     * Get userId
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUserId()
+    {
+        return $this->userId;
+    }
+
+    /**
+     * Set countryId
+     *
+     * @param \IFlairSoapBundle\Entity\Partyfindercountry $countryId
+     *
+     * @return ContributionAdddFestival
+     */
+    public function setCountryId(\IFlairSoapBundle\Entity\Partyfindercountry $countryId = null)
+    {
+        $this->countryId = $countryId;
+
+        return $this;
+    }
+
+    /**
+     * Get countryId
+     *
+     * @return \IFlairSoapBundle\Entity\Partyfindercountry
+     */
+    public function getCountryId()
+    {
+        return $this->countryId;
+    }
+
+    /**
+     * Set cityId
+     *
+     * @param \IFlairSoapBundle\Entity\Partyfindercity $cityId
+     *
+     * @return ContributionAdddFestival
+     */
+    public function setCityId(\IFlairSoapBundle\Entity\Partyfindercity $cityId = null)
+    {
+        $this->cityId = $cityId;
+
+        return $this;
+    }
+
+    /**
+     * Get cityId
+     *
+     * @return \IFlairSoapBundle\Entity\Partyfindercity
+     */
+    public function getCityId()
+    {
+        return $this->cityId;
+    }
+
+    /**
+     * Set statusId
+     *
+     * @param \IFlairSoapBundle\Entity\ContributionStatus $statusId
+     *
+     * @return ContributionAdddFestival
+     */
+    public function setStatusId(\IFlairSoapBundle\Entity\ContributionStatus $statusId = null)
+    {
+        $this->status_id = $statusId;
+
+        return $this;
+    }
+
+    /**
+     * Get statusId
+     *
+     * @return \IFlairSoapBundle\Entity\ContributionStatus
+     */
+    public function getStatusId()
+    {
+        return $this->status_id;
+    }
+}

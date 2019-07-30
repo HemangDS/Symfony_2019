@@ -1,0 +1,251 @@
+
+iflair_api_homepage:
+    path:     /
+    defaults: { _controller: IflairApiBundle:Default:index }
+
+iflair_api_soap_check:
+    path: /soap/check
+    defaults: { _controller: IflairApiBundle:Soap:check }
+
+iflair_api_soap_registration:
+    path: /soap/registration
+    defaults: { _controller: IflairApiBundle:Soap:registration }
+
+iflair_api_soap_getcountrylist:
+    path: /soap/getcountrylist
+    defaults: { _controller: IflairApiBundle:Soap:getcountrylist }
+
+iflair_api_soap_getcitylist:
+    path: /soap/getcitylist
+    defaults: { _controller: IflairApiBundle:Soap:getcitylist }
+
+iflair_api_soap_getmusicgenre:
+    path: /soap/getmusicgenre
+    defaults: { _controller: IflairApiBundle:Soap:getmusicgenre }
+
+iflair_api_soap_createfestivalrating:
+    path: /soap/createfestivalrating
+    defaults: { _controller: IflairApiBundle:Soap:createfestivalrating }
+
+iflair_api_soap_createfestivalfeature:
+    path: /soap/createfestivalfeature
+    defaults: { _controller: IflairApiBundle:Soap:createfestivalfeature }
+
+iflair_api_soap_contributionadddfestival:
+    path: /soap/contributionadddfestival
+    defaults: { _controller: IflairApiBundle:Soap:contributionadddfestival }
+
+iflair_api_soap_festivalinnerview:
+    path: /soap/festivalinnerview
+    defaults: { _controller: IflairApiBundle:Soap:festivalinnerview }
+
+iflair_api_soap_contributionpartyfestivallist:
+    path: /soap/contributionpartyfestivallist
+    defaults: { _controller: IflairApiBundle:Soap:contributionpartyfestivallist }
+iflair_api_soap_contributionpartyfestivalview:
+    path: /soap/contributionpartyfestivalview
+    defaults: { _controller: IflairApiBundle:Soap:contributionpartyfestivalview }
+iflair_api_soap_contributionpartyfestivaldelete:
+    path: /soap/contributionpartyfestivaldelete
+    defaults: { _controller: IflairApiBundle:Soap:contributionpartyfestivaldelete }
+
+iflair_api_soap_getcontributionpartymusicgenre:
+    path: /soap/getcontributionpartymusicgenre
+    defaults: { _controller: IflairApiBundle:Soap:getcontributionpartymusicgenre }
+
+iflair_api_soap_getcontributionpartygetfeature:
+    path: /soap/getcontributionpartygetfeature
+    defaults: { _controller: IflairApiBundle:Soap:getcontributionpartygetfeature }
+
+iflair_api_soap_getcontributionpartygetrating:
+    path: /soap/getcontributionpartygetrating
+    defaults: { _controller: IflairApiBundle:Soap:getcontributionpartygetrating }
+
+iflair_api_soap_getcontributionparty:
+    path: /soap/getcontributionparty
+    defaults: { _controller: IflairApiBundle:Soap:getcontributionparty }
+
+iflair_api_soap_festivalinfoeditconfirmation:
+    path: /soap/festivalinfoeditconfirmation
+    defaults: { _controller: IflairApiBundle:Soap:festivalinfoeditconfirmation }
+
+iflair_api_soap_partyinfoeditconfirmation:
+    path: /soap/partyinfoeditconfirmation
+    defaults: { _controller: IflairApiBundle:Soap:partyinfoeditconfirmation }
+
+iflair_api_soap_partyinnerview:
+    path: /soap/partyinnerview
+    defaults: { _controller: IflairApiBundle:Soap:partyinnerview }
+
+iflair_api_soap_checkusername:
+    path: /soap/checkusername
+    defaults: { _controller: IflairApiBundle:Soap:checkusername }
+
+iflair_api_soap_finalusername:
+    path: /soap/finalusername
+    defaults: { _controller: IflairApiBundle:Soap:finalusername }
+
+iflair_api_soap_setsettings:
+    path: /soap/setsettings
+    defaults: { _controller: IflairApiBundle:Soap:setsettings }
+
+iflair_api_soap_getsettings:
+    path: /soap/getsettings
+    defaults: { _controller: IflairApiBundle:Soap:getsettings }
+
+iflair_api_soap_reportcontent:
+    path: /soap/sendreportcontent
+    defaults: { _controller: IflairApiBundle:Soap:sendreportcontent }
+
+iflair_api_soap_partyfinderlisting:
+    path: /soap/partyfinderlisting
+    defaults: { _controller: IflairApiBundle:Soap:partyfinderlisting }
+
+iflair_api_soap_partyfinderview:
+    path: /soap/partyfinderview
+    defaults: { _controller: IflairApiBundle:Soap:partyfinderview }
+
+iflair_api_soap_partysetfavourite:
+    path: /soap/partysetfavourite
+    defaults: { _controller: IflairApiBundle:Soap:partysetfavourite }
+
+iflair_api_soap_partydeletefavourite:
+    path: /soap/partydeletefavourite
+    defaults: { _controller: IflairApiBundle:Soap:partydeletefavourite }
+
+iflair_api_soap_partyfinderviewcount:
+    path: /soap/partyfinderviewcount
+    defaults: { _controller: IflairApiBundle:Soap:partyfinderviewcount }
+
+iflair_api_soap_partylistfavourite:
+    path: /soap/partylistfavourite
+    defaults: { _controller: IflairApiBundle:Soap:partyfavouritelist }
+
+iflair_api_soap_partyvisitedareas:
+    path: /soap/partyvisitedareas
+    defaults: { _controller: IflairApiBundle:Soap:partyvisitedareas }
+
+iflair_api_soap_partyclubratings:
+    path: /soap/partyclubratings
+    defaults: { _controller: IflairApiBundle:Soap:partyclubratings }
+
+iflair_api_soap_partybarratings:
+    path: /soap/partybarratings
+    defaults: { _controller: IflairApiBundle:Soap:partybarratings }
+
+iflair_api_soap_partyfestivallisting:
+    path: /soap/partyfestivallisting
+    defaults: { _controller: IflairApiBundle:Soap:partyfestivallisting }
+
+iflair_api_soap_partyfestivalalllisting:
+    path: /soap/partyfestivalalllisting
+    defaults: { _controller: IflairApiBundle:Soap:partyfestivalalllisting }
+
+iflair_api_soap_partysearchfestival:
+    path: /soap/partysearchfestival
+    defaults: { _controller: IflairApiBundle:Soap:partysearchfestival }
+
+iflair_api_soap_partyviewfestival:
+    path: /soap/partyviewfestival
+    defaults: { _controller: IflairApiBundle:Soap:partyviewfestival }
+
+iflair_api_soap_partysearchlistfestival:
+    path: /soap/partysearchlistfestival
+    defaults: { _controller: IflairApiBundle:Soap:partysearchlistfestival }
+
+iflair_api_soap_globalclubbinglist:
+    path: /soap/globalclubbinglist
+    defaults: { _controller: IflairApiBundle:Soap:globalclubbinglist }
+
+iflair_api_soap_globalclubbing:
+    path: /soap/globalclubbing
+    defaults: { _controller: IflairApiBundle:Soap:globalclubbing }
+
+iflair_api_soap_festivalsetfavourite:
+    path: /soap/festivalsetfavourite
+    defaults: { _controller: IflairApiBundle:Soap:festivalsetfavourite }
+
+iflair_api_soap_festivalvisited:
+    path: /soap/festivalvisited
+    defaults: { _controller: IflairApiBundle:Soap:festivalvisited }
+
+iflair_api_soap_globalclubbingview:
+    path: /soap/globalclubbingview
+    defaults: { _controller: IflairApiBundle:Soap:globalclubbingview }
+
+iflair_api_soap_globalclubbingsearch:
+    path: /soap/globalclubbingsearch
+    defaults: { _controller: IflairApiBundle:Soap:globalclubbingsearch }
+
+iflair_api_soap_globalclubbingsearchlist:
+    path: /soap/globalclubbingsearchlist
+    defaults: { _controller: IflairApiBundle:Soap:globalclubbingsearchlist }
+
+iflair_api_soap_festivalinprogressuploadmultipleimage:
+    path: /soap/festivalinprogressuploadmultipleimage
+    defaults: { _controller: IflairApiBundle:Soap:festivalinprogressuploadmultipleimage }
+
+iflair_api_soap_partyfinderinprogressuploadmultipleimage:
+    path: /soap/partyfinderinprogressuploadmultipleimage
+    defaults: { _controller: IflairApiBundle:Soap:partyfinderinprogressuploadmultipleimage }
+
+iflair_api_soap_payments:
+    path: /soap/payments
+    defaults: { _controller: IflairApiBundle:Soap:payments }
+
+iflair_api_soap_features:
+    path: /soap/features
+    defaults: { _controller: IflairApiBundle:Soap:features }
+
+iflair_api_soap_currency:
+    path: /soap/currency
+    defaults: { _controller: IflairApiBundle:Soap:currency }
+
+iflair_api_soap_festivalinprogresssave:
+    path: /soap/festivalinprogresssave
+    defaults: { _controller: IflairApiBundle:Soap:festivalinprogresssave }
+
+iflair_api_soap_visitedlocationcountry:
+    path: /soap/visitedlocationcountry
+    defaults: { _controller: IflairApiBundle:Soap:visitedlocationcountry }
+
+iflair_api_soap_saveusercountry:
+    path: /soap/saveusercountry
+    defaults: { _controller: IflairApiBundle:Soap:saveusercountry }
+
+iflair_api_soap_partyfinderinprogresssave:
+    path: /soap/partyfinderinprogresssave
+    defaults: { _controller: IflairApiBundle:Soap:partyfinderinprogresssave }
+
+iflair_api_soap_partyvisitedcontinent:
+    path: /soap/partyvisitedcontinent
+    defaults: { _controller: IflairApiBundle:Soap:partyvisitedcontinent }
+
+iflair_api_soap_partyvisitedcontinentcountry:
+    path: /soap/partyvisitedcontinentcountry
+    defaults: { _controller: IflairApiBundle:Soap:partyvisitedcontinentcountry }
+
+iflair_api_soap_partyvisitedcontinentcity:
+    path: /soap/partyvisitedcontinentcity
+    defaults: { _controller: IflairApiBundle:Soap:partyvisitedcontinentcity }
+
+iflair_api_soap_partyvisitedcontinentlist:
+    path: /soap/partyvisitedcontinentlist
+    defaults: { _controller: IflairApiBundle:Soap:partyvisitedcontinentlist }
+
+iflair_api_soap_partyvisitedcounry:
+    path: /soap/partyvisitedcountry
+    defaults: { _controller: IflairApiBundle:Soap:partyvisitedcountry }
+
+iflair_api_soap_partyvisited:
+    path: /soap/partyvisited
+    defaults: { _controller: IflairApiBundle:Soap:partyvisited }
+
+iflair_api_soap_partyfinderratings:
+    path: /soap/partyfinderratings
+    defaults: { _controller: IflairApiBundle:Soap:partyfinderratings }
+
+iflair_api_soap_partyfinderdeleteratings:
+    path: /soap/partyfinderdeleteratings
+    defaults: { _controller: IflairApiBundle:Soap:partyfinderdeleteratings }
+
