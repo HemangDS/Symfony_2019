@@ -1,0 +1,419 @@
+
+{% extends 'SonataAdminBundle::standard_layout.html.twig' %}
+
+{% block sonata_breadcrumb %}
+    {% include "iFlairLetsBonusAdminBundle::dashboard_menu.html.twig" %}
+{% endblock %}
+{%  block side_bar_after_nav %}
+    {% include "iFlairLetsBonusAdminBundle::navigation_menu.html.twig" %}
+{% endblock %}
+
+{% block sonata_admin_content %}
+
+<div class="page-header page-header-top">
+        <h1 class="pull-left">
+          Usuario: {{ label.name }} {{ label.surname }}           <br>
+          <small>Detalle</small>
+        </h1>
+        <div class="clearfix"></div>
+      </div>
+
+
+
+        
+        <ul class="nav nav-tabs nav-justified">
+            <li class=""><a href="#profile" data-toggle="tab" aria-expanded="false"><i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i> Perfil</a></li>
+            <li class=""><a href="#transactions" data-toggle="tab"><i class="fa fa-shopping-cart"></i> Transacciones</a></li>
+            <li class="active"><a href="#clicks" data-toggle="tab" aria-expanded="true"><i class="fa fa-chain"></i> Clicks</a></li>
+        </ul>
+
+
+        <!-- Tab panes -->
+        <div class="tab-content active">
+            <div class="tab-pane fade" id="profile">
+                <div class="row">
+
+    <div class="col-sm-1 profile-pic">
+       
+    </div>
+
+    <div class="col-sm-6">
+        <h1>{{ label.name }}
+        <br>
+        <small>  {{ label.surname }}  </small></h1>
+
+        <ul class="list-unstyled">
+            <li><strong>ID: </strong>{{ label.id }}</li>
+            <li><p class="text-muted"> <i class="fa fa-envelope"></i>&nbsp;&nbsp;<a href="mailto:{{ label.email }}">{{ label.email }}</a></p></li>
+            <li><p class="text-muted"><i class="fa fa-calendar"></i>&nbsp;&nbsp;<span class="txt-color-darken">Última conexión <a href="javascript:void(0);" rel="tooltip" title="" data-placement="top" data-original-title="Create an Appointment">{{ label.modified|date("m/d/Y H:i:s")  }}</a></span></p>            </li>
+
+            <hr>
+            <li><p class="text-muted"><i class="fa fa-eur"></i>&nbsp;&nbsp;<span class="txt-color-darken">Saldo total ahorro conseguido: {{ amount }}</span> </p>
+            </li><li><p class="text-muted"><i class="fa fa-eur"></i>&nbsp;&nbsp;<span class="txt-color-darken">Saldo total: {{ amount }}</span> </p>
+            </li><li><p class="text-muted"><i class="fa fa-eur"></i>&nbsp;&nbsp;<span class="txt-color-darken">Saldo denegado:</span> </p></li>
+            <hr>
+
+            <li><p class="text-muted"><i class="fa fa-eur"></i>&nbsp;&nbsp;<span class="txt-color-darken">Saldo transferido:</span> </p></li>
+            <li><p class="text-muted"><i class="fa fa-eur"></i>&nbsp;&nbsp;<span class="txt-color-darken">Saldo canjeado:</span> </p></li>
+            <hr>
+
+            <li><p class="text-muted"><i class="fa fa-eur"></i>&nbsp;&nbsp;<span class="txt-color-darken">Saldo: {{ amount }}</span> </p>
+            </li><li><p class="text-muted"><i class="fa fa-eur"></i>&nbsp;&nbsp;<span class="txt-color-darken">Saldo Confirmado: {{ amount }}</span> </p></li>
+            <li><p class="text-muted"><i class="fa fa-eur"></i>&nbsp;&nbsp;<span class="txt-color-darken">Saldo Pendiente:</span> </p></li>
+
+        </ul>
+        <br>
+    </div>
+
+</div>            </div>
+
+<div class="tab-pane fade " id="transactions">
+    <br>
+    {% if messageCashbackTransaction > 0 %}
+        <table id="dataTables-cashbackTransactions" class="table table-striped table-bordered table-hover dataTable no-footer" aria-describedby="dataTables-clicksusers_info">
+            <thead>
+            <tr role="row">
+                <th class="sorting" tabindex="0" aria-controls="dataTables-cashbackTransactions" rowspan="1" colspan="1" style="width: 0px;" aria-label="Tienda: activate to sort column ascending">id</th>
+                <th class="sorting" tabindex="0" aria-controls="dataTables-cashbackTransactions" rowspan="1" colspan="1" style="width: 0px;" aria-label="Tienda: activate to sort column ascending">Tienda</th>
+                <th class="sorting" tabindex="0" aria-controls="dataTables-cashbackTransactions" rowspan="1" colspan="1" style="width: 0px;" aria-label="Tienda id: activate to sort column ascending">Tienda id</th>
+                <th class="sorting" tabindex="0" aria-controls="dataTables-cashbackTransactions" rowspan="1" colspan="1" style="width: 0px;" aria-label="Network: activate to sort column ascending">Network</th>
+                <th class="sorting" tabindex="0" aria-controls="dataTables-cashbackTransactions" rowspan="1" colspan="1" style="width: 0px;" aria-label="Tipo: activate to sort column ascending">Usuario Id</th>
+                <th class="sorting" tabindex="0" aria-controls="dataTables-cashbackTransactions" rowspan="1" colspan="1" style="width: 0px;" aria-label="País: activate to sort column ascending">Tipo</th>
+                <th class="sorting" tabindex="0" aria-controls="dataTables-cashbackTransactions" rowspan="1" colspan="1" style="width: 0px;" aria-label="País: activate to sort column ascending">Amount</th>
+                <th class="sorting" tabindex="0" aria-controls="dataTables-cashbackTransactions" rowspan="1" colspan="1" style="width: 0px;" aria-label="País: activate to sort column ascending">Cantidad extra</th>
+                <th class="sorting" tabindex="0" aria-controls="dataTables-cashbackTransactions" rowspan="1" colspan="1" style="width: 0px;" aria-label="País: activate to sort column ascending">Porcentaje extra %</th>
+                <th class="sorting" tabindex="0" aria-controls="dataTables-cashbackTransactions" rowspan="1" colspan="1" style="width: 0px;" aria-label="País: activate to sort column ascending">transacción</th>
+                <th class="sorting" tabindex="0" aria-controls="dataTables-cashbackTransactions" rowspan="1" colspan="1" style="width: 0px;" aria-label="País: activate to sort column ascending">Status Interno</th>
+                <th class="sorting" tabindex="0" aria-controls="dataTables-cashbackTransactions" rowspan="1" colspan="1" style="width: 0px;" aria-label="País: activate to sort column ascending">Affiliate Status</th>
+                <th class="sorting" tabindex="0" aria-controls="dataTables-cashbackTransactions" rowspan="1" colspan="1" style="width: 0px;" aria-label="País: activate to sort column ascending">confirmed date</th>
+                <th class="sorting" tabindex="0" aria-controls="dataTables-cashbackTransactions" rowspan="1" colspan="1" style="width: 0px;" aria-label="País: activate to sort column ascending">confirmación al usuario</th>
+                <th class="sorting" tabindex="0" aria-controls="dataTables-cashbackTransactions" rowspan="1" colspan="1" style="width: 0px;" aria-label="Acciones: activate to sort column ascending">Acciones</th>
+            </tr>
+            </thead>
+            <tbody id="filter_content1">
+            {% for cashbackTransaction in cashbackTransactions %}
+                <tr class="gradeA odd" >
+                    <td align="left" class="sorting_1 center  ">{{ cashbackTransaction.id }}</td>
+                    <td align="left" class="center  "> {{ cashbackTransaction.shopId.vprogram.programName  }}</td>
+                    <td align="left" class="center  "> {{ cashbackTransaction.shopId  }}</td>
+                    <td align="left" class="center  "> {{ cashbackTransaction.networkId.name  }}</td>
+                    <td align="left" class="center  "> {{ cashbackTransaction.userId  }}</td>
+                    <td align="left" class="center  "> {{ cashbackTransaction.type  }}</td>
+                    <td align="left" class="center  "> {{ cashbackTransaction.amount  }}</td>
+                    <td align="left" class="center  "> {{ cashbackTransaction.extraAmount  }}</td>
+                    <td align="left" class="center  "> {{ cashbackTransaction.extraPct  }}</td>
+                    <td align="left" class="center  "> {{ cashbackTransaction.date|date("Y-m-d H:i:s") }}</td>
+                    <td align="left" class="center  "> {{ cashbackTransaction.status  }}</td>
+                    <td align="left" class="center  "> {{ cashbackTransaction.networkStatus  }}</td>
+                    <td align="left" class="center  "> {{ cashbackTransaction.affiliateAproveddate|date("Y-m-d H:i:s") }}</td>
+                    <td align="left" class="center  "> {{ cashbackTransaction.aprovalDate|date("Y-m-d H:i:s") }}</td>
+                    <td align="left" class="center  "> {{ cashbackTransaction.id  }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="alert alert-warning" role="alert">No hay datos registrados para este usuario</div>
+    {% endif %}
+    <form method="post" style="display:none;" id="post_569caa33bd099728304108" name="post_569caa33bd099728304108" action="/sac/Cashbacktransactions/addtransaction/223102">
+        <input type="hidden" value="POST" name="_method">
+    </form>
+    <a onclick="if (confirm(&quot;Est\u00e1 seguro que quiere crear una transacci\u00f3n manual?&quot;)) { document.post_569caa33bd099728304108.submit(); } event.returnValue = false; return false;" style="background-color:#000; border-color:#000;" class="btn btn-danger right" href="#">
+        Crear transacción manual
+    </a>
+</div>
+
+            <div class="tab-pane fade  active in" id="clicks">
+            
+
+    <div style="background-color:#F8F8F8; padding:40px;" class="row">
+    <script type="text/javascript">
+      $(function() {
+        $('#datetimepicker1').datetimepicker({
+          language: 'pt-BR'
+        });
+        $('#datetimepicker2').datetimepicker({
+          language: 'pt-BR'
+        });
+      });
+    </script>
+        <form accept-charset="utf-8" method="post" id="UserSacViewForm" role="form" action="{{ label.id }}"><div style="display:none;">
+
+          <input type="hidden" value="POST" name="_method"></div>            
+          <input type="hidden" id="UserTab" value="#clicks" name="data[User][tab]">            
+          <input type="hidden" id="UserUserId" value="{{ label.id }}" name="data[User][user_id]">    
+
+       
+          <div style="margin-right: -200px;" class="col-md-4  col-sm-11">
+                <label class="" for="dtp_input1">Fecha de inicio</label>
+                <div data-link-field="ShopStartDate" data-date-format="yyyy-mm-dd hh:ii" class="input-group date form_datetime col-md-5" id="datetimepicker1" >
+                    <input type="text" readonly="" value="" size="16" class="form-control">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                    <input type="hidden" id="UserStartDate" name="data[User][start_date]">                
+                </div>
+
+             </div>
+
+              <div style="margin-right: -200px;" class="col-md-4  col-sm-11">
+                  <label class="" for="dtp_input1">Fecha de fin</label>
+                  <div data-link-field="ShopEndDate" data-date-format="yyyy-mm-dd hh:ii" class="input-group date form_datetime col-md-5" id="datetimepicker2">
+                      <input type="text" readonly="" value="" size="16" class="form-control">
+                      <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                      <input type="hidden" id="UserEndDate" name="data[User][end_date]">                  </div>
+
+              </div>
+
+             <!-- <div class="col-md-2  col-sm-11">
+                 <div class="form-group">
+                      <label for="UserNetworkId">Network</label>
+                      <select id="UserNetworkId" class="form-control" name="data[User][network_id]">
+                            <option value="">-</option>
+                      </select>
+                </div>              
+              </div>
+              <div class="col-md-2  col-sm-11">
+                  <div class="form-group">
+                      <label for="UserCompanyId">País</label>
+                      <select id="UserCompanyId" class="form-control" name="data[User][company_id]">
+                              <option value="">-</option>
+                              <option value="1">LetsBonus.com</option>
+                              <option value="2">LetsBonus.com Italy</option>
+                              <option value="6">LetsBonus.com Portugal</option>
+                      </select>
+                  </div>              
+              </div>-->
+
+        <div class="col-md-2  col-sm-11 row-nolabel">
+            <button class="btn btn-default" type="submit">filtrar</button>        </div>
+      </form>
+    </div>
+    {{ message }}
+    <br><br><br>
+
+
+  {% if search_data_transaction is not empty %}  
+    <div class="table-responsive">
+        <div role="grid" class="dataTables_wrapper form-inline" id="dataTables-clicksusers_wrapper">
+            <div class="row">
+            <div class="col-sm-6">
+             <script type="text/javascript">
+                  $(document).ready(function()
+                      { 
+                        
+                            var num = $("#filter_record").val();
+                            var data =  $("#searchString").val();
+                            var start_date =  $("#UserStartDate").val();
+                            var end_date = $("#UserEndDate").val();
+                            pagesize = $("#filter_record").val();
+                             $.ajax({
+                                    type: 'post',
+                                    url: '/secure_area/admin/sac/users/ajaxfilter/'+{{ label.id }},
+                                    dataType: "json",
+                                    data: {filter_data: data, start_date:start_date, end_date:end_date, filter_num: num },
+                                     success: function(data)
+                                    {
+                                      
+                                      $("#filter_content").html(data.html);
+                                    }
+                                     });
+
+                         $('#filter_record').on('change', function() {
+                          
+                            var num = $("#filter_record").val();
+                            var data =  $("#searchString").val();
+                            var start_date =  $("#UserStartDate").val();
+                            var end_date = $("#UserEndDate").val();
+                             pagesize = $("#filter_record").val();
+                             $.ajax({
+                                    type: 'post',
+                                    url: '/secure_area/admin/sac/users/ajaxfilter/'+{{ label.id }},
+                                    dataType: "json",
+                                    data: {filter_data: data, start_date:start_date, end_date:end_date, filter_num: num },
+                                     success: function(data)
+                                    {
+                                      
+                                      $("#filter_content").html(data.html);
+                                          $(".paginate_button").children("a").remove(); // Remove existing paging links
+                                    
+                                      var links = Math.ceil(data.count/ pagesize);
+                                     
+                                      for (var i = 0; i < links; i++)
+                                            {
+                                                $("<a>").attr("href", "javascript:void(0);").text(i + 1).appendTo(".paginate_button");
+                                            }
+                                    }
+                                   
+                                });
+                        });
+
+                        $('#searchString').keyup(function(e) {
+
+                             var num = $("#filter_record").val();
+                            var data =  $("#searchString").val();
+                            var start_date =  $("#UserStartDate").val();
+                            var end_date = $("#UserEndDate").val();
+                             pagesize = $("#filter_record").val();
+                            $.ajax({
+                                    type: 'post',
+                                    url: '/secure_area/admin/sac/users/ajaxfilter/'+{{ label.id }},
+                                    dataType: "json",
+                                     data: {filter_data: data, start_date:start_date, end_date:end_date, filter_num: num },
+                                    success: function(data)
+                                    {
+                                      
+                                      $("#filter_content").html(data.html);
+                                         $(".paginate_button").children("a").remove(); // Remove existing paging links
+                                    
+                                      var links = Math.ceil(data.count/ pagesize);
+                                     
+                                      for (var i = 0; i < links; i++)
+                                            {
+                                                $("<a>").attr("href", "javascript:void(0);").text(i + 1).appendTo(".paginate_button");
+                                            }
+                                    }
+                                   
+                                });
+                        });
+                      });
+              </script>
+                <div class="dataTables_length" id="dataTables-clicksusers_length">
+                  <label>
+                      <select name="dataTables-clicksusers_length" aria-controls="dataTables-clicksusers" class="form-control input-sm" id="filter_record">
+                              <option value="2">2</option>
+                              <option value="10" >10</option>
+                              <option value="25">25</option>
+                              <option value="50">50</option>
+                              <option value="100">100</option>
+                      </select> records per page
+                  </label>
+                </div> 
+              </div>
+
+              <div class="col-sm-6">
+                  <div id="dataTables-clicksusers_filter" class="dataTables_filter">
+                        <label>Search:
+                            <input type="search" class="form-control input-sm" aria-controls="dataTables-clicksusers" id="searchString">
+                        </label>
+                  </div>
+              </div>
+            </div>
+            <table id="dataTables-clicksusers" class="table table-striped table-bordered table-hover dataTable no-footer" aria-describedby="dataTables-clicksusers_info">
+                <thead>
+                    <tr role="row">
+                        <th class="sorting" tabindex="0" aria-controls="dataTables-clicksusers" rowspan="1" colspan="1" style="width: 0px;" aria-label="Tienda: activate to sort column ascending">Tienda</th>
+                        <th class="sorting" tabindex="0" aria-controls="dataTables-clicksusers" rowspan="1" colspan="1" style="width: 0px;" aria-label="Tienda id: activate to sort column ascending">Tienda id</th>
+                        <th class="sorting" tabindex="0" aria-controls="dataTables-clicksusers" rowspan="1" colspan="1" style="width: 0px;" aria-label="Network: activate to sort column ascending">Network</th>
+                        <th class="sorting" tabindex="0" aria-controls="dataTables-clicksusers" rowspan="1" colspan="1" style="width: 0px;" aria-label="Tipo: activate to sort column ascending">Tipo</th>
+                        <th class="sorting" tabindex="0" aria-controls="dataTables-clicksusers" rowspan="1" colspan="1" style="width: 0px;" aria-label="País: activate to sort column ascending">País</th>
+                        <th class="sorting" tabindex="0" aria-controls="dataTables-clicksusers" rowspan="1" colspan="1" style="width: 0px;" aria-label="Fecha: activate to sort column ascending">
+                            <i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i>Fecha
+                        </th>
+                        <th class="sorting" tabindex="0" aria-controls="dataTables-clicksusers" rowspan="1" colspan="1" style="width: 0px;" aria-label="Acciones: activate to sort column ascending">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="filter_content">
+                    {% for item in search_data_transaction %}
+                        <tr class="gradeA odd" >
+                            <td align="left" class="sorting_1 center  ">{{ item.shopTitle }}</td>
+                            <td align="left" class="center  "> {{ item.shopId  }}</td>
+                            <td align="left" class="center  "> {{ item.shopNetworkName  }}</td>
+                            <td align="left" class="center  "> {{ item.shopType }} </td>
+                            <td align="left" class="center  "> {{ item.shopCompany }}</td>
+                            <td class=" ">{{ item.modifiedDate|date("m/d/Y H:i:s") }}</td>
+                            <td class=" "><a href ="{{ item.brandUrl }}" target="_blank">Previsualizar</a><br></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+     
+      
+           <script type="text/javascript">
+
+                            var results_row = ''; // contains your rows
+                            $('#filter_content tr').each(function(){
+                              if($(this).hasClass('gradeA')){
+                                results_row+= $(this).clone().wrap('<div></div>').parent().html();
+                              }
+                            });
+
+                         var results=  {{ search_data_transaction|length }};
+                              page = 1, // current page
+                              pagesize = $("#filter_record").val();// items per page
+
+
+                          // changing page when user clicks on a paging link
+                          $(document).ready(function() {
+                               
+                               var num = $("#filter_record").val();
+                            var data =  $("#searchString").val();
+                            var start_date =  $("#UserStartDate").val();
+                            var end_date = $("#UserEndDate").val();
+
+                              $(".paginate_button").on( "click","a",function() {
+                                  page = $(this).text();
+                                    var num = $("#filter_record").val();
+                                    var data =  $("#searchString").val();
+                                    var start_date =  $("#UserStartDate").val();
+                                    var end_date = $("#UserEndDate").val();
+                              
+                                    $.ajax({
+                                    type: 'post',
+                                    url: '/secure_area/admin/sac/users/ajaxfilter/'+{{ label.id }},
+                                   dataType: "json",
+                                     data: {filter_data: data, start_date:start_date, end_date:end_date, filter_num: num, page: page },
+                                    success: function(data)
+                                    {
+
+                                      $("#filter_content").html(data.html);
+                                        $(".paginate_button").children("a").remove(); // Remove existing paging links
+                                      var links = Math.ceil(data.count/ pagesize);
+                                      for (var i = 0; i < links; i++)
+                                            {
+                                                $("<a>").attr("href", "javascript:void(0);").text(i + 1).appendTo(".paginate_button");
+                                            }
+                                    }
+                                   
+                                });
+                              });
+
+                              var links = Math.ceil(results/ pagesize); // calculate number of links
+                              
+                              $(".paginate_button").children("a").remove(); // Remove existing paging links
+
+                              // generate new paging links
+                              for (var i = 0; i < links; i++)
+                              {
+                                  $("<a>").attr("href", "javascript:void(0);").text(i + 1).appendTo(".paginate_button");
+                              }
+
+                           });
+                          
+               </script>
+        <div class="row">
+            <div class="col-sm-6">
+               <!-- <div class="dataTables_info" id="dataTables-clicksusers_info" role="alert" aria-live="polite" aria-relevant="all">
+                      Showing 1 to 1 of 1 entries
+                </div>-->
+            </div>
+            <div class="col-sm-6">
+                <div class="dataTables_paginate paging_simple_numbers" id="dataTables-clicksusers_paginate">
+                    <ul class="pagination" >
+                   
+                        <li class="paginate_button" aria-controls="dataTables-clicksusers" tabindex="0">
+                              <a href="javascript:void(0);">1</a>
+                        </li>
+                    
+                    </ul>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div>
+
+
+
+            </div>
+{% endif %}
+        </div>
+
+{% endblock %}

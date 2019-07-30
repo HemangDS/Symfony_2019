@@ -1,0 +1,17 @@
+<ul class="offer-list">
+    <li>
+        <a href="{{ absolute_url(path('i_flair_lets_bonus_front_brand_cashback')) }}" title="Cashback">
+            <p>Cashback {% if cashback >0 %}({{ cashback }}){% endif %}</p>
+        </a>
+    </li>
+    <li>
+        <a href="{{ absolute_url(path('i_flair_lets_bonus_front_brand_cupones')) }}" title="Cupones">
+            <p>Cupones {% if voucher >0 %}({{ voucher }}){% endif %}</p>
+        </a>
+    </li>
+    <li>
+        <a href="{{ absolute_url(path('i_flair_lets_bonus_front_tiendas')) }}" title="Todas">
+            <p>Todas {% if count >0 %}({{ count }}){% endif %}</p>
+        </a>
+    </li>
+</ul>

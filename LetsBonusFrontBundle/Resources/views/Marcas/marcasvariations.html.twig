@@ -1,0 +1,29 @@
+{% if marcasVariationDatas is defined %}
+  {% if marcasVariationDatas is not empty %}
+    {% for marcasVariationData in marcasVariationDatas %}
+      <div class="brand-discount-txt">
+      {% if "%" in marcasVariationData.number or "€" in marcasVariationData.number %}
+        <b>{{ marcasVariationData.number }}</b>
+      {% else %}
+        <b>{{ marcasVariationData.number }}%</b>
+      {% endif %}
+
+        <p>{{ marcasVariationData.title }} 
+           {% if marcasVariationData.date is defined %}
+            {% if marcasVariationData.date is not empty %}
+               <span>Hasta {{ marcasVariationData.date|date("d/m/Y") }}</span>
+            {% endif %}
+          {% endif %}
+        </p>
+      </div>
+    {% endfor %}    
+  {% else%}
+    <div class="brand-discount-txt">
+      <b>No hay cashback disponible para esta tienda</b> 
+    </div>
+  {% endif %}
+{% else %}
+  <div class="brand-discount-txt">
+    <b>No hay cashback disponible para esta tienda</b> 
+  </div>
+{% endif %}

@@ -1,0 +1,114 @@
+{% extends '::base.html.twig' %}
+{% block page_title %}
+	- cómo funciona
+{% endblock %}
+{% block content %}
+
+	{% if top_image_url is not empty %}
+		<div {% if top_image_url|length > 1 %} id="como_functions" class="owl-carousel owl-theme como_functions_page" {% else %} id="como_functions_single" {% endif %}>
+			{% for image in top_image_url %}
+				<div class="item" style="background: url('{{ image.image }}') no-repeat center center; background-size: cover;">
+					{% if image.url %} <a href="{{ image.url }}" title="{{ image.title }}"> {% endif %}
+					{% if image.url %} </a> {% endif %}
+				</div>
+			{% endfor %}
+		</div>
+	{% endif %}
+
+	<div class="container earn-cashback como_functions_page1">
+    	<div class="row">
+          	<h2>¡AHORRA CON CASHBACK!</h2>
+          	<p class="tgline">Con Cashback recuperas parte del importe pagado por tus compras. ¡Ahorrar con Cashback es así de fácil! </p>
+          	{{ render(controller(
+              'iFlairLetsBonusFrontBundle:Threestep:getAllStepHtml'
+        	)) }}
+     	</div>
+	</div>
+
+	{% if middle_image_url is not empty %}
+	<div class="container como_slider2_title">
+	  	<div class="row">
+	    	<div class="twelvecol">
+		      	<div class="commo_slider2_text_title">
+		        	<h2>OTRAS MANERAS DE AHORRAR CON SHOPPIDAY</h2>
+		      	</div>
+	    	</div>
+	  	</div>
+	</div>
+	<div {% if middle_image_url|length > 1 %} id="como_slider2" class="owl-carousel owl-theme como_slider2" {% else %} id="como_slider2_single" {% endif %}>
+		{% for image in middle_image_url %}
+			<div class="item" style="background: url('{{ image.image }}') no-repeat center center; background-size: cover;">
+				{% if image.url %} <a href="{{ image.url }}" title="{{ image.title }}"> {% endif %}
+				{% if image.url %} </a> {% endif %}
+			</div>
+		{% endfor %}
+	</div>
+	{% endif %}
+
+	{% if brand_image_urls is not empty %}
+		<div class="container como_shopping_icons">
+			<div class="row">
+				<div class="twelvecol">
+					<div class="como-shopping-listing">
+						<h3>ENCUENTRA TUS MARCAS FAVORITAS ENTRE CIENTOS DE TIENDAS</h3>
+						<ul>
+							{% for brand_image_url in brand_image_urls %}
+								<li>
+									<a href="{{absolute_url(path('marcas_view', {'slug_name': brand_image_url.slugName })) }}">
+										<img src="{{ brand_image_url.logo_path }}" />
+									</a>
+								</li>
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endif %}
+
+	{% if parentCategories is not empty %}
+		<div class="container como_shopping_icons1">
+	  		<div class="row">
+	    		<div class="twelvecol">
+	      			<div class="como-shopping-listing1">
+	        			<h3>BUSQUES LO QUE BUSQUES, ENCONTRARÁS UNA RECOMPENSA</h3>
+	        			<ul>
+							{% for parentCategory in parentCategories %}
+        					<a href="
+							{% if parentCategory.slugName is not empty%}
+							    {{absolute_url(path('i_flair_lets_bonus_front_category_slug',{'parent_category': parentCategory.slugName}))}}
+							{% else %}
+								{{ url('i_flair_lets_bonus_front_category') }}
+							{% endif %}
+							" title="{{ parentCategory.name }}">
+								<li><img src="{{ parentCategory.image }}" />
+								<span>
+	              					{{ parentCategory.name }}
+	            				</span>
+	            				</li>
+	            			</a>
+							{% endfor %}
+	        			</ul>
+	      			</div>
+	    		</div>
+	  		</div>
+		</div>
+	{% endif %}
+
+	{% if bottom_image_url.image is not empty %}
+		<div class="container como-register" style="background: rgba(0, 0, 0, 0) url({{ bottom_image_url.image }}) no-repeat scroll center center;">
+	  		<div class="row">
+	    		<div class="twelvecol">
+	      			<div class="como-registre-form">
+	        			<div class="como-reg-wrap">
+	          				<h3>{{ bottom_image_url.title }}</h3>
+	          				<span>{{ bottom_image_url.description |striptags|raw }}</span>
+	          				<a href="{{ url('i_flair_lets_bonus_front_login') }}">Regístrate gratis</a>
+	        			</div>
+	      			</div>
+				</div>
+	  		</div>
+		</div>
+	{% endif %}
+
+{% endblock %}

@@ -1,0 +1,181 @@
+<div class="christmas-special-main product-collection"> 
+  <div class="chris-text">
+    <span>PRODUCT COLLECTION </span>
+  </div>
+  <div class="shoes-product-slide">   
+    <div id="owl-shoes" class="owl-carousel">
+    {% set user_id = app.session.get('user_id') %}   
+    {% for key, user in productcollectiondata %}
+          <div title="" class="shoes-link" href="#">
+                  <div class="shoes-product-inner">
+                    <div class="shoes-product-title">
+                      <h4>{{ user.brand|e }}</h4> <!-- Brand -->
+                       <span>
+                        
+                       <!--  <div class="rating-box">
+                           
+                          {% set foo = "" %}
+                        {% if user.rating is defined %}
+                             {% set foo = user.rating %}
+                            {% if user.rating is not empty %}
+                                                <div style="width:{{user.rating}}%;" class="rating"></div>
+                           {% endif %}
+                        {% else %}  
+                            {% set foo = 0 %}               
+                        {% endif %} 
+                      </div>  ({{foo}}) -->
+                      </span> <!-- Reviewed Starts image -->
+                    </div>
+                    <div class="shoes-img">
+                      {% if user.productimage is defined and user.productimage is not null %}
+                        <img alt="" src="{{ user.productimage }}"> <!-- Product Image -->
+                      {% else %}
+                        <img alt="" src="#"> <!-- Product Image -->
+                      {% endif %}
+                    </div>                    
+                    {% if user.title is defined and user.title is not null %}
+                      <p>{{ user.title }}</p> <!-- Title -->
+                    {% else %}
+                      <p></p> <!-- Title -->
+                    {% endif %}
+                    <div class="shoes-img-btm">
+                      <div class="nike-ic-main">
+                        <div class="nike-ic">
+
+                          {% if user.slug_name is defined and user.slug_name is not null %}
+                          <a href="{{absolute_url(path('marcas_view', {'slug_name': user.slug_name})) }}">
+                          {% endif %}
+                          
+                            {% if user.productlogo is defined and user.productlogo is not null %}
+                              <img alt="" src="{{ user.productlogo }}"> <!-- Product Logo image -->
+                            {% else %}
+                              <img alt="" src="#"> <!-- Product Logo image -->
+                            {% endif %}
+                          
+                          {% if user.slug_name is defined and user.slug_name is not null %}
+                          </a>
+                          {% endif %}
+
+                        </div>
+                        <div class="nike-ic-txt">
+                          {% if user.mainprice is defined and user.mainprice is not null %}
+                            <span>{{ user.mainprice }}€</span> <!-- product origional price -->
+                          {% else %}
+                            <span></span> <!-- product origional price -->
+                          {% endif %}
+
+                          <span class="euro-price">
+                            {% if user.cashbackprice is defined and user.cashbackprice is not null %}
+                              {{ user.cashbackprice }}€ <!-- Cashback price -->
+                            {% endif %}
+
+                            <img alt="" src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/price-arrow.jpg'))}}">
+                          </span>
+                          {% if user.cashbackpercentage is defined and user.cashbackpercentage is not null %}
+                            <p><span>{{ user.cashbackpercentage }}</span> Cashback</p>
+                          {% else %}
+                            <p>Cashback</p>
+                          {% endif %}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="sharing-txt">
+                      <span>Condiciones</span>
+                      <div class="sharing-txt-img">
+                         <div class="conditions-ic">
+                            <!--   <div class="prod_share_icon" > 
+                                <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/share-small-ic.png'))}}" alt=""/>
+
+                                   <div class="share prod_share animated fadeInUp" id='fb-root'>
+                                  
+                                            <a href="https://twitter.com/share" class="twitter-share-button"
+
+                                           data-text=" {{ user.title|e }}" 
+                                           data-url="{{ absolute_url('store') }}/{{ user.shop|e }}"
+                                           data-lang="en"
+
+                                         >Twitter</a>
+
+                                             <img class="fb_share" id="product_collection_{{ user.shop|e }}" src = "{{absolute_url(asset('bundles/iflairletsbonusfront/images/facebook-share.png'))}}"/>
+                                             
+                                              <a href="https://plus.google.com/share?url={{ app.request.getSchemeAndHttpHost() }}" class="socialite googleplus-one google_share" data-size="tall" data-text="{{user.title}}"  data-href="{{ app.request.getSchemeAndHttpHost() }}" rel="nofollow" target="_blank"><span class="vhidden">Share on Google+</span>
+                                               <div class="clearb"></div>
+                                               
+                                    </div>
+                                  </div> -->
+                                  <a href="javascript:void(0);" class="prod_like_icon" id="prod_collection_add_to_fev1_{{ user.shop|e }}"> 
+                               
+                                      {% if user.shop in addtofevlist  %}
+                                         <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/heart-grey-ic.png'))}}" alt=""  id="prod_collection_add_to_fev_{{ user.shop|e}}" style="display:none;">
+                                          <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/heart-hover-ic.png'))}}" alt="" id="prod_collection_add_to_fev_selected_{{ user.shop|e }}" >
+                                      {% else %}
+                                           <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/heart-grey-ic.png'))}}" alt=""  id="prod_collection_add_to_fev_{{ user.shop|e }}">
+                                            <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/heart-hover-ic.png'))}}" alt="" id="prod_collection_add_to_fev_selected_{{ user.shop|e }}" style="display:none;">
+                                      {% endif %}
+                                 
+                                  </a>
+                          </div>
+                                                        <script type="text/javascript">
+                                                       $(document).ready(function(){
+
+                                                          $("#prod_collection_add_to_fev_{{ user.shop|e }}").click(function(){
+                                                                  {% if user_id is null %}
+                                                                        $("#gotostore_login").show();
+                                                                        
+                                                                  {% else %}
+                                                                    {% if user.shop_history  is defined %}
+                                                                      {% if user.shop_history  is not empty %}
+                                                                        $("#prod_collection_add_to_fev_{{ user.shop|e }}").hide();
+                                                                        $("#prod_collection_add_to_fev_selected_{{ user.shop|e }}").css("display","block" );
+                                                                        $.ajax({
+                                                                                  type:"POST",
+                                                                                  data:{shop_history_id: {{user.shop_history }}},
+                                                                                  dataType: "text",
+                                                                                  url: 'addtofev/{{ user.shop|e}}',
+                                                                               });
+                                                                        {% endif %}
+                                                                        {% endif %}
+                                                                  {% endif %}
+                                                          });
+
+                                                          $("#prod_collection_add_to_fev_selected_{{user.shop|e }}").click(function(){
+                                                               {% if user.shop_history  is defined %}
+                                                                      {% if user.shop_history  is not empty %}
+                                                                  $("#prod_collection_add_to_fev_{{user.shop|e}}").css("display","block" );
+                                                                  $("#prod_collection_add_to_fev_selected_{{user.shop|e }}").css("display","none" );
+                                                                   $.ajax({
+                                                                                 type:"POST",
+                                                                                  data:{shop_history_id: {{ user.shop_history }}},
+                                                                                  dataType: "text",
+                                                                                  url: 'removefromfev/{{ user.shop|e}}',
+                                                                               });
+                                                                  {% endif %}
+                                                                        {% endif %}   
+                                                           });
+
+                                                       /*  $("#product_collection_{{ user.shop|e }}").click(function(e) {
+                                                       
+                                                            e.preventDefault();
+
+                                                                  FB.ui(
+                                                                  {
+                                                                  method: 'feed',
+                                                                  name: ' {{ user.title|e }}',
+                                                                  link: 'http://hyperarts.com/blog',
+                                                                  picture: '{{ user.productimage|e}}',
+                                                                  caption: ' {{ user.title|e }}',
+                                                                  description: ' {{ user.title|e }}',
+                                                                  message: ''
+                                                                  });   
+                                                          });*/
+                                                        });
+                                                      </script>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+        {% endfor %}
+
+    </div>
+  </div>
+</div>

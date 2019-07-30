@@ -1,0 +1,24 @@
+{% extends '::base.html.twig' %}
+{% block page_title %}
+    - hemos recibido tu solicitud!
+{% endblock %}
+{% block content %}    
+
+    <!-- AYUDA HTML -->
+    <div class="container contact_page_enviado">
+        <div class="row">
+            <div class="ayuda_full" id="dialogSuccess">
+                <div class="ayuda_title">
+                    <h1>HEMOS RECIBIDO TU SOLICITUD!</h1>
+                </div>
+                <div class="ayuda_wrapp">
+                    <div class="ayuda_left">
+                        <p>Atenderemos tu consulta lo antes posible.</p>
+                        <p>Gracias por confiar en Shoppiday.</p>
+						<a href="{{ url('i_flair_lets_bonus_front_homepage') }}" title="Volver a la home">Volver a la home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

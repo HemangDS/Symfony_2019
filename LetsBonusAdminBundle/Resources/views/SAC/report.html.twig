@@ -1,0 +1,90 @@
+
+{% extends 'SonataAdminBundle::standard_layout.html.twig' %}
+
+{% block sonata_breadcrumb %}
+    {% include "iFlairLetsBonusAdminBundle::dashboard_menu.html.twig" %}
+{% endblock %}
+{%  block side_bar_after_nav %}
+    {% include "iFlairLetsBonusAdminBundle::navigation_menu.html.twig" %}
+{% endblock %}
+
+{% block sonata_admin_content %}
+<div id="page-wrapper" style="min-height: 258px;">
+
+    <div class="page-header page-header-top">
+    <h1 class="pull-left">
+      Transacciones     <br>
+      <small>Sin asignar</small>
+    </h1>
+    <div class="clearfix"></div>
+  </div>
+  
+
+   <div class="table-responsive">
+            <div role="grid" class="dataTables_wrapper form-inline" id="dataTables-transactionslist_wrapper"><div class="row"><div class="col-sm-6"><div class="dataTables_length" id="dataTables-transactionslist_length"><label><select name="dataTables-transactionslist_length" aria-controls="dataTables-transactionslist" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> records per page</label></div></div><div class="col-sm-6"><div id="dataTables-transactionslist_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" aria-controls="dataTables-transactionslist"></label></div></div></div><table id="dataTables-transactionslist" class="table table-striped table-bordered table-hover dataTable no-footer" aria-describedby="dataTables-transactionslist_info">
+                <thead>
+                    <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="dataTables-transactionslist" rowspan="1" colspan="1" style="width: 313px;" aria-sort="ascending" aria-label="transactionid: activate to sort column ascending">transactionid</th><th class="sorting" tabindex="0" aria-controls="dataTables-transactionslist" rowspan="1" colspan="1" style="width: 65px;" aria-label="Comisión usuario: activate to sort column ascending">Comisión usuario</th><th class="sorting" tabindex="0" aria-controls="dataTables-transactionslist" rowspan="1" colspan="1" style="width: 54px;" aria-label="Amount: activate to sort column ascending">Amount</th><th class="sorting" tabindex="0" aria-controls="dataTables-transactionslist" rowspan="1" colspan="1" style="width: 62px;" aria-label="Currency: activate to sort column ascending">Currency</th><th class="sorting" tabindex="0" aria-controls="dataTables-transactionslist" rowspan="1" colspan="1" style="width: 215px;" aria-label="trackingDate: activate to sort column ascending">trackingDate</th><th class="sorting" tabindex="0" aria-controls="dataTables-transactionslist" rowspan="1" colspan="1" style="width: 215px;" aria-label="clickDate: activate to sort column ascending">clickDate</th><th class="sorting" tabindex="0" aria-controls="dataTables-transactionslist" rowspan="1" colspan="1" style="width: 78px;" aria-label="program_id: activate to sort column ascending">program_id</th><th class="sorting" tabindex="0" aria-controls="dataTables-transactionslist" rowspan="1" colspan="1" style="width: 127px;" aria-label="program_name: activate to sort column ascending">program_name</th><th class="sorting" tabindex="0" aria-controls="dataTables-transactionslist" rowspan="1" colspan="1" style="width: 250px;" aria-label="orderNumber: activate to sort column ascending">orderNumber</th><th class="sorting" tabindex="0" aria-controls="dataTables-transactionslist" rowspan="1" colspan="1" style="width: 148px;" aria-label="productName: activate to sort column ascending">productName</th><th class="sorting" tabindex="0" aria-controls="dataTables-transactionslist" rowspan="1" colspan="1" style="width: 74px;" aria-label="Fecha procesado: activate to sort column ascending"><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i>Fecha procesado</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 44px;" aria-label=""></th></tr>
+                </thead>
+                <tbody>
+
+                   {% for item in transaction_info %}   
+                        <tr class="gradeA odd">
+                       
+                            <td align="left" class="sorting_1">{{ item.transactionId }}</td>
+                          
+                            <td align="left" class=" ">100</td>
+                            <td align="left" class=" ">{{ item.amount }}</td>
+                            <td align="left" class=" ">{{ item.currency }}</td>
+                          
+                            <td align="left" class=" ">&nbsp;</td>
+                         
+                            <td align="left" class=" ">&nbsp;</td>
+                        
+                            <td align="left" class=" ">&nbsp;</td>
+                            <td align="left" class=" ">&nbsp;</td>
+                          
+                            <td align="left" class=" ">&nbsp;</td>
+                        
+                            <td align="left" class=" ">Test</td>
+                            <!--<td align="left">PROCESSED&nbsp;</td>-->
+                            <td align="left" class=" ">2015-03-05 10:03:01&nbsp;</td>
+                            <!--<td align="left">2014-11-21 10:50:03&nbsp;</td>
+                            <td align="left">2015-03-05 10:35:01&nbsp;</td>-->
+
+                             <td class="btn-group ">
+                              <a href="/sac/Cashbacktransactions/addusertoaffiliatetransaction/340" data-target="#auxModal" data-toggle="modal" class="btn btn-default"><i class="fa fa-user-plus"></i></a>
+                            </td>
+
+                        </tr>
+                         {% endfor %}
+                     </tbody>
+            </table><div class="row"><div class="col-sm-6"><div class="dataTables_info" id="dataTables-transactionslist_info" role="alert" aria-live="polite" aria-relevant="all">Showing 1 to 50 of 486 entries</div></div><div class="col-sm-6"><div class="dataTables_paginate paging_simple_numbers" id="dataTables-transactionslist_paginate"><ul class="pagination"><li class="paginate_button previous disabled" aria-controls="dataTables-transactionslist" tabindex="0" id="dataTables-transactionslist_previous"><a href="#">Previous</a></li><li class="paginate_button active" aria-controls="dataTables-transactionslist" tabindex="0"><a href="#">1</a></li><li class="paginate_button " aria-controls="dataTables-transactionslist" tabindex="0"><a href="#">2</a></li><li class="paginate_button " aria-controls="dataTables-transactionslist" tabindex="0"><a href="#">3</a></li><li class="paginate_button " aria-controls="dataTables-transactionslist" tabindex="0"><a href="#">4</a></li><li class="paginate_button " aria-controls="dataTables-transactionslist" tabindex="0"><a href="#">5</a></li><li class="paginate_button disabled" aria-controls="dataTables-transactionslist" tabindex="0" id="dataTables-transactionslist_ellipsis"><a href="#">…</a></li><li class="paginate_button " aria-controls="dataTables-transactionslist" tabindex="0"><a href="#">10</a></li><li class="paginate_button next" aria-controls="dataTables-transactionslist" tabindex="0" id="dataTables-transactionslist_next"><a href="#">Next</a></li></ul></div></div></div></div>
+</div>
+
+<!-- Modal -->
+<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="auxModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+
+
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+{% endblock %}

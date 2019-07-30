@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Lets bonus</title>
+  <meta name="viewport" content ="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=0, user-scalable=no" />
+  <meta name="format-detection" content="telephone=no">
+  <link rel="shortcut icon" href="{{absolute_url(asset('/bundles/iflairletsbonusfront/images/favicon.ico'))}}" type="image/x-icon" />
+  
+  <!--[if lte IE 9]><link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" /><![endif]-->
+</head>
+{% block stylesheets %}
+    {% stylesheets
+    '@iFlairLetsBonusFrontBundle/Resources/public/css/styles.css' filter='cssrewrite'
+    '@iFlairLetsBonusFrontBundle/Resources/public/css/responsive.css' filter='cssrewrite'
+    '@iFlairLetsBonusFrontBundle/Resources/public/css/animate.css' filter='cssrewrite'
+    '@iFlairLetsBonusFrontBundle/Resources/public/css/jquery.mmenu.all.css' filter='cssrewrite'
+    '@iFlairLetsBonusFrontBundle/Resources/public/css/owl.theme.css' filter='cssrewrite'
+    '@iFlairLetsBonusFrontBundle/Resources/public/css/owl.carousel.css' filter='cssrewrite'
+    '@iFlairLetsBonusFrontBundle/Resources/public/css/owl.carousel2.css' filter='cssrewrite'
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+<body>
+<div id="page">
+  <div class="container header">
+    <div class="row">
+      <div class="logo">
+        <a class="respo-none" href="#" title="Shoppiday"><img src="{{absolute_url(asset('/bundles/iflairletsbonusfront/images/logo.png'))}}" alt=""></a>
+      </div>
+      <div class="header-right">
+        <div class="head-register">
+          <a href="#" title="Entra">Entra</a>
+          <ul>
+            <li><a href="#" title="REGÍSTRATE">REGÍSTRATE</a></li>
+          </ul>
+        </div>
+        <div class="head-input">
+          <button type="submit"><img src="{{absolute_url(asset('/bundles/iflairletsbonusfront/images/search-ic.png'))}}" alt=""></button>
+          <input type="text" placeholder="Encuentra tiendas, cupones, productos, marcas...">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container head-navigation">
+    <div class="row">
+      <ul>
+        <li>
+          <a href="#" title="CATEGORÍAS">CATEGORÍAS</a>
+          <div class="inner-menu">
+            <div class="sub-menu-wrapper">
+              <ul class="sub-menu">
+                <h4>Titulo lorem ipsum</h4>
+                <li><a href="#" title="Automoci&oacute;n (17)">Automoci&oacute;n (17)</a></li>
+                <li><a href="#" title="Cine, Libros & M&uacute;sica (9)">Cine, Libros & M&uacute;sica (9)</a></li>
+                <li><a href="#" title="Deportes (16)">Deportes (16)</a></li>
+                <li><a href="#" title="Gastronom&iacute;a (9)">Gastronom&iacute;a (9)</a></li>
+                <li><a href="#" title="Hogar & Jard&iacute;n (23)">Hogar & Jard&iacute;n (23)</a></li>
+                <li><a href="#" title="Mascotas (10)">Mascotas (10)</a></li>
+                <li><a href="#" title="Moda & Accesorios (69)">Moda & Accesorios (69)</a></li>
+                <li><a href="#" title="Ni&ntilde;os (25)">Ni&ntilde;os (25)</a></li>
+                <li><a href="#" title="Salud & Belleza (25)">Salud & Belleza (25)</a></li>
+                <li><a href="#" title="Servicios (16)">Servicios (16)</a></li>
+                <li><a href="#" title="Tecnolog&iacute;a (35)">Tecnolog&iacute;a (35)</a></li>
+                <li><a href="#" title="Viajes (50)">Viajes (50)</a></li>
+                <span>Todas (400)</span>
+              </ul>
+            </div>
+            <div class="gift-shop-image">
+              <img src="{{absolute_url(asset('/bundles/iflairletsbonusfront/images/giftshop-img.jpg'))}}" alt="">
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="#" title="OFERTAS">OFERTAS</a>
+          <div class="inner-menu inner-menu-sec">
+            <div class="sub-menu-wrapper">
+              <ul class="sub-menu">
+                <h4>Ofertas destacadas</h4>
+                <li><a href="#" title="Cashback (300)">Cashback (300)</a></li>
+                <li><a href="#" title="Cupones (100)">Cupones (100)</a></li>
+                <span>Todas (400)</span>
+              </ul>
+            </div>
+            <div class="gift-shop-image">
+              <div class="gift-inner-image">
+                <img src="{{absolute_url(asset('/bundles/iflairletsbonusfront/images/giftshop-img.jpg'))}}" alt="">
+              </div>
+              <div class="cash-back-img">
+                <div class="offerdeal-bottom">
+                  <div class="offerdeal-image">
+                    <img alt="" src="{{absolute_url(asset('/bundles/iflairletsbonusfront/images/offer-shoes.jpg'))}}">
+                    <span>Doble Cashback</span>
+                  </div>
+                  <div class="offerdeal-text">
+                    <p>Description of the offer lorem de ipsum dolor sit amihde kjciw ihiuhiu iuhibiuh iuhuiig fgfgfgh idfg</p>
+                    <div class="toyrus-img">
+                      <div class="toyrus-img-inner">
+                        <img alt="" src="{{absolute_url(asset('/bundles/iflairletsbonusfront/images/toyrus-img.png'))}}">
+                      </div>
+                      <p><span>25%</span> Cashback</p>
+                      <span class="expira-txt">Expira en 24h</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="#" title="MARCAS">MARCAS</a>
+          <div class="inner-menu inner-menu-sec">
+            <div class="sub-menu-wrapper">
+              <ul class="sub-menu">
+                <h4>Top Marcos</h4>
+                <li><a href="#" title="Alquimia">Alquimia</a></li>
+                <li><a href="#" title="Amazon">Amazon</a></li>
+                <li><a href="#" title="Ayre">Ayre</a></li>
+                <li><a href="#" title="Desigual">Desigual</a></li>
+                <li><a href="#" title="LetsBonus">LetsBonus</a></li>
+                <li><a href="#" title="Levis">Levis</a></li>
+                <li><a href="#" title="L'Occitane">L'Occitane</a></li>
+                <li><a href="#" title="Mango">Mango</a></li>
+                <li><a href="#" title="Nike">Nike</a></li>
+                <li><a href="#" title="Philips">Philips</a></li>
+                <li><a href="#" title="Reebok">Reebok</a></li>
+                <li><a href="#" title="ToysRus">ToysRus</a></li>
+                <span>Todas (400)</span>
+              </ul>
+            </div>
+            <div class="gift-shop-image">
+              <div class="gift-inner-image">
+                <img src="{{absolute_url(asset('/bundles/iflairletsbonusfront/images/amazon-logo.jpg'))}}" alt="">
+              </div>
+              <div class="cash-back-img">
+                <div class="offerdeal-bottom">
+                  <div class="offerdeal-image">
+                    <img src="{{absolute_url(asset('/bundles/iflairletsbonusfront/images/offer-shoes.jpg'))}}" alt="">
+                    <span>Doble Cashback</span>
+                  </div>
+                  <div class="offerdeal-text">
+                    <p>Description of the offer lorem de ipsum dolor sit amihde kjciw ihiuhiu iuhibiuh iuhuiig fgfgfgh idfg</p>
+                    <div class="toyrus-img">
+                      <div class="toyrus-img-inner">
+                        <img src="{{absolute_url(asset('/bundles/iflairletsbonusfront/images/toyrus-img.png'))}}" alt="">
+                      </div>
+                      <p><span>25%</span> Cashback</p>
+                      <span class="expira-txt">Expira en 24h</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="#" title="ESPECIAL NAVIDAD">ESPECIAL NAVIDAD</a></li>
+      </ul>
+      <ul class="nav-right">
+        <li><a href="#" title="¿CÓMO FUNCIONA?">¿CÓMO FUNCIONA?</a></li>
+        <li><a href="#" title="AYUDA">AYUDA</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">        
+        <p><h1>About Us ::</h1></p><br/><br/>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p><br/>
+        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p><br/>
+        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p><br/>
+        <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p><br/>
+        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p><br/>
+        <p>The standard Lorem Ipsum passage, used since the 1500s</p><br/>
+        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC</p><br/>
+        <p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"</p><br/>
+        <p>"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?"Section 1.10.33 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC</p><br/>
+        <p>"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."<p></br/>
+        <p>"On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains."</p><br/>
+  </div>
+
+
+  <div class="container footer">
+    <div class="row">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <div class="fl-logo">
+            <a href="#" title=""><img src="{{absolute_url(asset('/bundles/iflairletsbonusfront/images/shoppyday-ic.png'))}}" alt=""></a>
+          </div>
+          <ul>
+            <li><a href="#" title="About us">About us</a></li>
+            <li><a href="#" title="How it works">How it works</a></li>
+            <li><a href="#" title="Contact">Contact</a></li>
+            <li><a href="#" title="Promote your store">Promote your store</a></li>
+            <li><a href="#" title="Press">Press</a></li>
+            <li><a href="#" title="Careers">Careers</a></li>
+            <li><a href="#" title="Site map">Site map</a></li>
+            <li><a href="#" title="Blog">Blog</a></li>
+          </ul>
+          <ul>
+            <li><a href="#" title="Policies">Policies</a></li>
+            <li><a href="#" title="General Terms & Conditions">General Terms & Conditions</a></li>
+            <li><a href="#" title="Privacy Policy">Privacy Policy</a></li>
+            <li><a href="#" title="Cookies Policy">Cookies Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-right">
+          <div class="footer-right-inner">
+            <div class="fr-title">
+              <h5>CATEGORÍAS</h5>
+              <h5>OFERTAS</h5>
+              <h5>SUPPORT</h5>
+            </div>
+            <div class="fr-title-bottom">
+              <div class="fr-title-listing">
+                <h5>CATEGORÍAS</h5>
+                <ul class="category-list">
+                  <li><a href="#" title="Automoción (17)">Automoción (17)</a></li>
+                  <li><a href="#" title="Cine, Libros & Música (9)">Cine, Libros & Música (9)</a></li>
+                  <li><a href="#" title="Deportes (16)">Deportes (16)</a></li>
+                  <li><a href="#" title="Gastronomí­a (9)">Gastronomí­a (9)</a></li>
+                  <li><a href="#" title="Hogar & Jardín (23)">Hogar & Jardín (23)</a></li>
+                  <li><a href="#" title="Mascotas (10)">Mascotas (10)</a></li>
+                  <li><a href="#" title="Moda & Accesorios (69)">Moda & Accesorios (69)</a></li>
+                  <li><a href="#" title="Niños (25)">Niños (25)</a></li>
+                  <li><a href="#" title="Salud & Belleza (25)">Salud & Belleza (25)</a></li>
+                  <li><a href="#" title="Servicios (16)">Servicios (16)</a></li>
+                  <li><a href="#" title="Tecnología (35)">Tecnología (35)</a></li>
+                  <li><a href="#" title="Viajes (50)">Viajes (50)</a></li>
+                </ul>
+              </div>
+              <div class="fr-title-listing">
+                <h5>OFERTAS</h5>
+                <ul class="offer-list">
+                  <li><a href="#" title="Cashback (1200)">Cashback (1200)</a></li>
+                  <li><a href="#" title="Cupones (300)">Cupones (300)</a></li>
+                  <li><a href="#" title="Lorem ipsum dolorsit">Lorem ipsum dolorsit</a></li>
+                  <li><a href="#" title="Lorem ipsum dolorsit">Lorem ipsum dolorsit</a></li>
+                  <li><a href="#" title="Lorem ipsum dolorsit">Lorem ipsum dolorsit</a></li>
+                </ul>
+              </div>
+              <div class="fr-title-listing">
+                <h5>SUPPORT</h5>
+                <ul class="support-list">
+                  <li><a href="#" title="Contact">Contact</a></li>
+                  <li><a href="#" title="Create claim">Create claim</a></li>
+                  <li><a href="#" title="All help">All help</a></li>
+                  <li><a href="#" title="Accessibility">Accessibility</a></li>
+                </ul>
+                <ul class="social-ic">
+                  <li><a href="#" title="3M Members"><img src="{{absolute_url(asset('/bundles/iflairletsbonusfront/images/fb-ic.png'))}}" alt=""> 3M Members</a></li>
+                  <li><a href="#" title="500.000 Followers"><img src="{{absolute_url(asset('/bundles/iflairletsbonusfront/images/twitter-ic.png'))}}" alt=""> 500.000 Followers</a></li>
+                  <li><a href="#" title="3M Fans"><img src="{{absolute_url(asset('/bundles/iflairletsbonusfront/images/google-ic.png'))}}" alt=""> 3M Fans</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="paypal-ic">
+        <a href="#" title=""><img src="{{absolute_url(asset('/bundles/iflairletsbonusfront/images/paypal-ic.png'))}}" alt=""></a>
+      </div>
+    </div>
+    <a href="#" class="scrollToTop"><img src="{{absolute_url(asset('/bundles/iflairletsbonusfront/images/up icon.png'))}}" alt=""></a>
+  </div>
+</div>
+<a href="#menu" class="mm-fixed-top mm-slideout" id="hamburger"><span></span><img class="respo-block" src="{{absolute_url(asset('/bundles/iflairletsbonusfront/images/respo-logo.png'))}}" alt=""><div class="join-entra-ic"><img class="" src="{{absolute_url(asset('/bundles/iflairletsbonusfront/images/join-ic.png'))}}" alt=""></div></a>
+<nav id="menu">
+  <ul>
+    <li class="active">
+      <a href="#" title="CATEGORÍAS">CATEGORÍAS</a>
+      <ul class="sub-menu">
+        <h4>Titulo lorem ipsum</h4>
+        <li><a href="#" title="Automoci&oacute;n (17)">Automoci&oacute;n (17)</a></li>
+        <li><a href="#" title="Cine, Libros & M&uacute;sica (9)">Cine, Libros & M&uacute;sica (9)</a></li>
+        <li><a href="#" title="Deportes (16)">Deportes (16)</a></li>
+        <li><a href="#" title="Gastronom&iacute;a (9)">Gastronom&iacute;a (9)</a></li>
+        <li><a href="#" title="Hogar & Jard&iacute;n (23)">Hogar & Jard&iacute;n (23)</a></li>
+        <li><a href="#" title="Mascotas (10)">Mascotas (10)</a></li>
+        <li><a href="#" title="Moda & Accesorios (69)">Moda & Accesorios (69)</a></li>
+        <li><a href="#" title="Ni&ntilde;os (25)">Ni&ntilde;os (25)</a></li>
+        <li><a href="#" title="Salud & Belleza (25)">Salud & Belleza (25)</a></li>
+        <li><a href="#" title="Servicios (16)">Servicios (16)</a></li>
+        <li><a href="#" title="Tecnolog&iacute;a (35)">Tecnolog&iacute;a (35)</a></li>
+        <li><a href="#" title="Viajes (50)">Viajes (50)</a></li>
+        <span>Todas (400)</span>
+      </ul>
+    </li>
+    <li>
+      <a title="OFERTAS" href="#">OFERTAS</a>
+      <ul class="sub-menu">
+        <h4>Ofertas destacadas</h4>
+        <li><a href="#" title="Cashback (300)">Cashback (300)</a></li>
+        <li><a href="#" title="Cupones (100)">Cupones (100)</a></li>
+        <span>Todas (400)</span>
+      </ul>
+    </li>
+    <li>
+      <a title="MARCAS" href="#">MARCAS</a>
+      <ul>
+        <h4>Top Marcos</h4>
+        <li><a title="Alquimia" href="#">Alquimia</a></li>
+        <li><a title="Amazon" href="#">Amazon</a></li>
+        <li><a title="Ayre" href="#">Ayre</a></li>
+        <li><a title="Desigual" href="#">Desigual</a></li>
+        <li><a title="LetsBonus" href="#">LetsBonus</a></li>
+        <li><a title="Levis" href="#">Levis</a></li>
+        <li><a title="L'Occitane" href="#">L'Occitane</a></li>
+        <li><a title="Mango" href="#">Mango</a></li>
+        <li><a title="Nike" href="#">Nike</a></li>
+        <li><a title="Philips" href="#">Philips</a></li>
+        <li><a title="Reebok" href="#">Reebok</a></li>
+        <li><a title="ToysRus" href="#">ToysRus</a></li>
+        <span>Todas (400)</span>
+      </ul>
+    </li>
+    <li><a title="ESPECIAL NAVIDAD" href="#">ESPECIAL NAVIDAD</a></li>
+    <li><a title="¿CÓMO FUNCIONA?" href="#">¿CÓMO FUNCIONA?</a></li>
+    <li><a title="AYUDA" href="#">AYUDA</a></li>
+    <span><a href="#" title="REGÍSTRATE">REGÍSTRATE</a></span>
+  </ul>
+</nav>
+
+{% block javascripts %}{% endblock %}
+<script type="text/javascript">
+  $(function() {
+    $('nav#menu').mmenu();
+  });
+</script>
+</body>
+</html>

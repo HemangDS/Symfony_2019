@@ -1,0 +1,32 @@
+<div class="container user-activity1 my-cashback">
+  <div class="row">
+    <div class="user_act">
+      <div class="my-cashback-list-name">
+        <h4>Mi Cashback</h4>
+      </div>
+      <div class="cashback-columns">
+        <div class="cashback-columns-three">
+          <div class="cashback-columns-1-3 active-col">
+          <h3>Dinero disponible:</h3>
+            <span>{{ cashbackFinalAvailable|round(2) }}€</span>
+            <p>Dinero diponible que puedes transferirte. El importe mínimo para realizar la transferencia es de {{ minimotransferdinero }}€</p>
+            <a id="transfer-amount" href="javascript:void(0);" breadcrumb="transferir mi dinero" userroute="{{absolute_url(path('i_flair_lets_bonus_front_user_checktransfereligibility')) }}">transferir mi dinero</a>
+            <span id="eligibilityError" style="display:none">Importe mínimo {{ minimotransferdinero }}€</span>
+          </div>
+          <div class="cashback-columns-1-3">
+          <h3>Dinero pendiente:</h3>
+          <span>{{ cashbackFinalOutstanding|round(2) }}€</span>
+          <p>Este importe estará disponible para ser transferido cuando la tienda en la que compraste confirme la transacción (una vez transcurrido el período de desistimiento voluntario o disfrutado el servicio).</p>
+          <a href="javascript:void(0);" breadcrumb="Actividad" userroute="{{absolute_url(path('i_flair_lets_bonus_front_user_history')) }}">Ver transacciones</a>
+          </div>
+          <div class="cashback-columns-1-3">
+            <h3>Dinero transferido:</h3>
+            <span>{{ cashbackFinalTransferred|round(2) }}€</span>
+            <p>Es el importe que has descargado de Cashback.</p>
+            <a href="javascript:void(0);" breadcrumb="Actividad" userroute="{{absolute_url(path('i_flair_lets_bonus_front_user_history')) }}">Ver historial</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+{% extends 'SonataAdminBundle:CRUD:base_edit.html.twig' %}
+
+{% block javascripts %}
+{{ parent() }}
+	{% javascripts
+		'@iFlairLetsBonusAdminBundle/Resources/public/js/custom.js'
+	%}
+    	<script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+<script type="text/javascript">
+	$(document).ready(function(){
+	
+	
+		var URL = "{{ admin.generateUrl('loadParentCategory') }}";
+		var shopArr = '';
+		var obj = '';
+		var shopId	= '{{ app.request.get('id') }}';
+		var datashopId = '{{ shopId|json_encode|raw }}';
+		
+			if(shopId != '')
+			{
+				var shopArr = datashopId;
+				obj = JSON.parse(shopArr);
+				obj = JSON.stringify(obj);
+				var str = obj.replace(/\[|\]/g, "");
+				var obj = str.split(",");
+				
+				
+			}
+
+		admin.cashbackSettings(URL,obj);
+	});
+</script>
+{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+ 	<style type="text/css">
+ 		.ui-helper-reset 
+ 		{
+			    border: 0 none;
+			    font-size: 100%;
+			    line-height: 1.3;
+			    list-style: outside none none;
+			    margin: 0;
+			    outline: 0 none;
+			    padding: 0;
+			    text-decoration: none;
+		}
+		.parent_cat
+		{
+			list-style: outside none none;
+			padding: 0;
+		}
+		.ui-multiselect-header ul li 
+		{
+		    float: left;
+		    padding: 0 10px 0 0;
+		}
+		.parent_cat li.parent_cat_name a.category_name
+		{
+		    display: block;
+		    margin: 1px 0;
+		    padding: 3px;
+		    text-decoration: none;
+		     border-bottom: 1px solid;
+		    font-weight: bold;
+		    text-align: center;
+		}
+ 	</style>
+  
+{% endblock %}
+

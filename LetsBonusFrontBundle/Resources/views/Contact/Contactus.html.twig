@@ -1,0 +1,120 @@
+{% extends '::base.html.twig' %}
+{% block page_title %}
+    - contacto
+{% endblock %}
+{% block content %}
+<div id="dialog"></div>
+<div class="container breadcrumb">
+     <div class="row">
+          <ul>
+               <li><a href="{{ url('i_flair_lets_bonus_front_homepage') }}" title="Home">Home</a></li>
+               <li><a href="{{ url('i_flair_lets_bonus_front_faq') }}" title="Ayuda">Ayuda</a></li>
+               <li class="active">Contacto</li>
+          </ul>
+     </div>
+</div>
+
+<!-- AYUDA HTML -->
+
+<div class="container contact_page">
+    <div class="row">
+        <div class="ayuda_full">
+            <div class="ayuda_title">
+                <h1>CONTACTA CON NOSOTROS</h1>
+            </div>
+            <div class="ayuda_wrapp">
+                <div class="ayuda_left">
+                  <h2>Rellena el siguiente formulario para hacernos llegar tu consulta:</h2>
+
+                    <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
+
+                    <form action="{{ url('contactus_zendesk') }}" method="POST" name="cblock1_ayudaontact_form">
+                        <div class="cntact_form">
+                          <div class="input_field">
+                            <div class="form_label">Tipo de consulta*</div>
+                            <div class="form_field">
+                                <select id="00N2400000BQjuM" name="z_29024005" title="Tipo de oferta">
+                                    <option value="CashBack">CashBack</option>
+                                    <option value="Cupones">Cupones</option>
+                                    <option value="Shoppiday">Shoppiday</option>
+                                </select>
+                            </div>
+                          </div>
+
+                          <div class="input_field">
+                            <div class="form_label">Motivo de la consulta*</div>
+                            <div class="form_field">
+                                <select  id="00N2400000ByrAj" name="z_29024865" title="LB - Motivo del contacto">
+                                </select>
+                            </div>
+                          </div>
+
+						  <div class="input_field">
+                            <div class="form_label">Tienda*</div>
+                            <div class="form_field"><input  id="00N2400000ByrAg" maxlength="50" name="z_29024885" size="20" type="text" placeholder='Escribe el nombre de la tienda o "Ninguna"'/></div>
+                          </div>
+						  
+                          <div class="input_field">
+                            <div class="form_label">Tu nombre*</div>
+                            <div class="form_field"><input  id="name" maxlength="80" name="z_28882389" size="20" type="text" placeholder="Escribe tu nombre"/></div>
+                          </div>
+
+                          <div class="input_field">
+                            <div class="form_label">Email*</div>
+                            <div class="form_field"><input class="contactEmail" id="email" maxlength="80" name="z_29025325" size="20" type="text" placeholder="Escribe tu email"/></div>
+                          </div>
+
+                          <div class="input_field">
+                            <div class="form_label">Asunto</div>
+                            <div class="form_field"><input  id="asunto" maxlength="80" name="z_29025345" size="20" type="text" placeholder="Asunto"/></div>
+                          </div>
+
+                          <div class="input_field">
+                            <div class="form_label">Comentario*</div>
+                            <div class="form_field"><textarea id="description" name="z_28882549" placeholder="Escribe tu comentario"></textarea></div>
+                          </div>
+
+                          <div class="input_field">
+                            <div class="form_label"></div>
+                            <div class="form_field new-div-accept">
+                              <input type="checkbox" name="accept" class="accept" required="required">
+                                <p>Acepto la <a href="{{ url('i_flair_lets_bonus_front_cmsprivacypolicy') }}" target="_blank" class="terms">política de privacidad</a></p>
+                            </div>
+                          </div>
+                          <div class="input_field">
+                            <div class="form_label"></div>
+                            <div class="form_field"><input id="submitContact" type="submit" value="Enviar"></div>
+                          </div>
+
+                        </div>
+                    </form>
+                </div>
+                <div class="ayuda_right">
+                  <div class="ayuda_wrap_right">
+                      <div class="block1_ayuda">
+                          <div class="tbl">
+                              <div class="tbl-cell">
+                                <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/ayudu-mail.png'))}}" alt="ayudu-mail" />
+                                <h4>Resolvemos tus dudas</h4>
+                                <a href="{{ url('i_flair_lets_bonus_front_faq') }}" title="Ir a preguntas frecuentes">Ir a preguntas frecuentes</a>
+                              </div>
+                          </div>
+                      </div>
+                    <!--   <div class="block1_ayuda">
+                          <div class="tbl">
+                              <div class="tbl-cell">
+                                <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/call-ayuda.png'))}}" alt="ayudu-mail" />
+                                <h4>¿Necesitas más ayuda?</h4>
+                                <p>Contacta con nuestro Servicio<br/>de Atención al Cliente</p>
+                                <p class="ph_no">93 590 16 16  /  91 790 63 53</p>
+                                <p>de Lunes a Viernes<br/>de 9:00 a 18:00</p>
+                              </div>
+                          </div>
+                      </div> -->
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  
+{% endblock %}

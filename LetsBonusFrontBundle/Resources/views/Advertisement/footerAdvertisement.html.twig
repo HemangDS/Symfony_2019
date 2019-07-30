@@ -1,0 +1,9 @@
+{% if advertisementFooterDatas is defined %}
+	{% if advertisementFooterDatas is not empty %}
+		{% for advertisementData in advertisementFooterDatas %}
+			{% if advertisementData.cashback_adv_url %} <a href="{{ advertisementData.cashback_adv_url }}" title="{{ advertisementData.cashback_adv_name }}"> {% endif %}
+				<img src="{{ advertisementData.cashback_adv_image_path }}" alt="{{ advertisementData.cashback_adv_name }}" title="{{ advertisementData.cashback_adv_name }}">
+			{% if advertisementData.cashback_adv_url %} </a> {% endif %}
+		{% endfor %}
+	{% endif %}
+{% endif %}

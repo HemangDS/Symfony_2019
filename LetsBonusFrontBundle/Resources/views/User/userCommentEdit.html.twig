@@ -1,0 +1,27 @@
+<div class="my-data-form">
+  <div class="my-data-loop">
+    {#<div class="my-data-title">
+      <h3>REVISIÓN Y CALIFICACIÓN:</h3>
+    </div>#}
+    <div class="my-data-details">
+      <form class="registration-form" method="post" action="{{absolute_url(path('i_flair_lets_bonus_front_comment_update')) }}" style="text-align: center;">
+        <div class="table">
+        <input type="hidden" name="review_id" value="{{ id }}" />
+          <label>Comentar:</label>
+         {{ form_widget(form.review,{ 'id': 'review','attr':{'placeholder':'Review'}}) }}
+        </div>
+         </br></br>
+        <div class="table">
+          <label>CALIFICACIÓN:</label>
+           {{ form_widget(form.rating,{ 'id': 'rating','attr':{'placeholder':'Rating'}}) }}
+        </div>
+         </br></br>
+         <div class="new-div-accept"><input type="checkbox" name="accept" class="accept" required="required"><p>Acepto la politica de privacidad y los terminos de uso</p></div><br>
+          <input type="submit" value="Uptate Review" name="registration" id="reg_submit">
+            {#<div class="registration_new">
+                      <p> No tienese una cuenta? <a href="">Guardar cambios</a></p>
+                    </div>#}
+      </form>
+    </div>
+  </div>
+</div>

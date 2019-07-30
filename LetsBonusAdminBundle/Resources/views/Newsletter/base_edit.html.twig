@@ -1,0 +1,35 @@
+{% extends 'SonataAdminBundle:CRUD:base_edit.html.twig' %}
+
+{% block javascripts %}
+	{{ parent() }}
+	
+	{% if selectedDate is defined %}
+		{{ selected_date }}
+	{% endif %}
+
+	<script type="text/javascript">
+	    $(document).ready(function() {
+	    	var data = [];
+	    	var datas = [];
+        	var selected_date = '';
+        	$(document).on('change',".newslettervoucher",function(){
+
+				selected_date = $(this).val();
+				
+				var autocompleteInput = $("#{{ admin.uniqId }}_title_title");
+				autocompleteInput.select2('data', data);
+
+				var autocompleteInputnew = $("#{{ admin.uniqId }}_programName_title");
+				autocompleteInputnew.select2('data', datas);
+
+        		
+        		$.ajax({
+					type: 'POST',
+					url: "{{ admin.generateUrl('newsletterdateselection') }}",
+					data: selected_date,
+					cache: false,
+				});
+			});
+        });
+        </script>    
+{% endblock %}

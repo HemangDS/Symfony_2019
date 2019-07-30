@@ -1,0 +1,39 @@
+<div class="container user-activity1 favourites">
+  <div class="row">
+    <div class="user_act">
+      <div class="my-data-list-name">
+        <h4>Favoritos</h4>
+      </div>
+      <div class="fav-listing">
+        {% if userFavoriteData is defined %}
+          {% if userFavoriteData is not empty %}
+            <ul>
+              {% for userFavorite in userFavoriteData %}
+                <li>
+                  <div class="table">
+                    <div class="table-cell">
+                      <img src="{{ userFavorite.logo_path }}" />
+                      <h5>{{ userFavorite.program_name }}</h5>
+                      <span>{{ userFavorite.scheme }}</span>
+                    </div>
+                  </div>
+                  {% if userFavorite.offer_label is not empty %}
+                    <a class="new-tag" href="#">{{ userFavorite.offer_label|capitalize }}</a>
+                  {% elseif userFavorite.exclusive == 1 %}
+                    <a class="new-tag" href="#">Exclusivo</a>
+                  {% endif %}
+                  <span id="fav_{{ userFavorite.fav_id }}" data-url="{{absolute_url(path('i_flair_lets_bonus_front_user_removefavourite')) }}"
+                        user-route="{{absolute_url(path('i_flair_lets_bonus_front_user_favourite')) }}">
+                    <img src="{{absolute_url(asset('/bundles/iflairletsbonusfront/images/new-cross.png'))}}" class="ncross">
+                  </span>
+                </li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            <span>No tienes ninguna tienda seleccionada como favorita.</span>
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

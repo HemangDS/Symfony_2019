@@ -1,0 +1,81 @@
+{% if marcasSideBarDatas is defined %}
+  {% if marcasSideBarDatas is not empty %}
+    {% set user_id = app.session.get('user_id') %}
+    {% set tabType = constant('iFlair\\LetsBonusFrontBundle\\Entity\\Constants::BRAND_TAB_TYPE') %}
+    {% set tabId = constant('iFlair\\LetsBonusFrontBundle\\Entity\\Constants::BRAND_TAB_id') %}
+    {% set tabPosition = constant('iFlair\\LetsBonusFrontBundle\\Entity\\Constants::BRAND_TAB_POSITION') %}
+    {% for marcasSideBarData in marcasSideBarDatas %}
+      <div class="brand-sidebar">
+        <div class="tripple-cachback-inner">
+          {% if marcasSideBarData.tagname is defined and marcasSideBarData.tagname is not empty %}
+            <div class="cash-back-title">
+              {{ marcasSideBarData.tagname|capitalize }}
+            </div>
+          {% else %}
+            <div class="cash-back-no-title">&nbsp;</div>
+          {% endif %}  
+          <div class="cash-back-top">
+            <div class="tripple-price">
+              <div class="tripple-price-image">
+                <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/hand-symbol.jpg'))}}" alt="">
+              </div>
+              <div class="tripple-price-text">
+                <h1>
+					{% if marcasSideBarData.cashbackPrice > 0 %}
+						{{ marcasSideBarData.cashbackPrice }}€
+					{% elseif marcasSideBarData.cashbackPercentage > 0 %}
+						{{ marcasSideBarData.cashbackPercentage }}%
+					{% endif %}
+				</h1>
+                <span>Cashback</span>
+              </div>
+              <a onclick="registerClick('{{marcasSideBarData.id}}','{{marcasSideBarData.shop_history_id}}','{{marcasSideBarData.offers}}','{{ tabType }}','{{ tabId }}','0','{{absolute_url(path('i_flair_lets_bonus_front_clicks')) }}','{{marcasSideBarData.urlAffiliate}}','{{user_id}}',event, '{{ marcasSideBarData.shop_logo_popup }}', '{{ marcasSideBarData.cashback_price }}', '{{marcasSideBarData.urlAffiliate}}', '{{marcasSideBarData.voucher_program_id}}');" href="javascript:void(0);" target="_blank" class="cons-cashback" title="Conseguir cashback">Conseguir cashback</a>
+              <a href="javascript:void(0);" id="scroll-to-cond-button" class="detail-cond" title="Detalles y condiciones">Detalles y condiciones</a>
+            </div>
+          </div>
+          <div class="cash-back-bottom">
+            <div class="tripple-price">
+              <div class="tripple-price-image">
+                <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/cut-ic.jpg'))}}" alt="">
+              </div>
+              <div class="tripple-price-text">
+                <h1>{{ offersCount }} </h1>
+                <span>Ofertas y cupones descuento</span>
+              </div>
+              <a href="javascript:void(0);" id="go-to-shop" class="detail-cond" title="Ver todos">Ver todos</a>
+            </div>
+          </div>
+        </div>
+      </div>      
+    {% endfor %}
+  {% else %}
+    <div id="no-cashback" class="brand-sidebar">
+      <div class="tripple-cachback-inner">
+        <div class="cash-back-top">
+          <div class="tripple-price">
+            <div class="tripple-price-image">
+              <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/hand-symbol.jpg'))}}" alt="">
+            </div>
+            <div class="tripple-price-text">
+              <span>Cashback no disponible</span>
+            </div>
+            <a href="javascript:void(0);" class="cons-cashback" title="Conseguir cashback">Conseguir cashback</a>
+            <a href="javascript:void(0);" class="detail-cond" title="Detalles y condiciones">Detalles y condiciones</a>
+          </div>
+        </div>
+        <div class="cash-back-bottom">
+          <div class="tripple-price">
+            <div class="tripple-price-image">
+              <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/cut-ic.jpg'))}}" alt="">
+            </div>
+            <div class="tripple-price-text">
+              <h1>0 </h1>
+              <span>Ofertas y cupones descuento</span>
+            </div>
+            <a href="javascript:void(0);" class="detail-cond" title="Ver todos">Ver todos</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endif %}

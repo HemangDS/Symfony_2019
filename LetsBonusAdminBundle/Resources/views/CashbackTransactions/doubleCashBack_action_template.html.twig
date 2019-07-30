@@ -1,0 +1,6 @@
+{% if admin.hasRoute('doubleCashBack') %}
+    <a href="{{ admin.generateObjectUrl('doubleCashBack', object) }}" class="btn btn-sm btn-default" title="{{ 'doubleCashBack'|trans({}, 'SonataAdminBundle') }}">
+        <i class="icon-double"></i>
+        {{ 'doubleCashBack'|trans({}, 'SonataAdminBundle') }}
+    </a>
+{% endif %}

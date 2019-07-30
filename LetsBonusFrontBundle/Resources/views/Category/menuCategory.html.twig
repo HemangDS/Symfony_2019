@@ -1,0 +1,186 @@
+
+<a id='default_cat_id' href="{{absolute_url(path('i_flair_lets_bonus_front_category'))}}" title="CATEGORÍAS">CATEGORÍAS</a>
+<div class="inner-menu parent_category_content">
+	<div class="sub-menu-wrapper">
+		<ul class="sub-menu child-sub-menu">
+			{# <h4>Titulo lorem ipsum</h4> #}
+			{% if parentcategories is defined %}
+				{% if parentcategories is not empty %}
+					{% for parentCategory in parentcategories %}
+						<div style='display:none;' id='parent_cat_image_{{ parentCategory.id }}' class='{% if parentCategory.hasCategory is defined %} {{ parentCategory.hasCategory }} {% endif %} gift-shop-image parent-category-image'>
+							{% if parentCategory.image_path is defined %}
+								{% if parentCategory.image_path is not empty %}
+									{% if parentCategory.url %}
+										<a class="category-placeholder" href="{{ parentCategory.url }}" title="{{ parentCategory.name }}">
+									{% endif %}
+										<img src='{{parentCategory.image_path}}' title="{{ parentCategory.name }}" alt="{{ parentCategory.name }}" />
+									{% if parentCategory.url %}
+										</a>
+									{% endif %}
+								{% endif %}
+							{% elseif categoryPlaceholder %}
+								{% if categoryPlaceholder.url %}
+									<a class="category-placeholder" href="{{ categoryPlaceholder.url }}" title="{{ parentCategory.name }}">
+								{% endif %}
+										<img src='{{categoryPlaceholder.value}}' title="{{ parentCategory.name }}" alt="{{ parentCategory.name }}" />
+								{% if categoryPlaceholder.url %}
+									</a>
+								{% endif %}
+							{% else %}
+								<img src='{{absolute_url(asset('bundles/iflairletsbonusfront/images/shoppiday-placeholder.png'))}}' title="{{ parentCategory.name }}" alt="{{ parentCategory.name }}" />
+							{% endif %}
+						</div>
+						<li id="parentcatimage_{{ parentCategory.id }}">
+							<a id="parent_cat_{{ parentCategory.id }}" href="
+							{% if parentCategory.parenturlSlug is not empty%}
+							    {{absolute_url(path('i_flair_lets_bonus_front_category_slug',{'parent_category': parentCategory.parenturlSlug}))}}
+							{% else %}
+								{{ url('i_flair_lets_bonus_front_category') }}
+							{% endif %}
+							" title="{{ parentCategory.name }} ({{ parentCategory.counts }})">{{ parentCategory.name }} {# ({{ parentCategory.counts }}) #}</a>
+							{% for categoryid, categorydata in categories %}
+								{% if parentCategory.id == categoryid %}
+									<div id="cat_{{ categoryid }}" class="inner-menu category category_content" style="display:none;">
+										<div class="sub-menu-wrapper">
+											<ul class="sub-menu">
+												{# <h4>Titulo lorem ipsum</h4> #}
+												{% for category in categorydata %}
+													<div style='display:none;' id='cat_image_{{ categoryid }}_{{category.id}}' class='{% if category.hasChildCategory is defined %} {{ category.hasChildCategory }} {% endif %} gift-shop-image category-image'>
+														{% if parentCategory.image_path is defined %}
+															{% if parentCategory.image_path is not empty %}
+																{% if parentCategory.url %}
+																	<a class="category-placeholder {% if category.hasChildCategory is defined %} child-level {% endif %}" href="{{ parentCategory.url }}" title="{{ parentCategory.name }}">
+
+																{% endif %}
+																	<img src='{{parentCategory.image_path}}' title="{{ parentCategory.name }}" alt="{{ parentCategory.name }}" />
+																{% if parentCategory.url %}
+																	</a>
+																{% endif %}
+															{% endif %}
+														{% elseif categoryPlaceholder %}
+															{% if categoryPlaceholder.url %}
+																<a class="category-placeholder" href="{{ categoryPlaceholder.url }}" title="{{ parentCategory.name }}">
+															{% endif %}
+																	<img src='{{categoryPlaceholder.value}}' title="{{ parentCategory.name }}" alt="{{ parentCategory.name }}" />
+															{% if categoryPlaceholder.url %}
+																</a>
+															{% endif %}
+														{% else %}
+															<img src='{{absolute_url(asset('bundles/iflairletsbonusfront/images/shoppiday-placeholder.png'))}}' title="{{ parentCategory.name }}" alt="{{ parentCategory.name }}" />
+														{% endif %}
+													</div>
+													<li id="categoryimage_{{ categoryid }}_{{ category.id }}">
+														<a id="category_menu_{{ category.id }}" href="
+														{% if parentCategory.parenturlSlug is not empty and category.categoryurlSlug is not empty%}
+
+														{{absolute_url(path('i_flair_lets_bonus_front_middle_category_slug',{'parent_category': parentCategory.parenturlSlug, 'category':  category.categoryurlSlug}))}}
+
+														{% else %}
+															{{ url('i_flair_lets_bonus_front_category') }}
+														{% endif %}
+
+														" title="{{ category.name }} ({{ category.counts }})">{{ category.name }} {# ({{ category.counts }}) #}</a>
+														{% for childcategoryid, childcategorydata in childcategories %}
+															{% if category.id == childcategoryid %}
+																<div id="childcat_{{ childcategoryid }}" class="inner-menu child-category" style="display:none;">
+																	<div class="sub-menu-wrapper">
+																		<ul class="sub-menu">
+																			{# <h4>Titulo lorem ipsum</h4> #}
+																			{% for childcategory in childcategorydata %}
+																				<div style='display:none;' id='childcat_image_{{ childcategoryid }}_{{ childcategory.id }}' class='gift-shop-image child-category-image'>
+																					{% if parentCategory.image_path is defined %}
+																						{% if parentCategory.image_path is not empty %}
+																							{% if parentCategory.url %}
+																								<a class="category-placeholder child-level" href="{{ parentCategory.url }}" title="{{ parentCategory.name }}">
+																							{% endif %}
+																								<img src='{{parentCategory.image_path}}' title="{{ parentCategory.name }}" alt="{{ parentCategory.name }}" />
+																							{% if parentCategory.url %}
+																								</a>
+																							{% endif %}
+																						{% endif %}
+																					{% elseif categoryPlaceholder %}
+																						{% if categoryPlaceholder.url %}
+																							<a class="category-placeholder" href="{{ categoryPlaceholder.url }}" title="{{ parentCategory.name }}">
+																						{% endif %}
+																								<img src='{{categoryPlaceholder.value}}' title="{{ parentCategory.name }}" alt="{{ parentCategory.name }}" />
+																						{% if categoryPlaceholder.url %}
+																							</a>
+																						{% endif %}
+																					{% else %}
+																						<img src='{{absolute_url(asset('bundles/iflairletsbonusfront/images/shoppiday-placeholder.png'))}}' title="{{ parentCategory.name }}" alt="{{ parentCategory.name }}" />
+																					{% endif %}
+																				</div>
+																				<li id="childcatimage_{{ childcategoryid }}_{{ childcategory.id }}"><a href="
+																				
+																				{% if parentCategory.parenturlSlug is not empty and category.categoryurlSlug is not empty and childcategory.urlSlug is not empty%}
+
+																				{{absolute_url(path('i_flair_lets_bonus_front_child_category_slug',{'parent_category': parentCategory.parenturlSlug, 'category':  category.categoryurlSlug, 'child_category': childcategory.urlSlug}))}}
+
+																				{% else %}
+																					{{ url('i_flair_lets_bonus_front_category') }}
+																				{% endif %}
+
+																				" title="{{ childcategory.name }}  ({{ childcategory.counts }})">{{ childcategory.name }}  {# ({{ childcategory.counts }}) #}</a></li>
+																			{% endfor %}
+																			
+																			{# {{ render(controller(
+																				'iFlairLetsBonusFrontBundle:Category:getTotalChildCategoryCount',{"id": category.id }
+																				)) #}
+																			}}
+																		</ul>
+																	</div>
+																</div>
+															{% endif %}
+														{% endfor %}
+													</li>
+												{% endfor %}
+												{# 
+												{{ render(controller(
+													'iFlairLetsBonusFrontBundle:Category:getTotalCategoryCount',{"id": parentCategory.id }
+													))
+												}}
+												#}
+												
+											</ul>
+										</div>
+									</div>
+								{% endif %}
+							{% endfor %}
+						</li>
+					{% endfor %}
+					<div style='display:none;' id='default_cat_image' class='gift-shop-image default_cat_image parent-category-image no_category'>
+						{% if categoryPlaceholder %}
+							{% if categoryPlaceholder.url %}
+								<a class="category-placeholder" href="{{ categoryPlaceholder.url }}" title="{{ parentCategory.name }}">
+							{% endif %}
+									<img src='{{categoryPlaceholder.value}}' title="{{ parentCategory.name }}" alt="{{ parentCategory.name }}" />
+							{% if categoryPlaceholder.url %}
+								</a>
+							{% endif %}
+						{% elseif default_category_image_path is defined %}
+							{% if default_category_image_path is not empty %}
+								{% if parentCategory.name is defined%}
+								{% if parentCategory.name  is not empty %}
+								<img src='{{ default_category_image_path }}' title="{{ parentCategory.name }}" alt="{{ parentCategory.name }}" />
+								{% endif %}
+								{% endif %}
+							{% else %}
+								{% if parentCategory.name is defined%}
+								{% if parentCategory.name  is not empty %}
+								<img src='{{absolute_url(asset('bundles/iflairletsbonusfront/images/shoppiday-placeholder.png'))}}' title="{{ parentCategory.name }}" alt="{{ parentCategory.name }}" />
+								{% endif %}
+								{% endif %}
+							{% endif %}
+						{% endif %}
+					</div>
+				{% endif %}
+			{% endif %}
+			
+			{{ render(controller(
+				'iFlairLetsBonusFrontBundle:Category:getTotalParentCategoryCount'
+				))
+			}}
+			
+		</ul>
+	</div>
+</div>

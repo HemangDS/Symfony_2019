@@ -1,0 +1,370 @@
+parameters:
+    security.acl.permission.map.class: Sonata\AdminBundle\Security\Acl\Permission\AdminPermissionMap
+
+services:
+    google_user.oauth_user_provider:
+        class: iFlair\LetsBonusAdminBundle\Auth\OAuthProvider
+        arguments: [@session, @doctrine, @service_container]
+
+    i_flair_lets_bonus_admin.admin.network:
+            class: iFlair\LetsBonusAdminBundle\Admin\NetworkAdmin
+            arguments: [~, iFlair\LetsBonusAdminBundle\Entity\Network, iFlairLetsBonusAdminBundle:NetworkAdmin]
+            tags:
+                - {name: sonata.admin, manager_type: orm, group: admin, label: Network, pager_type: "simple" }
+
+    i_flair_lets_bonus_admin.admin.category:
+        class: iFlair\LetsBonusAdminBundle\Admin\CategoryAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\Category, iFlairLetsBonusAdminBundle:CategoryAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Category}
+
+    i_flair_lets_bonus_admin.admin.parent_category:
+        class: iFlair\LetsBonusAdminBundle\Admin\parentCategoryAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\parentCategory, iFlairLetsBonusAdminBundle:parentCategoryAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: parentCategory}
+
+    i_flair_lets_bonus_admin.admin.child_category:
+        class: iFlair\LetsBonusAdminBundle\Admin\childCategoryAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\childCategory, iFlairLetsBonusAdminBundle:childCategoryAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: childCategory}
+
+    i_flair_lets_bonus_admin.admin.tags:
+        class: iFlair\LetsBonusAdminBundle\Admin\TagsAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\Tags, iFlairLetsBonusAdminBundle:TagsAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Tags}
+
+    i_flair_lets_bonus_admin.admin.collection:
+        class: iFlair\LetsBonusAdminBundle\Admin\CollectionAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\Collection, iFlairLetsBonusAdminBundle:CollectionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Collection}
+
+    i_flair_lets_bonus_admin.admin.shop:
+            class: iFlair\LetsBonusAdminBundle\Admin\ShopAdmin
+            arguments: [~, iFlair\LetsBonusAdminBundle\Entity\Shop, iFlairLetsBonusAdminBundle:ShopAdmin]
+            tags:
+                - {name: sonata.admin, manager_type: orm, group: admin, label: Shop}
+            #calls:
+            #    - [ setTemplate, [edit, iFlairLetsBonusAdminBundle:ShopAdmin:edit.html.twig]]
+
+    i_flair_lets_bonus_admin.admin.currency:
+        class: iFlair\LetsBonusAdminBundle\Admin\CurrencyAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\Currency, iFlairLetsBonusAdminBundle:CurrencyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Currency}
+
+    i_flair_lets_bonus_admin.admin.language:
+        class: iFlair\LetsBonusAdminBundle\Admin\LanguageAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\Language, iFlairLetsBonusAdminBundle:LanguageAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Language}
+
+    i_flair_lets_bonus_admin.admin.companies:
+        class: iFlair\LetsBonusAdminBundle\Admin\CompaniesAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\Companies, iFlairLetsBonusAdminBundle:CompaniesAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Companies}
+
+    i_flair_lets_bonus_admin.admin.groups:
+        class: iFlair\LetsBonusAdminBundle\Admin\GroupsAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\Groups, iFlairLetsBonusAdminBundle:GroupsAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Groups}
+
+    i_flair_lets_bonus_admin.admin.administrator:
+        class: iFlair\LetsBonusAdminBundle\Admin\AdministratorAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\Administrator, iFlairLetsBonusAdminBundle:AdministratorAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Administrator}
+
+    i_flair_lets_bonus_admin.admin.cashback_settings:
+        class: iFlair\LetsBonusAdminBundle\Admin\cashbackSettingsAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\cashbackSettings, iFlairLetsBonusAdminBundle:cashbackSettingsAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: cashbackSettings}
+        calls:
+            - [ setTemplate, [show, iFlairLetsBonusAdminBundle:CashbackSettings:base_show.html.twig]]
+
+    i_flair_lets_bonus_admin.admin.cashback_transactions:
+        class: iFlair\LetsBonusAdminBundle\Admin\cashbackTransactionsAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\cashbackTransactions, iFlairLetsBonusAdminBundle:cashbackTransactionsAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: cashbackTransactions}
+
+    i_flair_lets_bonus_admin.admin.letsbonus_transactions:
+        class: iFlair\LetsBonusAdminBundle\Admin\LetsBonusTransactionsAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\LetsBonusTransactions, iFlairLetsBonusAdminBundle:LetsBonusTransactionsAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: LetsBonusTransactions}
+
+    i_flair_lets_bonus_admin.admin.shop_history:
+        class: iFlair\LetsBonusAdminBundle\Admin\shopHistoryAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\shopHistory, iFlairLetsBonusAdminBundle:shopHistoryAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: shopHistory, show_in_dashboard: false}
+
+    i_flair_lets_bonus_admin.admin.variation:
+        class: iFlair\LetsBonusAdminBundle\Admin\VariationAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\Variation, iFlairLetsBonusAdminBundle:VariationAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Variation, show_in_dashboard: false}
+
+    cashbackSettings.twig_extension:
+        class: iFlair\LetsBonusAdminBundle\Twig\cashbackSettingsExtension
+        public: false
+        tags:
+            - { name: twig.extension }
+
+    i_flair_lets_bonus_admin.admin.financial:
+            class: iFlair\LetsBonusAdminBundle\Admin\FinancialAdmin
+            arguments: [~, iFlair\LetsBonusAdminBundle\Entity\Slider, iFlairLetsBonusAdminBundle:FinancialAdmin]
+            tags:
+                - {name: sonata.admin, manager_type: orm, group: admin, label: Financial}
+
+    i_flair_lets_bonus_admin.admin.slider:
+            class: iFlair\LetsBonusAdminBundle\Admin\SliderAdmin
+            arguments: [~, iFlair\LetsBonusAdminBundle\Entity\Slider, iFlairLetsBonusAdminBundle:SliderAdmin]
+            tags:
+                - {name: sonata.admin, manager_type: orm, group: Banner Slider, label: Banner Image}
+
+    i_flair_lets_bonus_admin.admin.promo:
+        class: iFlair\LetsBonusAdminBundle\Admin\PromoAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\Promo, iFlairLetsBonusAdminBundle:PromoAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Promo}
+
+    i_flair_lets_bonus_admin.admin.voucher_programs:
+            class: iFlair\LetsBonusAdminBundle\Admin\VoucherProgramsAdmin
+            arguments: [~, iFlair\LetsBonusAdminBundle\Entity\VoucherPrograms, iFlairLetsBonusAdminBundle:VoucherProgramsAdmin]
+            tags:
+                - {name: sonata.admin, manager_type: orm, group: admin, label: VoucherPrograms}
+
+    i_flair_lets_bonus_admin.admin.voucher_tradedoubler_site_token:
+        class: iFlair\LetsBonusAdminBundle\Admin\VoucherTradeDoublerSiteTokenAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\VoucherTradeDoublerSiteToken, iFlairLetsBonusAdminBundle:VoucherTradeDoublerSiteTokenAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: VoucherTradeDoublerSiteToken}
+
+    i_flair_lets_bonus_admin.admin.voucher:
+        class: iFlair\LetsBonusAdminBundle\Admin\VoucherAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\Voucher, iFlairLetsBonusAdminBundle:VoucherAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Voucher}
+
+    i_flair_lets_bonus_admin.admin.zanoxconfig:
+        class: iFlair\LetsBonusAdminBundle\Admin\ZanoxConfigAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\ZanoxConfig, iFlairLetsBonusAdminBundle:ZanoxConfigAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: ZanoxConfig}
+
+    i_flair_lets_bonus_admin.admin.review:
+            class: iFlair\LetsBonusAdminBundle\Admin\ReviewAdmin
+            arguments: [~, iFlair\LetsBonusFrontBundle\Entity\Review, ~]
+            tags:
+                - {name: sonata.admin, manager_type: orm, group: admin, label: Customer Reviews}
+
+# CMS PAGES
+    i_flair_lets_bonus_admin.admin.cmsaboutus:
+        class: iFlair\LetsBonusAdminBundle\Admin\CmsAboutusAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\CmsAboutus, iFlairLetsBonusAdminBundle:CmsAboutusAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: CMS Pages, label: Aboutus}
+
+    i_flair_lets_bonus_admin.admin.cmshowitworks:
+        class: iFlair\LetsBonusAdminBundle\Admin\CmsHowitworksAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\CmsHowitworks, iFlairLetsBonusAdminBundle:CmsHowitworksAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: CMS Pages, label: How It Works}
+
+    i_flair_lets_bonus_admin.admin.cmscontact:
+        class: iFlair\LetsBonusAdminBundle\Admin\CmsContactAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\CmsContact, iFlairLetsBonusAdminBundle:CmsContactAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: CMS Pages, label: Contact}
+
+    i_flair_lets_bonus_admin.admin.cmspromoteyourstore:
+        class: iFlair\LetsBonusAdminBundle\Admin\CmsPromoteyourstoreAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\CmsPromoteyourstore, iFlairLetsBonusAdminBundle:CmsPromoteyourstoreAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: CMS Pages, label: Promote Your Store}
+
+    i_flair_lets_bonus_admin.admin.cmspress:
+        class: iFlair\LetsBonusAdminBundle\Admin\CmsPressAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\CmsPress, iFlairLetsBonusAdminBundle:CmsPressAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: CMS Pages, label: Press}
+
+    i_flair_lets_bonus_admin.admin.cmscareers:
+        class: iFlair\LetsBonusAdminBundle\Admin\CmsCareersAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\CmsCareers, iFlairLetsBonusAdminBundle:CmsCareersAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: CMS Pages, label: Careers}
+
+    i_flair_lets_bonus_admin.admin.cmspolicies:
+        class: iFlair\LetsBonusAdminBundle\Admin\CmsPoliciesAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\CmsPolicies, iFlairLetsBonusAdminBundle:CmsPoliciesAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: CMS Pages, label: Policies}
+
+    i_flair_lets_bonus_admin.admin.cmstermsandconditions:
+        class: iFlair\LetsBonusAdminBundle\Admin\CmsTermsandconditionsAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\CmsTermsandconditions, iFlairLetsBonusAdminBundle:CmsTermsandconditionsAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: CMS Pages, label: General Terms and Conditions}
+
+
+    i_flair_lets_bonus_admin.admin.cmsprivacypolicy:
+        class: iFlair\LetsBonusAdminBundle\Admin\CmsPrivacypolicyAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\CmsPrivacypolicy, iFlairLetsBonusAdminBundle:CmsPrivacypolicyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: CMS Pages, label: Privacy Policy}
+
+    i_flair_lets_bonus_admin.admin.cmscookiespolicy:
+        class: iFlair\LetsBonusAdminBundle\Admin\CmsCookiespolicyAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\CmsCookiespolicy, iFlairLetsBonusAdminBundle:CmsCookiespolicyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: CMS Pages, label: Cookies Policy}
+
+    i_flair_lets_bonus_admin.admin.cmscreateclaim:
+        class: iFlair\LetsBonusAdminBundle\Admin\CmsCreateclaimAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\CmsCreateclaim, iFlairLetsBonusAdminBundle:CmsCreateclaimAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: CMS Pages, label: Create Claim}
+
+    i_flair_lets_bonus_admin.admin.cmsallhelp:
+        class: iFlair\LetsBonusAdminBundle\Admin\CmsAllhelpAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\CmsAllhelp, iFlairLetsBonusAdminBundle:CmsAllhelpAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: CMS Pages, label: All Help}
+
+    i_flair_lets_bonus_admin.admin.cmsaccessibility:
+        class: iFlair\LetsBonusAdminBundle\Admin\CmsAccessibilityAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\CmsAccessibility, iFlairLetsBonusAdminBundle:CmsAccessibilityAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: CMS Pages, label: Accessibility}
+
+    i_flair_lets_bonus_admin.admin.cmssitemap:
+        class: iFlair\LetsBonusAdminBundle\Admin\CmsSitemapAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\CmsSitemap, iFlairLetsBonusAdminBundle:CmsSitemapAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: CMS Pages, label: Site map}
+
+    i_flair_lets_bonus_admin.add_to_fev:
+        class: iFlair\LetsBonusAdminBundle\Admin\AddtoFevAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\AddtoFev,~]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Add To Favorite}
+
+    i_flair_lets_bonus_admin.admin.advertisementtype:
+        class: iFlair\LetsBonusAdminBundle\Admin\AdvertisementTypeAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\AdvertisementType,~]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Advertisement Type}
+
+    i_flair_lets_bonus_admin.admin.advertisement:
+        class: iFlair\LetsBonusAdminBundle\Admin\AdvertisementAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\Advertisement,~]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Advertisement}
+
+    i_flair_lets_bonus_admin.admin.three_step:
+        class: iFlair\LetsBonusAdminBundle\Admin\ThreeStepAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\ThreeStep, iFlairLetsBonusAdminBundle:ThreeStepAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: ThreeStep}
+
+    i_flair_lets_bonus_admin.admin.offer_specials:
+        class: iFlair\LetsBonusAdminBundle\Admin\offerSpecialsAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\offerSpecials, iFlairLetsBonusAdminBundle:offerSpecialsAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: offerSpecials}
+    # Newsletter
+    i_flair_lets_bonus_admin.admin.newsletterbanner:
+        class: iFlair\LetsBonusAdminBundle\Admin\NewsletterBannerAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\NewsletterBanner, iFlairLetsBonusAdminBundle:NewsletterBannerAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Newsletter, label: Banner}
+
+    i_flair_lets_bonus_admin.admin.newsletter:
+        class: iFlair\LetsBonusAdminBundle\Admin\NewsletterAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\Newsletter, iFlairLetsBonusAdminBundle:NewsletterAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Newsletter, label: Newsletter}
+        
+    i_flair_lets_bonus_admin.admin.newslettertemplate:
+        class: iFlair\LetsBonusAdminBundle\Admin\NewslettertemplateAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\Newslettertemplate, iFlairLetsBonusAdminBundle:NewslettertemplateAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Newsletter, label: Newsletter Templates}
+
+
+    i_flair_lets_bonus_admin.admin.settings:
+        class: iFlair\LetsBonusAdminBundle\Admin\SettingsAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\Settings, iFlairLetsBonusAdminBundle:SettingsAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Settings}
+
+
+    i_flair_lets_bonus_admin.admin.faq_parent_category:
+        class: iFlair\LetsBonusAdminBundle\Admin\faqParentCategoryAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\faqParentCategory, iFlairLetsBonusAdminBundle:faqParentCategoryAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Faq Parent Category}
+
+
+    i_flair_lets_bonus_admin.admin.faq_question:
+        class: iFlair\LetsBonusAdminBundle\Admin\faqQuestionAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\faqQuestion, iFlairLetsBonusAdminBundle:faqQuestionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Faq Question}
+
+    i_flair_lets_bonus_admin.admin.country:
+        class: iFlair\LetsBonusAdminBundle\Admin\CountryAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\Country, iFlairLetsBonusAdminBundle:CountryAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Country}
+
+    i_flair_lets_bonus_admin.admin.domain:
+        class: iFlair\LetsBonusAdminBundle\Admin\DomainAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\Domain, iFlairLetsBonusAdminBundle:DomainAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Domain}
+
+    i_flair_lets_bonus_admin.admin.network_credentials:
+        class: iFlair\LetsBonusAdminBundle\Admin\networkCredentialsAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\networkCredentials, iFlairLetsBonusAdminBundle:networkCredentialsAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: networkCredentials}
+
+    i_flair_lets_bonus_admin.admin.newslettercalendar:
+        class: iFlair\LetsBonusAdminBundle\Admin\NewsletterCalendarAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\NewsletterCalendar, iFlairLetsBonusAdminBundle:NewsletterCalendarAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Newsletter, label: Newsletter Calander}
+
+    i_flair_lets_bonus_admin.admin.amazon_credentials:
+        class: iFlair\LetsBonusAdminBundle\Admin\AmazonCredentialsAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\AmazonCredentials, iFlairLetsBonusAdminBundle:AmazonCredentialsAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: AmazonCredentials, show_in_dashboard: false}
+
+    i_flair_lets_bonus_admin.admin.shop_variation:
+        class: iFlair\LetsBonusAdminBundle\Admin\shopVariationAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\shopVariation, iFlairLetsBonusAdminBundle:shopVariationAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: shopVariation, show_in_dashboard: false}
+
+    i_flair_lets_bonus_admin.admin.cms_legal_warning:
+        class: iFlair\LetsBonusAdminBundle\Admin\CmsLegalWarningAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\CmsLegalWarning, iFlairLetsBonusAdminBundle:CmsLegalWarningAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: CMS Pages, label: Legal Warning}
+
+    i_flair_lets_bonus_admin.admin.front_user:
+        class: iFlair\LetsBonusAdminBundle\Admin\FrontUserAdmin
+        arguments: [~, iFlair\LetsBonusAdminBundle\Entity\FrontUser, iFlairLetsBonusAdminBundle:FrontUserAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: FrontUser}

@@ -1,0 +1,47 @@
+{% set advertiseHtml =  render(controller('iFlairLetsBonusFrontBundle:Advertisement:getFooterAdvertisement')) %}
+{% set length = advertiseHtml |trim | length %}
+{% if length > 0 or offerSpecialsDatas is not empty  %}
+	<div class="christmas-special-main offer-specialist">
+		<div class="chris-text">
+			<span>OFERTAS ESPECIALES</span>
+		</div>
+		{% if offerSpecialsDatas is not empty  %}
+			<div class="offertas-main">
+				{% for offerSpecials in offerSpecialsDatas %}
+					<a href="{{ offerSpecials.url }}" target="_blank">
+						<div class="offertas-block">
+							<div class="offertas-block-img">
+								<img src="{{ offerSpecials.image_path }}" alt="">
+							</div>
+							<div class="shop-title">
+								<span>
+								{% if offerSpecials.title |length > 70 %}
+		                              {% autoescape %}
+		                                  {{ offerSpecials.title|striptags|truncate(70, true, "...")|raw }}
+		                              {% endautoescape %}
+		                        {% else %}
+		                              {% autoescape %}
+		                                  {{ offerSpecials.title }}
+		                              {% endautoescape %}
+		                        {% endif %}
+								</span>
+							</div>
+							<div class="offertas-block-bottom">
+								{% if offerSpecials.cashbackPrice > 0%}
+									<p><span>{{ offerSpecials.cashbackPrice }}€</span> Cashback</p>
+								{% elseif offerSpecials.cashbackPercentage > 0%}
+									<p><span>{{ offerSpecials.cashbackPercentage }}%</span> Cashback</p>
+								{% endif %}
+							</div>
+						</div>
+					</a>
+				{% endfor %}
+			</div>
+		{% endif %}
+		{% if length > 0  %}
+			<div class="big-gift-img">
+				{{ advertiseHtml | raw }}
+			</div>
+		{% endif %}
+	</div>
+{% endif %}

@@ -1,0 +1,192 @@
+{% set basePath =  app.request.getBaseURL() %}
+<!-- <div id="loader_image" class="loader_image_class" style="display: none;">
+    <div>
+        <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/default-loader.gif'))}}"  />
+    </div>
+</div> -->
+<script type="text/javascript">
+  function ChangeUrl(a,b){
+    console.log('bypass');
+  }
+</script>
+<div class="category-sidebar-inner">
+    <div class="category-sidebar-title">
+        {% set parent_count = parentcategories|length %}
+        {% set cat_list = "" %}
+
+        {% for cat in categories %}
+            {% set cat_list = cat %}
+        {% endfor %}
+
+        {% set cat_count = cat_list|length %}
+
+        {% set child_cat_list = "" %}
+
+        {% for cat in childcategories %}
+            {% set child_cat_list = cat %}
+        {% endfor %}
+
+        {% set cat_count = cat_list|length %}
+
+        {% set child_cat_count = child_cat_list|length %}
+
+        {% set total = parent_count + cat_count + child_cat_count %}
+
+        <a href="{{path('i_flair_lets_bonus_front_category')}}" class="list_category">Todas las categorías {#({{total}})#}</a>
+    </div>
+    <!--   <input type="hidden" id="category_side_menu_counter" value="1" />
+    {% set sectionGroupItems      = 10 %}
+    {% set shopSectionDivCreated  = "false" %}
+    {% set productsectionCounter     = 0 %}
+    {% set counter                = 0 %}               -->
+    <ul class="sub-menu child-sub-menu">
+        {% if parentcategories is defined %}
+            {% if parentcategories is not empty %}
+                {% for parentCategory in parentcategories %}
+                    <!-- {% if counter%sectionGroupItems == 0 and shopSectionDivCreated == "true" %}
+                    {% set shopSectionDivCreated = "false" %}
+                    </div>
+                  {% endif %}
+                    {% if counter%sectionGroupItems == 0 and shopSectionDivCreated == "false" %}
+                    {% set productsectionCounter = productsectionCounter+1 %}
+                    {% set shopSectionDivCreated = "true" %}
+                    <div style="display:none;"  id="category_side_menu_{{ productsectionCounter }}">
+                  {% endif %} -->
+             <li class="{% if parentCategory.hasCategory !=  'no_category' %}parent_cat subcategory {% endif %}"  >
+                <a href="javascript:void(0);" title="{{parentCategory.name}}" class="parent_category_id_{{ parentCategory.parenturlImprovedSlug }}" data-class="parent_category_id_{{ parentCategory.parenturlSlug }}"
+                   onclick="
+                  {% if parentCategory.parenturlSlug is not empty%}
+                       {% if page_type == 'cashback_brand'%}
+                             ChangeUrl('cashback/{{ parentCategory.parenturlSlug }}', 'cashback/{{ parentCategory.parenturlSlug }}');
+                      {% elseif page_type == 'cupones_brand'%}
+                          ChangeUrl('cupones-descuento/{{ parentCategory.parenturlSlug }}', 'cupones-descuento/{{ parentCategory.parenturlSlug }}');
+                       {% elseif page_type == 'category' %}
+                          ChangeUrl('ofertas-{{ parentCategory.parenturlSlug }}', 'ofertas-{{ parentCategory.parenturlSlug }}');
+                        {% elseif page_type == 'collection' %}
+                          ChangeUrl('{{ parentCategory.parenturlSlug }}', '{{ parentCategory.parenturlSlug }}');
+                        {% elseif page_type == 'tiendas' %} 
+                           ChangeUrl('tienda', 'tienda');
+                       {% endif %}
+                  {% else %}
+                         {% if page_type == 'cashback_brand'%}
+                           ChangeUrl('cashback', 'cashback');
+                          {% elseif page_type == 'cupones_brand'%}
+                           ChangeUrl('cupones-descuento', 'cupones-descuento');
+                          {% elseif page_type == 'category'%}
+                             ChangeUrl('categorias', 'categorias');
+                          {% elseif page_type == 'tiendas' %} 
+                           ChangeUrl('tienda', 'tienda');
+                          {% endif %}
+                  {% endif %}
+                   ">
+                {{ parentCategory.name }} {# ({{ parentCategory.counts }}) #}</a>
+               <!--  <div class="parent_scroll"> </div> -->
+                
+                  {% for categoryid, categorydata in categories %}
+                    {% if parentCategory.id == categoryid %}
+                          <ul>
+                           
+                              {% for category in categorydata %}
+                               
+                                 <li class="{% if category.hasChildCategory !=  'no_child_category'  %} child_cat subcategory {% endif %}">
+                                    <a href="javascript:void(0);" title="{{ category.name }}" class="category_id_{{ category.categoryurlImprovedSlug }}" data-class="category_id_{{ category.categoryurlSlug }}" onclick="
+                                    {% if category.categoryurlSlug is not empty%}
+                                       {% if page_type == 'cashback_brand'%}
+                                       ChangeUrl('cashback/{{ category.categoryurlSlug }}', 'cashback/{{ category.categoryurlSlug }}');
+                                        {% elseif page_type == 'cupones_brand'%}
+                                       ChangeUrl('cupones-descuento/{{ category.categoryurlSlug }}', 'cupones-descuento/{{ category.categoryurlSlug }}');
+                                       {% elseif page_type == 'category' and parentCategory.parenturlSlug is not empty%}
+                                        ChangeUrl('ofertas-{{ parentCategory.parenturlSlug }}/{{ category.categoryurlSlug }}', 'ofertas-{{ parentCategory.parenturlSlug }}/{{ category.categoryurlSlug }}');
+                                        
+                                        {% elseif page_type == 'collection' and parentCategory.parenturlSlug is not empty%}
+                                        ChangeUrl('{{ parentCategory.parenturlSlug }}/{{ category.categoryurlSlug }}', '{{ parentCategory.parenturlSlug }}/{{ category.categoryurlSlug }}');
+
+                                        {% elseif page_type == 'tiendas' %} 
+                                          ChangeUrl('tienda', 'tienda');
+                                        {% else %}
+                                          ChangeUrl('', '');
+                                       {% endif %}
+                                    {% else %}
+                                      {% if page_type == 'cashback_brand'%}
+
+                                       ChangeUrl('cashback', 'cashback');
+                               {% elseif page_type == 'cupones_brand'%}
+                                       ChangeUrl('cupones-descuento', 'cupones-descuento');
+                                      {% elseif page_type == 'category'%}
+                                         ChangeUrl('categorias', 'categorias');
+                                         {% elseif page_type == 'tiendas' %} 
+                                          ChangeUrl('tienda', 'tienda');
+                                        {% endif %}
+                                    {% endif %}
+
+                                    ">{{ category.name }} {# ({{ category.counts }}) #}</a>
+                                         <!--     <div class="cat_scroll"> </div> -->
+                                      {% for childcategoryid, childcategorydata in childcategories %}
+                                        {% if category.id == childcategoryid %}
+                                         
+                                              <ul >
+                                              
+                                                  {% for childcategory in childcategorydata %}
+                                                   
+                                                     <li>
+                                                    <a href="javascript:void(0);" title="{{ childcategory.name }}" class="child_category_id_{{ childcategory.urlImprovedSlug }}" data-class="child_category_id_{{ childcategory.urlSlug }}" onclick="
+                                                    {% if childcategory.urlSlug is not empty%}
+                                                       {% if page_type == 'cashback_brand'%}
+                                                      ChangeUrl('cashback/{{ childcategory.urlSlug }}', 'cashback/{{ childcategory.urlSlug }}');
+                                                      {% elseif page_type == 'cupones_brand'%}
+                                                      ChangeUrl('cupones-descuento/{{ childcategory.urlSlug }}', 'cupones-descuento/{{ childcategory.urlSlug }}');
+                                                       {% elseif page_type == 'category' and category.categoryurlSlug is not empty%}
+                                                        ChangeUrl('ofertas-{{ parentCategory.parenturlSlug }}/{{ category.categoryurlSlug }}/{{ childcategory.urlSlug }}', 'ofertas-{{ parentCategory.parenturlSlug }}/{{ category.categoryurlSlug }}/{{ childcategory.urlSlug }}');
+
+                                                        {% elseif page_type == 'collection' and category.categoryurlSlug is not empty%}
+                                                        ChangeUrl('{{ parentCategory.parenturlSlug }}/{{ category.categoryurlSlug }}/{{ childcategory.urlSlug }}', '{{ parentCategory.parenturlSlug }}/{{ category.categoryurlSlug }}/{{ childcategory.urlSlug }}');
+
+
+                                                        {% elseif page_type == 'tiendas' %} 
+                                                          ChangeUrl('tienda', 'tienda');
+                                                        {% else %}
+                                                          ChangeUrl('', '');
+                                                       {% endif %}
+                                                    {% else %}
+                                                         {% if page_type == 'cashback_brand'%}
+                                                           ChangeUrl('cashback', 'cashback');
+                                                          {% elseif page_type == 'cupones_brand'%}
+                                                           ChangeUrl('cupones-descuento', 'cupones-descuento');
+                                                          {% elseif page_type == 'category'%}
+                                                             ChangeUrl('categorias', 'categorias');
+                                                          {% elseif page_type == 'tiendas' %} 
+                                                             ChangeUrl('tienda', 'tienda');
+                                                            {% endif %}
+                                                    {% endif %}
+                                                    ">{{ childcategory.name }} {# ({{ childcategory.counts }}) #}</a>
+                                                  </li>
+                                                  {% endfor %}
+                                               
+                                              </ul>
+                                          
+                                        {% endif %}
+                                      {% endfor %}
+                                  </li>
+                              {% endfor %}
+                              
+                          </ul>
+                      
+                {% endif %}
+                  {% endfor %}
+              </li>
+          <!--   {% set counter = counter+1 %} -->
+          {% endfor %}
+        <!--   {% if shopSectionDivCreated == "true" %}
+        </div>
+      {% endif %} -->
+
+            {% endif %}
+        {% endif %}
+
+    </ul>
+    <!--  <div class="cat_left_menu-view-more-btn" id="cat_left_menu_view_more">
+       <a href="javascript:void(0);" title="Ver más">
+       Ver más
+      </a>
+     </div> -->
+</div>

@@ -1,0 +1,39 @@
+<div id="cashback_voucher_content" style="display:none;" class="cash-back-img offer-menu-image">
+  {% if highestCashbackRelatedShopDatas is defined %}
+    {% if highestCashbackRelatedShopDatas is not empty %}
+      <div class="offerdeal-bottom">
+        <div class="offerdeal-image">
+          <img alt="" src="{{ highestCashbackRelatedShopDatas.shop_image_path }}">
+          <span>{{ highestCashbackRelatedShopDatas.type|capitalize }} Cashback</span>
+        </div>
+        <div class="offerdeal-text">
+          {{ highestCashbackRelatedShopDatas.description|length > 65 ? highestCashbackRelatedShopDatas.description|slice(0, 65) ~ '...' : highestCashbackRelatedShopDatas.description }}
+          <div class="toyrus-img">
+            <div class="toyrus-img-inner">
+              <img alt="" src="{{ highestCashbackRelatedShopDatas.logo_path }}">
+            </div>
+            <p><span>{{ highestCashbackRelatedShopDatas.cashbackPercentage }}%</span> Cashback</p>
+            <span class="expira-txt">Expira en 24h</span>
+          </div>
+        </div>
+      </div>
+    {% else %}
+      <div class="offerdeal-bottom">
+        <div class="offerdeal-image">
+          <img alt="" src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/offer-shoes.jpg'))}}">
+          <span>Doble Cashback</span>
+        </div>
+        <div class="offerdeal-text">
+          <p>Description of the offer lorem de</p>
+          <div class="toyrus-img">
+            <div class="toyrus-img-inner">
+              <img alt="" src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/toyrus-img.png'))}}">
+            </div>
+            <p><span>25%</span> Cashback</p>
+            <span class="expira-txt">Expira en 24h</span>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  {% endif %}
+</div>

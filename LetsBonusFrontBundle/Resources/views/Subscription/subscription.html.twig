@@ -1,0 +1,24 @@
+{% include '::header.html.twig' %}
+	
+	<div class="container">
+     	<div class="row">
+     	<div class="new_lay_page">
+	     	<div class="new_pg_title1">
+				<span>GESTIONA TU SUSCRIPCION</span>
+				<p>Recibe nuestras propuestas para ahorrar o deja de recibir nuestros e-mails. j Tu decides!</p>
+			</div>
+			<div class="newsletter_unsubscription">
+				<form action="{{absolute_url(path('i_flair_lets_bonus_front_unsubscriptionprocess')) }}" name="unsubscription_process" method="post">					
+					{% for sform in nw_subscription %}
+						{{ form_widget(sform) }}
+					{% endfor %}
+					<input type="hidden" name="subscriber" value="{{ subscribedemail }}"/>
+					<input type="hidden" name="subscriberid" value="{{ subid }}"/>
+					<div class="new_input_desing"><input type="submit" name="submit" value="submit"></div>
+				</form>
+			</div>
+			</div>
+		<div>
+		</div>
+	</div>
+{% include '::footer.html.twig' %}

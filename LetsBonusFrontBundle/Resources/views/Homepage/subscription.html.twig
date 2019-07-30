@@ -1,0 +1,17 @@
+ <div class="recibe-block">
+   <div class="recibe-mail-block">
+        <div class="recibe-mail-ic">
+             <a href="#" title=""><img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/mail-ic.png'))}}" alt=""></a>
+        </div>
+        <div class="recibe-mail-text">
+             <p>Recibe las<br> mejores</p>
+             <span>promociones</span>
+        </div>
+   </div>
+   <div class="recibe-mail-bottom">
+   		<form class="subscription-form" method="post" action="{{absolute_url(path('i_flair_lets_bonus_front_subscription')) }}" style="text-align: center;">
+	        <input type="email" required placeholder="Introduce tu email" autocapitalize="off" name="subscriptionemail"> 
+	        <input type="submit" value="Suscríbete" name="subscription">
+	    </form>
+   </div>
+</div>

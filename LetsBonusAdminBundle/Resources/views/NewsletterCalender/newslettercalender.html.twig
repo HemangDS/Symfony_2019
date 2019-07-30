@@ -1,0 +1,53 @@
+{% extends 'SonataAdminBundle::standard_layout.html.twig' %}
+
+{% block sonata_breadcrumb %}
+    {% include "iFlairLetsBonusAdminBundle::dashboard_menu.html.twig" %}
+{% endblock %}
+{%  block side_bar_after_nav %}
+    {% include "iFlairLetsBonusAdminBundle::navigation_menu.html.twig" %}
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	{% stylesheets
+		'@iFlairLetsBonusFrontBundle/Resources/public/css/fullcalendar.css' filter='cssrewrite'
+		'@iFlairLetsBonusFrontBundle/Resources/public/css/fullcalendar.print.css' filter='cssrewrite'
+	%}
+		<link rel="stylesheet" href="{{ asset_url }}" />
+		<style type="text/css">
+			.fc-button-group, .fc button{
+				display: block;
+			}
+		</style>
+	{% endstylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	{% javascripts
+		'@iFlairLetsBonusFrontBundle/Resources/public/js/fullcalendar.min.js'
+	%}
+    	<script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+
+	<script type="text/javascript">
+	$(document).ready(function() {
+		var datas = {{ newsletterdata|json_encode(constant('JSON_PRETTY_PRINT'))|raw }};
+		$('#calendar').fullCalendar({
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay'
+			},
+			businessHours: true, // display business hours
+			editable: true,
+			events:
+				datas
+		});	
+	});
+	</script>
+{% endblock %}
+
+{% block content -%}
+	<div id='calendar'></div>
+{% endblock %}

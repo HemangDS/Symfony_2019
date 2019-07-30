@@ -1,0 +1,108 @@
+{% if user is defined %}
+  {% if user is not empty %}
+      <div class="container user-activity1 my-data">
+        <div class="row">
+          <div class="user_act">
+            <div class="my-data-list-name">
+              <h4>Mis datos</h4>
+            </div>
+            <div class="my-data-form">
+              <div class="my-data-loop">
+                <div class="my-data-title">
+                  <h3>Datos personales:</h3> <a href="javascript:void(0);" id="user-data-edit" class="user-edit">(Editar)</a>
+                </div>
+                <div class="my-data-details">
+                  <div class="table">
+                    <label>Nombre:</label>
+                    <span>{{ user.name }}</span>
+                  </div>
+                  <div class="table">
+                    <label>Apellidos:</label>
+                    <span>{{ user.surname }}</span>
+                  </div>
+                  <div class="table">
+                    <label>Alias:</label>
+                    <span>{{ user.alias }}</span>
+                  </div>
+                  <div class="table">
+                    <label>Email:</label>
+                    <span>{{ user.email }}</span>
+                  </div>
+                  <div class="table">
+                    <label>Contraseña:</label>
+                    <span>**********</span>
+                  </div>
+                  <div class="table">
+                    <label>Género:</label>
+                    <span>{% if user.userGender == 0 %}Masculino{% else %}Femenino{% endif %}</span>
+                  </div>
+                  <div class="table">
+                    <label>Fecha de nacimiento:</label>
+                    <span>{{ user.userBirthdate |date("d / m / Y") }}</span>
+                  </div>
+                  <div class="table">
+                    <label>Ciudad:</label>
+                    <span>{{ user.city }}</span>
+                  </div>
+                </div>
+                <div class="my-data-pro-pic">
+                  <a href="javascript:void(0);">
+                    <img id="user-image" src="{{ absolute_url( image_path )}}" />
+                  </a>
+                </div>
+              </div>
+              <div class="my-data-loop">
+                <div class="my-data-title">
+                  <h3>Información de pago</h3> <a href="javascript:void(0);" id="user-payment-edit" class="user-edit">(Editar)</a>
+                </div>
+                  <div class="my-data-details">
+                    <div class="table">
+                      <label>Número de cuenta:</label>
+                      <span>{{ userPayment.accountNumber }}</span>
+                    </div>
+                    <div class="table">
+                      <label>SWIFT code / BIC:</label>
+                      <span>{{ userPayment.swiftCodebic }}</span>
+                    </div>
+                    <div class="table">
+                      <label>Nombre del titular:</label>
+                      <span>{{ userPayment.ownerName }}</span>
+                    </div>
+                  </div>
+              </div>
+              {#<div class="my-data-loop">
+                <div class="my-data-title">
+                  <h3>Renovaciones de seguros y telefonía</h3> <a href="javascript:void(0);" id="user-insurance-edit" class="user-edit">(Editar)</a>
+                </div>
+                <div class="my-data-details">
+                  <div class="table">
+                    <label>Seguro de coche:</label>
+                    <span>No disponible </span>
+                  </div>
+                  <div class="table">
+                    <label>Seguro de Hogar:</label>
+                    <span>Diciembre</span>
+                  </div>
+                  <div class="table">
+                    <label>Contracto de telefonía:</label>
+                    <span>Marzo <br/>Febrero</span>
+                  </div>
+                </div>
+              </div>#}
+              {#<div class="my-data-loop">
+                <div class="my-data-title">
+                  <h3>Comunicaciones</h3> <a href="javascript:void(0);" id="user-newsletter-edit" class="user-edit">(Editar)</a>
+                </div>
+                <div class="my-data-details">
+                  <div class="table">
+                    <label>Newsletter:</label>
+                    <span>{% if user.isSubscribed == 0 %}No Suscrito{% else %}Suscrito{% endif %}</span>
+                  </div>
+                </div>
+              </div>#}
+            </div>
+          </div>
+        </div>
+      </div>
+  {% endif %}
+{% endif %}

@@ -1,0 +1,102 @@
+{% extends 'SonataAdminBundle::standard_layout.html.twig' %}
+
+{% block sonata_breadcrumb %}
+    {% include "iFlairLetsBonusAdminBundle::dashboard_menu.html.twig" %}
+{% endblock %}
+{%  block side_bar_after_nav %}
+    {% include "iFlairLetsBonusAdminBundle::navigation_menu.html.twig" %}
+{% endblock %}
+
+{% block content -%}
+<label class="checkbox" for="{{ admin.uniqid }}_all_elements">
+        <input type="checkbox" name="all_elements" id="{{ admin.uniqid }}_all_elements">
+        {{ 'all_elements'|trans({}, 'SonataAdminBundle') }}
+        ({{ admin.datagrid.pager.nbresults }})
+</label>
+<h1>Cashback Transactions</h1>
+<div class="box box-primary">
+    <form name="cashbacktransactiondata" action="{{absolute_url(path('i_flair_lets_bonus_financial_newlist')) }}" method="post">
+        <table name="cashbacktabledata" width="100%" border="1" cellpadding="5" class="records_list table table-bordered table-striped">
+            <thead>    
+                <tr class="sonata-ba-list-field-header">            
+                    <th style="color:#3c8dbc;" class="sonata-ba-list-field-header-text">Id</th>
+                    <th style="color:#3c8dbc;" class="sonata-ba-list-field-header-text">User Id</th>
+                    <th style="color:#3c8dbc;" class="sonata-ba-list-field-header-text">User</th>
+                    <th style="color:#3c8dbc;" class="sonata-ba-list-field-header-text">Titular cuenta</th>
+                    <th style="color:#3c8dbc;" class="sonata-ba-list-field-header-text">IBAN</th>
+                    <th style="color:#3c8dbc;" class="sonata-ba-list-field-header-text">BIC</th>
+                    <th style="color:#3c8dbc;" class="sonata-ba-list-field-header-text">Amount</th>
+                    <th style="color:#3c8dbc;" class="sonata-ba-list-field-header-text">Currency</th>
+                    <th style="color:#3c8dbc;" class="sonata-ba-list-field-header-datetime">Fecha solicitud</th>
+                    <th style="color:#3c8dbc;" class="sonata-ba-list-field-header-text">Sepa creado</th>
+					<th style="color:#3c8dbc;" class="sonata-ba-list-field-header-text">Type</th>
+                    <th style="color:#3c8dbc;" class="sonata-ba-list-field-header-text"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% set total = 0 %}
+                {% for cashbk in cashback %}            
+                    <tr>
+                        <td><input type="checkbox" checked value="{{ cashbk.id }}" name="checkbox[]" /></td>
+                        <td class="sonata-ba-list-field sonata-ba-list-field-integer">{{ cashbk.userId }}</td>
+                        <td class="sonata-ba-list-field sonata-ba-list-field-integer"><a href="#">{{ cashbk.cashbacktransactionsChilds }}</a></td>
+                        <td class="sonata-ba-list-field sonata-ba-list-field-text">{{ cashbk.userName }}</td> {# username stored on cashbacktransactionsChilds field bcz of using as a field data #}
+                        <td class="sonata-ba-list-field sonata-ba-list-field-text">{{ cashbk.userBankAccountNumber }}</td> {# Used as account holder name #}
+                        <td class="sonata-ba-list-field sonata-ba-list-field-text">{{ cashbk.bic }}</td>
+                        <td class="sonata-ba-list-field sonata-ba-list-field-text">{{ cashbk.amount }}</td>
+                        {% set total = total + cashbk.amount %}
+                        <td class="sonata-ba-list-field sonata-ba-list-field-number">{{ cashbk.currency }}</td>
+                        <td class="sonata-ba-list-field sonata-ba-list-field-datetime">{{ cashbk.aprovalDate.date }}</td>
+                        <td class="sonata-ba-list-field sonata-ba-list-field-datetime">{{ cashbk.sepageneratedbyUserId }}</td>
+						<td class="sonata-ba-list-field sonata-ba-list-field-text">{{ cashbk.type }}</td>
+                        <td class="sonata-ba-list-field sonata-ba-list-field-text" value = "{{ cashbk.userId }}" id="transcation_information"><button id="example" type="button" class="fa fa-info" data-container="body"  data-html="true" data-toggle="popover" title="<?php echo __d('admin', 'Transacciones relacionadas')?>"  data-placement="left" data-content="{{cashbk.comments}}"></button></td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <td>TOTAL</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>{# username stored on cashbacktransactionsChilds field bcz of using as a field data #}
+                    <td></td>{# Used as account holder name #}
+                    <td></td>
+                    <td><strong>{{ total }} € </strong></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        {% block batch_actions %}            
+            <input class="btn btn-small btn-primary" type="submit" name="submitcashbacktransactions" value="Crear Fichero de pago"/>
+			<a class="btn btn-small btn-primary btn-revert" href="javascript:void(0);">Revert transactions</a>
+        {% endblock %}    
+    </form>
+</div>
+
+<script>
+{% block batch_javascript %}
+    jQuery(document).ready(function ($) {
+        $(document.body).addClass('sepalisting');
+        $('.sepalisting .right-side .content-header').hide();
+        $('.sepalisting .sonata-ba-content .checkbox').hide();
+        $('.sepalisting .right-side .content .row').hide();
+        $("[data-toggle=popover]").popover();
+		
+		$('.btn-revert').on('click',function(e) {
+			$.ajax({
+				method: "GET",
+				url: '{{ admin.generateUrl('revert') }}',
+				dataType: "json",
+				success: function(result) {
+					window.location.href = result.redirectUrl;
+				}
+			});
+			e.preventDefault();
+			return false;
+		});
+		
+    });
+{% endblock %}
+</script>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends '::base.html.twig' %}
+{% block page_title %}
+	<title>Lets bonus- CategoryPage</title>
+{% endblock %}
+{% block content %}
+
+	<div class="container breadcrumb">
+		<div class="row">
+			<ul>
+				<li><a href="#" title="Home">Home</a></li>
+				<li class="active">Ayuda</li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- AYUDA HTML -->
+	<div class="container contact_page">
+		<div class="row">
+			<div class="ayuda_full" id="dialogSuccess">
+				{% set queryParams = app.request.attributes.get('name') %}
+
+				<form class="review-form" method="post" action="{{queryParams }}" style="">
+					<!-- Hello {{queryParams }}; -->
+					Hello
+					</br>
+					Please give your review:
+					</br>
+					{{ form_label(form.email) }}:{{ form_widget(form.email) }}</br>
+					{{ form_label(form.review) }}:</br>{{ form_widget(form.review) }}</br>
+					{{ form_label(form.rating) }}:{{ form_widget(form.rating) }}</br>
+					<input type="submit" value="Review" name="review_submit">
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}

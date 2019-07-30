@@ -1,0 +1,84 @@
+{% extends '::base.html.twig' %}
+{% block content %}
+<div class="container new_registration_pg">
+  <div class="row">
+    <div class="reg_pg">
+      <div class="reg_pg_form">
+        <div class="reg_pg_form_wrapper">
+          <div class="reg_form_1">
+            <h6> ¿Eres nuevo?</h6>
+            <div class="reg_form_1_frm1">
+              <div class="fb_form">
+                 <!-- <a href="{{ path('i_flair_lets_bonus_front_login_facebook') }}"> -->
+                 <a href="javascript:void(0);" onclick='doFacebookLogin("{{absolute_url(path('i_flair_lets_bonus_front_login_facebook')) }}","{{absolute_url(path('i_flair_lets_bonus_front_login_facebook_tokenGenerate')) }}")'>
+                  <span>Regístrate con Facebook</span>
+                </a>
+              </div>
+              <div class="seperator-div">
+                  <div class="border-sep-div">
+                    <span>o</span>
+                  </div>
+              </div>
+              <form class="registration-form_page" method="post" action="{{ path('i_flair_lets_bonus_front_registration') }}">
+             
+              {{ form_widget(form.userGender,{ 'id': 'gender1'}) }}
+              <p>
+                {{ form_widget(form.name,{ 'id': 'username_page','attr':{'placeholder':'Nombre','maxlength': 60}}) }}
+              </p>
+              <p>
+              {{ form_widget(form.surname,{ 'id': 'surname_page','attr':{'placeholder':'Apellidos','maxlength': 60}}) }}
+              </p>
+              <p>
+                {{ form_widget(form.email,{ 'id': 'email_page','attr':{'placeholder':'Email','maxlength': 60, 'oninvalid': "setCustomValidity('El email introducido no es válido')", 'oninput' : "setCustomValidity('')"}}) }}
+                <span id="email_result_page"></span>
+              </p>
+              <p>
+                 {{ form_row(form.password.first,{'class': 'password_reg_page', 'id': 'password_reg_page','attr':{'placeholder':'Contraseña','maxlength': 60}}) }}
+              <span id="result_page"></span>
+              </p>
+              <p>
+                {{ form_widget(form.city,{ 'id': 'city_page','attr':{'placeholder':'Ciudad'}}) }}
+              </p>
+              <div class="bdate-div1">
+                 <span>Nacimiento:</span>{{ form_widget(form.userBirthDate,{ 'id': 'dob1','attr':{'placeholder':'Nacimiento'}}) }} 
+              </div>
+              <div class="new-div-accept1">
+                <input type="checkbox" class="accept1">
+                 <p>Acepto la <a href="#" class="terms">política de privacidad</a> y los <a href="#" class="terms">términos generales de uso</a></p>
+              </div>
+              <div class="popup-maxrow-inner1">
+                <input type="submit" value="REGíSTRATE" name="registration_page" id="page_reg_submit">
+              </div>
+            </form>
+            </div>
+          </div>
+          <div class="reg_form_1"> 
+          <h6> ¿Ya estas registrado?</h6>
+            <form class="login-form_page" method="post" action="{{ path('i_flair_lets_bonus_front_check_login') }}">
+              <div class="reg_form_1_frm2">
+              <div class="fb_form">
+                   <!--  <a href="{{ path('i_flair_lets_bonus_front_login_facebook') }}"> -->
+                <a href="javascript:void(0);" onclick='doFacebookLogin("{{absolute_url(path('i_flair_lets_bonus_front_login_facebook')) }}","{{absolute_url(path('i_flair_lets_bonus_front_login_facebook_tokenGenerate')) }}")'>
+                      <span>Regístrate con Facebook</span>
+                    </a>
+               <div class="seperator-div">
+                    <div class="border-sep-div">
+                      <span>o</span>
+                    </div>
+                </div>
+                  </div> 
+                  {{ form_widget(login_form.email,{ 'id': 'email_login_page', 'attr':{'placeholder':'Email','maxlength': 60, 'oninvalid': "setCustomValidity('El email introducido no es válido')", 'oninput' : "setCustomValidity('')"}}) }}
+                  {{ form_widget(login_form.password,{ 'id': 'password_login_page','attr':{'placeholder':'Contraseña','maxlength': 60}}) }}
+                <a href="{{ path('i_flair_lets_bonus_front_forgot_password') }}" title="¿Olvidaste tu contraseña?">¿Olvidaste tu contraseña?</a>
+                <input type="submit" value="Entrar" name="login">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+

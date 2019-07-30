@@ -1,0 +1,39 @@
+{% include '::header.html.twig' %}
+	
+	<div class="container">
+     	<div class="row">
+	     	<div>
+				<span>GESTIONA TU SUSCRIPCION</span>
+				<p>Recibe nuestras propuestas para ahorrar o deja de recibir nuestros e-mails. j Tu decides!</p>
+			</div>
+			<div class="newsletter_unsubscription">
+				<form action="{{absolute_url(path('i_flair_lets_bonus_front_unsubscriptionprocess')) }}" name="unsubscription_process" method="post">
+						
+						{% for subscription in newslettersubscriptiondata %}
+							<div class="box">
+							<span> {{ subscription.name }} </span>
+								{% if subscription.checked == 1 %}
+									<span><input type="radio" checked name="subscription{{ subscription.id }}[]" value="1">
+									<span>Suscrito</span>
+									</span>
+									<span><input type="radio" name="subscription{{ subscription.id }}[]" value="0">
+									<span>No Suscrito</span>
+									</span>
+								{% else %}
+									<span><input type="radio" name="subscription{{ subscription.id }}[]" value="1">
+									<span>Suscrito</span>
+									</span>
+									<span><input type="radio" checked name="subscription{{ subscription.id }}[]" value="0">
+									<span>No Suscrito</span>
+									</span>
+								{% endif %}
+							</div>
+						{% endfor %}
+							<input type="hidden" name="subscriber" value="{{ subscribedemail }}"/>
+							<input type="hidden" name="subscriberid" value="{{ subid }}"/>					
+						<input type="submit" name="submit" value="submit"> 
+				</form>
+			</div>
+		</div>
+	</div>
+{% include '::footer.html.twig' %}

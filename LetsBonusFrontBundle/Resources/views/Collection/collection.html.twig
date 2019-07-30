@@ -1,0 +1,10 @@
+{% if position == 'header' or position == 'footer'%}
+	<li>
+		<a href="{{ absolute_url(path('i_flair_lets_bonus_front_collection', { 'collection_name': collectionSlugName })) }}"
+		   title="{{ collectionName }}" href="#">{{ collectionName }}</a></li>
+{% elseif position == 'category-sidebar'%}
+<div class="category-sidebar-title categoryesp-sidebar-title">
+	<a class="collection-menu" title="{{ collectionName }}"
+	   href="{{ absolute_url(path('i_flair_lets_bonus_front_collection', { 'collection_name': collectionSlugName })) }}">{{ collectionName }}</a>
+</div>
+{% endif %}

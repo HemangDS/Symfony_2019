@@ -1,0 +1,20 @@
+services:
+  app.provider.oauth:
+    class: iFlair\LetsBonusFrontBundle\Auth\OAuthProvider
+    arguments: [@session, @doctrine, @service_container]
+  iflair.letsbonusfrontbundle.resizer.custom:
+    class: iFlair\LetsBonusFrontBundle\Resizer\CustomResizer
+    arguments: [@sonata.media.adapter.image.gd, 'outbound', @sonata.media.metadata.proxy]
+  iflair_lets_bonus_front.application_utilities.get_image_url:
+    class: iFlair\LetsBonusFrontBundle\Application\Utilities\GetImageUrl
+    arguments: ['@doctrine.orm.default_entity_manager', '@sonata.media.pool']
+  campaigncreate_newsletter:
+    class: iFlair\LetsBonusAdminBundle\Controller\NewsletterAdminController
+  memcache:
+    class: Memcache
+    calls:
+      - [ connect, ['localhost', 11211] ]
+  twig_cache_service:
+    class: Doctrine\Common\Cache\MemcacheCache
+    calls:
+        - [setMemcache, ['@memcache']]

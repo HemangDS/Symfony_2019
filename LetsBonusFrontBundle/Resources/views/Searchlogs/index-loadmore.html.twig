@@ -1,0 +1,596 @@
+{% set currentPath = path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) %}
+{% set user_id = app.session.get('user_id') %} 
+<div id ="category_data_ajax">
+    <div class="category-rightbar-bottom">
+        {#
+            <div class="category-rightbar-bottom-title">
+                <div class="category-rightbar-title-inner">
+                    <span>CASHBACK, CUPONES DESCUENTO Y OFERTAS EN MODA Y ACCESORIOS</span>
+                </div>
+            </div>
+        #}
+        <div class="main-category-post-block">
+            <div class="main-category-post-promo">
+                <div class="main-category-post-promo-left">
+                    {#
+                        <span>
+                            Mostrando {{category_detail|length}} promociones
+                        </span>
+                    #}
+                </div>
+                <div class="sub-top-tp">
+                    <span class="sub-top-tp-tipo">Tipo</span>
+                </div>
+                <div class="main-category-post-promo-right">
+                    <span>Mostrando {{category_detail|length}} promociones</span>
+                    {#
+                        <span>Mostrar como:</span>
+                        <select>
+                            <option></option>
+                            <option>Cashback</option>
+                            <option>Cupones</option>
+                            <option>Ofertas</option>
+                        </select>
+                    #}
+                </div>
+                <div class="main-category-post-promo-right-1">
+                    <span>Mostrando {{category_detail|length}}  promociones</span>
+                </div>
+                <div class="sub-check-box">
+                    <div class="chech-box-2">
+                        <input id="option" type="checkbox" >
+                        <label class="checkbox" for="option">Cashback</label>
+                        <input id="option1" type="checkbox" >
+                        <label class="checkbox" for="option1">Cupones</label>
+                        <input id="option2" type="checkbox" >
+                        <label class="checkbox" for="option2">Ofertas</label>
+                    </div>
+                </div>
+            </div>
+            <div class="main-category-post-promo-bottom">
+                {% if category_detail is not empty%}
+                    <input type="hidden" id="category_section_counter" value="1" />
+                    {% set sectionGroupItems      = 10 %}
+                    {% set shopSectionDivCreated  = "false" %}
+                    {% set productsectionCounter     = 0 %}
+                    {% set counter                = 0 %}
+                    {% set counter1                = 0 %}
+                    {% set i = 1%}
+                    {% for category in category_detail %}
+                        {% if productsectionCounter  == 1 %}
+                            {% set sectionGroupItems = 12 %}
+                            {% if counter%sectionGroupItems == 0 and shopSectionDivCreated == "true" %}
+                                {% set shopSectionDivCreated = "false" %}
+                                </div>
+                            {% endif %}
+                            {% if counter%sectionGroupItems == 0 and shopSectionDivCreated == "false" %}
+                                {% set productsectionCounter = productsectionCounter+1 %}
+                                {% set shopSectionDivCreated = "true" %}
+                                <div id="category_section_{{ productsectionCounter }}">
+                            {% endif %}
+                        {% else %}
+                            {% set sectionGroupItems = 10%}
+                            {% if counter1%sectionGroupItems == 0 and shopSectionDivCreated == "true" %}
+                                {% set shopSectionDivCreated = "false" %}
+                                </div>
+                            {% endif %}
+                            {% if counter1%sectionGroupItems == 0 and shopSectionDivCreated == "false" %}
+                                {% set productsectionCounter = productsectionCounter+1 %}
+                                {% set shopSectionDivCreated = "true" %}
+                                <div id="category_section_{{ productsectionCounter }}">
+                            {% endif %}
+                        {% endif %}
+                        <div class="category-blog-main">
+                            <div class="category-blog-main-left">
+                                <div class="category-blog-main-left-image">
+                                    {% if category.slug_name is defined %}
+                                        <a href ="{{absolute_url(path('marcas_view', {'slug_name': category.slug_name})) }}">
+                                            <img src="{{ category.shop_image }}" alt="">
+                                        </a>
+                                    {%else %}
+                                        <img src="{{ category.shop_image }}" alt="">
+                                    {% endif %}
+                                </div>
+                                <span>
+                                    {% if category.slug_name is defined %}
+                                        <a href ="{{absolute_url(path('marcas_view', {'slug_name': category.slug_name})) }}">
+                                            <img alt="" src="{{ category.brand_logo }}">
+                                        </a>
+                                    {%else %}
+                                        <img alt="" src="{{ category.brand_logo }}">
+                                    {% endif %}
+                                </span>
+                            </div>
+                            <div class="category-blog-main-right">
+                                {% if category.cashback_type_value is defined%}
+                                    {% if category.cashback_type_value is not empty%}
+                                        <label>
+                                            {{ category.cashback_type_value }}
+                                        </label>
+                                    {% else %}
+                                        <label class="no-tag-label">&nbsp;</label>
+                                    {%endif%}
+                                {% else %}
+                                    <label class="no-tag-label">&nbsp;</label>
+                                {%endif%}
+                                <div class="category-blog-main-right-middle">
+                                    <div class="blog-main-right-middle-lft">
+                                        {%if category.exclusive == 0 %}
+                                            <label>
+                                                {#
+                                                    <div class="category-rating-box">
+                                                        <div style="width:{{category.rating}}%;" class="category-rating"></div>
+                                                    </div>({{category.rating}})
+                                                    <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/star-image.png'))}}" />
+                                                #}
+                                            </label>
+                                        {%endif%}
+                                        <div class="cupp-cut">
+                                            <div class="cupp-cut-img">
+                                                {%if category.shop_type == 'coupon'%}
+                                                    <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/cut-ic-small.jpg'))}}" alt="Cupón" title="Cupón">
+                                                {% elseif category.shop_type == 'oferta'%}
+                                                    <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/discount.png'))}}" alt="descuento" title="descuento">
+                                                {% elseif category.shop_type == 'cashback'%}
+                                                    <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/hand-symbol.jpg'))}}" alt="cashback" title="cashback">
+                                                {%endif%}
+                                            </div>
+                                            {% if category.slug_name is defined %}
+                                                <a href ="{{absolute_url(path('marcas_view', {'slug_name': category.slug_name})) }}">
+                                                    <span>
+                                                        {%if category.shop_type == 'coupon'%}
+                                                            {%if category.brand_name is defined %}
+                                                                {%if category.brand_name is not empty %}
+                                                                    Cupón descuento {{ category.brand_name }}:
+                                                                {%endif%}
+                                                            {%endif%}
+                                                        {% elseif category.shop_type == 'oferta'%}
+                                                            {%if category.brand_name is defined %}
+                                                                {%if category.brand_name is not empty %}
+                                                                    Oferta {{ category.brand_name }}:
+                                                                {%endif%}
+                                                            {%endif%}
+                                                        {% elseif category.shop_type == 'cashback'%}
+                                                            {%if category.brand_name is defined %}
+                                                                {%if category.brand_name is not empty %}
+                                                                    Cashback {{ category.brand_name }}:
+                                                                {%endif%}
+                                                            {%endif%}
+                                                        {%endif%}
+                                                    </span>
+                                                </a>
+                                            {%else %}
+                                                <span>
+                                                    {%if category.shop_type == 'coupon'%}
+                                                        {%if category.brand_name is defined %}
+                                                            {%if category.brand_name is not empty %}
+                                                                Cupón descuento {{ category.brand_name }}:
+                                                            {%endif%}
+                                                        {%endif%}
+                                                    {% elseif category.shop_type == 'oferta'%}
+                                                        {%if category.brand_name is defined %}
+                                                            {%if category.brand_name is not empty %}
+                                                                Oferta {{ category.brand_name }}:
+                                                            {%endif%}
+                                                        {%endif%}
+                                                    {% elseif category.shop_type == 'cashback'%}
+                                                        {%if category.brand_name is defined %}
+                                                            {%if category.brand_name is not empty %}
+                                                                Cashback {{ category.brand_name }}:
+                                                            {%endif%}
+                                                        {%endif%}
+                                                    {%endif%}
+                                                </span>
+                                            {% endif %}
+                                            {#
+                                            {%if category.shop_offers == 'voucher'%}
+                                                {{ category.voucher_name }}:
+                                            {%endif%}
+                                            {%if category.shop_offers == 'cashback'%}
+                                                {{ category.shop_history_shop_title }}:
+                                            {%endif%}
+                                            #}
+                                        </div>
+                                        <p>
+                                        {%if category.shop_offers == 'offer'%}
+                                        {% if category.shop_history_shop_title |length > 100 %}
+                                              {% autoescape %}
+                                             {{ category.shop_history_shop_title|striptags|truncate(100, true, "...")|raw }}
+                                            {% endautoescape %}
+                                        {% else %}
+                                             {% autoescape %}
+                                             {{ category.shop_history_shop_title|striptags|raw  }}
+                                             {% endautoescape %}
+                                        {% endif %}
+
+                                        {%endif%}
+                                        {%if category.shop_offers == 'voucher'%}
+                                            {% if category.shop_history_shop_title |length > 100 %}
+                                                {% autoescape %}
+                                                    {{ category.shop_history_shop_title|striptags|truncate(100, true, "...")|raw }}
+                                                {% endautoescape %}
+                                            {% else %}
+                                                {% autoescape %}
+                                                    {{ category.shop_history_shop_title|striptags|raw  }}
+                                                {% endautoescape %}
+                                            {% endif %}
+                                        {%endif%}
+                                        {%if category.shop_offers == 'cashback'%}
+                                            {% if category.shop_history_shop_title|length > 100 %}
+                                                {% autoescape %}
+                                                    {{ category.shop_history_shop_title|striptags|truncate(100, true, "...")|raw }}
+                                                {% endautoescape %}
+                                            {% else %}
+                                                {% autoescape %}
+                                                    {{ category.shop_history_shop_title|striptags|raw  }}
+                                                {% endautoescape %}
+                                            {% endif %}
+                                        {%endif%}
+                                        </p>
+                                        <div class="cupp-cut-btm fl">
+                                            <div class="cupon-time">
+                                                {% if category.voucher_expire_date is not empty%}
+                                                <img alt="" src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/time-ic.jpg'))}}">
+                                                <span>Válido hasta {{ category.voucher_expire_date }}</span>
+                                                {% endif %}
+                                            </div>
+                                            <div class="cupon-option-fr">
+                                                <span><a class="cupon-option-condition" href="javascript:void(0);">Condiciones</a></span>
+                                            </div>
+                                            <!--TO-DO :: Make following condition dynamic-->
+                                            <div class="cup-box">
+                                                {%if category.shop_offers == 'offer'%}
+                                                    <div class="cupon-list-box">
+                                                      {% if category.description is defined%}
+                                                       {% if category.description is not empty%}
+                                                       <h6>Condiciones:</h6>
+                                                        <ul>
+                                                         <li>
+                                                          {% autoescape %}
+                                                            {{ category.description|raw  }}
+                                                          {% endautoescape %}
+
+                                                         </li>
+                                                        </ul>
+                                                        {% endif %}
+                                                        {% endif %}
+                                                    </div>
+                                                 {% endif %}
+                                                {%if category.shop_offers == 'voucher'%}
+                                                    <div class="cupon-list-box">
+                                                        {% if category.description is defined%}
+                                                            {% if category.description is not empty%}
+                                                                <h6>Condiciones:</h6>
+                                                                <ul>
+                                                                    <li>
+                                                                        {% autoescape %}
+                                                                            {{ category.description|raw  }}
+                                                                        {% endautoescape %}
+                                                                    </li>
+                                                                </ul>
+                                                            {% endif %}
+                                                        {% endif %}
+                                                    </div>
+                                                {% endif %}
+                                                {%if category.shop_offers == 'cashback'%}
+                                                    {% if category.shop_history_variation is defined%}
+                                                        {% if category.shop_history_variation is not empty%}
+                                                            <div class="cup-title">
+                                                                <h6>Cashback en esta tienda:</h6>
+                                                            </div>
+                                                            <div class="cup-text">
+                                                                {% for variation in category.shop_history_variation %}
+                                                                    {% if "%" in variation.number or "€" in variation.number %}
+                                                                    <p><span>{{variation.number}}</span>{{variation.title}}</p>
+                                                                    {% else %}
+                                                                    <p><span>{{variation.number}}%</span>{{variation.title}}</p>
+                                                                    {% endif %}
+                                                                {% endfor %}
+                                                                {#
+                                                                    <p><span>6%</span>Bolsos, cuidado personal, libros</p>
+                                                                    <p><span>1,88%</span>CDs, videojuegos y DvDs</p>
+                                                                    <p><span>0,75%</span>Tecnología y electrodomésticos de cuidado personal</p>
+                                                                #}
+                                                            </div>
+                                                        {% endif %}
+                                                    {% endif %}
+                                                    <div class="cupon-list-box">
+                                                        {% if category.shop_terms is defined%}
+                                                            {% if category.shop_terms is not empty%}
+                                                                <h6>Condiciones:</h6>
+                                                                <ul>
+                                                                    <li>
+                                                                        {% autoescape %}
+                                                                            {{ category.shop_terms|raw  }}
+                                                                        {% endautoescape %}
+                                                                    </li>
+                                                                </ul>
+                                                            {% endif %}
+                                                        {% endif %}
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="image-btn-suer-coupon">
+                                            {%if category.shop_offers == 'offer'%}
+                                              {%if category.voucher_code is defined %}
+                                                <a href="javascript:void(0);" title="Usar cupón" onclick="offerGenerate('{{category.shop_id}}','{{category.shop_history_id}}','{{category.shop_offers}}','{{ tabType }}','{{ tabId }}','{{ i }}','{{absolute_url(path('i_flair_lets_bonus_front_clicks')) }}','{{category.shop_affiliate_url}}','{{user_id}}',event, '{{ category.brand_logo_popup }}', '{{ category.voucher_code }}', '{{ category.default_track_uri }}', '{{ category.voucher_program_name }}', '{{ category.discount_amount }}', '{{ category.is_percentage }}', '{{ category.voucher_expire_date }}');">
+                                                        Ver oferta
+                                                </a>
+                                              {% endif %}                                                    
+                                             {%endif%}
+                                            {%if category.shop_offers == 'voucher'%}
+                                                {%if category.voucher_code is defined %}
+                                                    {%if category.voucher_code is not empty %}
+                                                        <a href="javascript:void(0);" title="Usar cupón" onclick="cuponGenerate('{{category.shop_id}}','{{category.shop_history_id}}','{{category.shop_offers}}','{{ tabType }}','{{ tabId }}','{{ i }}','{{absolute_url(path('i_flair_lets_bonus_front_clicks')) }}','{{category.shop_affiliate_url}}','{{user_id}}',event, '{{ category.brand_logo_popup }}', '{{ category.voucher_code }}', '{{ category.default_track_uri }}', '{{ category.voucher_program_name }}', '{{ category.discount_amount }}', '{{ category.is_percentage }}', '{{ category.voucher_expire_date }}');" class="coupon-tail">
+                                                            Usar Cupón
+                                                        </a>
+                                                    {% else %}
+                                                        <a href="javascript:void(0);" title="Usar cupón" onclick="offerGenerate('{{category.shop_id}}','{{category.shop_history_id}}','{{category.shop_offers}}','{{ tabType }}','{{ tabId }}','{{ i }}','{{absolute_url(path('i_flair_lets_bonus_front_clicks')) }}','{{category.shop_affiliate_url}}','{{user_id}}',event, '{{ category.brand_logo_popup }}', '{{ category.voucher_code }}', '{{ category.default_track_uri }}', '{{ category.voucher_program_name }}', '{{ category.discount_amount }}', '{{ category.is_percentage }}', '{{ category.voucher_expire_date }}');">
+                                                            Ver oferta
+                                                        </a>
+                                                    {% endif %}
+                                                {% endif %}
+                                            {%endif%}
+                                            {%if category.shop_offers == 'cashback'%}
+                                                {% if category.cashbackPrice is not empty and category.cashbackPrice != '0' %}
+                                                    <a href="javascript:void(0);" title="Usar cupón" onclick="registerClick('{{category.shop_id}}','{{category.shop_history_id}}','{{category.shop_offers}}','{{ tabType }}','{{ tabId }}','{{ i }}','{{absolute_url(path('i_flair_lets_bonus_front_clicks')) }}','{{category.shop_affiliate_url}}','{{user_id}}',event, '{{ category.brand_logo_popup }}', '{{ category.cashbackPrice }}€', '{{category.shop_affiliate_url_origin}}', '{{category.program_id}}');" target="_blank">
+                                                        Conseguir cashback
+                                                    </a>
+                                                {% else %}
+                                                    <a href="javascript:void(0);" title="Usar cupón" onclick="registerClick('{{category.shop_id}}','{{category.shop_history_id}}','{{category.shop_offers}}','{{ tabType }}','{{ tabId }}','{{ i }}','{{absolute_url(path('i_flair_lets_bonus_front_clicks')) }}','{{category.shop_affiliate_url}}','{{user_id}}',event, '{{ category.brand_logo_popup }}', '{{ category.cashbackPercentage }}%', '{{category.shop_affiliate_url_origin}}', '{{category.program_id}}');" target="_blank">
+                                                        Conseguir cashback
+                                                    </a>
+                                                {% endif %}
+                                            {%endif%}
+                                        </div>
+                                    </div>
+                                </div>
+                                {#
+                                    End class category-blog-main-right-middle
+                                #}
+                                <div class="blog-main-right-middle-right">
+                                    <div class="cash-back-text-promotions">
+                                        <div class="cash-bck">
+                                            {%if category.shop_offers == 'cashback'%}
+                                                {% if category.slug_name is defined %}
+                                                    <a href ="{{absolute_url(path('marcas_view', {'slug_name': category.slug_name})) }}">
+                                                        <span>+
+                                                            {%if category.shop_offers == 'voucher'%}
+                                                                {{ category.discount_amount }}
+                                                                {% if category.is_percentage == 1 %}
+                                                                    %
+                                                                {% else %}
+                                                                    €
+                                                                {% endif %}
+                                                            {%endif%}
+                                                            {%if category.shop_offers == 'cashback'%}
+                                                                {% if category.cashbackPrice is not empty and category.cashbackPrice != '0' %}
+                                                                    {{ category.cashbackPrice }}€
+                                                                {% else %}
+                                                                    {{ category.cashbackPercentage }}%
+                                                                {% endif %}
+                                                            {%endif%}
+                                                        </span>
+                                                    </a>
+                                                {%else %}
+                                                    <span>+
+                                                        {%if category.shop_offers == 'voucher'%}
+                                                            {{ category.discount_amount }}
+                                                            {% if category.is_percentage == 1 %}
+                                                                %
+                                                            {% else %}
+                                                                €
+                                                            {% endif %}
+                                                        {%endif%}
+                                                        {%if category.shop_offers == 'cashback'%}
+                                                            {% if category.cashbackPrice is not empty and category.cashbackPrice != '0' %}
+                                                                {{ category.cashbackPrice }}€
+                                                            {% else %}
+                                                                {{ category.cashbackPercentage }}%
+                                                            {% endif %}
+                                                        {%endif%}
+                                                    </span>
+                                                {% endif %}
+                                                <i>Cashback</i>
+                                            {% endif %}
+                                        </div>
+                                        <div class="promociones">
+                                            {% if category.voucher_code_count is defined%}
+                                                {% if category.voucher_code_count is not empty%}
+                                                    {% if category.slug_name is defined %}
+                                                        <a href ="{{absolute_url(path('marcas_view', {'slug_name': category.slug_name})) }}">
+                                                            {{category.voucher_code_count}} promociones
+                                                        </a>
+                                                    {%else %}
+                                                        {{category.voucher_code_count}} promociones
+                                                    {% endif %}
+                                                {%endif%}
+                                            {%endif%}
+                                            <div class="like-share">
+                                                {%if category.shop_offers == 'voucher' and category.exclusive == 1 %}
+                                                    <div class="conditions-ic">
+                                                        {#
+                                                            <div class="prod_share_icon">
+                                                                <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/share-small-ic.png'))}}" alt=""/>
+                                                                <div class="share prod_share animated fadeInUp" id='fb-root'>
+                                                                    <a href="https://twitter.com/share" class="twitter-share-button" data-text="{{category.shop_history_shop_title}}" data-url="{{ absolute_url('store') }}/{{category.shop_id}}" data-lang="en">
+                                                                        Twitter
+                                                                    </a>
+                                                                    <img class="fb_share" id="category_page_{{ category.voucher_id }}_{{ category.shop_id }}" src = "{{absolute_url(asset('bundles/iflairletsbonusfront/images/facebook-share.png'))}}"/>
+                                                                    <a href="https://plus.google.com/share?url={{ app.request.getSchemeAndHttpHost() }}" class="socialite googleplus-one google_share" data-size="tall" data-text="{{category.shop_history_shop_title}}"  data-href="{{ app.request.getSchemeAndHttpHost() }}" rel="nofollow" target="_blank">
+                                                                        <span class="vhidden">
+                                                                            Share on Google+
+                                                                        </span>
+                                                                    </a>
+                                                                    <div class="clearb"></div>
+                                                                </div>
+                                                            </div>
+                                                        #}
+                                                        <a href="javascript:void(0);" class="prod_like_icon" id="category_page_add_to_fev_{{ category.voucher_id }}_{{ category.shop_id }}">
+                                                            {% if category.shop_id in addtofevlist  %}
+                                                                <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/heart-grey-ic.png'))}}" alt=""  id="category_add_to_fev_{{ category.voucher_id }}_{{ category.shop_id }}" style="display:none;">
+                                                                <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/heart-hover-ic.png'))}}" alt="" id="category_add_to_fev_selected_{{ category.voucher_id }}_{{ category.shop_id }}" >
+                                                            {% else %}
+                                                                <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/heart-grey-ic.png'))}}" alt=""  id="category_add_to_fev_{{ category.voucher_id }}_{{ category.shop_id }}">
+                                                                <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/heart-hover-ic.png'))}}" alt="" id="category_add_to_fev_selected_{{ category.voucher_id }}_{{ category.shop_id }}" style="display:none;">
+                                                            {% endif %}
+                                                        </a>
+                                                    </div>
+                                                    {#<script type="text/javascript">
+                                                        $(document).ready(function(){
+                                                            $("#category_add_to_fev_{{ category.voucher_id }}_{{ category.shop_id }}").click(function(){
+                                                                {% if user_id is null %}
+                                                                    $("#gotostore_login").show();
+                                                                {% else %}
+                                                                    {% if category.shop_history_id  is defined %}
+                                                                        {% if category.shop_history_id  is not empty %}
+                                                                            $("#category_add_to_fev_{{ category.voucher_id }}_{{ category.shop_id }}").hide();
+                                                                            $("#category_add_to_fev_selected_{{ category.voucher_id }}_{{ category.shop_id }}").css("display","block" );
+                                                                            $.ajax({
+                                                                                type:"POST",
+                                                                                data:{shop_history_id: {{ category.shop_history_id }}},
+                                                                                dataType: "text",
+                                                                                url: '/addtofev/{{ category.shop_id }}',
+                                                                            });
+                                                                        {% endif %}
+                                                                    {% endif %}
+                                                                {% endif %}
+                                                            });
+                                                            $("#category_add_to_fev_selected_{{ category.voucher_id }}_{{ category.shop_id }}").click(function(){
+                                                                {% if category.shop_history_id  is defined %}
+                                                                    {% if category.shop_history_id  is not empty %}
+                                                                        $("#category_add_to_fev_{{ category.voucher_id }}_{{ category.shop_id }}").css("display","block" );
+                                                                        $("#category_add_to_fev_selected_{{ category.voucher_id }}_{{ category.shop_id }}").css("display","none" );
+                                                                        $.ajax({
+                                                                            type:"POST",
+                                                                            data:{shop_history_id: {{ category.shop_history_id }}},
+                                                                            dataType: "text",
+                                                                            url: '/removefromfev/{{ category.shop_id }}',
+                                                                        });
+                                                                    {% endif %}
+                                                                {% endif %}
+                                                            });
+                                                            /*$("#category_page_{{ category.voucher_id }}_{{ category.shop_id }}").click(function(e){
+                                                                 e.preventDefault();
+                                                                 FB.ui({
+                                                                     method: 'feed',
+                                                                     name: '{{category.shop_history_shop_title}}',
+                                                                     link: 'http://hyperarts.com/blog',
+                                                                     picture: '{{ category.shop_image }}',
+                                                                     caption: '{{category.shop_history_shop_title}}',
+                                                                     description: '{{category.shop_history_shop_title}}',
+                                                                     message: ''
+                                                                 });
+                                                             });*/
+                                                        });
+                                                    </script>#}
+                                                {%endif%}
+                                                {%if category.shop_offers == 'cashback' or category.exclusive == 0%}
+                                                    <div class="conditions-ic">
+                                                        {#
+                                                            <div class="prod_share_icon" >
+                                                                <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/share-small-ic.png'))}}" alt=""/>
+                                                                <div class="share prod_share animated fadeInUp" id='fb-root'>
+                                                                    <a href="https://twitter.com/share" class="twitter-share-button" data-text="{{category.shop_history_shop_title}}" data-url="{{ absolute_url('store') }}/{{category.shop_id}}" data-lang="en">
+                                                                        Twitter
+                                                                    </a>
+                                                                    <img class="fb_share" id="category_page_{{ category.shop_history_id }}_{{ category.shop_id }}" src = "{{absolute_url(asset('bundles/iflairletsbonusfront/images/facebook-share.png'))}}"/>
+                                                                    <a href="https://plus.google.com/share?url={{ app.request.getSchemeAndHttpHost() }}" class="socialite googleplus-one google_share" data-size="tall" data-text="{{category.shop_history_shop_title}}"  data-href="{{ app.request.getSchemeAndHttpHost() }}" rel="nofollow" target="_blank">
+                                                                        <span class="vhidden">
+                                                                            Share on Google+
+                                                                        </span>
+                                                                    </a>
+                                                                    <div class="clearb"></div>
+                                                                </div>
+                                                            </div>
+                                                        #}
+                                                        <a href="javascript:void(0);" class="prod_like_icon" id="category_page_add_to_fev_{{ category.shop_history_id }}_{{ category.shop_id }}">
+                                                            {% if category.shop_id in addtofevlist  %}
+                                                                <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/heart-grey-ic.png'))}}" alt=""  id="category_add_to_fev_{{ category.shop_history_id }}_{{ category.shop_id }}" style="display:none;">
+                                                                <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/heart-hover-ic.png'))}}" alt="" id="category_add_to_fev_selected_{{ category.shop_history_id }}_{{ category.shop_id }}" >
+                                                            {% else %}
+                                                                <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/heart-grey-ic.png'))}}" alt=""  id="category_add_to_fev_{{ category.shop_history_id }}_{{ category.shop_id }}">
+                                                                <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/heart-hover-ic.png'))}}" alt="" id="category_add_to_fev_selected_{{ category.shop_history_id }}_{{ category.shop_id }}" style="display:none;">
+                                                            {% endif %}
+                                                        </a>
+                                                    </div>
+                                                    {#<script type="text/javascript">
+                                                        $(document).ready(function(){
+                                                            $("#category_add_to_fev_{{ category.shop_history_id }}_{{ category.shop_id }}").click(function(){
+                                                                {% if user_id is empty %}
+                                                                    $("#gotostore_login").show();
+                                                                {% else %}
+                                                                $("#category_add_to_fev_{{ category.shop_history_id }}_{{ category.shop_id }}").hide();
+                                                                $("#category_add_to_fev_selected_{{ category.shop_history_id }}_{{ category.shop_id }}").css("display","block" );
+                                                                $.ajax({
+                                                                    type:"POST",
+                                                                    data:{shop_history_id: {{ category.shop_history_id }}},
+                                                                    dataType: "text",
+                                                                    url: '/addtofev/{{ category.shop_id }}',
+                                                                });
+                                                                {% endif %}
+                                                            });
+                                                            $("#category_add_to_fev_selected_{{ category.shop_history_id }}_{{ category.shop_id }}").click(function(){
+                                                                $("#category_add_to_fev_{{ category.shop_history_id }}_{{ category.shop_id }}").css("display","block" );
+                                                                $("#category_add_to_fev_selected_{{ category.shop_history_id }}_{{ category.shop_id }}").css("display","none" );
+                                                                $.ajax({
+                                                                    type:"POST",
+                                                                    data:{shop_history_id: {{ category.shop_history_id }}},
+                                                                    dataType: "text",
+                                                                    url: '/removefromfev/{{ category.shop_id }}',
+                                                                });
+                                                            });
+                                                            /*$("#category_page_{{ category.shop_history_id }}_{{ category.shop_id }}").click(function(e){
+                                                                 e.preventDefault();
+                                                                 FB.ui({
+                                                                     method: 'feed',
+                                                                     name: '{{category.shop_history_shop_title}}',
+                                                                     link: 'http://hyperarts.com/blog',
+                                                                     picture: '{{ category.shop_image }}',
+                                                                     caption: '{{category.shop_history_shop_title}}',
+                                                                     description: '{{category.shop_history_shop_title}}',
+                                                                     message: ''
+                                                                 });
+                                                             });*/
+                                                        });
+                                                    </script>#}
+                                                {%endif%}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% if productsectionCounter == 1 %}
+                            {% set counter = counter+1 %}
+                        {% else %}
+                            {% set counter1 = counter1+1 %}
+                        {% endif %}
+                        {% set i = i+1 %}
+                    {% endfor %}
+                    {% if shopSectionDivCreated == "true" %}
+                        </div>
+                    {%else%}
+                        NO record found
+                    {% endif %}
+                {% else %}
+                  NO record found
+                {% endif %}
+            </div>
+            {#
+                {% if category_detail is not empty%}
+            #}
+            {% if remove_load_more == 0 %}
+                <div class="category-view-more-btn" id="category_view_more1" onclick="front.search.loadMore({{ target_count }},'{{ currentPath }}','{{ OF }}','{{ AF }}','{{ CF }}','{{search_keyword}}')">
+                    <a href="javascript:void(0);" title="Ver más">
+                      Ver más
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+        {#
+            End of Class category-rightbar-bottom
+        #}
+    </div>
+</div>

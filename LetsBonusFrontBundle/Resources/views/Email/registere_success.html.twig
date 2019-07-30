@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="{{ app.request.locale }}">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content ="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=0, user-scalable=no" />
+<meta name="format-detection" content="telephone=no">
+<style type="text/css">
+  @media handheld, only screen and (max-width: 600px) {
+    table {
+      width: 100%;
+    }
+    td {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    td img.banner_img {
+      width: 100%;
+    }
+  } 
+</style>
+</head>
+<body style="margin: 0;padding: 0;">
+<table width="600" border="0" cellspacing="0" align="center" bgcolor="" style="margin: 0 auto;">
+  <tr>
+    <td style="padding: 20px 15px 0 15px;" align="center">
+      <a href="{{ app.request.getSchemeAndHttpHost() }}">
+        <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/new_logo1.png'))}}" />
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td style="padding: 15px 15px 0 15px; font-family: arial;color:#0099A9; font-size: 20px; line-height: 26px;" align="center">
+      Hola {{email}},
+    </td>
+  </tr>
+  <tr>
+    <td style="padding: 10px 15px 20px 15px; font-family: arial;color:#FF483F; font-size: 36px; line-height: 46px;" align="center">
+      ¡Gracias por unirte a Shoppiday!
+    </td>
+  </tr>
+  <tr>
+    <td style="padding: 0px 15px 0 15px;" align="center">
+      {% if( gender == 0) %}
+        <img class="banner_img" src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/new_bann_6.png'))}}" />
+      {% else %}
+        <img class="banner_img" src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/new_bann_1.png'))}}" />
+      {% endif %}
+    </td>
+  </tr>
+  <tr>
+    <td style="padding: 15px 15px 0 15px; color:#717271; font-family: arial;  font-size: 16px; line-height: 23px;" align="center">
+      Por favor, no olvides <b>confirmar tu cuenta</b> para poder empezar a disfrutar de Cashback y los cupones descuento.
+    </td>
+  </tr>
+  <tr>
+    <td style="padding: 15px 15px 52px 15px; color:#717271;" align="center">
+      <a href="{{absolute_url(path('i_flair_lets_bonus_front_registration_enable', {'token': token})) }}" title="CONFIRMA TU CUENTA">
+        <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/btn_new.png'))}}" alt="CONFIRMA TU CUENTA"/>
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" style="background-color:#717171; border-top: 3px solid #FE4C41;">
+      {% include "iFlairLetsBonusFrontBundle:Email:legal.footer.html.twig" %}
+    </td>
+  </tr>
+</table>
+</body>
+</html>
+

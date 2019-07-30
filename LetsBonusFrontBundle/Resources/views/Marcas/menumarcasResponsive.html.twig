@@ -1,0 +1,12 @@
+<a href="#" title="Tiendas">Tiendas</a>
+<ul class="sub-menu">
+  <h4>Top Marcos</h4>
+  {% if marcas is defined %}
+    {% if marcas is not empty %}
+      {% for marca in marcas|slice(0, 12) %}
+        <li><a href="{{absolute_url(path('marcas_view', {'slug_name': marca.slug_name})) }}" title="{{ marca.program_name }}">{{ marca.program_name }}</a></li>
+      {% endfor %}
+    {% endif %}
+  {% endif %}
+  <span>Todas (400)</span>
+</ul>

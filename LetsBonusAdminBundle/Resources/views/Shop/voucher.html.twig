@@ -1,0 +1,142 @@
+{% extends 'SonataAdminBundle:CRUD:base_edit.html.twig' %}
+{% block javascripts %}
+{{ parent() }}
+	{% javascripts
+		'@iFlairLetsBonusAdminBundle/Resources/public/js/custom.js'
+	%}
+	
+	   <!-- CKEDITOR JQUERY ADAPTOR -->
+        <script type="text/javascript" src="{{absolute_url(asset('bundles/ivoryckeditor/adapters/jquery.js')) }}"></script>
+
+    	<script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+<script type="text/javascript">
+	var	shopId	= '{{ app.request.get('id') }}';
+	var loader  = '{{absolute_url(asset("/bundles/shtumiuseful/images/ajax-loader.gif")) }}';
+	
+	if(shopId){
+
+		var URL = "{{ admin.generateUrl('loadVouchers') }}" + "?shopId=" + shopId;
+		var shopHistoryURL = "{{ admin.generateUrl('loadShopHistory') }}" + "?shopId=" + shopId;
+
+		admin.manageHistoryOnShop(shopId, shopHistoryURL);
+	}else{
+		var URL = "{{ admin.generateUrl('loadVouchers') }}";
+	}
+	admin.manageVouchersOnShop(shopId, URL, loader);
+</script>
+{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+ 	<style type="text/css">
+	 	div.popup_wrapper div.first_datepicker, div.popup_wrapper_clone div.first_datepicker{
+	 		right: 34.5px !important;
+   			top: 1432px !important;
+	 	}
+	 	div.popup_wrapper div.second_datepicker, div.popup_wrapper_clone div.second_datepicker
+	 	{
+	 		right: 34.5px !important;
+			top: 1506px !important;
+	 	}
+
+	 	div.popup_wrapper_clone div.first_datepicker {
+	 		left : auto !important;
+	 	}
+
+	 	div.popup_wrapper div.first_datepicker {
+	 		left : auto !important;
+	 	}
+
+ 		td[class$="_shopVariation-number control-group"] {
+		    width: 30% !important;
+		}
+
+		td[class$="_shopVariation-title control-group"] {
+		    width: 30% !important;
+		}
+		table.shop_history_admin_table_custom, th, td{
+			border: 1px solid black;
+			border-collapse: collapse;
+			padding: 15px;
+			text-align: left;
+			border-spacing: 5px;			   		
+		}
+		table.shop_history_admin_table_custom tr:nth-child(even) {
+		    background-color: #eee;
+		}
+		div.popup_wrapper,  div.popup_wrapper_clone{
+			position: fixed;
+		    top: 50%;
+		    left: 50%;
+		    transform: translate(-50%, -50%);
+		    width: 52%;
+		    max-width: 1200px;
+		    margin: 0 auto;
+		    z-index: 9999;
+		    background-color: #ffffff;
+		    display: none;
+		    overflow-y: scroll;
+		    height: 550px; 
+		    width:1200px;
+		}
+		
+		div.popup_parent {
+		    background: #000 none repeat scroll 0 0;
+		    height: 100%;
+		    left: 0;
+		    opacity: 0.5;
+		    position: absolute;
+		    top: 0;
+		    width: 100%;
+		    z-index: 9999;
+		    display: none;
+		}
+
+		.loader_image_class {
+		    position: fixed;
+		    font-family: Arial, Helvetica, sans-serif;
+		    top: 0;
+		    right: 0;
+		    bottom: 0;
+		    left: 0;
+		    background: rgba(0, 0, 0, 0.8);
+		    z-index: 99999;
+		    opacity:1;
+		    -webkit-transition: opacity 400ms ease-in;
+		    -moz-transition: opacity 400ms ease-in;
+		    transition: opacity 400ms ease-in;
+		    pointer-events: none;
+		}
+
+		.loader_image_class > div {
+		    width: 400px;
+		    position: relative;
+		    margin: 20% auto;
+		    padding: 0 169px 13px;
+		}
+ 	</style>
+  
+{% endblock %}
+
+{% block content %}
+<div class="popup_parent"></div>
+<div id="loader_image" class="loader_image_class" style="display: none;">
+    <div>
+        <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/default-loader.gif'))}}"  />
+    </div>
+</div>
+<div class="popup_wrapper">
+<a href="javascript:void(0);">	
+	<img src='{{absolute_url(asset("/bundles/iflairletsbonusfront/images/cross.png")) }}' class="close_btn_create" align="right" style="margin-top:10px; margin-right:10px;" height="15px;">
+</a>
+	
+</div>	
+<div class="popup_wrapper_clone">
+<a href="javascript:void(0);">	
+	<img src='{{absolute_url(asset("/bundles/iflairletsbonusfront/images/cross.png")) }}' class="close_btn_clone" align="right" style="margin-top:10px; margin-right:10px;" height="15px;">
+</a>
+	
+</div>	
+
+{% endblock %}

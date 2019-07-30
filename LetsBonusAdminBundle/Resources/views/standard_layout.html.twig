@@ -1,0 +1,75 @@
+{% extends 'SonataAdminBundle::standard_layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" href="{{absolute_url(asset('bundles/sonataformatter/markitup/skins/sonata/style.css')) }}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{absolute_url(asset('bundles/sonataformatter/markitup/sets/markdown/style.css')) }}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{absolute_url(asset('bundles/sonataformatter/markitup/sets/html/style.css')) }}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{absolute_url(asset('bundles/sonataformatter/markitup/sets/textile/style.css')) }}" type="text/css" media="all" />
+    <!--<link rel="stylesheet" href="{{absolute_url(asset('bundles/sonatatranslation/css/sonata-translation.css')) }}" type="text/css" media="all" />-->
+     <link rel="stylesheet" href="{{absolute_url(asset('bundles/iflairletsbonusadmin/js/datetimepicker_master/jquery.datetimepicker.css')) }}" type="text/css" media="all" />
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="{{absolute_url(asset('bundles/ivoryckeditor/ckeditor.js')) }}" type="text/javascript"></script>
+    <script src="{{absolute_url(asset('bundles/sonataformatter/vendor/markitup-markitup/markitup/jquery.markitup.js')) }}" type="text/javascript"></script>
+    <script src="{{absolute_url(asset('bundles/sonataformatter/markitup/sets/markdown/set.js')) }}" type="text/javascript"></script>
+    <script src="{{absolute_url(asset('bundles/sonataformatter/markitup/sets/html/set.js')) }}" type="text/javascript"></script>
+    <script src="{{absolute_url(asset('bundles/sonataformatter/markitup/sets/textile/set.js')) }}" type="text/javascript"></script>
+    <script src="{{absolute_url(asset('bundles/iflairletsbonusadmin/js/jquery_custom_datepicker.js')) }}" type="text/javascript"></script>
+{% endblock %}
+
+{%  block side_bar_after_nav %}
+<ul class="sidebar-menu">
+    <li class="treeview">
+        <a href="#">
+            Reports
+            <i class="fa pull-right fa-angle-left"></i>
+        </a>
+        <ul class="treeview-menu active">
+            <li class="active"><a href="{{absolute_url(path('sac_front_user_report_export_shops')) }}"><i class="fa fa-angle-double-right"></i> Export Shops</a></li>
+            <li class="active"><a href="{{absolute_url(path('sac_front_user_report_without_sales')) }}"><i class="fa fa-angle-double-right"></i> Sales without user Report</a></li>
+        </ul>
+    </li>
+</ul>
+</br>
+<ul class="sidebar-menu">
+    <li class="treeview">
+        <a href="#">
+            SAC
+            <i class="fa pull-right fa-angle-left"></i>
+        </a>
+        <ul class="treeview-menu active">
+            <li class="active"><a href="{{absolute_url(path('sac_front_user')) }}"><i class="fa fa-angle-double-right"></i> Search users</a></li>
+        </ul>
+    </li>
+</ul>
+</br>
+<ul class="sidebar-menu">
+    <li class="treeview">
+        <a href="#">
+            Logs
+            <i class="fa pull-right fa-angle-left"></i>
+        </a>
+        <ul class="treeview-menu active">
+            <li class="active"><a href="{{absolute_url(path('search_logs')) }}"><i class="fa fa-angle-double-right"></i> Search logs</a></li>
+        </ul>
+    </li>
+</ul>
+</br>
+<ul class="sidebar-menu">
+    <li class="treeview">
+        <a href="#">
+             Finanzas
+            <i class="fa pull-right fa-angle-left"></i>
+        </a>
+        <ul class="treeview-menu active">
+            <li class="active"><a href="{{absolute_url(path('i_flair_lets_bonus_financial_list')) }}"><i class="fa fa-angle-double-right"></i> Finanzas</a></li>
+        </ul>
+    </li>
+</ul>
+{% endblock %}

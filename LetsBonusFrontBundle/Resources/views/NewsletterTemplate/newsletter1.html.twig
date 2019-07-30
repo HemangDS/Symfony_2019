@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>letsbonus_newsletter</title>
+
+<style type="text/css">
+	@media only screen and (max-width: 600px) {
+		.table-resp {
+			width: 100% !important;
+		}
+		.td-resp  {
+			display: block;
+			width: 100%;
+			text-align: center !important;
+		}
+		.resp-img img{
+			width: 100%;
+			height: auto;
+		}
+		
+		.no-padding {
+			padding-left: 0 !important;
+			padding-right: 0 !important;
+		}
+		.pad1 {
+			padding-left: 20px !important;
+			padding-right:20px !important;
+		}
+		
+		td {
+			padding-left:0 !important;
+			padding-right: 0 !important;
+		}
+	}
+	@media only screen and (max-width: 400px) {
+		.fsize {
+			font-size: 11px !important;
+		}
+		.menu a {
+			font-size: 8px !important;
+		}
+	}
+</style></head>
+
+<body style="margin:0;"> 
+<table class="table-resp" style="width:600px; background:#fff !important;" cellspacing="0" cellpadding="0" align="center">
+  <tbody><tr>
+    <td class="td-resp">
+		<tbody><table cellspacing="0" cellpadding="0" width="100%">
+			<tr>
+				<td class="td-resp" style="font-family: Arial,sans-serif; color:#666; font-size:12px; text-align:center; width:100%; float:left; padding:20px 0 12px 0; text-decoration:underline;"><a MASENSOR="Ver version Online" href=" ~PROBE(0)~ ">Ver version Online</a></td>
+			</tr>
+			<tr>
+				<td class="td-resp" style="padding:0 0 5px 0; text-align:center;"><img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/big-logo.png'))}}" alt=""/></td>
+			</tr>
+			<tr>
+				<td class="td-resp menu" style="text-align:center;">
+					<a MASENSOR="CATEGORÍAS" style="font-family: Arial,sans-serif; color:#666; font-size:11px; text-decoration:none; text-transform:uppercase; padding:0;" href="#">CATEGORÍAS</a>&nbsp;&nbsp;&nbsp;&nbsp;<img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/line.png'))}}" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;
+					<a MASENSOR="CASHBACK" style="font-family: Arial,sans-serif; color:#666; font-size:11px; text-decoration:none; text-transform:uppercase; padding:0;" href="#">CASHBACK</a>&nbsp;&nbsp;&nbsp;&nbsp;<img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/line.png'))}}" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;
+					<a MASENSOR="CUPONES" style="font-family: Arial,sans-serif; color:#666; font-size:11px; text-decoration:none; text-transform:uppercase; padding:0;" href="#">CUPONES</a>&nbsp;&nbsp;&nbsp;&nbsp;<img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/line.png'))}}" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;
+					<a MASENSOR="TIENDAS" style="font-family: Arial,sans-serif; color:#666; font-size:11px; text-decoration:none; text-transform:uppercase; padding:0;" href="#">TIENDAS</a>
+				</td>
+			</tr>
+			<tr>
+				{% if combined_bannners.mainbanner is defined %}
+				<td class="resp-img" style="align:center; margin:10px 0 0 0;"><img src="{{combined_bannners.mainbanner}}"></td>
+				{% else %}
+				<td class="resp-img" style="align:center; margin:10px 0 0 0;"> </td>
+				{% endif %}
+			</tr>
+		</table>
+	</td>
+  	</tr>
+	<tr class="new1">
+	<td>
+		<table class="table-resp" width="100%" cellspacing="0" cellpadding="0" border="0">
+			<tbody><tr>
+				<td class="no-padding" style="padding:40px 45px 0 45px;">
+					&nbsp;&nbsp;
+							&nbsp;&nbsp;
+					<table class="table-resp" width="100%" border="0" cellpadding="0" cellspacing="0">
+						<tbody><tr>
+							<td class="" align="right"><img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/border.jpg'))}}" alt=""/></td>
+							<td class="" style="color:#0099A9; font-family: Arial,sans-serif; text-transform:uppercase; font-weight:bold; font-size:14px; padding: 0 10px; line-height:10px;" align="center" width="215">{{shopblocktitle}}</td>
+							<td class="" align="left"><img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/border.jpg'))}}" alt=""/></td>
+						</tr></tbody>
+					</table>
+					</td> </tr>
+					{% for shop in shop_email_data %}
+						{% if loop.first %}
+							<tr>
+								<td class="no-padding" style="padding:0 20px 0 20px;">
+									<table class="table-resp" style="padding: 18px 0 10px 0; border-bottom:2px dotted #ccc;" width="100%" border="0" cellpadding="0" cellspacing="0">
+										<tbody><tr>
+											<td class="td-resp resp-img" style="vertical-align: top;">
+												{% if shop.productname is defined %}
+													<img src="{{shop.productname}}" alt="" />
+												{% endif %}
+											</td>
+											<td class="td-resp">
+												<table width="100%" cellspacing="0" cellpadding="0" border="0" class="pad1">
+													<tbody>
+													<tr>
+														<td style="padding: 0 0 0 15px !important;text-align: left;">
+															<a MASENSOR="double cashback" href="#" style="background: #F1F1F1;padding: 3px 8px;text-decoration: none;font-family: Arial;text-transform: capitalize;font-style: italic;font-size: 12px;color:#FF4545;">double cashback</a>
+														</td>
+													</tr>
+													<tr>
+														<td class=" " style="font-family: Arial,sans-serif; font-size:14px; color:#0099a9; padding:6px 0 4px; font-weight: 600;" align="center">
+															{% if shop.title is defined %}
+																{{shop.title}}
+															{% endif %}
+														</td>
+													</tr>
+													<tr>
+														<td class=" " style="font-family: Arial,sans-serif; font-size:12px; color:#666; padding:0 0 12px 0;" align="center">
+															{% if shop.description is defined %}
+																{{shop.description|raw}}
+															{% endif %}
+														</td>
+													</tr>
+												</tbody></table>
+												<table class="table-resp pad1" style="padding:8px 0 0px 0;" width="100%" cellpadding="0" cellspacing="0">
+												 <tbody><tr>
+												  <td class="  no-padding" width="100" valign="top" style="padding:18px 0 0 21px;">
+												   	{% if shop.brandlogopath is defined %}
+												   		<img src="{{shop.brandlogopath}}" alt="" height="47" width="88" />
+												   	{% endif %}
+												  </td>
+												  <td class=" " style="font-size: 0; line-height: 0;" width="20">
+												   &nbsp;
+												  </td>
+												  <td class=" " style="color:#7e7271; vertical-align:middle; font-size:11px; font-family: Arial,sans-serif; padding:0 10px 0 0; text-align:right;" valign="top" width="160">
+													   <img style="padding:0 10px 0 0; vertical-align:middle;" src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/clock.png'))}}" alt="" />Hasta el {% if shop.enddate is defined %}{{shop.enddate}}{% endif %}
+													    <br>
+													   <strong style="font-size:22px; font-family: Arial,sans-serif; color: #0099a9; padding:0 38px 0 0; position:relative; top: 10px;">{% if shop.cashbackpercentage is defined %}{{shop.cashbackpercentage}} %{% endif %}<strong> <img style="padding:3px 0 0 0;" src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/arrow.png'))}}" alt="" /><br>
+													   <small style="font-size:11px; color:#0099a9; font-family: Arial,sans-serif; font-weight: normal; padding:0 0 0 0; position:relative; top:-12px;">Cashback</small>
+												  </strong></strong></td>
+												 </tr></tbody>
+											</table>
+											</td>
+										</tr></tbody>
+									</table>
+								</td>
+							</tr>
+						{% else %}
+							<tr>
+								<td class=" " style="padding:0 20px 0 20px;">
+									<table class="table-resp" style="padding: 18px 0 10px 0; border-bottom:2px dotted #ccc;" width="100%" border="0" cellpadding="0" cellspacing="0">
+										<tbody><tr>
+											<td class="td-resp resp-img" style="vertical-align: top;">
+												{% if shop.productname is defined %}
+													<img src="{{shop.productname}}" alt="" />
+												{% endif %}
+											</td>
+											<td class="td-resp">
+												<table class="table-resp" width="100%" cellspacing="0" cellpadding="0" border="0">
+													<tbody>
+													<tr>
+														<td style="padding: 0 0 0 15px !important;text-align: left;">
+															<a MASENSOR="triple cashback" href="#" style="background: #F1F1F1;padding: 3px 8px;text-decoration: none;font-family: Arial;text-transform: capitalize;font-style: italic;font-size: 12px;color:#FF4545;">triple cashback</a>
+														</td>
+													</tr>
+													<tr>
+														<td class=" " style="font-family: Arial,sans-serif; font-size:14px; color:#0099a9; padding:6px 0 4px; font-weight: 600;" align="center">
+															{% if shop.title is defined %}
+																{{shop.title}}
+															{% endif %}
+														</td>
+													</tr>
+													<tr>
+														<td class=" " style="font-family: Arial,sans-serif; font-size:12px; color:#666; padding:0 0 12px 0;" align="center">{% if shop.description is defined %}{{shop.description|raw}}{% endif %}
+														</td>
+													</tr>
+												</tbody></table>
+												<table class="table-resp pad1" style="padding: 8px 0 0px 0;" width="100%" cellpadding="0" cellspacing="0">
+												 <tbody><tr>
+												  <td class=" " style="padding:28px 0 0 21px;" valign="top" width="100">
+												   {% if shop.brandlogopath is defined %}
+														<img src="{{shop.brandlogopath}}" alt="" height="47" width="88"/>
+													{% endif %}
+												  </td>
+												  <td class=" " style="font-size: 0; line-height: 0;" width="20">
+												   &nbsp;
+												  </td>
+												  <td class=" " style="color:#7e7271; vertical-align:middle; font-size:11px; font-family: Arial,sans-serif; padding:0 10px 0 0; text-align:right;" valign="top" width="160">
+													   <img style="padding:0 10px 0 0; vertical-align:middle;" src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/clock.png'))}}" alt="" />Hasta el {% if shop.enddate is defined %}{{shop.enddate}}{% endif %}
+													    <br>
+													   <strong style="font-size:22px; font-family: Arial,sans-serif; color: #0099a9; padding:0 38px 0 0; position:relative; top: 10px;">{{shop.cashbackpercentage}} %<strong> <img style="padding:3px 0 0 0;" src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/arrow.png'))}}" alt="" /><br>
+													   <small style="font-size:11px; color:#0099a9; font-family: Arial,sans-serif; font-weight: normal; padding:0 0 0 0; position:relative; top:-12px;">Cashback</small>
+												  </strong></strong></td>
+												 </tr>
+											</tbody></table>
+											</td>
+										</tr>
+									</tbody></table>
+								</td>
+							</tr>
+						{% endif %}
+					{% endfor %}
+				</td>
+			</tr>
+		</tbody></table>
+	</td>
+</tr>   
+ <tr>
+	<td>
+		<table class="table-resp" width="100%" cellspacing="0" cellpadding="0" border="0">
+			<tbody><tr>
+				<td class="td-resp resp-img" style="text-align:center; padding:48px 0 0 0;">
+					{% if combined_bannners.first is defined %}
+					<img src="{{combined_bannners.first}}" alt="" />
+					{% else %}
+					First Banner Not Selected
+					{% endif %}
+				</td>
+			</tr></tbody>
+		</table>
+	
+		<table width="100%" cellspacing="0" cellpadding="0" border="0">
+			<tbody><tr>
+				<td style="padding:50px 25px 0 25px;">
+					<table width="100%" cellspacing="0" cellpadding="0" border="0">
+						<tbody><tr>
+							<td align="right"><img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/border.jpg'))}}" alt="" /></td>
+							<td class="fsize" style="color:#0099A9; font-family: Arial,sans-serif; text-transform:uppercase; font-weight:bold; font-size:14px; padding: 0 10px; line-height:10px; vertical-align: middle;" align="center" width="245">{{voucherblocktitle}}</td>
+							<td align="left"><img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/border.jpg'))}}" alt="" /></td>
+						</tr>
+					</tbody></table>	
+				</td>
+			</tr>
+		</tbody></table>
+
+		{% for voucherprogram in voucher_programs_array %}
+			{% if loop.first %}
+				<table width="100%" cellspacing="0" cellpadding="0" border="0">
+					<tbody><tr>
+						<td style="padding:20px 25px 10px 25px;">
+							<table style="border-bottom: 2px dotted #ccc;" width="100%" border="0" cellpadding="0" cellspacing="0">
+								<tbody><tr>
+									<td width="100" valign="top">
+										{% if voucherprogram.brandlogo is defined %}
+											<img src="{{voucherprogram.brandlogo}}" alt="" />
+										{% endif %}
+									</td>
+									<td style="font-size: 0; line-height: 0;" width="5">
+									   &nbsp;
+									</td>
+									<td style="font-family: Arial,sans-serif; font-size:11px; color:#666;" valign="top" width="180">
+										<h4 style="font-family: Arial,sans-serif; font-size:14px; color:#0099A9; margin:0; padding:0 0 10px 0;">
+										{% if voucherprogram.brandname is defined %}
+											{{voucherprogram.brandname}}
+										{% endif %}
+										</h4>
+										<p style="font-family: Arial,sans-serif; font-size:12px; color:#666; margin:0; padding:0;">{% if voucherprogram.maximumcashbackpercentage is defined %}{{voucherprogram.maximumcashbackpercentage}} % Cashback{% endif %}
+										<br> 
+										{% if voucherprogram.availabletotaloffercount is defined %}{{voucherprogram.availabletotaloffercount}} cupones y ofertas{% endif %}
+										</p>
+									</td>
+								</tr>
+								<tr>
+									<td class="pad1" colspan="3" style="font-size:18px; font-family: Arial,sans-serif; color: #0099a9; padding:0 0 10px 0; text-align:right; vertical-align: middle; font-weight: bold;">
+										
+										<a MASENSOR="Ver tienda" href="{{absolute_url(path('marcas_view', {'slug_name': voucherprogram.brandurlid})) }}">Ver tienda<img style="padding:0 0 0 0; vertical-align: middle;" src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/arrow.png'))}}" alt="" /></a><br>
+									</td>
+								</tr></tbody>
+							</table>	
+						</td>
+					</tr></tbody>
+				</table> 
+			{% else %}
+				<table width="100%" cellspacing="0" cellpadding="0" border="0">
+					<tbody><tr>
+						<td style="padding:10px 25px 10px 25px;">
+							<table style="border-bottom: 2px dotted #ccc;" width="100%" border="0" cellpadding="0" cellspacing="0">
+								<tbody><tr>
+									<td class=" " width="100" valign="top" style="padding: 35px 0 0 0;">
+										{% if voucherprogram.brandlogo is defined %}
+										<img src="{{voucherprogram.brandlogo}}" alt="" />
+										{% endif %}
+									</td>
+									<td class=" " style="font-size: 0; line-height: 0;" width="5">
+									   &nbsp;
+									</td>
+									<td class=" " style="font-family: Arial,sans-serif; font-size:11px; color:#666;" valign="top" width="180">
+										<h4 style="font-family: Arial,sans-serif; font-size:14px; color:#0099A9; margin:0; padding:0 0 10px 0;">
+
+										{% if voucherprogram.brandname is defined %}
+										{{voucherprogram.brandname}}
+										{% endif %}
+										</h4>
+										<p style="font-family: Arial,sans-serif; font-size:12px; color:#666; margin:0; padding:0;">
+										{% if voucherprogram.maximumcashbackpercentage is defined %}
+										{{voucherprogram.maximumcashbackpercentage}} % Cashback
+										{% endif %}
+										<br> 
+										{% if voucherprogram.availabletotaloffercount is defined %}
+										{{voucherprogram.availabletotaloffercount}} cupones y ofertas
+										{% endif %}</p>
+									</td>
+								</tr>
+								<tr>
+									<td class="pad1" colspan="3" style="font-size:18px; font-family: Arial,sans-serif; color: #0099a9; padding:0 0 10px 0; text-align:right; vertical-align: middle; font-weight: bold;">
+									   <a MASENSOR="Ver tienda" href="{{absolute_url(path('marcas_view', {'slug_name': voucherprogram.brandurlid})) }}">Ver tienda <img style="padding:0 0 0 0; vertical-align: middle;" src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/arrow.png'))}}" alt="" /></a><br>
+									</td>
+								</tr></tbody>
+							</table>
+						</td>
+					</tr></tbody>
+				</table> 
+			{% endif %}
+			{% endfor %}
+	</td>
+</tr>
+<tr>
+	<td>
+		 <table width="100%" cellspacing="0" cellpadding="0" border="0">
+			<tbody><tr>
+				<td class="td-resp resp-img" style="text-align:center; padding:45px 0 0 0;">
+					{% if combined_bannners.second is defined %}
+						<img src="{{combined_bannners.second}}" alt="" />
+					{% else %}
+						Third Image Not Available
+					{% endif %}
+				</td>
+			</tr></tbody>
+		</table> 
+		 
+		<table width="100%" cellspacing="0" cellpadding="0" border="0"><tbody>
+			<tr>
+				<td style="padding:40px 25px 30px 25px;">
+					<table width="100%" cellspacing="0" cellpadding="0" border="0">
+						<tbody><tr>
+							<td style="text-align: center;">
+							<a MASENSOR="facebook" href="#"><img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/fb.png'))}}" alt="" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<a MASENSOR="twitter" href="#"><img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/tw.png'))}}" alt="" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<a MASENSOR="gplus" href="#"><img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/gplus.png'))}}" alt="" /></a></td>
+						</tr></tbody>
+					</table>	
+				</td>
+			</tr></tbody>
+		</table> 
+		
+		 <table width="100%" border="0" cellpadding="0" cellspacing="0">
+			<tbody><tr>
+				<td style="padding:0px 25px 30px 25px;">
+					<table width="100%" border="0" cellpadding="0" cellspacing="0">
+						<tbody><tr style="width:100%">
+							<td style="text-align: center; color:#666; font-family: Arial,sans-serif; font-size:10px; line-height: 22px;">
+								Ahorra con tus marcas favoritas <br>
+								<a MASENSOR="www.shoppiday.com" style="color:#0099A9; font-weight:bold; text-decoration:none;" href="#">www.shoppiday.com</a> <br>
+								¿Quieres dejar de recibir este e-mail?  
+								<a MASENSOR="Haz clic aquí" style="color:#0099A9; text-decoration:none;" href="{{ absolute_url(path('i_flair_lets_bonus_front_unsubscription')) }}?m_u=~SHDUNSUB~ ">Haz clic aquí</a><a><br>
+								Actualmente estás suscrito a este boletín con la cuenta ?	~MAIL~ <br>
+								Por favor no respondas a este email. Si tienes cualquier duda o sugerencia
+								</a><a MASENSOR="contacta haciendo clic aquí." style="color:#0099A9;" href="#">contacta haciendo clic aquí.</a><br>
+								Este email ha sido enviado por Letsback, S.L., con domicilio social en Calle 
+								Aribau nº 197-199, 3ª planta,<br> (08021) Barcelona, España
+							</td>
+						</tr>
+					</tbody></table>	
+				</td>
+			</tr>
+		</tbody></table> 
+	
+	</td>
+</tr>
+</tbody>
+</table>
+ </body>
+</html>

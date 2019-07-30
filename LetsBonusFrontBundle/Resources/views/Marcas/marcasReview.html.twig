@@ -1,0 +1,99 @@
+<style>
+ .rating-box {
+    background: rgba(0, 0, 0, 0) url("{{absolute_url(asset('bundles/iflairletsbonusfront/images/product_rating_blank_star.gif'))}}") repeat-x scroll 0 0;
+    float: left;
+    height: 16px;
+    margin: 0 5px 3px 0;
+    position: relative;
+    width: 60px;
+}
+.rating-box .rating {
+    background: rgba(0, 0, 0, 0) url("{{absolute_url(asset('bundles/iflairletsbonusfront/images/product_rating_full_star.gif'))}}") repeat-x scroll 0 0;
+    height: 16px;
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+</style>
+
+<div class="brand-opinion-main">
+	<div class="chris-text">
+		<span>OPINIONES SOBRE {{ programName }}</span>
+	</div>
+
+	<input type="hidden" id="brand_review_section_counter" value="1" />
+	<div class="opinion-star">
+	  <span>
+		 <!--   <div class="rating-box">
+			  <div style="width:{{ reviewPercentage }}%;" class="rating"></div>
+		  </div> -->
+	  </span>
+	  <span>({{ reviewCounts }} valoraciones)</span>
+	</div>
+	  {% set sectionGroupItems      = 4 %}
+	  {% set brandReviewSectionDivCreated  = "false" %}
+	  {% set brandReviewSectionCounter     = 0 %}
+	  {% set counter                = 0 %}
+	<div class="brand-review-block-inner">
+	  {% if review is defined %}
+		{% if review is not empty %}
+		  {% for review_data in review %}
+			{% if counter%sectionGroupItems == 0 and brandReviewSectionDivCreated == "true" %}
+			  {% set brandReviewSectionDivCreated = "false" %}
+			  </div>
+			{% endif %}
+			{% if counter%sectionGroupItems == 0 and brandReviewSectionDivCreated == "false" %}
+			  {% set brandReviewSectionCounter = brandReviewSectionCounter+1 %}
+			  {% set brandReviewSectionDivCreated = "true" %}
+			  <div style="display:none;" id="brand_review_section_{{ brandReviewSectionCounter }}">
+			{% endif %}
+			<div class="opinion-block-inner {% if loop.index == reviewCounts %} bor-lst{% endif %}">
+			  <div class="opinion-block">
+				<div class="opinion-block-left">
+				  <div class="opinioin-face">
+					{% if review_data.user_gender == 0 %}
+					  <img src="{{absolute_url(asset('/bundles/iflairletsbonusfront/images/join-ic-front.png'))}}" alt="">
+					{% else %}
+					  <img src="{{absolute_url(asset('/bundles/iflairletsbonusfront/images/opinion-face.jpg'))}}" alt="">
+					{% endif %}
+				  </div>
+				  <div class="opinioin-face-text">
+					{% set rating = review_data.rating  %}
+						{% if rating == 1 %}
+						  <img src="{{absolute_url(asset('/bundles/iflairletsbonusfront/images/rating-1.png'))}}" alt="">
+						{% endif %}
+						{% if rating == 2 %}
+						   <img src="{{absolute_url(asset('/bundles/iflairletsbonusfront/images/rating-2.png'))}}" alt="">
+						{% endif %}
+						{% if rating == 3 %}
+						   <img src="{{absolute_url(asset('/bundles/iflairletsbonusfront/images/rating-3.png'))}}" alt="">
+						{% endif %}
+						{% if rating == 4 %}
+						   <img src="{{absolute_url(asset('/bundles/iflairletsbonusfront/images/rating-4.png'))}}" alt="">
+						{% endif %}
+						{% if rating == 5 %}
+						   <img src="{{absolute_url(asset('/bundles/iflairletsbonusfront/images/rating-5.png'))}}" alt="">
+						{% endif %}
+					<p>{{ review_data.name }} {{ review_data.surname }}</p>
+					<span>{{ review_data.created|date("m/d/Y") }}</span>
+				  </div>
+				</div>
+				<div class="opinion-block-right">
+				  <h3>Buena tienda</h3>
+				  <p>{{ review_data.review }}</p>
+				</div>
+			  </div>
+			</div>
+			{% set counter = counter+1 %}
+		  {% endfor %}
+		{% endif %}
+	  {% endif %}
+	  {% if brandReviewSectionDivCreated == "true" %}
+		</div>
+	  {% endif %}
+	  <div id="brand_review_view_more" class="show-more">
+		<a href="javascript:void(0);" title="Ver más">Ver más</a>
+	  </div>
+	</div>
+
+</div>

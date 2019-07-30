@@ -1,0 +1,118 @@
+<div class="dis-tbl">
+<div class="dis-tbl-cell">
+<div class="popup-maxrow popup_wrapper_login">
+      <div class="popup-close"></div>
+
+     {#<div class="social_button">
+          <a class="btn-fb" href="{{absolute_url(path('i_flair_lets_bonus_front_login_facebook')) }}">
+              <span>Facebook</span>
+          </a>
+          <a class="btn-google" href="{{absolute_url(path('i_flair_lets_bonus_front_login_google')) }}">
+               <span>Google</span>
+          </a>
+      </div>#}
+    
+      <form class="login-form" method="post" action="{{absolute_url(path('i_flair_lets_bonus_front_check_login')) }}">
+       <h6> ¿Ya estás registrado?</h6>
+        <ul class="social-login-sub">
+               <li class="fb">
+                 <!--  <a href="{{absolute_url(path('i_flair_lets_bonus_front_login_facebook')) }}"> -->
+                  <a href="javascript:void(0);" onclick='doFacebookLogin("{{absolute_url(path('i_flair_lets_bonus_front_login_facebook')) }}","{{absolute_url(path('i_flair_lets_bonus_front_login_facebook_tokenGenerate')) }}")'>
+                    <span>Accede con Facebook</span>
+                  </a>
+               </li>
+               <li class="google hidden">
+                <a href="{{absolute_url(path('i_flair_lets_bonus_front_login_google')) }}">
+                  <span>Google</span>
+                </a>
+                </li>
+            
+                <div id="sign-in-dropdown">
+                <div class="seperator-div">
+                  <div class="border-sep-div">
+                    <span>o</span>
+                  </div>
+                </div>
+                </div>
+                </ul>
+          <div class="popup-maxrow-inner">
+            {{ form_widget(login_form.email,{ 'id': 'email', 'attr':{'placeholder':'Email','maxlength': 60, 'oninvalid': "setCustomValidity('El email introducido no es válido')", 'oninput' : "setCustomValidity('')"}}) }}
+          </div>
+          <div class="popup-maxrow-inner">
+          {{ form_widget(login_form.password,{ 'id': 'password','attr':{'placeholder':'Contraseña','maxlength': 60}}) }}
+          </div>
+
+          <div class="popup-maxrow-inner">
+          <a href="{{absolute_url(path('i_flair_lets_bonus_front_forgot_password')) }}"><u>¿Olvidaste tu contraseña?</u></a></br>
+          </div>
+
+          <div class="popup-maxrow-inner">
+          <input type="submit" value="Entrar" name="login">
+          </div>
+      </form>
+
+    <div id="registration-dropdown">
+         <h6> ¿Eres nuevo?</h6>
+      <ul class="social-login-sub">
+               <li class="fb">
+                  <a href="javascript:void(0);" onclick='doFacebookLogin("{{absolute_url(path('i_flair_lets_bonus_front_login_facebook')) }}","{{absolute_url(path('i_flair_lets_bonus_front_login_facebook_tokenGenerate')) }}")'>
+                    <span>Regístrate con Facebook</span>
+                  </a>
+               </li>
+               <li class="google" style="display: none;">
+                <a href="{{absolute_url(path('i_flair_lets_bonus_front_login_google')) }}">
+                  <span>Google</span>
+                </a>
+                </li>
+            
+                <div id="sign-in-dropdown">
+                <div class="seperator-div">
+                  <div class="border-sep-div">
+                    <span>o</span>
+                  </div>
+                </div>
+                </div>
+                </ul>
+        <form class="registration-form" method="post" action="{{absolute_url(path('i_flair_lets_bonus_front_registration')) }}" style="text-align: center;">
+        <div class="regi-maxrow-inner">
+         <div class="popup-maxrow-inner">
+            {{ form_widget(form.userGender,{ 'id': 'gender'}) }}
+            </div>
+            <div class="popup-maxrow-inner">
+            {{ form_widget(form.name,{ 'id': 'box_username','attr':{'placeholder':'Nombre','maxlength': 60}}) }}
+            </div>
+            <div class="popup-maxrow-inner"> 
+            {{ form_widget(form.surname,{'attr':{'placeholder':'Apellidos','maxlength': 60}}) }}
+            </div>
+            <div class="popup-maxrow-inner">
+            {{ form_widget(form.email,{'attr':{'placeholder':'Email','maxlength': 60, 'oninvalid': "setCustomValidity('El email introducido no es válido')", 'oninput' : "setCustomValidity('')"}}) }}
+              <span id="popup_email_result"></span>
+            </div>
+            <div class="popup-maxrow-inner">
+            {{ form_label(form.password.first, null, { 'attr': {'class': 'form-label-password'} }) }}
+            {{ form_row(form.password.first,{'class': 'box_password_reg', 'id': 'box_password_reg','attr':{'placeholder':'Contraseña','maxlength': 60}}) }}
+              <span id="box_result"></span>
+            </div>
+            <div class="popup-maxrow-inner">
+            {{ form_widget(form.city,{ 'id': 'box_city','attr':{'placeholder':'Ciudad'}}) }}
+            </div>
+             <!--  <span class="result"></span>
+            <div class="popup-maxrow-inner">
+            {{ form_row(form.password.second,{'class': 'box_repeat_password', 'id': 'box_repeat_password','attr':{'placeholder':'Confirmar contraseña'}}) }}
+            </div> -->
+            <div class="popup-maxrow-inner">
+             <div class="bdate-div"> <span>Nacimiento:</span>{{ form_widget(form.userBirthDate,{ 'id': 'dob','attr':{'placeholder':'Nacimiento'}}) }} </div>
+            </div>
+
+            <div class="new-div-accept">
+            <input type="checkbox" name="accept" class="accept" required="required"/>
+            <p>Acepto la <a href="#" class="terms">política de privacidad</a> y los <a href="#" class="terms">términos generales de uso</a></p></div>
+            <div class="popup-maxrow-inner full">
+            <input type="submit" value="REGíSTRATE" name="registration" id="box_reg_submit">
+            </div>
+        </div>
+        </form>
+      </div>
+      </div>
+</div>
+</div>

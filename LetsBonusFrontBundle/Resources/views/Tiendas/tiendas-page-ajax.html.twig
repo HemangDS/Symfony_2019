@@ -1,0 +1,225 @@
+<script type="text/javascript">
+   
+// filter list view
+ 
+     $('#tiendas_section_counter').val(1);
+    if($('#tiendas_section_1').length > 0){
+        $('#tiendas_section_1').show();
+        var currentSectionPointer = $('#tiendas_section_counter').val();
+        if($("div[id^='tiendas_section_']").length <= currentSectionPointer){
+            $('#tiendas_view_more').hide();
+        }
+    }
+
+    $('#tiendas_view_more').click(function(){
+        
+        var currentSectionPointer = $('#tiendas_section_counter').val();
+        currentSectionPointer = parseInt(currentSectionPointer) + 1;
+        if($('#tiendas_section_'+currentSectionPointer).length > 0){
+            $('#tiendas_section_'+currentSectionPointer).show();
+        }   
+        $('#tiendas_section_counter').val(currentSectionPointer);
+
+        if($("div[id^='tiendas_section_']").length == currentSectionPointer){
+            $('#tiendas_view_more').hide();
+        }
+    });
+// End filter list view.
+  </script>
+      <div class="category-rightbar-bottom">
+                              <div class="brand-lisitng main-category-post-block">
+                                    <div class="brand-list_alphabets">
+          {% for letter in 'a'|upper..'z'|upper %}
+                                        <span><a {% if alphabet == letter%} class= "active" {%endif%}  href="javascript:void(0);" onclick="ChangeUrl('tienda/{{letter}}', 'tienda/{{letter}}');">{{letter}}</a></span>
+                                      {% endfor %}           
+
+
+                      <span><a href="javascript:void(0);" {% if alphabet == '0-9'%} class= "active" {%endif%} onclick="ChangeUrl('tienda/0TO9', 'tienda/0TO9');">0-9</a></span>
+                      <span><a href="javascript:void(0);" {% if alphabet == 'TODAS'%} class= "active" {%endif%} onclick="ChangeUrl('tienda/TODAS', 'tienda/TODAS');">TODAS</a></span>
+                                    </div>
+
+                                    <div class="main-category-post-promo">
+                                        <div class="main-category-post-promo-left">
+                                             {#<span>Mostrando {{category_detail|length}} promociones</span>#}
+                                        </div>
+                                        {#<div class="main-category-post-promo-right">
+                                             <span>Mostrar:</span>
+                                              <a href="javascript:void(0);" class="list_view"><img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/list.png'))}}" /></a>
+                                              <a href="javascript:void(0);" class="grid_view"><img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/grid.png'))}}" /></a>
+                                        </div>#}
+                                      
+                                        <div class="main-category-post-promo-bottom tiendas_list_view" style="{% if view == 'list'%} display: block;{% else %} display: none {% endif %}">
+                                                       <input type="hidden" id="tiendas_section_counter" value="1" />
+                                                       {% set sectionGroupItems      = 10 %}
+                                                          {% set shopSectionDivCreated  = "false" %}
+                                                          {% set productsectionCounter     = 0 %}
+                                                          {% set passedFromFirstSec = "false" %}
+                                                          {% set counter                = 0 %}
+                                                         
+                                                            {% set i = 1%}
+
+                                                         {% if category_detail is defined%}
+                                                        {% if category_detail is not empty%}
+                                                        {% for brand in category_detail %}  
+
+                                                              {% if passedFromFirstSec  == "false" %}
+                                                            {% set sectionGroupItems = 12 %}
+                                                                  {% if counter%sectionGroupItems == 0 and shopSectionDivCreated == "true" %}
+                                                                  {% set shopSectionDivCreated = "false" %}
+                                                                  {% set passedFromFirstSec = "true" %}
+                                                                     {% set counter = 0 %}
+                                                                  </div>
+                                                                {% endif %}
+                                                                  {% if counter%sectionGroupItems == 0 and shopSectionDivCreated == "false" %}
+                                                                  {% set productsectionCounter = productsectionCounter+1 %}
+                                                                  {% set shopSectionDivCreated = "true" %}
+                                                                  <div style="display:none;"  id="tiendas_section_{{ productsectionCounter }}">
+                                                                {% endif %}
+                                                       {% else %}
+                                                             {% set sectionGroupItems = 10%}
+                                                                  {% if counter%sectionGroupItems == 0 and shopSectionDivCreated == "true" %}
+                                                                  {% set shopSectionDivCreated = "false" %}
+                                                                  </div>
+                                                                {% endif %}
+                                                                  {% if counter%sectionGroupItems == 0 and shopSectionDivCreated == "false" %}
+                                                                  {% set productsectionCounter = productsectionCounter+1 %}
+                                                                  {% set shopSectionDivCreated = "true" %}
+                                                                  <div style="display:none;"  id="tiendas_section_{{ productsectionCounter }}">
+                                                                {% endif %}
+                                                        {% endif %}
+                                                          <div class="category-blog-main">
+                                                              <div class="category-blog-main-left">
+                                                                    <div class="category-blog-main-left-image">
+                                                                      {% if brand.logo_image is defined%}
+                                                                      {% if brand.logo_image is not empty%}
+                                                                        {% if brand.slug_name is defined %}
+                                                <a href ="{{absolute_url(path('marcas_view', {'slug_name': brand.slug_name})) }}">
+                                                {% endif %}
+                                                                         <img src="{{ brand.logo_image }}" alt="">
+                                                                         {% if brand.slug_name is defined %}
+                                                </a>
+                                                {% endif %}
+                                                                         {%endif%}
+                                                                         {%endif%}
+                                                                    </div>
+                                                              </div>
+                                                                                 
+                                                              <div class="category-blog-main-right">
+                                                                  {% if brand.cashback_type_value is defined%}
+                                                                     {% if brand.cashback_type_value is not empty%}
+                                                                        <label>
+                                                                        {% if brand.cashback_type_value == 'double'%}
+                                                                            Double Cacheback
+                                                                        {%endif%}
+                                                                        {% if brand.cashback_type_value == 'triple'%}
+                                                                            Triple Cacheback
+                                                                        {%endif%}
+                                                                        </label>
+                                                                      {% else %}
+                                                                        <label class="no-tag-label">&nbsp;</label>
+                                                                     {%endif%}
+                                                                    {% else %}
+                                                                      <label class="no-tag-label">&nbsp;</label>
+                                                                    {%endif%}
+                                                                  <div class="category-blog-main-right-middle">
+                                                                       <div class="blog-main-right-middle-lft">
+                                                                            <div class="cupp-cut">
+                                                                              {% if brand.brand_name is defined%}
+                                                                          {% if brand.brand_name is not empty%}
+                                                                          {% if brand.slug_name is defined %}
+                                                <a href ="{{absolute_url(path('marcas_view', {'slug_name': brand.slug_name})) }}">
+                                                {% endif %}
+                                                                                 <span>{{ brand.brand_name }}:</span>
+                                                                                  {%endif%}
+                                                                               {%endif%}
+                                                                               {% if brand.slug_name is defined %}
+                                                </a>
+                                                {% endif %}
+                                                                                  <p>
+
+                                                                                   <!--  <div class="rating-box">
+                                                                                            <div style="width:
+                                                                                    {% if brand.rating_percentage is defined%}
+                                                                            {% if brand.rating_percentage is not empty%}
+                                                                            {{brand.rating_percentage}}
+                                                                             {%endif%}
+                                                                               {%endif%}
+                                                                               %;" class="rating"></div>
+                                                                                    </div>( {% if brand.rating_percentage is defined%}
+                                                                            {% if brand.rating_percentage is not empty%}
+                                                                            {{brand.rating_percentage}}
+                                                                             {%endif%}
+                                                                               {%endif%}) -->
+                                                                                  </p>
+                                                                            </div>
+                                                                       </div>
+                                                                  </div>
+                                                                 <div class="blog-main-right-middle-right">
+                                                                    <div class="cash-back-text-promotions">
+                                                                    {% if brand.max_letsBonusPercentage is defined%}
+                                                                     {% if brand.max_letsBonusPercentage is not empty%}
+                                                                      <div class="cash-bck">
+                                                                      {% if brand.slug_name is defined %}
+                                                <a href ="{{absolute_url(path('marcas_view', {'slug_name': brand.slug_name})) }}">
+                                                {% endif %}
+                                                                        <span>{{ brand.max_letsBonusPercentage}}</span>
+                                                                        <i>Cashback</i>
+                                                                        {% if brand.slug_name is defined %}
+                                                </a>
+                                                {% endif %}
+                                                                      </div>
+                                                                      {%endif%}
+                                                                    {%endif%}
+                                                                     {% if brand.voucher_count is defined%}
+                                                                     {% if brand.voucher_count is not empty%}
+                                                                      <div class="cash-offers">
+                                                                        {% if brand.slug_name is defined %}
+                                                <a href ="{{absolute_url(path('marcas_view', {'slug_name': brand.slug_name})) }}">
+                                                {% endif %}
+                                                                         <span>{{brand.voucher_count}} </span>Ofertas y 
+                                                                        cupones descuento 
+                                                                        {% if brand.slug_name is defined %}
+                                                </a>
+                                                {% endif %}
+                                                                      </div>
+                                                                       {%endif%}
+                                                                    {%endif%}
+                                                                    </div>
+                                                                 </div>
+                                                              </div>
+                                                              <div class="brand-listing-arrow">
+                                                                {% if brand.slug_name is defined %}
+                                                <a href ="{{absolute_url(path('marcas_view', {'slug_name': brand.slug_name})) }}">
+                                                {% endif %}
+                                                                  <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/arrow-brand.png'))}}" />
+                                                                {% if brand.slug_name is defined %}
+                                                </a>
+                                                {% endif %}
+                                                              </div>
+                                                          </div> <!-- end class category-blog-main-->
+                                                        {% set counter = counter+1 %}
+                                                        {% endfor %}
+
+                                                {% if shopSectionDivCreated == "true" %}
+                                              </div>
+                                            {% endif %}
+                                            {%else%}
+                                            NO record found
+                                            {% endif %}
+                                           {%else%}
+                                            NO record found
+                                            {% endif %}
+                                      </div><!-- End class main-category-post-promo-bottom -->
+                                        </div><!-- End class main-category-post-promo-bottom brand_grid_view -->
+
+                                    </div>
+                              </div>
+                               {% if category_detail is not empty%}
+                                <div class="tiendas-view-more-btn" id="tiendas_view_more">
+                                  <a href="javascript:void(0);" title="Ver más">
+                                  Ver más 
+                                 </a>
+                                </div>
+                                  {% endif %}
+                        </div>
+                    </div> <!-- End div category-sidebar-right -->

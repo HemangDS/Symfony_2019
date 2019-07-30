@@ -1,0 +1,369 @@
+{% extends '::base.html.twig' %}
+{% if marcasDatas is defined %}
+	{% if marcasDatas is not empty %}
+		{% block page_title %} - {{ marcasDatas.program_name|lower }}{% endblock %}
+		{% block meta_keywords %}{{ marcasDatas.keywords }}{% endblock %}
+	{% endif %}
+{% endif %}
+{% block content %}
+	{% set user_id = app.session.get('user_id') %}	
+	{% set programName        = "" %}
+	{% set marcasDescription  = "" %}
+	{% set marcasTitle        = "" %}
+	{% set marcasIntroduction = "" %}
+	{% set marcasTerms        = "" %}
+	{% set marcasId           = "" %}
+	{% set marcasImage        = "" %}
+	{% set marcasBrandImage   = "" %}
+	{% set marcasBrandPopup   = "" %}
+	{% set marcasBrandPopup   = "" %}
+	{% if marcasDatas is defined %}
+		{% if marcasDatas is not empty %}
+			{% set programName        = marcasDatas.program_name %}
+			{% set marcasDescription  = marcasDatas.description %}
+			{% set marcasTitle        = marcasDatas.title %}
+			{% set marcasIntroduction = marcasDatas.introduction %}
+			{% set marcasTerms        = marcasDatas.tearms %}
+			{% set marcasImage        = marcasDatas.brand_image_path %}
+			{% set marcasBrandImage   = marcasDatas.brand_logo_path %}
+			{% set shop_id   = marcasDatas.shop_id %}
+			{% set voucher_id   = marcasDatas.voucher_id %}
+			{% set shop_history_id   = marcasDatas.shop_history_id %}	
+			{% set offers   = marcasDatas.offers %}
+			{% set urlAffiliate   = marcasDatas.urlAffiliate %}
+			{% set marcasBrandPopup   = marcasDatas.brand_logo_popup %}
+			{% set marcasCashbackPrice   = marcasDatas.cashback_price %}
+			{% set marcasId   = marcasDatas.id %}
+		{% endif %}
+	{% endif %}
+	{% set user_id = app.session.get('user_id') %}
+	{% set tabType = constant('iFlair\\LetsBonusFrontBundle\\Entity\\Constants::BRAND_TAB_TYPE') %}
+	{% set tabId = constant('iFlair\\LetsBonusFrontBundle\\Entity\\Constants::BRAND_TAB_id') %}
+	{% set tabPosition = constant('iFlair\\LetsBonusFrontBundle\\Entity\\Constants::BRAND_TAB_POSITION') %}
+	
+	<div class="container breadcrumb">
+		<div class="row">
+			<ul>
+				<li><a href="{{absolute_url(path('i_flair_lets_bonus_front_homepage')) }}" title="Home">Home</a></li>
+				<li><a href="{{absolute_url(path('i_flair_lets_bonus_front_tiendas')) }}" title="Tiendas">Tiendas</a></li>
+				<li class="active">{{ programName }}</li> 
+			</ul>
+		</div>
+	</div>
+	
+	<div class="container brand-detail-content">
+		<div class="row">
+			<div class="brand-detail-content-top">
+				<div class="brand-detail-banner">
+					<div class="brand-detail-title">
+						<h3>{{ programName }}</h3>
+					</div>
+					{% if marcasImage is defined and marcasImage is not empty %}
+						<div class="brand-banner-image">
+							<div class="brand-banner-image-pos">
+								<img src="{{ marcasImage }}" alt="{{ programName }}">
+								{% if marcasBrandImage is defined and marcasBrandImage is not empty %}
+									<span><img src="{{ marcasBrandImage }}" alt="{{ marcasTitle }}"></span>
+								{% endif %}
+							</div>
+						</div> 
+					{% endif %}
+					<div class="brand-banner-bottom">
+						<div class="banner-fav">
+							<span>Tienda favorita</span>
+							    <a href="javascript:void(0);" class="prod_like_icon" id="category_page_add_to_fev_{{ marcasDatas.voucher_id }}_{{ marcasDatas.shop_id }}">
+								  {% if marcasDatas.shop_id in addtofevlist  %}
+									<img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/heart-grey-ic.png'))}}" alt=""  id="category_add_to_fev_{{ marcasDatas.voucher_id }}_{{ marcasDatas.shop_id }}" style="display:none;">
+									<img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/heart-hover-ic.png'))}}" alt="" id="category_add_to_fev_selected_{{ marcasDatas.voucher_id }}_{{ marcasDatas.shop_id }}" >
+								  {% else %}
+									<img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/heart-grey-ic.png'))}}" alt=""  id="category_add_to_fev_{{ marcasDatas.voucher_id }}_{{ marcasDatas.shop_id }}">
+									<img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/heart-hover-ic.png'))}}" alt="" id="category_add_to_fev_selected_{{ marcasDatas.voucher_id }}_{{ marcasDatas.shop_id }}" style="display:none;">
+								  {% endif %}
+							  </a>
+							</div>
+						    <script type="text/javascript">
+                             $(document).ready(function(){
+                                $("#category_add_to_fev_{{ marcasDatas.voucher_id }}_{{ marcasDatas.shop_id }}").click(function(){
+                                        {% if user_id is null %}
+                                              $("#gotostore_login").show();
+                                        {% else %}
+                                            {% if marcasDatas.shop_history_id  is defined %}
+                                              {% if marcasDatas.shop_history_id  is not empty %}
+                                              $("#category_add_to_fev_{{ marcasDatas.voucher_id }}_{{ marcasDatas.shop_id }}").hide();
+                                              $("#category_add_to_fev_selected_{{ marcasDatas.voucher_id }}_{{ marcasDatas.shop_id }}").css("display","block" );
+                                              $.ajax({
+                                                        type:"POST",
+                                                        data:{shop_history_id: {{ marcasDatas.shop_history_id }}},
+                                                        dataType: "text",
+                                                        url: "{{absolute_url(path('front_add_to_fev', {'id':marcasDatas.shop_id })) }}"
+                                                     });
+                                               {% endif %}
+                                              {% endif %}   
+                                        {% endif %}
+                                });
+
+                                $("#category_add_to_fev_selected_{{ marcasDatas.voucher_id }}_{{ marcasDatas.shop_id }}").click(function(){
+                                   {% if marcasDatas.shop_history_id  is defined %}
+                                        {% if marcasDatas.shop_history_id  is not empty %}
+                                        $("#category_add_to_fev_{{ marcasDatas.voucher_id }}_{{ marcasDatas.shop_id }}").css("display","block" );
+                                        $("#category_add_to_fev_selected_{{ marcasDatas.voucher_id }}_{{ marcasDatas.shop_id }}").css("display","none" );
+                                         $.ajax({
+                                                       type:"POST",
+                                                        data:{shop_history_id: {{ marcasDatas.shop_history_id }}},
+                                                        dataType: "text",
+                                                        url: "{{absolute_url(path('front_remove_from_fev', {'id':marcasDatas.shop_id })) }}",
+                                                     });
+                                        {% endif %}
+                                              {% endif %}       
+                                 });
+
+                              });
+                            </script>                            
+					{#<div class="banner-social">
+							<span>Compartir</span>
+							<ul>
+								<li><a href="#" title="Facebook"><img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/fb-ic-small.jpg'))}}" alt=""></a></li>
+								<li><a href="#" title="Twitter"><img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/twit-ic-small.jpg'))}}" alt=""></a></li>
+								<li><a href="#" title="Googleplus"><img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/google-ic-small.jpg'))}}" alt=""></a></li>
+								<li><a href="#" title="whatsup"><img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/whatsup-ic.jpg'))}}" alt=""></a></li>
+							</ul>
+						</div>#}
+					</div> 
+					
+					<div class="brand-desc">
+						{% if marcasDescription %} <p> {{ marcasDescription|raw }} </p> {% endif %}
+					</div>
+					{% if marcasDescription %} <span class="brand-desc-show-more"><a href="javascript:void(0);" class="show-more-desc" title="Ver más">Ver más</a></span> {% endif %}
+				</div>
+				{{ render(controller(
+						'iFlairLetsBonusFrontBundle:Marcas:getMarcasSidebar',{"slugname": app.request.get('slug_name'), "voucherCount": offerCount }
+					))
+				}}
+			</div>
+		</div>
+	</div>
+	<div class="container brand-discount-main">
+		<div class="row">
+			<h2>{{ marcasTitle }}</h2>
+			{% if offers == 'cashback' or offers == 'cashback/coupons' %}
+			<div id="cashback_detail_content" class="brand-discount-inner">
+				<div class="chris-text">
+					<span>CASHBACK EN {{ programName }}</span>
+				</div>
+				<div class="brand-discount-inner-top">
+					<div class="brand-discount-inner-left">
+						{{ render(controller(
+							'iFlairLetsBonusFrontBundle:Marcas:getMarcasVariations',{"slugname": app.request.get('slug_name') }
+							))
+						}}
+						<a title="Conseguir Cashback" class="cons-cashback" onclick="registerClick('{{shop_id}}','{{shop_history_id}}','{{offers}}','{{ tabType }}','{{ tabId }}','0','{{absolute_url(path('i_flair_lets_bonus_front_clicks')) }}','{{urlAffiliate}}','{{user_id}}',event, '{{ marcasBrandPopup }}', '{{ marcasCashbackPrice }}', '{{urlAffiliate}}', '{{marcasId}}');" href="javascript:void(0);" target="_blank">Conseguir Cashback</a>
+					</div>
+					{#<div class="brand-discount-inner-right">
+						<div class="esta-search">
+							<div class="esta-image">
+								<img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/searc-ic-two.jpg'))}}" alt="">
+								<span>Estadísticas <br>de la tienda</span>
+							</div>
+							<div class="estaarrow-image">
+								<img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/previous-arrow.png'))}}" alt="">
+							</div>
+							<div class="estaarrow-right">
+								<p>Último reembolso: <span>hace 5 días</span></p>
+								<p>Último pago: <span>hace 10 días</span></p>
+							</div>
+						</div>
+						<div class="esta-search-right">
+						</div>
+					</div>#}
+				</div>
+				<div id="conditions-section" class="brand-discount-inner-bottom">
+					<div class="brand-discount-inner-bottom-left">
+						<p><b>¿Cómo funciona?</b></p>
+						<ul>
+							{{ marcasIntroduction|raw }}
+						</ul>
+					</div>
+					<div class="brand-discount-inner-bottom-left">
+						<p><b>Condiciones</b></p>
+						<ul>
+							<p>{{ marcasTerms|striptags('<br>')|raw }}</p>
+						</ul>
+					</div>
+				</div>
+			</div>
+				{% endif %}
+			{% if voucherDatas %}
+				<div class="brand-cupon-discount" id="brand-cupon-discount-section">
+					<div class="chris-text">
+						<span>OFERTAS Y CUPONES DESCUENTO EN {{ programName }}</span>
+					</div>
+					<input type="hidden" id="voucher_section_counter" value="1" />
+					{% set divCreated = "false" %}
+					{% set sectionGroupItems = 6 %}
+					{% set voucherSectionDivCreated = "false" %}
+					{% set voucherSectionCounter = 0 %}
+					{% if voucherDatas is defined %}
+						{% if voucherDatas is not empty %}
+							{% set counter=0 %}
+							{% set i = 1%}
+							{% for shopData in voucherDatas %}
+								{% if counter%2 == 0 and divCreated == "true" %}
+									{% set divCreated = "false" %}
+									</div>
+								{% endif %}
+								{% if counter%sectionGroupItems == 0 and voucherSectionDivCreated == "true" %}
+									{% set voucherSectionDivCreated = "false" %}
+									</div>
+								{% endif %}
+								{% if counter%sectionGroupItems == 0 and voucherSectionDivCreated == "false" %}
+									{% set voucherSectionCounter = voucherSectionCounter+1 %}
+									{% set voucherSectionDivCreated = "true" %}
+									<div id="voucher_section_{{ voucherSectionCounter }}">
+								{% endif %}
+								{% if counter%2 == 0 and divCreated== "false" %}
+									<div class="brand-cupon-row">
+									{% set divCreated = "true" %}
+								{% endif %}
+								<div class="brand-cupon-row-block">
+									<div class="brand-cupon-title">
+										<div class="brandcupon-ic">
+											<img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/cut-ic-small.jpg'))}}" alt="">
+										</div>
+										<span>Cupón {{ shopData.program_name }}: {{ shopData.title }}</span>
+										<p>{% if shopData.isnew and shopData.exclusive  %} *Novedad exclusiva {% elseif shopData.isnew and not shopData.exclusive %} *Nuevo {% elseif not shopData.isnew and shopData.exclusive %} *Exclusivo {% endif %}</p>
+									</div>
+									<div class="brand-cupon-title-desc">
+										<div class="cup-des">
+											{{ shopData.short_description }}
+										</div>
+									</div>
+									<div class="cupon-time">
+										<img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/time-ic.jpg'))}}" alt="">
+										<span>Válido hasta {{ shopData.voucher_expire_date|date("d/m/Y") }}</span>
+									</div>
+									{%if shopData.code is defined %}
+										{%if shopData.code is not empty %}
+											<a onclick="cuponGenerate('{{shopData.shop_id}}','{{shopData.shop_history_id}}','{{shopData.shop_offers}}','{{ tabType }}','{{ tabId }}','{{ i }}','{{absolute_url(path('i_flair_lets_bonus_front_clicks')) }}','{{shopData.shop_affiliate_url}}','{{user_id}}',event, '{{ shopData.brand_logo_popup }}', '{{ shopData.code }}', '{{ shopData.default_track_uri }}', '{{ shopData.program_name|escape('js') }}', '{{ shopData.discount_amount }}', '{{ shopData.is_percentage }}', '{{ shopData.voucher_expire_date }}', '{{ shopData.description|escape('js')  }}');
+											 dataLayerAction(1,'{{shopData.shop_affiliate_url}}','{{ shopData.discount_amount }}','{{ shopData.discount_amount }}','{{ shopData.discount_amount }}','{{ shopData.brand_id }}','{{ shopData.discount_amount }}','{{ shopData.program_name|escape('js') }}','{{ shopData.shop_history_shop_title|escape('js')  }}');
+											" href="javascript:void(0);" class="cons-cashback" title="Usar cupón">
+											   Usar Cupón
+											</a>
+										{% else %}
+											<a onclick="offerGenerate('{{shopData.shop_id}}','{{shopData.shop_history_id}}','{{shopData.shop_offers}}','{{ lo }}','{{ tabId }}','{{ i }}','{{absolute_url(path('i_flair_lets_bonus_front_clicks')) }}','{{shopData.shop_affiliate_url}}','{{user_id}}',event, '{{ shopData.brand_logo_popup }}', '{{ shopData.code }}', '{{ shopData.default_track_uri }}', '{{ shopData.program_name|escape('js') }}', '{{ shopData.discount_amount }}', '{{ shopData.is_percentage }}', '{{ shopData.voucher_expire_date }}', '{{ shopData.description|escape('js')  }}');
+											 dataLayerAction(1,'{{shopData.shop_affiliate_url}}','{{ shopData.discount_amount }}','{{ shopData.discount_amount }}','{{ shopData.discount_amount }}','{{ shopData.brand_id }}','{{ shopData.discount_amount }}','{{ shopData.program_name|escape('js')  }}','{{ shopData.shop_history_shop_title|escape('js')  }}');
+											" href="javascript:void(0);" class="cons-cashback" title="Usar cupón">
+												Ver oferta
+											</a>
+										{% endif %}
+									{% endif %}
+								</div>
+
+								{% set counter = counter+1 %}
+								{% set i = i+1 %}
+							{% endfor %}
+						{% endif %}
+					{% endif %}
+					{% if divCreated == "true"  %}
+						</div>
+					{% endif %}
+					{% if voucherSectionDivCreated == "true" %}
+						</div>
+					{% endif %}
+					{#<div id="voucher_view_more" class="show-more">
+						<a title="Ver más" href="javascript:void(0);">Ver más</a>
+					</div>#}
+				</div>
+			{% endif %}
+			
+			{% if shopDatas %}
+				<div id="shop-section" class="product-brand-destacard">
+					<div class="chris-text">
+						<span>PRODUCTOS DESTACADOS DE {{ programName }}</span>
+					</div>
+					<input type="hidden" id="shop_section_counter" value="1" />
+					{% set sectionGroupItems      = 12 %}
+					{% set shopSectionDivCreated  = "false" %}
+					{% set shopSectionCounter     = 0 %}
+					{% set counter                = 0 %}
+					<div class="brand-destacard-block-inner">
+						{% if shopDatas is defined %}
+							{% if shopDatas is not empty %}
+								{% for shopData in shopDatas %}
+									{% if counter%sectionGroupItems == 0 and shopSectionDivCreated == "true" %}
+										{% set shopSectionDivCreated = "false" %}
+										</div>
+									{% endif %}
+									{% if counter%sectionGroupItems == 0 and shopSectionDivCreated == "false" %}
+										{% set shopSectionCounter = shopSectionCounter+1 %}
+										{% set shopSectionDivCreated = "true" %}
+										<div style="display:none;" id="shop_section_{{ shopSectionCounter }}">
+									{% endif %}
+									<div class="brand-destacard-block">
+										<div class="brand-destacardin-block">
+											<div class="shoes-img">
+												<img alt="" src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/shoes-img1.jpg'))}}">
+												{% if shopData.type is defined %}
+													<div class="brand-desta-title">
+														{{ shopData.type }}
+													</div>
+												{% endif %}
+											</div>
+											<div class="brand-desta-title-bottom">
+												<div class="desta-title-bottom">
+													{% if shopData.brand is defined %}
+														<span>{{ shopData.brand }}</span>
+													{% endif %}
+													<img alt="" src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/heart-grey-ic.png'))}}">
+												</div>
+												{% if shopData.short_description is defined %}
+													<p>{{ shopData.short_description }}</p>
+												{% endif %}
+												<div class="desta-title-price">
+													<div class="desta-title-price-left">
+														{% if shopData.cashbackPrice is defined %}
+															<span class="dest-btm-price">{{ shopData.cashbackPrice }}€</span>
+														{% endif %}
+													</div>
+													<div class="desta-title-price-right">
+														<div class="title-price-right-wrap">
+															<span class="dest-rht-price">hasta</span>
+															<div class="cup-des-right">
+																<div class="cup-des-right-wrap">
+																{% if shopData.cashbackPercentage is defined %}
+																	<b>+ {{ shopData.cashbackPercentage }}%</b>
+																	<span>Cashback</span>
+																{% endif %}
+																</div>
+															</div>
+														</div>
+														<img alt="" src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/price-arrow.jpg'))}}">
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									{% set counter = counter+1 %}
+								{% endfor %}
+							{% endif %}
+						{% endif %}
+						{% if shopSectionDivCreated == "true" %}
+							</div>
+						{% endif %}
+						<div id="shop_view_more" class="show-more">
+							<a href="javascript:void(0);" title="Ver más">Ver más</a>
+						</div>
+					</div>
+				</div>
+			{% endif %}
+			{{ render(controller(
+				'iFlairLetsBonusFrontBundle:Marcas:getMarcasReview',{"slugname": app.request.get('slug_name'), "programName": programName }
+				))
+			}}
+			{{ render(controller(
+				'iFlairLetsBonusFrontBundle:Marcas:getMarcasRelatedBrands',{"slugname": app.request.get('slug_name'), "programName": programName }
+				))
+			}}
+		</div>
+	</div>
+	<div class="clear"></div>
+{% endblock %}

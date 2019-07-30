@@ -1,0 +1,248 @@
+<style>
+.rating-box {
+	background: rgba(0, 0, 0, 0) url("{{absolute_url(asset('bundles/iflairletsbonusfront/images/product_rating_blank_star.gif'))}}") repeat-x scroll 0 0;
+	float: left;
+	height: 16px;
+	margin: 0 5px 3px 0;
+	position: relative;
+	width: 60px;
+}
+.rating-box .rating {
+	background: rgba(0, 0, 0, 0) url("{{absolute_url(asset('bundles/iflairletsbonusfront/images/product_rating_full_star.gif'))}}") repeat-x scroll 0 0;
+	height: 16px;
+	left: 0;
+	position: absolute;
+	top: 0;
+}
+</style>
+<div class="christmas-special-main owl-banner2-slide">
+	<div class="chris-text">
+		<span>{{collectionname}}</span>
+	</div>
+
+{% set user_id = app.session.get('user_id') %}
+{% set tabType = constant('iFlair\\LetsBonusFrontBundle\\Entity\\Constants::COLLECTION_TAB_TYPE') %}
+{% set tabId = constant('iFlair\\LetsBonusFrontBundle\\Entity\\Constants::COLLECTION_TAB_id') %}
+{% set tabPosition = constant('iFlair\\LetsBonusFrontBundle\\Entity\\Constants::COLLECTION_TAB_POSITION') %}     
+	<div class="offer-box-main">
+		<div id="owl-banner2" class="owl-carousel">
+			{% set i = 1 %}
+			{% for collection_product in collection %}
+				{% if collection_product.shop_id is not empty %}
+					<div class="offer-box-link">
+						<div class="offer-box">
+							<div class="store-title">
+								<h4>
+									{% if collection_product.brand_name is not empty %}
+										{{collection_product.brand_name}}
+									{% endif %}
+								</h4>
+								<span>
+							<!-- 		<div class="rating-box">
+										<div style="width:{{collection_product.rating}}%;" class="rating"></div>
+									</div>({{collection_product.rating}}) -->
+								</span>
+							</div>  {#div store-title#}							
+							<div class="store-img">
+									 {% if collection_product.slug_name is defined %}
+							 <a href ="{{absolute_url(path('marcas_view', {'slug_name': collection_product.slug_name})) }}">
+								<img alt="" src="{{ collection_product.image }}">
+								</a>
+							{%else %}
+                                     <img alt="" src="{{ collection_product.image }}">
+                            {% endif %}
+
+								
+							</div>{#div store-img#}
+							{% if collection_product.shop_label is not empty %}
+								<span class="exe">{{ collection_product.shop_label }}</span>
+							{% else %}
+								<span class="no-exe"></span>
+							{% endif %}
+							<div class="store-title-bottom">
+								<p>
+									{% if collection_product.title is not empty %}
+										{% if collection_product.title|length > 60 %}
+											{% autoescape %}
+												{{ collection_product.title|striptags|truncate(60, true, "...")|raw }}
+											{% endautoescape %}
+										{% else %}
+											{% autoescape %}
+												{{ collection_product.title|striptags|raw  }}
+											{% endautoescape %}
+										{% endif %}
+									{% endif %}
+
+								</p>
+								<div class="store-title-ic">
+									<div class="levis-ic">
+
+										 {% if collection_product.slug_name is defined %}
+                                      <a href ="{{absolute_url(path('marcas_view', {'slug_name': collection_product.slug_name})) }}">
+												<img alt="" src="{{ collection_product.brand_logo }}" width="80px">
+											</a>
+                                       {%else %}
+                                         	<img alt="" src="{{ collection_product.brand_logo }}" width="80px">
+                                      {% endif %}
+
+										
+									</div>
+									<p>
+										{% if collection_product.slug_name is defined %}
+											<a href ="{{absolute_url(path('marcas_view', {'slug_name': collection_product.slug_name})) }}">
+										{% endif %}
+										<span>
+											{{ collection_product.cashback_price }}
+										</span> Cashback
+										{% if collection_product.slug_name is defined %}
+											</a>
+										{% endif %}
+									</p>
+								</div> {#div store-title-ic#}
+								<span class="save-wing go_to_store_up">
+									{%if collection_product.shop_offers == 'voucher'%}
+										{%if collection_product.voucher_code is defined %}
+											{%if collection_product.voucher_code is not empty %}
+												<a title="Usar cupón" onclick="cuponGenerate('{{collection_product.shop_id}}','{{collection_product.shop_history_id}}','{{collection_product.shop_offers}}','{{ tabType }}','{{ tabId }}','{{ i }}','{{absolute_url(path('i_flair_lets_bonus_front_clicks')) }}','{{collection_product.shop_affiliate_url}}','{{user_id}}',event, '{{ collection_product.brand_logo_popup }}', '{{ collection_product.voucher_code }}', '{{ collection_product.default_track_uri }}', '{{ collection_product.voucher_program_name }}', '{{ collection_product.discount_amount }}', '{{ collection_product.is_percentage }}', '{{ collection_product.voucher_expire_date }}', '{{ collection_product.voucher_name }}');" href="javascript:void(0);">
+											{% else %}
+												<a title="Usar cupón" onclick="offerGenerate('{{collection_product.shop_id}}','{{collection_product.shop_history_id}}','{{collection_product.shop_offers}}','{{ tabType }}','{{ tabId }}','{{ i }}','{{absolute_url(path('i_flair_lets_bonus_front_clicks')) }}','{{collection_product.shop_affiliate_url}}','{{user_id}}',event, '{{ collection_product.brand_logo_popup }}', '{{ collection_product.voucher_code }}', '{{ collection_product.default_track_uri }}', '{{ collection_product.voucher_program_name }}', '{{ collection_product.discount_amount }}', '{{ collection_product.is_percentage }}', '{{ collection_product.voucher_expire_date }}', '{{ collection_product.voucher_name }}');" href="javascript:void(0);">
+											{% endif %}
+										{% endif %}
+											Usar cupon
+										</a>
+									{%endif%}
+									{%if collection_product.shop_offers == 'cashback' or collection_product.shop_offers == 'cashback/coupons' %}
+										<a onclick="registerClick('{{collection_product.shop_id}}','{{collection_product.shop_history_id}}','{{collection_product.shop_offers}}','{{ tabType }}','{{ tabId }}','{{ i }}','{{absolute_url(path('i_flair_lets_bonus_front_clicks')) }}','{{collection_product.shop_affiliate_url}}','{{user_id}}',event, '{{ collection_product.brand_logo_popup }}', '{{ collection_product.cashback_price }}');" href="javascript:void(0);" target="_blank">
+											Conseguir Cashback
+										</a>
+									{%endif%}
+								</span>
+								<div class="conditions-txt">
+									<span>Condiciones
+										 <div class="offer-box-hover homepage_condition animated fadeInUp">
+                                                            {% if collection_product.variations|length > 0 %}
+                                                              <div class="cashback-store">
+                                                                <h4>Cashback on this store:</h4>
+                                                                <div class="cashback-store-btm">
+                                                                  {% for variation in collection_product.variations %}
+                                                                  	{% if "%" in variation.number or "€" in variation.number %}
+                                                                    	<p><b>{{ variation.number}}</b>
+                                                                    {% else %}
+                                                                    	<p><b>{{ variation.number}}%</b>
+                                                                    {% endif %}
+                                                                    		<span>
+                                                                    			{% autoescape %}
+                                                                        			{{ variation.title|striptags|raw  }}
+                                                                      			{% endautoescape %}
+                                                                      		</span>
+                                                                      	</p>
+                                                                  {% endfor %}
+                                                                </div>
+                                                              </div>
+                                                            {% endif %}
+                                                            <div class="cashback-condition">
+                                                              <h4>Conditions:</h4>
+                                                                {% autoescape %}
+                                                                {{ collection_product.tearms|striptags|raw  }}
+                                                              {% endautoescape %}
+                                                            </div>
+                                                          </div>
+
+									</span>
+
+									   {% if collection_product.slug_name is defined %}
+                 <a href="{{absolute_url(path('marcas_view', {'slug_name': collection_product.slug_name})) }}" class="cupones" title="6 cupones">{{ collection_product.voucher_code_count }} cupones</a>
+
+                  {%else %}
+                                  <a class="cupones" title="6 cupones">{{ collection_product.voucher_code_count }} cupones</a>
+                                {% endif %}
+
+										<div class="conditions-ic">
+											<!-- <div class="prod_share_icon" > 
+												<img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/share-small-ic.png'))}}" alt=""/>
+												<div class="share prod_share animated fadeInUp" id='fb-root'>
+													<a href="https://twitter.com/share" class="twitter-share-button" data-text="{{collection_product.title}}"  data-url="{{ absolute_url('store') }}/{{collection_product.shop_id}}" data-lang="en">Twitter</a>
+													<img class="fb_share" id="best_collection_{{ collection_product.shop_id }}" src = "{{absolute_url(asset('bundles/iflairletsbonusfront/images/facebook-share.png'))}}"/>
+													<a href="https://plus.google.com/share?url={{ app.request.getSchemeAndHttpHost() }}" class="socialite googleplus-one google_share google_share" data-size="tall" data-text="{{collection_product.title}}"  data-href="{{ app.request.getSchemeAndHttpHost() }}" rel="nofollow" target="_blank"><span class="vhidden">Share on Google+</span>
+													<div class="clearb"></div>
+												</div>
+											</div> -->
+											<a href="javascript:void(0);" class="prod_like_icon" id="collection_a_add_to_fev_{{ collection_product.shop_id }}">
+												
+												{% if addtofevlist is defined %}
+													{% if collection_product.shop_id in addtofevlist  %}
+														<img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/heart-grey-ic.png'))}}" alt=""  id="collection_add_to_fev_{{ collection_product.shop_id }}" style="display:none;">
+														<img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/heart-hover-ic.png'))}}" alt="" id="collection_add_to_fev_selected_{{ collection_product.shop_id }}" >
+													{% else %}
+														<img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/heart-grey-ic.png'))}}" alt=""  id="collection_add_to_fev_{{ collection_product.shop_id }}">
+														<img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/heart-hover-ic.png'))}}" alt="" id="collection_add_to_fev_selected_{{ collection_product.shop_id }}" style="display:none;">
+													{% endif %}
+												{% else %}
+														<img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/heart-grey-ic.png'))}}" alt=""  id="collection_add_to_fev_{{ collection_product.shop_id }}">
+														<img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/heart-hover-ic.png'))}}" alt="" id="collection_add_to_fev_selected_{{ collection_product.shop_id }}" style="display:none;">
+												{% endif %}
+											</a>
+										</div>
+										<script type="text/javascript">
+											$(document).ready(function(){
+												$("#collection_add_to_fev_{{ collection_product.shop_id }}").click(function(){
+													{% if user_id is null %}
+														$("#gotostore_login").show();
+													{% else %}
+														{% if collection_product.shop_history_id  is defined %}
+															{% if collection_product.shop_history_id  is not empty %}
+																$("#collection_add_to_fev_{{ collection_product.shop_id }}").hide();
+																$("#collection_add_to_fev_selected_{{ collection_product.shop_id }}").css("display","block" );
+																$.ajax({
+																	type:"POST",
+																	data:{shop_history_id: {{ collection_product.shop_history_id }}},
+																	dataType: "text",
+																	url: 'addtofev/{{ collection_product.shop_id }}',
+																});
+															{% endif %}
+														{% endif %} 
+													{% endif %}
+												});
+												$("#collection_add_to_fev_selected_{{ collection_product.shop_id }}").click(function(){
+													{% if collection_product.shop_history_id  is defined %}
+														{% if collection_product.shop_history_id  is not empty %}
+															$("#collection_add_to_fev_{{ collection_product.shop_id }}").css("display","block" );
+															$("#collection_add_to_fev_selected_{{ collection_product.shop_id }}").css("display","none" );
+															$.ajax({
+																type:"POST",
+																data:{shop_history_id: {{ collection_product.shop_history_id }}},
+																dataType: "text",
+																url: 'removefromfev/{{ collection_product.shop_id }}',
+															});
+														{% endif %}
+													{% endif %}
+												});
+												/*$("#best_collection_{{ collection_product.shop_id }}").click(function(e) {
+													e.preventDefault();
+													FB.ui({
+														method: 'feed',
+														name: '{{collection_product.title}}',
+														link: 'http://hyperarts.com/blog',
+														picture: '{{ collection_product.image }}',
+														caption: '{{collection_product.title}}',
+														description: '{{collection_product.title}}',
+														message: ''
+													});   
+												});*/
+											});
+										</script>
+									</div>{#div conditions-txt#}
+								</div>{#div store-title-bottom#}
+							</div>{#div offer-box#}
+						</div>{#div offer-box-link#}
+					{% endif %}
+					 {% set i = i+1 %}
+				{% endfor %}
+			</div> {#div owl-banner2#}
+		{% if collectionSlugName is not empty%}
+			<div class="show-more">
+				<a title="Ver más" href="{{absolute_url(path('i_flair_lets_bonus_front_collection', { 'collection_name': collectionSlugName })) }}">Ver más</a>
+			</div>
+		{% endif %}
+	</div> {# div offer-box-main#}
+</div>

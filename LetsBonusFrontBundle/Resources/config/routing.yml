@@ -1,0 +1,382 @@
+i_flair_lets_bonus_front_homepage:
+     path:     /
+     defaults: { _controller: iFlairLetsBonusFrontBundle:Homepage:slider }
+
+#iFlairLetsBonusFrontBundle:Login
+i_flair_lets_bonus_front_login:
+     path:     /login
+     methods: GET
+     defaults: { _controller: iFlairLetsBonusFrontBundle:Login:getLoginPage }
+
+i_flair_lets_bonus_front_check_login:
+     path:     /login
+     methods: POST
+     defaults: { _controller: iFlairLetsBonusFrontBundle:Login:login }
+
+i_flair_lets_bonus_front_registration:
+     path:     /register
+     defaults: { _controller: iFlairLetsBonusFrontBundle:Login:register }
+
+i_flair_lets_bonus_front_login_google:
+     path:     /connect/googleLogin
+     defaults: { _controller: iFlairLetsBonusFrontBundle:Login:googleLogin }
+
+i_flair_lets_bonus_front_login_facebook_tokenGenerate:
+     path:     /tokenGenerate
+     defaults: { _controller: iFlairLetsBonusFrontBundle:Login:tokenGenerate }
+
+i_flair_lets_bonus_front_login_facebook:
+     path:     /connect/facebookLogin
+     defaults: { _controller: iFlairLetsBonusFrontBundle:Login:facebookLogin }
+
+i_flair_lets_bonus_front_logout:
+     path:     /connect/logout
+     defaults: { _controller: iFlairLetsBonusFrontBundle:Login:logout }
+
+i_flair_lets_bonus_front_forgot_password:
+     path:     /recuperar-contraseña
+     methods: GET
+     defaults: { _controller: iFlairLetsBonusFrontBundle:Login:forgotPassword }
+
+i_flair_lets_bonus_front_forgot_password_sent:
+     path:     /recuperar-contraseña/enviado
+     methods: POST
+     defaults: { _controller: iFlairLetsBonusFrontBundle:Login:forgotPasswordSent }
+
+i_flair_lets_bonus_front_reset_forgot_password:
+     path:     /resetear-contrasena/{token}
+     defaults: { _controller: iFlairLetsBonusFrontBundle:Login:resetPassword }
+
+i_flair_lets_bonus_front_registration_enable:
+     path:     /accountConfirm/{token}
+     defaults: { _controller: iFlairLetsBonusFrontBundle:Login:accountConfirm }
+#/iFlairLetsBonusFrontBundle:Login
+
+search_logs_front:
+    path:     /resultados-busqueda
+    defaults: { _controller: iFlairLetsBonusFrontBundle:Searchlogs:index }
+
+facebook_login:
+    path: /login/check-facebook
+
+google_login:
+    path: /login/check-google
+
+i_flair_lets_bonus_front_review:
+     path:     /review/{name}
+     defaults: { _controller: iFlairLetsBonusFrontBundle:Review:index }
+
+#CMS
+i_flair_lets_bonus_front_cmsaboutus:
+    path:     /quienes-somos
+    defaults: { _controller: iFlairLetsBonusFrontBundle:Cmspage:cmsaboutus }
+
+i_flair_lets_bonus_front_cmsblog:
+    path:     /blog
+    defaults: { _controller: iFlairLetsBonusFrontBundle:Cmsblog:cmsblog }
+
+i_flair_lets_bonus_front_cmsblogview:
+    path:     /blog/{id}
+    defaults: { _controller: iFlairLetsBonusFrontBundle:Cmsblog:cmsblogview }
+
+i_flair_lets_bonus_front_cmscareers:
+    path: /trabaja
+    defaults: { _controller: iFlairLetsBonusFrontBundle:Cmspage:cmscareers}
+
+i_flair_lets_bonus_front_cmscontact:
+    path: /contact
+    defaults: { _controller: iFlairLetsBonusFrontBundle:Cmspage:cmscontact}
+
+i_flair_lets_bonus_front_cmscookiespolicy:
+    path: /politica-de-cookies
+    defaults: { _controller: iFlairLetsBonusFrontBundle:Cmspage:cmscookiespolicy}
+
+i_flair_lets_bonus_front_howitworks:
+    path: /como-funciona
+    defaults: { _controller: iFlairLetsBonusFrontBundle:Comofunciona:howitworks}
+
+i_flair_lets_bonus_front_cmspolicies:
+    path: /privacidad
+    defaults: { _controller: iFlairLetsBonusFrontBundle:Cmspage:cmspolicies}
+
+i_flair_lets_bonus_front_cmspress:
+    path: /prensa
+    defaults: { _controller: iFlairLetsBonusFrontBundle:Cmspage:cmspress}
+
+i_flair_lets_bonus_front_cmsprivacypolicy:
+    path: /politica-de-privacidad
+    defaults: { _controller: iFlairLetsBonusFrontBundle:Cmspage:cmsprivacypolicy}
+
+i_flair_lets_bonus_front_cmspromoteyourstore:
+    path: /promocionar-tienda
+    defaults: { _controller: iFlairLetsBonusFrontBundle:Cmspage:cmspromoteyourstore}
+
+i_flair_lets_bonus_front_cmstermsandconditions:
+    path: /condiciones-generales
+    defaults: { _controller: iFlairLetsBonusFrontBundle:Cmspage:cmstermsandconditions}
+
+i_flair_lets_bonus_front_cmssitemap:
+    path: /mapa-del-sitio
+    defaults: { _controller: iFlairLetsBonusFrontBundle:Cmspage:cmssitemaps}
+
+i_flair_lets_bonus_front_cmsaccessibility:
+    path: /accesibilidad
+    defaults: { _controller: iFlairLetsBonusFrontBundle:Cmspage:cmsaccessibility}
+
+i_flair_lets_bonus_front_cmsallhelp:
+    path: /preguntas-frecuentes
+    defaults: { _controller: iFlairLetsBonusFrontBundle:Cmspage:cmsallhelp}
+
+i_flair_lets_bonus_front_cmscreateclaim:
+    path: /crear-reclamo
+    defaults: { _controller: iFlairLetsBonusFrontBundle:Cmspage:cmscreateclaim}
+
+i_flair_lets_bonus_front_cmslegalwarning:
+    path:     /aviso-legal
+    defaults: { _controller: iFlairLetsBonusFrontBundle:Cmspage:cmslegalwarning }
+
+# marcas_view:
+#     pattern: /marcas/view/{id}
+#     defaults: { _controller: iFlairLetsBonusFrontBundle:Marcas:view }
+
+# marcas_view:
+#     pattern: /marcas-{slug_name}
+#     defaults: { _controller: iFlairLetsBonusFrontBundle:Marcas:view }
+
+i_flair_lets_bonus_front_go_to_store:
+    path: /store/{id}
+    defaults: { _controller: iFlairLetsBonusFrontBundle:Gotostore:shop }
+
+front_add_to_fev:
+    path:     /addtofev/{id}
+    defaults: { _controller: iFlairLetsBonusFrontBundle:AddtoFev:index }
+
+front_remove_from_fev:
+    path:     /removefromfev/{id}
+    defaults: { _controller: iFlairLetsBonusFrontBundle:AddtoFev:removefev }
+
+i_flair_lets_bonus_front_shop_review:
+     path:     /review/user/{id}/shop/{shopId}/shophistory/{shopHistoryId}
+     defaults: { _controller: iFlairLetsBonusFrontBundle:Review:shopreview }
+
+i_flair_lets_bonus_front_category:
+     path:     /categorias
+     defaults: { _controller: iFlairLetsBonusFrontBundle:Category:categorypage }
+
+i_flair_lets_bonus_front_collection_ajax_filter:
+     path:     /ofertas-{parent_category}/collection/filter
+     defaults: { _controller: iFlairLetsBonusFrontBundle:CollectionFilter:filter }
+
+i_flair_lets_bonus_front_collection:
+     path:     /ofertas/{collection_name}
+     defaults: { _controller: iFlairLetsBonusFrontBundle:Collection:collectionpage }
+
+i_flair_lets_bonus_front_collection_parentCategory:
+     path:     /ofertas/{collection_name}/{parent_category}
+     defaults: { _controller: iFlairLetsBonusFrontBundle:Collection:collectionpage }
+
+i_flair_lets_bonus_front_collection_middleCategory:
+     path:     /ofertas/{collection_name}/{parent_category}/{category}
+     defaults: { _controller: iFlairLetsBonusFrontBundle:Collection:collectionpage }
+
+i_flair_lets_bonus_front_collection_childCategory:
+     path:     /ofertas/{collection_name}/{parent_category}/{category}/{child_category}
+     defaults: { _controller: iFlairLetsBonusFrontBundle:Collection:collectionpage }
+
+i_flair_lets_bonus_front_category_ajax_filter:
+     path:     /ofertas-{parent_category}/filter
+     defaults: { _controller: iFlairLetsBonusFrontBundle:CategoryFilter:filter }
+
+i_flair_lets_bonus_front_middle_category_ajax_filter:
+     path:     /ofertas-{parent_category}/{category}/filter
+     defaults: { _controller: iFlairLetsBonusFrontBundle:CategoryFilter:filter }
+
+i_flair_lets_bonus_front_child_category_ajax_filter:
+     path:     /ofertas-{parent_category}/{category}/{child_category}/filter
+     defaults: { _controller: iFlairLetsBonusFrontBundle:CategoryFilter:filter }
+
+i_flair_lets_bonus_front_category_slug:
+     path:     /ofertas-{parent_category}
+     defaults: { _controller: iFlairLetsBonusFrontBundle:Category:categorypage }
+
+i_flair_lets_bonus_front_middle_category_slug:
+     path:     /ofertas-{parent_category}/{category}
+     defaults: { _controller: iFlairLetsBonusFrontBundle:Category:categorypage }
+
+i_flair_lets_bonus_front_child_category_slug:
+     path:     /ofertas-{parent_category}/{category}/{child_category}
+     defaults: { _controller: iFlairLetsBonusFrontBundle:Category:categorypage }
+
+i_flair_lets_bonus_front_category_filter:
+     path:     /categorias/filter
+     defaults: { _controller: iFlairLetsBonusFrontBundle:CategoryFilter:filter }
+
+i_flair_lets_bonus_front_brand:
+     path:     /brand
+     defaults: { _controller: iFlairLetsBonusFrontBundle:Brand:brandDetail }
+
+i_flair_lets_bonus_front_faq:
+    path: /ayuda
+    defaults: { _controller: iFlairLetsBonusFrontBundle:Faq:getFaq }
+
+i_flair_lets_bonus_front_contact:
+    path: /contacto
+    defaults: { _controller: iFlairLetsBonusFrontBundle:Contact:getContact }
+
+i_flair_lets_bonus_front_contact_enviado:
+    path: /contacto/enviado
+    defaults: { _controller: iFlairLetsBonusFrontBundle:Contact:getContactEnviado }
+
+i_flair_lets_bonus_front_user_history:
+    path: /user/history
+    defaults: { _controller: iFlairLetsBonusFrontBundle:User:getUserHistory }
+
+i_flair_lets_bonus_front_user_withdrawal:
+    path: /user/withdrawal
+    defaults: { _controller: iFlairLetsBonusFrontBundle:User:withdrawalRequest }
+
+i_flair_lets_bonus_front_user_profile:
+    path: /user/profile
+    defaults: { _controller: iFlairLetsBonusFrontBundle:User:getUserProfile }
+
+i_flair_lets_bonus_front_user_cashback:
+    path: /user/cachback
+    defaults: { _controller: iFlairLetsBonusFrontBundle:User:getUserCashback }
+
+i_flair_lets_bonus_front_user_favourite:
+    path: /user/favourite
+    defaults: { _controller: iFlairLetsBonusFrontBundle:User:getUserFavourite }
+
+i_flair_lets_bonus_front_user_removefavourite:
+    path: /user/removefavourite
+    defaults: { _controller: iFlairLetsBonusFrontBundle:User:removeUserFavourite }
+
+i_flair_lets_bonus_front_user_comments:
+    path: /user/comments
+    defaults: { _controller: iFlairLetsBonusFrontBundle:User:getUserComments }
+
+i_flair_lets_bonus_front_user_checktransfereligibility:
+    pattern: /user/checktransfereligibility
+    defaults: { _controller: iFlairLetsBonusFrontBundle:User:checkTransferEligibility }
+
+i_flair_lets_bonus_front_user_getamounttransferform:
+    pattern: /user/getamounttransferform
+    defaults: { _controller: iFlairLetsBonusFrontBundle:User:getAmountTransferForm }
+
+i_flair_lets_bonus_front_user_processamounttransfer:
+    pattern: /user/processamounttransfer
+    defaults: { _controller: iFlairLetsBonusFrontBundle:User:processAmountTransfer }
+
+i_flair_lets_bonus_front_user:
+    path: /user
+    defaults: { _controller: iFlairLetsBonusFrontBundle:User:viewUser }
+    
+i_flair_lets_bonus_front_user_data_update:
+    path: /user/dataupdate
+    methods: POST
+    defaults: { _controller: iFlairLetsBonusFrontBundle:User:updateUserData }
+
+i_flair_lets_bonus_front_user_payment_update:
+    path: /user/userpaymentupdate
+    defaults: { _controller: iFlairLetsBonusFrontBundle:User:updateUserPayment }
+
+i_flair_lets_bonus_front_user_insurance_update:
+    path: /user/userinsuranceupdate
+    defaults: { _controller: iFlairLetsBonusFrontBundle:User:updateUserInsurance }
+
+i_flair_lets_bonus_front_user_subscription_update:
+    path: /user/usersubscriptionupdate
+    defaults: { _controller: iFlairLetsBonusFrontBundle:User:updateUserSubscription }
+
+i_flair_lets_bonus_front_user_editform:
+    path: /user/profileedit
+    defaults: { _controller: iFlairLetsBonusFrontBundle:User:getProfileEditForm }
+
+i_flair_lets_bonus_front_user_editcomment:
+    path: /user/profile/commentedit/{id}
+    defaults: { _controller: iFlairLetsBonusFrontBundle:User:getCommentEditForm }
+
+i_flair_lets_bonus_front_user_imageupload:
+    path: /user/imageupload
+    defaults: { _controller: iFlairLetsBonusFrontBundle:User:uploadImage }
+
+i_flair_lets_bonus_front_comment_update:
+    path: /comment/update
+    defaults: { _controller: iFlairLetsBonusFrontBundle:User:updateComment }
+
+i_flair_lets_bonus_front_comment_delete:
+    path: /comment/delete/{id}
+    defaults: { _controller: iFlairLetsBonusFrontBundle:User:deleteComment }
+
+i_flair_lets_bonus_front_brand_cashback_filter:
+     path:     /cashback/filter
+     defaults: { _controller: iFlairLetsBonusFrontBundle:Filter:filter }
+
+i_flair_lets_bonus_front_brand_cupones_filter:
+     path:     /cupones-descuento/filter
+     defaults: { _controller: iFlairLetsBonusFrontBundle:Filter:filter }
+
+i_flair_lets_bonus_front_brand_cashback_ajax_filter:
+     path:     /cashback/{slug_name}/filter
+     defaults: { _controller: iFlairLetsBonusFrontBundle:Filter:filter }
+
+i_flair_lets_bonus_front_brand_cupones_ajax_filter:
+     path:     /cupones-descuento/{slug_name}/filter
+     defaults: { _controller: iFlairLetsBonusFrontBundle:Filter:filter }
+     
+i_flair_lets_bonus_front_brand_cashback:
+     path:     /cashback
+     defaults: { _controller: iFlairLetsBonusFrontBundle:Brand:brandDetail }
+
+i_flair_lets_bonus_front_brand_cashback_category:
+     path:     /cashback/{slug_name}
+     defaults: { _controller: iFlairLetsBonusFrontBundle:Brand:brandDetail }
+
+i_flair_lets_bonus_front_brand_cupones:
+     path:     /cupones-descuento
+     defaults: { _controller: iFlairLetsBonusFrontBundle:Brand:brandDetail }
+
+i_flair_lets_bonus_front_brand_cupones_category:
+     path:     /cupones-descuento/{slug_name}
+     defaults: { _controller: iFlairLetsBonusFrontBundle:Brand:brandDetail }
+
+# SUBSCRIPTION
+i_flair_lets_bonus_front_subscription:
+     path:     /subscription     
+     defaults: { _controller: iFlairLetsBonusFrontBundle:Subscription:index }
+
+# UNSUBSCRIPTION
+i_flair_lets_bonus_front_unsubscription:
+     path:     /newsletter/manageunsubscribe
+     defaults: { _controller: iFlairLetsBonusFrontBundle:Subscription:unsubscription }
+
+i_flair_lets_bonus_front_unsubscriptionprocess:
+    path:     /newsletter/manageunsubscription
+    defaults: { _controller: iFlairLetsBonusFrontBundle:Subscription:unsubscriptionProcess }
+
+i_flair_lets_bonus_front_ubscriptionsuccesss:
+    path:     /newsletter/unsubscribed
+    defaults: { _controller: iFlairLetsBonusFrontBundle:Subscription:unsubscribed }
+
+i_flair_lets_bonus_front_tiendas:
+     path:     /tienda
+     defaults: { _controller: iFlairLetsBonusFrontBundle:Tiendas:tiendasPage }
+i_flair_lets_bonus_front_tiendas_filter:
+     path:     /tienda/filter
+     defaults: { _controller: iFlairLetsBonusFrontBundle:TiendasFilter:filter }
+
+marcas_view:
+    path: /tienda/{slug_name}
+    defaults: { _controller: iFlairLetsBonusFrontBundle:Marcas:view }
+
+marcas_filter:
+     path:     /tienda/{slug_name}/filter
+     defaults: { _controller: iFlairLetsBonusFrontBundle:TiendasFilter:filter }
+
+contactus_zendesk:
+     path: /contactzendesk
+     defaults: { _controller: iFlairLetsBonusFrontBundle:Contact:sendContact }
+
+i_flair_lets_bonus_front_clicks:
+     path:     /clicks
+     defaults: { _controller: iFlairLetsBonusFrontBundle:Default:click }

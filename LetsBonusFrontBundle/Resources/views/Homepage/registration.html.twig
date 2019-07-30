@@ -1,0 +1,52 @@
+{% extends '::base.html.twig' %}
+{% block stylesheets %}
+	{% stylesheets 
+				'@iFlairLetsBonusFrontBundle/Resources/public/css/styles.css' filter='cssrewrite'
+				'@iFlairLetsBonusFrontBundle/Resources/public/css/responsive.css' filter='cssrewrite'
+				'@iFlairLetsBonusFrontBundle/Resources/public/css/animate.css' filter='cssrewrite'
+				'@iFlairLetsBonusFrontBundle/Resources/public/css/jquery.mmenu.all.css' filter='cssrewrite'
+				'@iFlairLetsBonusFrontBundle/Resources/public/css/owl.theme.css' filter='cssrewrite'
+				'@iFlairLetsBonusFrontBundle/Resources/public/css/owl.carousel.css' filter='cssrewrite'
+	%}
+		<link rel="stylesheet" href="{{ asset_url }}" />
+	{% endstylesheets %}
+{% endblock %}
+
+{% block javascripts %}	
+    {% javascripts 
+				'@iFlairLetsBonusFrontBundle/Resources/public/js/jquery.1.10.2.min.js'
+				'@iFlairLetsBonusFrontBundle/Resources/public/js/assets/*'
+	%}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block middle_content_area %}	
+<div class="container banner">
+		<form class="registration-form" method="post" action="{{absolute_url(path('i_flair_lets_bonus_front_registration')) }}" style="text-align: center;">
+                 			<input id="username" class="form-control" type="text" autocapitalize="off" placeholder="username" maxlength="100" name="username"> </br></br>
+
+                 			<input id="surname" class="form-control" type="text" autocapitalize="off" placeholder="surname" maxlength="100" name="surname"> </br></br>
+
+                 			<input id="email" class="form-control" type="email" autocapitalize="off" placeholder="email" maxlength="100" name="email"> </br></br>
+
+                 			<input id="password" class="form-control" type="password" placeholder="password" name="password" maxlength="32"></br>
+
+                 			<input id="repeat_password" class="form-control" type="password" placeholder="repeat password" name="repeat_password" maxlength="32"></br></br>
+
+                 			<input id="dob" class="form-control" type="text" autocapitalize="off" placeholder="Date of Birth" maxlength="100" name="dob"> </br></br>
+
+                 			<select name="gender">
+								  <option value="1">Female</option>
+								  <option value="0">Male</option>
+							</select> </br></br>
+
+							<input id="city" class="form-control" type="text" autocapitalize="off" placeholder="city" maxlength="100" name="city"> </br></br>
+
+                 			<a href="/remind/">Forgot password?</a></br></br>
+                      
+                 			<input type="submit" value="Register" name="registration">
+               		</form>
+
+</div>
+{% endblock %}

@@ -1,0 +1,79 @@
+<style>
+ .rating-box {
+    background: rgba(0, 0, 0, 0) url("{{absolute_url(asset('bundles/iflairletsbonusfront/images/product_rating_blank_star.gif'))}}") repeat-x scroll 0 0;
+    float: left;
+    height: 16px;
+    margin: 0 5px 3px 0;
+    position: relative;
+    width: 60px;
+}
+.rating-box .rating {
+    background: rgba(0, 0, 0, 0) url("{{absolute_url(asset('bundles/iflairletsbonusfront/images/product_rating_full_star.gif'))}}") repeat-x scroll 0 0;
+    height: 16px;
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+</style>
+
+<div class="container user-activity1 comments">
+  <div class="row">
+    <div class="user_act">
+      <div class="my-data-list-name">
+        <h4>Comentarios</h4>
+      </div>
+      <div class="comments-div">
+        <div class="comments-listing">
+          <ul>
+          {% if userCommentData is defined %}
+            {% if userCommentData is not empty %}
+              {% for userComment in userCommentData %}
+                {% set url = path('i_flair_lets_bonus_front_user_editcomment',{'id': userComment.id}) %}
+                
+                {% set deleteUrl = path('i_flair_lets_bonus_front_comment_delete',{'id': userComment.id}) %}
+
+                {% if userComment.rating > 0 %}
+                  {% set reviewCount = userComment.rating %}
+                {% else %}
+                  {% set reviewCount = 1 %}
+                {% endif %}
+
+                {% set reviewPercentage = (reviewCount*100)/5 %}
+                
+                <li>
+                  <div class="comments-img">
+                    <img src="{{ userComment.logo_path }}" />
+                  </div>
+                  <div class="comments-data">
+                    <div class="comments-date">
+                      Comentado en <span>{{ userComment.program_name }}</span> el {{ userComment.created|date("d/m/Y") }}
+                    </div>
+                    <div class="comments-rating">
+                      <div class="rating-box">
+                        <div style="width:{{ reviewPercentage }}%;" class="rating"></div>
+                      </div> <h4>{{ userComment.name }} {{ userComment.surname }}</h4>
+                    </div>
+                    <div class="comments-text">
+                      {{ userComment.review }}
+                    </div>
+                    <div class="comments-delete">
+                      <a class="comm-edit" edit-path="{{ url }}" id="editComment_{{ userComment.id }}" href="javascript:void(0);">Editar</a>
+                      <a class="comm-del" edit-path="{{ deleteUrl }}" id="deleteComment_{{ userComment.id }}" href="javascript:void(0);">Eliminar</a>
+                    </div>
+                  </div>
+                </li>
+              {% endfor %}
+            {% else %}
+                <li>
+                  <div>
+                    <span>No has hecho ningún comentario.</span>
+                  </div>
+                </li>
+            {% endif %}
+          {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

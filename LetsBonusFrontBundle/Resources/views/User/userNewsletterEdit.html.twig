@@ -1,0 +1,34 @@
+<div class="container user-activity1 my-data my-data-edit">
+    <div class="row">
+        <div class="user_act">
+            <div class="my-data-list-name">
+                <h4>Mis datos</h4>
+            </div>
+            <div class="my-data-form">
+                <form class="registration-form" method="post" id="user-newsletter-edit-form"
+                      action="{{ absolute_url(path('i_flair_lets_bonus_front_user_subscription_update')) }}">
+                    <div class="my-data-loop">
+                        <div class="my-data-title">
+                            <h3>Comunicaciones</h3> <a href="javascript:void(0);" id="user-newsletter-edit"
+                                                       class="user-edit">(Editar)</a>
+                        </div>
+                        <div class="my-data-details newsletterdata">
+                            <div class="table new_design_2">
+                                <label>Newsletter:</label>
+                                {% for sform in nw_subscription %}
+                                    {{ form_widget(sform) }}
+                                {% endfor %}
+                            </div>
+                            <div class="table">
+                                <label></label>
+                                <a href="javascript:void(0);" id="cancel-edit">Cancelar</a>
+                                <input type="submit" value="Guardar cambios" name="update_news_pay"
+                                       id="user_news_submit">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

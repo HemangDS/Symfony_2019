@@ -1,0 +1,263 @@
+<style>
+.rating-box {
+	background: rgba(0, 0, 0, 0) url("{{absolute_url(asset('bundles/iflairletsbonusfront/images/product_rating_blank_star.gif'))}}") repeat-x scroll 0 0;
+	float: left;
+	height: 16px;
+	margin: 0 5px 3px 0;
+	position: relative;
+	width: 60px;
+}
+.rating-box .rating {
+	background: rgba(0, 0, 0, 0) url("{{absolute_url(asset('bundles/iflairletsbonusfront/images/product_rating_full_star.gif'))}}") repeat-x scroll 0 0;
+	height: 16px;
+	left: 0;
+	position: absolute;
+	top: 0;
+}
+</style>
+<input type="hidden" id="product_section_counter" value="1" />
+{% set user_id = app.session.get('user_id') %}   
+{% set sectionGroupItems      = 6 %}
+{% set shopSectionDivCreated  = "false" %}
+{% set productsectionCounter     = 0 %}
+{% set counter                = 0 %}
+{% set tabType = constant('iFlair\\LetsBonusFrontBundle\\Entity\\Constants::BEST_PROMOCIONES_TAB_TYPE') %}
+{% set tabId = constant('iFlair\\LetsBonusFrontBundle\\Entity\\Constants::BEST_PROMOCIONES_TAB_id') %}
+{% set tabPosition = constant('iFlair\\LetsBonusFrontBundle\\Entity\\Constants::BEST_PROMOCIONES_TAB_POSITION') %}
+
+<div class="offer-box-main" >
+	{% if bestprodctcollection is defined %}
+		{% if bestprodctcollection is not empty %}
+				{% set i = 1%}
+			{% for best_product in bestprodctcollection %}  
+				{% if counter%sectionGroupItems == 0 and shopSectionDivCreated == "true" %}
+					{% set shopSectionDivCreated = "false" %}
+					</div>
+				{% endif %}
+				{% if counter%sectionGroupItems == 0 and shopSectionDivCreated == "false" %}
+					{% set productsectionCounter = productsectionCounter+1 %}
+					{% set shopSectionDivCreated = "true" %}
+					<div style="display:none;"  id="product_section_{{ productsectionCounter }}">
+				{% endif %}
+				<div class="offer-box-link">
+					<div class="offer-box">
+						<div class="store-title">
+							<h4>
+								{% if best_product.brand_name is not empty %}
+                                    {{best_product.brand_name}}
+                                {% endif %}								
+							</h4>
+							<span>
+								<!-- <div class="rating-box">
+									<div style="width:{{best_product.rating}}%;" class="rating"></div>
+								</div>({{best_product.rating}}) -->
+							</span>
+						</div>
+						<div class="store-img">
+							 {% if best_product.slug_name is defined %}
+							  <a href ="{{absolute_url(path('marcas_view', {'slug_name': best_product.slug_name})) }}">
+							<img src="{{ best_product.image }}" alt="">
+							</a>
+							{%else %}
+                                        <img src="{{ best_product.image }}" alt="">
+                            {% endif %}
+						</div>
+						<span class="exe"><!-- Exclusivo --></span>
+						<div class="store-title-bottom">
+							<div class="store-prod_desc">
+								{% if best_product.shop_offers == "cashback" %}
+												{% if best_product.title is not empty %}
+														{% if best_product.title|length > 65 %}
+															{% autoescape %}
+																 {{ best_product.title|striptags|truncate(65, true, "...")|raw }}
+															{% endautoescape %}
+														{% else %}
+															{% autoescape %}
+																{{ best_product.title|striptags|raw  }}
+															{% endautoescape %}
+														{% endif %}
+													{% endif %}
+										{% elseif best_product.shop_offers == "voucher" %}
+											 	{% if best_product.short_description is not empty %}
+													{% if best_product.short_description|length > 65 %}
+														{% autoescape %}
+															{{ best_product.short_description|striptags|truncate(65, true, "...")|raw }}
+														{% endautoescape %}
+													{% else %}
+														{% autoescape %}
+															{{ best_product.short_description|striptags|raw  }}
+														{% endautoescape %}
+													{% endif %}
+												{% endif %}
+										{% endif %}
+
+							
+							
+							</div>
+							<div class="store-title-ic">
+								<div class="levis-ic">
+									  {% if best_product.slug_name is defined %}
+                                      <a href ="{{absolute_url(path('marcas_view', {'slug_name': best_product.slug_name})) }}">
+                                        <img src="{{ best_product.brand_logo }}" alt="" width="80px">
+                                      </a>
+                                       {%else %}
+                                          <img src="{{ best_product.brand_logo }}" alt="" width="80px">
+                                      {% endif %}
+								</div>
+								<p>
+									{% if best_product.slug_name is defined %}
+										<a href ="{{absolute_url(path('marcas_view', {'slug_name': best_product.slug_name})) }}">
+									{% endif %}
+									{% if best_product.cashback_price is defined %}
+									{% if best_product.cashback_price is not empty %}
+									<span>
+										{{ best_product.cashback_price }}
+									</span> Cashback
+									{% endif %}
+									{% endif %}
+									{% if best_product.slug_name is defined %}
+										</a>
+									{% endif %}
+								</p>
+							</div>
+							
+								<span class="save-wing go_to_store_up">
+									<a onclick="registerClick('{{best_product.shop_id}}','{{best_product.shop_history_id}}','{{best_product.shop_offers}}','{{ tabType }}','{{ tabId }}','{{ i }}','{{absolute_url(path('i_flair_lets_bonus_front_clicks')) }}','{{best_product.shop_affiliate_url}}','{{user_id}}',event, '{{ best_product.image }}');"
+										href=" {% if user_id is not null %} {{best_product.shop_affiliate_url}} {% else %}{{"javascript:void(0);"}}{% endif %}"
+										target="_blank">
+										{% if best_product.shop_offers == "cashback" %}
+											Conseguir Cashback
+										{% elseif best_product.shop_offers == "voucher" %}
+											 Usar cupón
+										{% endif %}
+									</a>
+								</span>
+							<div class="conditions-txt">
+								<span>
+									Condiciones
+									<div class="offer-box-hover homepage_condition animated fadeInUp">
+										{% if best_product.variations|length > 0 %}
+											<div class="cashback-store">
+												<h4>Cashback en esta tienda:</h4>
+												<div class="cashback-store-btm">
+													{% for variation in best_product.variations %}
+														<p>
+														{% if "%" in variation.number or "€" in variation.number %}
+                                                        <b>{{variation.number}}</b>
+                                                        {% else %}
+                                                        <b>{{variation.number}}%</b>
+                                                        {% endif %}
+
+														<span>
+															{% autoescape %}
+																{{ variation.title|striptags|raw  }}
+															{% endautoescape %}
+													
+														</span></p>    
+													{% endfor %}
+												</div>
+											</div>
+										{% endif %}
+										<div class="cashback-condition">
+											<h4>Condiciones:</h4>
+											{% autoescape %}
+												{{ best_product.tearms|raw  }}
+											{% endautoescape %}
+										
+										</div>
+										<div class="cashback-condition-arrow">
+											<img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/condition-downarrw.png'))}}" alt="">
+										</div>
+									</div>
+								</span>
+
+								  {% if best_product.slug_name is defined %}
+                  <a href="{{absolute_url(path('marcas_view', {'slug_name': best_product.slug_name})) }}" class="cupones" title="6 cupones">{{ best_product.voucher_code_count }} cupones</a>
+                  {%else %}
+                                  <a class="cupones" title="6 cupones">{{ best_product.voucher_code_count }} cupones</a>
+                                {% endif %}
+								<div class="conditions-ic">
+									<!-- <div class="prod_share_icon" > 
+										<img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/share-small-ic.png'))}}" alt=""/>
+										<div class="share prod_share animated fadeInUp" id='fb-root'>
+											<a href="https://twitter.com/share" class="twitter-share-button" data-text="{{best_product.title}}"  data-url="{{ absolute_url('store') }}/{{best_product.shop_id}}" data-lang="en">Twitter</a>
+											<img class="fb_share" id="best_product_{{ best_product.shop_id }}" src = "{{absolute_url(asset('bundles/iflairletsbonusfront/images/facebook-share.png'))}}"/>
+											<a href="https://plus.google.com/share?url={{ app.request.getSchemeAndHttpHost() }}" class="socialite googleplus-one google_share" data-size="tall" data-text="{{best_product.title}}"  data-href="{{ app.request.getSchemeAndHttpHost() }}" rel="nofollow" target="_blank"><span class="vhidden">Share on Google+</span></a>
+											<div class="clearb"></div>
+										</div>
+									</div> -->
+									<a href="javascript:void(0);" class="prod_like_icon" id="best_prod_add_to_fev_{{ best_product.shop_id }}"> 
+										{% if best_product.shop_id in addtofevlist  %}
+											<img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/heart-grey-ic.png'))}}" alt=""  id="add_to_fev_{{ best_product.shop_id }}" style="display:none;">
+											<img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/heart-hover-ic.png'))}}" alt="" id="add_to_fev_selected_{{ best_product.shop_id }}" >
+										{% else %}
+											<img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/heart-grey-ic.png'))}}" alt=""  id="add_to_fev_{{ best_product.shop_id }}">
+											<img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/heart-hover-ic.png'))}}" alt="" id="add_to_fev_selected_{{ best_product.shop_id }}" style="display:none;">
+										{% endif %}
+									</a>
+								</div>
+								<script type="text/javascript">
+									$(document).ready(function(){
+										$("#add_to_fev_{{ best_product.shop_id }}").click(function(){
+											{% if user_id is null %}
+												$("#gotostore_login").show();
+											{% else %}
+												{% if best_product.shop_history_id  is defined %}
+													{% if best_product.shop_history_id  is not empty %}
+														$("#add_to_fev_{{ best_product.shop_id }}").hide();
+														$("#add_to_fev_selected_{{ best_product.shop_id }}").css("display","block" );
+														$.ajax({
+															type:"POST",
+															data:{shop_history_id: {{ best_product.shop_history_id }}},
+															dataType: "text",
+															url: 'addtofev/{{ best_product.shop_id }}',
+														});
+													{% endif %}
+												{% endif %}     
+											{% endif %}
+										});
+										$("#add_to_fev_selected_{{ best_product.shop_id }}").click(function(){
+											{% if best_product.shop_history_id  is defined %}
+												{% if best_product.shop_history_id  is not empty %}
+													$("#add_to_fev_{{ best_product.shop_id }}").css("display","block" );
+													$("#add_to_fev_selected_{{ best_product.shop_id }}").css("display","none" );
+													$.ajax({
+														type:"POST",
+														data:{shop_history_id: {{ best_product.shop_history_id }}},
+														dataType: "text",
+														url: 'removefromfev/{{ best_product.shop_id }}',
+													});
+												{% endif %}
+											{% endif %}    
+										});
+									/*	$("#best_product_{{ best_product.shop_id }}").click(function(e) {
+											e.preventDefault();
+											FB.ui({
+												method: 'feed',
+												name: '{{best_product.title}}',
+												link: 'http://hyperarts.com/blog',
+												picture: '{{ best_product.image }}',
+												caption: '{{best_product.title}}',
+												description: '{{best_product.title}}',
+												message: ''
+											});   
+										});*/
+									});
+								</script>
+							</div> {# div conditions-txt #}
+						</div> {# div store-title-bottom #}
+					</div> {# div offer-box #}
+				</div>{# div offer-box-link #}
+				{% set counter = counter+1 %}
+				{% set i = i+1 %}
+			{% endfor %}
+		{% endif %}
+	{% endif %}
+	{% if shopSectionDivCreated == "true" %}
+		</div>
+	{% endif %}
+	
+		<div id="product_view_more" class="show-more">
+			<a href="{{absolute_url(path('i_flair_lets_bonus_front_category'))}}" title="Ver más">Ver más</a>
+		</div>
+</div>

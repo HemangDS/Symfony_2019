@@ -1,0 +1,335 @@
+{% extends '::base.html.twig' %}
+{% block page_title %}
+  - zona de usuario
+{% endblock %}
+{% block content %}
+<div id="dialog"></div>
+
+<div id="openModal" class="modalDialog" style="display:none;">
+  <div>
+    <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/ajax-loader.gif'))}}" />
+  </div>
+</div>
+
+    <div class="container breadcrumb">
+        <div class="row">
+            <ul>
+                <li><a href="{{ url('i_flair_lets_bonus_front_homepage') }}" title="Home">Home</a></li>
+                <li><a href="{{ url('i_flair_lets_bonus_front_user') }}" title="Zona de usuario">Zona de usuario</a>
+                </li>
+                <li id="breadcrumb" class="active">Mis datos</li>
+            </ul>
+        </div>
+    </div>
+
+<!-- USER ACTIVITY PAGE HTML -->
+<div class="container user-activity1">
+  <div class="row">
+
+    <div class="user_act_responsive">
+      <div id="user-actions">
+        <div class="listing-user">
+          <select id="user_nav">
+            <option id="cashback" breadcrumb="Mi Cashback" value="{{absolute_url(path('i_flair_lets_bonus_front_user_cashback')) }}">Mi Cashback</option>
+            <option id="history" breadcrumb="Actividad" value="{{absolute_url(path('i_flair_lets_bonus_front_user_history')) }}">Actividad</option>
+            <option id="profile" breadcrumb="Mis datos" value="{{absolute_url(path('i_flair_lets_bonus_front_user_profile')) }}" selected>Mis datos</option>
+            <option id="favourite" breadcrumb="Favoritos" value="{{absolute_url(path('i_flair_lets_bonus_front_user_favourite')) }}">Favoritos</option>
+            {#<option id="comments" breadcrumb="Comentarios" value="{{absolute_url(path('i_flair_lets_bonus_front_user_comments')) }}">Comentarios</option>#}
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="user_act">
+      <div id="user-actions">
+        <div class="listing-user">
+          <ul>
+            <li class="user-mi-cashback">
+              <a href="javascript:void(0);" breadcrumb="Mi Cashback" userroute="{{absolute_url(path('i_flair_lets_bonus_front_user_cashback')) }}">
+                <span>Mi Cashback</span>
+              </a>
+            </li>
+            <li class="user-actividad">
+              <a href="javascript:void(0);" breadcrumb="Actividad" userroute="{{absolute_url(path('i_flair_lets_bonus_front_user_history')) }}">
+                <span>Actividad</span>
+              </a>
+            </li>
+            <li class="user-mis-datos">
+              <a href="javascript:void(0);" breadcrumb="Mis datos" userroute="{{absolute_url(path('i_flair_lets_bonus_front_user_profile')) }}" class="active">
+                <span>Mis datos</span>
+              </a>
+            </li>
+            <li class="user-favoritos">
+              <a href="javascript:void(0);" breadcrumb="Favoritos" userroute="{{absolute_url(path('i_flair_lets_bonus_front_user_favourite')) }}">
+                <span>Favoritos</span>
+              </a>
+            </li>
+            {#<li class="user-comentarios">
+              <a href="javascript:void(0);" breadcrumb="Comentarios" userroute="{{absolute_url(path('i_flair_lets_bonus_front_user_comments')) }}">
+                <span>Comentarios</span>
+              </a>
+            </li>#}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="user_area_content"></div>
+    <script type="application/javascript">
+        $(document).ready(function () {
+            function autoCityLoder(city, country_code, class_name) {
+                jQuery.getJSON(
+                    "CityLoader/countriesToCities.json",
+                    function (data) {
+                        $.each(data, function (key, d) {
+                            if (key == country_code) {
+                                $(city).autocomplete({
+                                    source: d,
+                                    minLength: 3
+                                }).autocomplete("widget").addClass(class_name);
+                                $('.' + class_name).css("z-index", "400000");
+
+                            }
+                        });
+                    }
+                );
+            }
+            loadUserProfile();
+            function loadUserProfile() {
+                var route_path = getCookie('userroute_url');
+                if (route_path.trim() == "") {
+                    route_path = "{{ absolute_url(path('i_flair_lets_bonus_front_user_profile')) }}";
+                }
+
+                $('.user_act li a').each(function () {
+                    $(this).removeClass('active');
+                });
+                $('[userroute="' + route_path + '"]').addClass('active');
+                var breadcrumb = $('[userroute="' + route_path + '"]').attr('breadcrumb');
+                $.ajax({
+                    method: "GET",
+                    url: route_path,
+                    dataType: "json",
+                    success: function (result) {
+                        if (result.url != undefined) {
+                            document.location = result.url;
+                        } else {
+                            $('#user_area_content').html(result.html);
+                            $('.header-right .user_profile #left-image img').attr('src', result.imagepath);
+                            $('.logo .user-icon img').attr('src', result.imagepath);
+                        }
+                    }
+                });
+                $("#breadcrumb").html(breadcrumb);
+            }
+            $("body").on("click", "#cancel-edit", function () {
+                loadUserProfile();
+            });
+            $("body").on("keyup", "div.my-data-details #city", function () {
+                var countryCode = $('#country_name').val();
+                autoCityLoder($(this), countryCode, "edit_city");
+            });
+            $("body").on("keyup", "#edit-password", function () {
+                $('#edit_result').text(checkStrength($(this).val(), "#edit_result"));
+            });
+            $("body").on("focusout", "#edit-re-password", function () {
+                checkPasswordMatches();
+            });
+            $("body").on("click", "#toggle-password-manage", function () {
+                if ($(this).is(':checked') == true) {
+                    $('#password-manage-section').show();
+                    if ($('#edit-password').val() != "") {
+                        $('#edit_result').text(checkStrength($('#edit-password').val(), "#edit_result"));
+                    }
+                } else {
+                    $('#password-manage-section').hide();
+                    $('#edit_result').text('');
+                    $('#edit-re-password').text('');
+                    $('#edit-password').text('');
+                    $('#edit-old-password').text('');
+                }
+            });
+
+            function checkPasswordMatches() {
+                var isChecked = $("#toggle-password-manage").is(':checked');
+                if (isChecked) {
+                    var repeat_password = document.getElementById("edit-re-password").value;
+                    var password = document.getElementById("edit-password").value;
+
+                    if (repeat_password != password) {
+                        $("#result").text("La contraseña introducida no coincide con la contraseña confirmada");
+                        return false;
+                    }
+                    else {
+                        $("#result").text("");
+                        return true;
+                    }
+                }
+                return true;
+            }
+            $("body").on("submit", ".registration-form", function (event) {
+                event.preventDefault();
+                var sEmail = $('.my-data-details #email').val();
+                if (this.id == "user-data-edit-form") {
+                    if (validateCustomEmail(sEmail)) {
+                        $('#edit_email_result').text("Valid Email");
+                        $('#edit_email_result').addClass('strong');
+                    } else {
+                        $('#edit_email_result').text("Invalid Email");
+                        $('#edit_email_result').addClass('short');
+                        return false;
+                    }
+                    if (!checkPasswordMatches()) {
+                        return false;
+                    }
+                }
+                var targetUrl = $(this).attr('action');
+                showLoading();
+                $.ajax({
+                    type: $(this).attr('method'),
+                    url: targetUrl,
+                    data: new FormData(this),
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success: function (result) {
+                        if (result.url != undefined) {
+                            document.location = result.url;
+                        }
+                        $('#dialog').css('overflow-y', 'hidden');
+                        $('html').css('overflow-y', 'scroll');
+                    }
+                }).done(function () {
+                    $('#dialog').hide();
+                    $('#dialog-box-mask').hide();
+                    var url_path = "{{ absolute_url(path('i_flair_lets_bonus_front_comment_update')) }}";
+                    if (targetUrl == url_path) {
+                        var commentUrlPath = "{{ absolute_url(path('i_flair_lets_bonus_front_user_comments')) }}";
+                        $("[userroute='" + commentUrlPath + "']").trigger('click');
+                    } else {
+                        loadUserProfile();
+                    }
+                    hideLoading();
+                });
+            });
+            $("body").on("click", ".user-edit", function () {
+                var targetSection = $(this).attr('id');
+                var url_path = "{{ absolute_url(path('i_flair_lets_bonus_front_user_editform')) }}";
+                $.ajax({
+                    method: "GET",
+                    url: url_path,
+                    dataType: "json",
+                    data: {targetSection: targetSection},
+                    success: function (result) {
+                        if (result.url != undefined) {
+                            document.location = result.url;
+                        } else {
+                            $('#user_area_content').html(result.html);
+                            disableAllFormControls();
+                            enableFormControlsOfForm(targetSection);
+                            hideAllForm();
+                            displayForm(targetSection);
+                        }
+                    }
+                });
+            });
+
+            function hideAllForm() {
+                $('.registration-form').hide();
+            }
+
+            function displayForm(targetSection) {
+                var elementId = '#' + targetSection + "-form";
+                $(elementId).show();
+            }
+
+            function disableAllFormControls() {
+                $('#user-data-edit-form input').each(function () {
+                    $(this).attr('disabled', 'disabled');
+                });
+                $('#user-data-edit-form select').each(function () {
+                    $(this).attr('disabled', 'disabled');
+                });
+
+                $('#user-payment-edit-form input').each(function () {
+                    $(this).attr('disabled', 'disabled');
+                });
+                $('#user-payment-edit-form select').each(function () {
+                    $(this).attr('disabled', 'disabled');
+                });
+
+                $('#user-insurance-edit-form input').each(function () {
+                    $(this).attr('disabled', 'disabled');
+                });
+                $('#user-insurance-edit-form select').each(function () {
+                    $(this).attr('disabled', 'disabled');
+                });
+
+                $('#user-newsletter-edit-form input').each(function () {
+                    $(this).attr('disabled', 'disabled');
+                });
+                $('#user-newsletter-edit-form select').each(function () {
+                    $(this).attr('disabled', 'disabled');
+                });
+
+                $('.user-edit').html('(Editar)');
+            }
+
+            function enableFormControlsOfForm(targetSection) {
+                var elementId = '#' + targetSection + "-form";
+                $(elementId + ' input').each(function () {
+                    $(this).removeAttr('disabled');
+                });
+                $(elementId + ' select').each(function () {
+                    $(this).removeAttr('disabled');
+                });
+                $('#' + targetSection).html('');
+            }
+
+            $("body").on("click", "[id^='editComment_']", function () {
+                var url_path = $(this).attr('edit-path');
+                var html = "";
+                $.ajax({
+                    method: "GET",
+                    url: url_path,
+                    dataType: "json",
+                    success: function (result) {
+                        $('#dialog').dialogBox({
+                            hasClose: true,
+                            effect: 'fade',
+                            hasMask: true,
+                            title: 'REVISIÓN Y CALIFICACIÓN',
+                            content: result.html,
+                            callback: function () {
+                                $('#dialog').css('overflow-y', 'scroll');
+                                $('html').css('overflow-y', 'hidden');
+                            },
+                            close: function () {
+                                $('#dialog').css('overflow-y', 'hidden');
+                                $('html').css('overflow-y', 'scroll');
+                            }
+                        });
+                    }
+                });
+            });
+
+            $("body").on("click", "[id^='deleteComment_']", function () {
+                var url_path = $(this).attr('edit-path');
+                $.ajax({
+                    method: "GET",
+                    url: url_path,
+                    dataType: "json",
+                    success: function (result) {
+                        if (result.url != undefined) {
+                            document.location = result.url;
+                        } else {
+                            $('#user_area_content').html(result.html);
+                        }
+                    }
+                });
+            });
+
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,234 @@
+
+{% extends 'SonataAdminBundle::standard_layout.html.twig' %}
+
+{% block sonata_breadcrumb %}
+ {% include "iFlairLetsBonusAdminBundle::dashboard_menu.html.twig" %}
+{% endblock %}
+{%  block side_bar_after_nav %}
+ {% include "iFlairLetsBonusAdminBundle::navigation_menu.html.twig" %}
+{% endblock %}
+
+{% block sonata_admin_content %}
+<form action="{{absolute_url(path('sac_front_user')) }}">
+<div class="page-header page-header-top">
+    <h1 class="pull-left">
+      Usuarios      <br>
+      <small>Buscar</small>
+    </h1>
+ 
+  </div>
+</br>
+
+<input type="text" id="UserStrtosearch" placeholder="Introduzca el nombre de usuario, id o email" class="form-control" name="user_search">
+</br>
+<button name="btn_update_and_edit" class="btn btn-success" type="submit">
+<i class="fa fa-save"></i> 
+Serach</button></form>
+</br>
+{% if search_data is not empty %}
+ <div class="row col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Resultados concordantes con la búsqueda</div>
+            </div>
+                <script type="text/javascript">
+                  $(document).ready(function()
+                      { 
+                          /* var num = $("#filter_record").val();
+                            var data =  $("#searchString").val();
+                            pagesize = $("#filter_record").val();
+                           
+                             $.ajax({
+                                    type: 'post',
+                                    url: '/secure_area/admin/sac/users/userajaxfilter',
+                                    dataType: "json",
+                                    data: {filter_data: data, filter_num: num },
+                                    success: function(data)
+                                    {
+                                      
+                                      $("#filter_content").html(data.html);
+                                    }
+                                     });*/
+
+                         $('#filter_record').on('change', function() {
+                          
+                            var num = $("#filter_record").val();
+                            var data =  $("#searchString").val();
+                             pagesize = $("#filter_record").val();
+                             $.ajax({
+                                    type: 'post',
+                                    url: '/secure_area/admin/sac/users/userajaxfilter',
+                                    dataType: "json",
+                                    data: {filter_data: data, filter_num: num },
+                                     success: function(data)
+                                    {
+                                      
+                                      $("#filter_content").html(data.html);
+                                      $(".paginate_button").children("a").remove(); // Remove existing paging links
+                                    
+                                      var links = Math.ceil(data.count/ pagesize);
+                                     
+                                      for (var i = 0; i < links; i++)
+                                            {
+                                                $("<a>").attr("href", "javascript:void(0);").text(i + 1).appendTo(".paginate_button");
+                                            }
+                                    }
+                                   
+                                });
+                        });
+
+                        $('#searchString').keyup(function(e) {
+
+                            var num = $("#filter_record").val();
+                            var data =  $("#searchString").val();
+                            pagesize = $("#filter_record").val();
+                            $.ajax({
+                                    type: 'post',
+                                    url: '/secure_area/admin/sac/users/userajaxfilter',
+                                    dataType: "json",
+                                     data: {filter_data: data,filter_num: num },
+                                    success: function(data)
+                                    {
+                                      
+                                      $("#filter_content").html(data.html);
+                                      $(".paginate_button").children("a").remove(); // Remove existing paging links
+                                    
+                                      var links = Math.ceil(data.count/ pagesize);
+                                     
+                                      for (var i = 0; i < links; i++)
+                                            {
+                                                $("<a>").attr("href", "javascript:void(0);").text(i + 1).appendTo(".paginate_button");
+                                            }
+                                    }
+                                   
+                                });
+                        });
+                      });
+              </script>
+            <div class="table-responsive">
+                <div role="grid" class="dataTables_wrapper form-inline" id="dataTables-users_wrapper">
+                    <div class="row">
+                      <div class="col-sm-6">
+                          <div class="dataTables_length" id="dataTables-users_length">
+                              <label>
+                                  <select name="dataTables-users_length" aria-controls="dataTables-users" class="form-control input-sm" id="filter_record">
+                                      <option value="2">2</option>
+                                      <option value="10">10</option>
+                                      <option value="25">25</option>
+                                      <option value="50">50</option>
+                                      <option value="100">100</option>
+                                  </select> records per page</label>
+                                  </div>
+                            </div>
+                        <div class="col-sm-6">
+                            <div id="dataTables-users_filter" class="dataTables_filter">
+                                <label>Search:
+                                    <input type="search" class="form-control input-sm" aria-controls="dataTables-users" id="searchString" name="searchString">
+                                  </label>
+                            </div>
+                        </div>
+                        </div>
+                    <table id="dataTables-users" class="table table-striped table-bordered table-hover dataTable no-footer" aria-describedby="dataTables-users_info">
+                    <thead>
+                        <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="dataTables-users" rowspan="1" colspan="1" style="width: 64px;" aria-sort="ascending" aria-label="id: activate to sort column ascending">id</th><th class="sorting" tabindex="0" aria-controls="dataTables-users" rowspan="1" colspan="1" style="width: 122px;" aria-label="Nombre: activate to sort column ascending">Nombre</th><th class="sorting" tabindex="0" aria-controls="dataTables-users" rowspan="1" colspan="1" style="width: 153px;" aria-label="Apellidos: activate to sort column ascending">Apellidos</th><th class="sorting" tabindex="0" aria-controls="dataTables-users" rowspan="1" colspan="1" style="width: 209px;" aria-label="email: activate to sort column ascending">email</th><th class="sorting" tabindex="0" aria-controls="dataTables-users" rowspan="1" colspan="1" style="width: 136px;" aria-label="Creado: activate to sort column ascending">Creado</th><th class="sorting" tabindex="0" aria-controls="dataTables-users" rowspan="1" colspan="1" style="width: 136px;" aria-label="Modificado: activate to sort column ascending">Modificado</th><th class="sorting" tabindex="0" aria-controls="dataTables-users" rowspan="1" colspan="1" style="width: 73px;" aria-label="Acciones: activate to sort column ascending">Acciones</th></tr>
+                    </thead>
+                    <tbody id="filter_content">
+                      {% set i = 0 %} 
+                    {% for item in search_data %} 
+                          {% if i < 2 %}
+                            <tr class="gradeA odd">
+                                <td class="sorting_1"> {{ item.id }} </td>
+                                <td align="left" class="center  "> {{ item.name }} </td>
+                                <td align="left" class="center  ">{{ item.surname }}</td>
+                                <td align="left" class="center  ">{{ item.email }}</td>
+                                <td class=" ">{{ item.created|date("m/d/Y H:i:s") }} </td>
+                                <td class=" ">{{ item.modified|date("m/d/Y H:i:s") }}</td>
+                                <td class="actions ">
+                                  <a href="sac/users/view/{{ item.id }}">View</a>                              
+                                </td></tr>
+                            {% endif %}
+                        {% set i = i + 1 %}
+                    {% endfor %}
+                         </tbody>
+                </table>
+                 <script type="text/javascript">
+
+                            var results_row = ''; // contains your rows
+                            $('#filter_content tr').each(function(){
+                              if($(this).hasClass('gradeA')){
+                                results_row+= $(this).clone().wrap('<div></div>').parent().html();
+                              }
+                            });
+
+                        
+                              pagesize = $("#filter_record").val();// items per page
+
+
+                          // changing page when user clicks on a paging link
+                          $(document).ready(function() {
+                            var results=  {{ search_data|length }};
+                               var num = $("#filter_record").val();
+                              var data =  $("#searchString").val();
+                               
+                              $(".paginate_button").on( "click","a",function() {
+                            
+                               var num = $("#filter_record").val();
+                              var data =  $("#searchString").val();
+                                
+                                  page = $(this).text();
+
+                                    $.ajax({
+                                    type: 'post',
+                                      url: '/secure_area/admin/sac/users/userajaxfilter',
+                                   dataType: "json",
+                                     data: {filter_data: data, filter_num: num, page: page },
+                                    success: function(data)
+                                    {
+
+                                      $("#filter_content").html(data.html);
+                                        $(".paginate_button").children("a").remove(); // Remove existing paging links
+                                      var links = Math.ceil(data.count/ pagesize);
+                                      for (var i = 0; i < links; i++)
+                                            {
+                                                $("<a>").attr("href", "javascript:void(0);").text(i + 1).appendTo(".paginate_button");
+                                            }
+                                    }
+                                   
+                                });
+                              });
+
+                              var links = Math.ceil(results/ pagesize); // calculate number of links
+                              
+                              $(".paginate_button").children("a").remove(); // Remove existing paging links
+
+                              // generate new paging links
+                              for (var i = 0; i < links; i++)
+                              {
+                                  $("<a>").attr("href", "javascript:void(0);").text(i + 1).appendTo(".paginate_button");
+                              }
+
+                           });
+                          
+               </script>
+                <div class="row">
+                  <div class="col-sm-6">
+                     <!-- <div class="dataTables_info" id="dataTables-users_info" role="alert" aria-live="polite" aria-relevant="all">
+                          Showing 1 to 20 of 20 entries
+                      </div>-->
+                  </div>
+
+                  <div class="col-sm-6">
+                      <div class="dataTables_paginate paging_simple_numbers" id="dataTables-users_paginate">
+                           <ul class="pagination" >
+                   
+                        <li class="paginate_button" aria-controls="dataTables-clicksusers" tabindex="0">
+                              <a href="javascript:void(0);">1</a>
+                        </li>
+                    
+                    </ul>
+                    </div>
+                </div></div></div>
+            </div>
+        </div> 
+
+{% endif %}
+{% endblock %}

@@ -1,0 +1,15 @@
+{% if threestepDatas|length == 3 %}
+    <div class="earn-cashback-box">
+      {% for threestepData in threestepDatas %}
+        <div class="earn-box">
+          <div class="earn-box-img">
+            <img src="{{ threestepData.image_path }}" alt="">
+          </div>
+          <div class="earn-box-text">
+            <h2>{{ threestepData.step }} . {{ threestepData.title }}</h2>
+            <p>{{ threestepData.description }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+{% endif %}

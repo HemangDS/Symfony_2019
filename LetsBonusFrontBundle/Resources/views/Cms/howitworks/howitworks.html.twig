@@ -1,0 +1,27 @@
+{% extends '::base.html.twig' %}
+{% block page_title %}
+    - {{ howitworks.title }}
+{% endblock %}
+{% block content -%}
+    <div class="container breadcrumb">
+		<div class="row">
+			<ul>
+				<li><a title="Home" href="{{ url('i_flair_lets_bonus_front_homepage') }}">Home</a></li>
+				<li class="active">{{ howitworks.title }}</li>
+			</ul>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="ayuda_full">
+				<div class="about-title ayuda_title">
+					<h1>{{ howitworks.title }}</h1>
+				</div>
+				<div class="about-content ayuda_wrapp">
+					{# Below "| raw" is used for getting ckeditor value  #}
+					{{ howitworks.description | raw }}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

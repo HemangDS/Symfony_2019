@@ -1,0 +1,38 @@
+<div class="brand-marcas-icon">
+	<div class="chris-text">
+		<span>MARCAS SIMILARES A {{ programName }}</span>
+	</div>
+	<div class="brand-marcas-icon-inner">
+		{% if marcasRelatedBrandsDatas is defined %}
+			{% if marcasRelatedBrandsDatas is not empty %}
+				{% for marcasRelatedBrandsData in marcasRelatedBrandsDatas %}
+					<div class="brand-marcas">
+						<a href="{{absolute_url(path('marcas_view', {'slug_name': marcasRelatedBrandsData.slug_name})) }}">
+							<div class="brand-marcas-img-wrapper">
+								<img src="{{ marcasRelatedBrandsData.logo_path }}" alt="">
+							</div>
+							<p>
+								{% if marcasRelatedBrandsData.cashback_percent is not empty %}
+									{% if marcasRelatedBrandsData.cashback_percent > 0 %}
+										{{ marcasRelatedBrandsData.cashback_percent }}%
+									{% endif %}
+									Cashback
+								{% elseif marcasRelatedBrandsData.cashback_price is not empty %}
+									{% if marcasRelatedBrandsData.cashback_price > 0 %}
+										{{ marcasRelatedBrandsData.cashback_price }}€
+									{% endif %}
+									Cashback
+								{% endif %}
+								{% if (marcasRelatedBrandsData.cashback_percent is not empty or marcasRelatedBrandsData.cashback_price is not empty) and marcasRelatedBrandsData.offer_count is not empty %}|{% endif %}
+								{% if marcasRelatedBrandsData.offer_count is not empty %}{{marcasRelatedBrandsData.offer_count}} Ofertas{% endif %}</p>
+						</a>
+					</div>
+				{% endfor %}
+			{% else%}
+				<div class="brand-marcas">
+					<b>No data available</b> 
+				</div>
+			{% endif %}
+		{% endif %}        
+	</div>
+</div>

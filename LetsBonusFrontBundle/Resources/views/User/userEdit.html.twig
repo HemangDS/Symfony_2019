@@ -1,0 +1,123 @@
+<div class="container user-activity1 my-data my-data-edit">
+    <div class="row">
+        <div class="user_act">
+            <div class="my-data-list-name">
+                <h4>Mis datos</h4>
+            </div>
+            <div class="my-data-form">
+                <form class="registration-form" method="post" id="user-data-edit-form"
+                      action="{{ absolute_url(path('i_flair_lets_bonus_front_user_data_update')) }}">
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('user-data-edit-form') }}">
+                    <div class="my-data-loop">
+                        <div class="my-data-title">
+                            <h3>Datos personales:</h3>
+                        </div>
+                        <div class="my-data-details">
+                            <div class="table">
+                                <label>Nombre:</label>
+                                {{ form_widget(form.name,{ 'id': 'username','attr':{'placeholder':'Username','maxlength': 60}}) }}
+                            </div>
+                            <div class="table">
+                                <label>Apellidos:</label>
+                                {{ form_widget(form.surname,{ 'id': 'surname','attr':{'placeholder':'Surname','maxlength': 60}}) }}
+                            </div>
+                            <div class="table">
+                                <label>Alias:</label>
+                                {{ form_widget(form.alias,{ 'id': 'alias','attr':{'placeholder':'Alias','maxlength': 60}}) }}
+                            </div>
+                            <div class="table">
+                                <label>Email:</label>
+                                {{ form_widget(form.email,{ 'id': 'email','disabled': true}) }}
+                            </div>
+                            <span id="edit_email_result"></span><br/>
+                            <span class="passwd-chng-lbl">
+                                <label>Cambiar contraseña?</label>
+                                <input type="checkbox" id="toggle-password-manage"/>
+                            </span>
+                            <br/>
+                            <div id="password-manage-section" style="display:none">
+                                <br/>
+                                <div class="table">
+                                    <label>Contraseña Actual:</label>
+                                    <input type="password" placeholder="Contraseña Actual" class="form-control"
+                                           name="password[old]" id="edit-old-password" maxlength="60">
+                                </div>
+                                <div class="table">
+                                    <label>Contraseña:</label>
+                                    <input type="password" placeholder="Contraseña" class="form-control"
+                                           name="password[first]" id="edit-password" maxlength="60">
+                                </div>
+
+                                <div class="table">
+                                    <label>Repetir Contraseña</label>
+                                    <input type="password" placeholder="Repetir Contraseña" class="form-control"
+                                           name="password[second]" id="edit-re-password" maxlength="60">
+                                </div>
+                                <br/>
+                                <div>
+                                    <span style="color:red;" id="result"></span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <span id="edit_result"></span>
+                            </div>
+                            <br/>
+                            <div class="table">
+                                <label>Género:</label>
+                                {{ form_widget(form.userGender,{ 'id': 'gender'}) }}
+                            </div>
+                            <div class="table">
+                                <label>Fecha de nacimiento:</label>
+                                {{ form_widget(form.userBirthDate,{ 'id': 'dob', 'attr':{'placeholder':'Fecha Naciemiento'}}) }}
+                            </div>
+                            <div class="table">
+                                <label>Código postal:</label>
+                                {{ form_widget(form.city,{ 'id': 'city', 'attr':{'placeholder':'Ciudad','maxlength': 60 }}) }}
+                            </div>
+                            <div class="table">
+                                <label></label>
+                                <a href="javascript:void(0);" id="cancel-edit">Cancelar</a>
+                                <input type="submit" value="Guardar cambios" name="update_user" id="user_edit_submit">
+                            </div>
+                        </div>
+                        <div class="my-data-pro-pic">
+                            <a id="edit-image" href="javascript:void(0);">
+                                <img id="user-image" src="{{ absolute_url( image_path ) }}"/>
+                                <div id="photo_container"></div>
+                            </a>
+                            <input type="file" id="profile_image" name="profile_image" style="display:none;"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("body").on("click", "#edit-image", function () {
+            $("#profile_image").trigger("click");
+        });
+        $("#profile_image").change(function () {
+            var file_data = $(this).prop("files")[0];
+            var form_data = new FormData();
+            var url_path = "{{ absolute_url(path('i_flair_lets_bonus_front_user_imageupload')) }}";
+            form_data.append("file", file_data);
+            $('#openModal').show();
+            $.ajax({
+                method: "POST",
+                url: url_path,
+                data: form_data,
+                contentType: false,
+                cache: false,
+                processData: false,
+                dataType: 'json',
+                success: function (data) {
+                    $('#user-image').attr('src', data.filename);
+                    $('#openModal').hide();
+                }
+            });
+        });
+    });
+</script>

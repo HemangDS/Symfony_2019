@@ -1,0 +1,81 @@
+
+{% extends 'SonataAdminBundle::standard_layout.html.twig' %}
+
+{% block sonata_breadcrumb %}
+ {% include "iFlairLetsBonusAdminBundle::dashboard_menu.html.twig" %}
+{% endblock %}
+{%  block side_bar_after_nav %}
+ {% include "iFlairLetsBonusAdminBundle::navigation_menu.html.twig" %}
+{% endblock %}
+
+{% block sonata_admin_content %}
+	<form id="transaction-form" action="{{ absolute_url(path('admin_iflair_letsbonusadmin_cashbacktransactions_list')) }}" method="post">
+		<div class="field">
+          {{ form_widget(parentCategoryform.name) }}
+        </div>
+        <div class="field">
+        	<label>Start Date :- </label>
+        	<input type="text" id="start-date" class="transaction-date-picker" value="{{ startdate }}" name="form[start-date]" placeholder="Start date" />
+        </div>
+        <div class="field">
+        	<label>End Date :- </label>
+        	<input type="text" id="end-date" class="transaction-date-picker" value="{{ enddate }}" name="form[end-date]" placeholder="End date" />
+        </div>
+        <input type="submit" value="Search" />
+	</form>
+
+	{% if cashbackTransactionData is not empty %}
+		<table class="table table-bordered table-striped">
+            <thead>
+				<tr class="sonata-ba-list-field-header">
+					<th class="sonata-ba-list-field-header-integer">Id</th>
+					<th class="sonata-ba-list-field-header-integer">Tienda id</th>
+					<th class="sonata-ba-list-field-header-text">Tienda title</th>
+					<th class="sonata-ba-list-field-header-integer">Usuario ID</th>
+					<th class="sonata-ba-list-field-header-text">Network</th>
+					<th class="sonata-ba-list-field-header-integer">Comision usuario</th>
+					<th class="sonata-ba-list-field-header-text">Currency</th>
+					<th class="sonata-ba-list-field-header-text">Estado</th>
+					<th class="sonata-ba-list-field-header-text">Pais</th>
+					<th class="sonata-ba-list-field-header-text">Fecha</th>
+					<th class="sonata-ba-list-field-header-text">Creado</th>
+					<th class="sonata-ba-list-field-header-actions">Acciones</th>
+				</tr>
+			</thead>
+		{% for cashbackTransaction in cashbackTransactionData %}
+			<tr>
+				<td>{{ cashbackTransaction.id }}</td>
+				<td>{{ cashbackTransaction.tienda_id }}</td>
+				<td>{{ cashbackTransaction.tienda_title }}</td>
+				<td>{{ cashbackTransaction.user_id }}</td>
+				<td>{{ cashbackTransaction.network }}</td>
+				<td>{{ cashbackTransaction.amount }}</td>
+				<td>{{ cashbackTransaction.currency }}</td>
+				<td>{{ cashbackTransaction.status }}</td>
+				<td>{{ cashbackTransaction.isoCode }}</td>
+				<td>{{ cashbackTransaction.date }}</td>
+				<td>{{ cashbackTransaction.created }}</td>
+				<td><input type="button" value="double Cashback" /></td>
+			</tr>
+		{% endfor %}
+		</table>
+	{% endif %}
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(".transaction-date-picker").datetimepicker({
+	  		language: 'pt-BR'
+	  	});
+	  	$(document).on("submit","#transaction-form",function(event){
+	  		var startDate = new Date($("#start-date").val());
+	  		var endDate = new Date($("#end-date").val());
+	  		if(startDate > endDate) {
+	  			alert("End date need to be greater than start date");
+	  			event.preventDefault();
+	  		}
+	  	});
+	});
+
+
+</script>
+{% endblock %}

@@ -1,0 +1,49 @@
+<div class="container user-activity1 my-data my-data-edit">
+  <div class="row">
+    <div class="user_act new_pg1">
+      <div class="my-data-form">
+        <form class="transferamount-form" novalidate="novalidate" method="post" id="user-transferamount-edit-form" action="{{absolute_url(path('i_flair_lets_bonus_front_user_processamounttransfer')) }}">
+          <div class="my-data-loop">
+            <div class="my-data-title">
+              <h3>Transfiere tu dinero a una cuenta bancaria</h3>
+            </div>
+            <div class="my-data-details">
+              <div class="table">
+                <label>Número de cuenta Número:</label>
+                 {{ form_widget(user_payment.accountnumber,{ 'id': 'accountnumber', 'attr':{'placeholder':'Account Number','maxlength': 20}}) }}
+              </div>
+              <div class="table">
+                <label>SWIFT code / BIC:</label>
+                 {{ form_widget(user_payment.swiftcodebic,{ 'id': 'swiftcodebic', 'attr':{'placeholder':'SWIFT Code / BIC','maxlength': 20}}) }}
+              </div>
+              <div class="table">
+                <label>Nombre del titular:</label>
+                 {{ form_widget(user_payment.ownername,{ 'id': 'ownername', 'attr':{'placeholder':'Owner Name','maxlength': 20}}) }}
+              </div>
+              <div class="table">
+                <label></label>
+                <input id="save-bankdetail" type="checkbox" name="save_bank_detail" ischecked="0" />
+                <p>Guardar datos bancarios en mi perfil**</p>
+              </div>
+             
+            </div>
+            <div class="new_tbl_lay">
+               <div class="table_new">
+                <label>Dinero disponible:</label>
+                <input type="text" name="transferableamount" value="{{ amount }}€" disabled />
+                <input type="submit" value="Transferir mi dinero" />
+              </div>
+            </div>
+             <div class="new_tbl_lay">
+               <div class="table_new">
+                <p>Todos los campos son obligatorios</p>
+                <p>* El código BIC sirve para identificar al banco beneficiario en una transferencia. Consulta con tu banco para conocer el tuyo</p>
+                <p>** Podrás modificar o eliminar estos datos siempre que quieras en el apartado información de Pago</p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

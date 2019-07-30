@@ -1,0 +1,1931 @@
+@media handheld, only screen and (max-width: 1201px) {
+.page_404 {
+  top: 30px;
+}
+.header-right {
+  width: 80%;
+}
+.logo {
+  width: 20%;
+}
+.head-input input[type="text"] {
+  max-width: 100%;
+  width: 80%;
+}
+.tab-inner {
+  padding: 37px 47px 0 110px;
+}
+.store-title > span {
+  width: 100%;
+  margin-top: 5px;
+}
+.store-title-ic p span {
+  font-size: 20px;
+  line-height: 26px;
+}
+.offer-box-link .save-wing {
+	font-size: 11px;
+}
+.store-title h4 {
+  min-height: 36px;
+  width: 100%;
+}
+.store-title {
+  text-align: left;
+}
+.destacard-tabing .store-title h4 {
+  text-align: left;
+}
+.nike-ic {
+  float: left;
+  width: 40%;
+}
+.levis-ic {
+  float: left;
+  width: 35%;
+}
+.support-list, .social-ic {
+  padding-left: 0;
+}
+.fr-title-listing {
+  width: 33.3%;
+}
+.offer-list {
+  padding-left: 0;
+}
+.footer-right-inner h5 {
+  padding-right: 122px;
+}
+.inner-menu {
+	width: 100%;
+}
+.store-title {
+  min-height: 80px;
+}
+#owl-banner2 .store-title {
+  min-height: 86px;
+}
+#tab-nav > li {
+  padding-right: 4px;
+}
+.toyrus-img {
+  text-align: center;
+}
+
+.earn-box:after {
+  width: 242px;
+}
+.sharing-txt {
+  text-align: left;
+}
+.fr-title h5:last-child {
+  padding-left: 16px;
+}
+.offer-box-hover {
+  top: 72px;
+}
+.offer-box-hover p, .offer-box-hover li {
+  font-size: 10px;
+  line-height: 13px;
+}
+.cashback-store-btm {
+  margin-bottom: 4px;
+  margin-top: 3px;
+}
+.cashback-condition > h4 {
+  padding-bottom: 5px;
+}
+.offer-box-link {
+  padding-right: 20px;
+}
+.footer-right-inner h5:first-child {
+  padding-right: 106px;
+}
+.christmas-special-main {
+  position: relative;
+}
+/*.chris-text {
+  margin-top: -9px;
+}*/
+.chris-text {
+  /*left: 50%;
+  margin-left: -189px;*/
+  margin-top: 0;
+  position: relative;
+  top: -3px;
+  width: auto;
+}
+.chris-text:before, .chris-text:after {
+  margin-top: 2px;
+}
+.shoes-product-title {
+  min-height: 66px;
+}
+.sharing-txt-img {
+  margin-top: 5px;
+}
+.banner-right {
+  padding-left: 0;
+}
+.cupones {
+  margin-left: 12%;
+}
+.christmas-special-main .offer-box-main, .offer-specialist .offertas-main, 
+.shoes-product-main, .shoes-product-slide {
+  padding-top: 35px;
+}
+.offer-specialist .offertas-main {
+  padding-bottom: 31px;
+}
+.scrollToTop {
+  right: 20px;
+}
+.cupon-row-block-right .cons-cashback {
+  display: block;
+  margin-left: 0;
+  min-width: auto;
+}
+.cupon-row-block-image {
+  padding-right: 14px;
+}
+.brand-discount-inner-top {
+  margin-top: 31px;
+}
+.cup-des > br {
+  display: none;
+}
+.cup-des-right b {
+  font-size: 23px;
+  line-height: 30px;
+}
+.brand-cupon-discount, .brand-destacard-block-inner {
+  padding-top: 35px;
+}
+.store-title-ic > p {
+  text-align: right;
+  width: 65%;
+}
+.store-title-ic > p span {
+  display: block;
+  color: #0099a8;
+}
+}
+
+@media handheld, only screen and (max-width: 1140px) {
+  .user_act.new_pg1 .my-data-loop .my-data-details {
+    width: 100%;
+  }
+  .user_act.new_pg1 .new_tbl_lay .table_new {
+    float: left;
+    width: 100%;
+  }
+}
+@media handheld, only screen and (max-width: 1023px) {
+  .page_404 {
+    left: 30px;
+  }
+  .page_404 .page_404_text a {
+    margin-top: 70px;
+  }
+  .my-data-details.newsletterdata .new_design_2 {
+    display: block !important;
+  }
+  .my-data-details.newsletterdata .new_design_2 div div {
+    width: 100%;
+    display: block;
+  }
+  .my-data-details.newsletterdata .new_design_2 div div label {
+    padding: 0;
+  }
+  .my-data-details.newsletterdata .new_design_2 div div .gender {
+    float: left;
+    margin:  15px 0 0 0; 
+  }
+  .my-data-details.newsletterdata .new_design_2 div div .gender label {
+    float: left;
+    margin: 0;
+  }
+  .my-data-details.newsletterdata .new_design_2 div div .gender input {
+    float: left;
+    margin: 0 5px 0px 0;
+  }
+.new_lay_page .newsletter_unsubscription  {
+  padding: 0 0 40px 20px;
+}  
+.new_lay_page .newsletter_unsubscription form div div label {
+  display: block;
+  margin: 0 0 10px;
+  vertical-align: middle;
+  width: 100%;
+}
+.my-data-loop .my-data-details {
+  width: 50%;
+}   
+.logo {
+  padding-left: 0;
+}
+.header-right {
+  padding-right: 0;
+}
+.head-navigation ul li a {
+  width: auto;
+  padding: 0 10px;
+}
+.head-navigation ul.nav-right {
+  padding-right: 0;
+}
+.banner-right {
+  padding-left: 25px;
+  padding-right: 0;
+}
+.toyrus-img p {
+	margin-top: 9px;
+}
+.earn-box:after {
+	width: 33.3%;
+}
+.tab-inner {
+  padding-left: 43px;
+  padding-right: 22px;
+}
+.levis-ic {
+  float: left;
+  width: 30%;
+}
+.offer-box .store-title-ic > p {
+  text-align: right;
+  width: 70%;
+}
+.offertas-block-bottom p:before {
+	width: 100%;
+}
+.shoes-product-title {
+  min-height: 77px;
+}
+.footer-right {
+  padding-bottom: 61px;
+  padding-left: 27px;
+}
+.footer-right-inner h5 {
+  padding-right: 82px;
+}
+.footer-left {
+  padding-bottom: 41px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.big-gift-img {
+  padding: 0 20px;
+}
+.logo {
+  padding:7px 0 0 35px;
+}
+.head-navigation ul.sub-menu {
+  padding: 30px 0 30px 15px;
+}
+.head-navigation ul.sub-menu a {
+  padding-left: 0;
+}
+.inner-menu .gift-shop-image {
+  padding-left: 15px;
+}
+.sharing-txt {
+  text-align: center;
+}
+.shoes-link .sharing-txt {
+  text-align: center;
+}
+.sharing-txt-img {
+  float: right;
+  margin-top: 6px;
+}
+.sharing-txt span {
+  float: left;
+  margin-top: 8px;
+}
+.shoes-img > img {
+  width: 100%;
+}
+.footer ul li a {
+  font-size: 12px;
+}
+.offer-box-hover {
+  padding: 13px 11px 0;
+}
+.shoes-link {
+  float: left;
+  margin-bottom: 12px;
+  width: 50%;
+}
+.shoes-product-title h4 {
+  width: 100%;
+  text-align: left;
+}
+.shoes-link .offer-box-hover {
+  top: 77px;
+  height: 60%;
+}
+.footer-right-inner h5:first-child {
+  padding-right: 66px;
+}
+.shoes-product-title > span {
+  text-align: left;
+}
+.banner-slider {
+  padding-left: 0;
+  padding-right: 0;
+}
+.banner-right .toyrus-img-inner {
+  margin-top: 14px;
+}
+.store-title-ic > p {
+  font-size: 11px;
+  line-height: 18px;
+  padding-top: 14px;
+}
+.store-title-ic p span {
+  font-size: 16px;
+  line-height: 24px;
+}
+.cupones {
+  margin-left: 2%;
+}
+.banner-right .toyrus-img-inner {
+  width: 35%;
+}
+.toyrus-img p {
+  font-size: 10px;
+  line-height: 23px;
+}
+.toyrus-img .expira-txt {
+  font-size: 11px;
+  line-height: 15px;
+}
+.ayuda_wrap_right .block1_ayuda .tbl .tbl-cell a {
+  width: auto;
+  height: auto;
+  padding: 16px 10px;
+}
+.brand-detail-banner {
+  padding-left: 0;
+  width: 100%;
+}
+.brand-sidebar {
+  padding-left: 0;
+  padding-right: 0;
+  width: 100%;
+  margin-top: 18px;
+}
+.cash-back-bottom, .cash-back-title {
+  width: 50%;
+}
+.cash-back-top {
+  border-right: 2px dotted #dddddd;
+  border-bottom: none;
+  margin-bottom: 0;
+  float: left;
+  width: 50%;
+}
+.brand-cupon-row .cons-cashback {
+  margin-left: 0;
+}
+.brand-destacard-block {
+  width: 50%;
+}
+.opinion-block {
+  padding: 0 38px;
+}
+.footer-right-inner h5:first-child {
+  padding-right: 66px;
+}
+category-page-listing .shoes-link {
+		width: 50%;
+}
+.category-sidebar {	
+	float: left;
+    padding-right: 0;
+    padding-top: 25px;
+    width: 100%;
+}
+.category-sidebar-right {
+    float: left;
+    width: 100%;
+}
+.category-banner-bottom-inner {
+	padding-left: 0;
+}
+.category-banner-bottom h1{
+	display: none;	
+}
+.category-sidebar {	
+	float: left;
+    padding-right: 0;
+    padding-top: 25px;
+    width: 100%;
+	display:none;
+}
+.category-rightbar-inner{
+	display: none;
+}
+.category-rightbar-bottom{
+	margin-top: 0px;
+}
+.main-category-post-promo{
+  display: inline-block;
+}
+.cupon-option-fr{
+	display: block;
+	float: right;
+	margin-right: 24px;
+}
+.cup-box{
+	display: none;
+}
+.cash-bck-3{
+	display: none;
+}
+.cash-bck-2{
+	display: inline-block;
+}
+.cupon-time{
+	margin-top: 10%;	
+}
+.cupon-time{
+	margin-top: 10px;
+}
+.cash-bck{
+	display: none;
+}
+.category-blog-main-left{
+	display: none;
+}
+.category-blog-main-right{
+	width: 100%;
+}
+.category-blog-main-right label{
+	float: none;
+	top: 64px;
+	position: relative;
+}
+.cupp-cut{
+	margin: 0 0 50px 0;
+}
+.blog-main-right-middle-right{
+	position: absolute;
+	left: 2%;
+	top: 40%;
+	float:none;
+	width:auto;
+}
+.promociones{
+	display: none;
+}
+.blog-main-right-middle-lft label{
+	display: none;
+}
+/*.chris-text{
+	left: 25%;
+}*/
+}
+
+
+/* Mobile */
+
+@media only screen and (min-width: 767px) {
+.panel {
+    display: none !important;
+}
+body {
+margin:0 !important;
+}
+html.mm-opening .mm-slideout {
+  transform: none !important;
+}
+.user_act_responsive {
+    display: none;
+  }
+}
+@media handheld, only screen and (max-width: 768px) {
+  .user_act.new_pg1 .my-data-title h3 {
+    display: block;
+    padding: 0 20px;
+    text-align: center;
+  }
+  .user_act.new_pg1 .my-data-loop .my-data-details .table {
+    display: block;
+    height: 100%;
+    padding: 0 20px;
+    text-align: left;
+    width: 100%;
+  }
+  .user_act.new_pg1 .my-data-loop .my-data-details .table label {
+    display: block;
+    padding-right: 0px;
+    text-align: center;
+    width: 100%;
+  }
+  .user_act.new_pg1 .my-data-loop .my-data-details {
+    margin: 0;
+  }
+  .user_act.new_pg1 .new_tbl_lay .table_new {
+    box-sizing: border-box;
+    padding: 0 20px;
+    width: 100%;
+  }
+/*  .como-reg-wrap span {
+    font-size: 16px;
+    line-height: 22px;
+    margin: 0 29px 0 0;
+  }
+  .como-reg-wrap h3 {
+    font-size: 29px;
+    line-height: 36px;
+  }*/
+  .como-reg-wrap a {
+    font-size: 12px;
+    height: 35px;
+    line-height: 23px;
+    padding: 6px 19px;
+  }
+}
+@media handheld, only screen and (max-width: 767px) {
+  .como_slider2 .owl-nav .owl-prev {
+    margin: -30px 0 0 10px;
+  }
+  .como_slider2 .owl-nav .owl-next {
+    margin: -30px 10px 0 0;
+  }
+  .como-shopping-listing ul li {
+    display: inline-block;
+    margin: 0 1% 10%;
+    padding: 1%;
+    width: 30%;
+  }
+  .como-shopping-listing1 ul li {
+    margin: 0 1% 30px;
+    width: 47%;
+  }
+  .my-data-list-name {
+  display: none;
+}
+  .user_act_responsive {
+    display: block;
+  }
+  .user_act_responsive .listing-user {
+    float: left;
+    text-align: center;
+    width: 100%;
+  }
+   .user_act_responsive .listing-user select {
+    border: 2px solid #ccc;
+    color: #666666;
+    font-family: "poppinsregular";
+    font-size: 13px;
+    height: 50px;
+    line-height: 50px;
+    width: 300px !important;
+  }
+    .new_registration_pg .reg_pg .reg_pg_form .reg_pg_form_wrapper .reg_form_1 .reg_form_1_frm1 .bdate-div1 #dob1 select {
+    float: initial;
+  }
+  .new_registration_pg .reg_pg .reg_pg_form .reg_pg_form_wrapper .reg_form_1 {
+    border-right: 0 none;
+    box-sizing: border-box;
+    float: left;
+    padding: 25px 20px;
+    width: 100%;
+  }
+  .my-data-loop .my-data-details.newsletterdata {
+    margin: 0 !important;
+    width: 100%;
+}
+  .new_lay_page .newsletter_unsubscription form div div .gender label {
+    margin-right: 20px;
+  }
+
+    .main-category-post-promo-left{
+        display: none;
+      }
+      .sub-top-tp{
+         display: inline-block;
+      }
+      .main-category-post-promo-right{
+        position: relative;
+        top: -16px;
+      }
+      .main-category-post-promo-right-1{
+        display: inline-block;
+        left: 241px;
+          position: relative;
+          top: 18px;
+      }
+    .comments-listing ul li {
+    padding: 0 0 20px 0;
+  }
+  .favourites .fav-listing ul li {
+    width: 48.5%;
+  }
+   .favourites .fav-listing ul li {
+    margin: 0 1.3% 15px 0;
+  } 
+  .comments-listing ul li .comments-data .comments-delete {
+    position: relative;
+    margin: 15px 0 0 0;
+    text-align: right;
+    width: 100% !important;
+  }
+  .favourites .fav-listing ul li:nth-child(even) {
+    margin-right: 0;
+  }
+  .user-activity1.comments .user_act{
+    display: block;
+  }
+  .user-activity1.comments .listing-user{
+    display: none;
+  }
+/*  .user-activity1.favourites .my-data-list-name {
+    display: block;
+  }*/
+  .user-activity1.favourites .listing-user {
+    display: none;
+  }
+  .user-activity1.favourites .user_act {
+    display: block;
+  }
+
+  .my-data-edit .my-data-pro-pic {
+    /*display: none;*/
+  }
+  .my-data-form {
+    margin-top: 20px;
+  }
+  .my-data-list-name {
+   /* display: block;*/
+    text-align: center;
+  }
+  .my-data .listing-user {
+    display: none;
+  }
+  .my-data-loop .my-data-pro-pic {
+    width: 100%;
+    margin: 15px 0 0 0;
+  }
+  .my-data-loop .my-data-details {
+    width: 100%;
+  }
+  .my-data-form {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .user-activity1 .user_act {
+    display: none;
+  }
+  .user-activity1 .user_act_responsive {
+    display: block;
+  }
+  .my-cashback-list-name {
+    display: block;
+    text-align: center;
+  }
+  .cashback-columns-1-3 {
+    border-bottom: 1px solid #cccccc;
+    display: block;
+    border-right: 0;
+    padding: 20px 11px;
+    width: 100%;
+  }
+  .user-activity1.my-cashback .user_act {
+    display: block;
+
+  }
+  .user-activity1.my-cashback .listing-user {
+    display: none;
+  }
+  .cashback-columns {
+    margin-top: 0
+  }
+
+  .contact_page .cntact_form .input_field .form_label, 
+  .contact_page .cntact_form .input_field .form_field {
+    display: block;
+    margin: 0 0 10px;
+}
+.contact_page .cntact_form .input_field .form_field input[type="text"], 
+.contact_page .cntact_form .input_field .form_field select, 
+.contact_page .cntact_form .input_field .form_field textarea {
+  width: 100%;
+}
+.contact_page .cntact_form .input_field .form_field input[type="submit"] {
+  margin: 0;
+}
+.ayuda_wrap_right .block1_ayuda .tbl .tbl-cell a {
+  width: 238px;
+  height: 50px;
+}
+body #hamburger {
+  display: block;
+}
+.head-navigation {
+  display: none;
+}
+.header {
+  padding-top: 62px;
+}
+.banner-slider {
+  width: 100%;
+}
+.banner-right {
+  padding-left: 0;
+  padding-right: 0;
+  margin-top: 25px;
+  width: 100%;
+}
+
+
+.offer-box .store-title-ic > p {
+  padding-top: 14px;
+}
+.footer-left, .footer-right {
+	width: 100%;
+	padding: 30px;
+}
+.shoes-link {
+  padding-right: 0;
+  width: 100%;
+  padding: 0;
+  margin-top: 20px;
+}
+.shoes-link:first-child {
+	margin-top: 0;
+} 
+.shoes-product-slide .shoes-link {
+  padding-right: 12px;
+  margin-top: 0;
+}
+.shoes-product-title {
+  min-height: 59px;
+}
+.shoes-img img {
+	width: 100%;
+}
+.offertas-main {
+  padding: 20px;
+}
+.big-gift-img {
+  padding: 0 20px;
+}
+.christmas-special-main .offer-box-main {
+  padding: 42px 0 30px;
+}
+.christmas-special-main .owl-theme .owl-controls {
+  width: 100%;
+  top: -64px;
+}
+.christmas-special-main .owl-theme .owl-nav div {
+  margin: 2px 0 0 !important;
+}
+.shoes-product-slide, .customer-review-slide {
+   padding: 42px 0 30px 13px;
+}
+.fr-title-listing h5 {
+  display: block;
+}
+.fr-title {
+  display: none;
+}
+.fr-title-bottom:before {
+	display: none;
+}
+.footer-right-inner h5 {
+  padding-bottom: 12px;
+  padding-right: 0;
+  padding-top: 12px;
+}
+.fr-title-bottom {
+ margin-top: 0;
+}
+.logo {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 15px;
+}
+.header-right {
+  width: 100%;
+}
+.head-input input[type="text"] {
+  width: auto;
+}
+.head-register > a {
+  float: left;	
+  margin-left: 3%;
+  margin-top: 0px;
+}
+.earn-box:after {
+  display: none;
+}
+.earn-box {
+  width: 100%;
+  margin-top: 17px;
+}
+.earn-box:first-child {
+	margin-top: 0;
+}
+.shoes-product-main {
+	margin-right: 0;
+}
+
+.tab-inner .offer-box-link:first-child {
+	margin-top: 0;
+}
+/*.expira-txt {
+  width: 100%;
+  text-align: center;
+}*/
+.store-title {
+  min-height: 71px;
+}
+.conditions-ic {
+  margin-top: 4px;
+}
+.sharing-txt {
+  text-align: center;
+}
+.footer ul li a {
+  font-size: 13px;
+}
+.tab-inner .offer-box-link:first-child {
+  margin-top: 0;
+}
+.tab-inner .offer-box-link {
+  padding: 0;
+  width: 100%;
+}
+.tab-inner .offer-box-link {
+  margin-top: 20px;
+}
+.tab-inner {
+  padding: 20px;
+}
+.offer-box-hover {
+  height: 90%;
+}
+.offer-box-hover p, .offer-box-hover li {
+  font-size: 12px;
+  line-height: 13px;
+}
+.shoes-link .offer-box-hover {
+  top: 59px;
+}
+.store-title-ic {
+  min-height: 128px;
+}
+.store-title h4 {
+  text-align: left;
+  width: 100%;
+}
+.destacard-tabing .store-title h4 {
+  text-align: left;
+  width: 100%;
+}
+.cupones {
+  margin-left: 34%;
+}
+.euro-price > img {
+  margin-right: -13px;
+}
+.footer-right {
+  border-left: none;
+}
+.christmas-special-main.owl-banner2-slide {
+	margin-top: 8px;
+}
+.christmas-special-main .owl-theme .owl-nav .owl-prev, .slider-for-tabbing .owl-theme .owl-nav .owl-prev {
+  background: url("../../../../../bundles/iflairletsbonusfront/images/next-arrow-respo.png") no-repeat scroll center center;
+  width: 12px;
+  height: 16px;
+}
+.christmas-special-main .owl-theme .owl-nav .owl-next, .slider-for-tabbing .owl-theme .owl-nav .owl-next {
+  background: url("../../../../../bundles/iflairletsbonusfront/images/previous-arrow-respo.png") no-repeat scroll center center;
+  width: 12px;
+  height: 16px;
+}
+
+.christmas-special-main {
+  margin-bottom: 20px;
+  border: none;
+}
+.christmas-special-main .owl-theme .owl-controls {
+  float: none;
+  margin: 0 auto;
+  max-width: 138px;
+  text-align: center;
+  top: -33px;
+  width: 100%;
+}
+.owl-theme .owl-dots .owl-dot span {
+  background: #cccccc;
+  border-radius: 100%;
+  display: block;
+  height: 10px;
+  width: 10px;
+}
+body .slider-for-tabbing .owl-theme .owl-controls {
+	max-width: 138px;
+}
+.desta-tab-slide {
+	margin-top: 10px;
+}
+.desta-tab-slide .offer-box {
+	margin-bottom: 10px;
+}
+.slider-for-tabbing .owl-theme .owl-controls {
+  float: none;
+  margin: 0 auto;  
+  text-align: center;
+  top: 21px;
+  width: 100%;
+}
+.banner-right .toyrus-img-inner {
+  width: auto;
+}
+.customer-review {
+  margin-top: 0;
+}
+.chris-text:before {
+	width: 100%;
+}
+.chris-text:after {
+  display: none;
+} 
+.chris-text span {
+  margin-top: -5px;
+}
+.brand-opinion-main {
+  border: none;
+}
+.chris-text {
+  left: 0;
+  margin-left: 0;
+  padding: 0;
+  position: relative;
+  right: 0;
+  width: 100%;
+}
+.tab-inner .offer-box-link {
+  margin-bottom: 0;
+  min-height: 0;
+  margin-top: 0;
+}
+.banner-slider .owl-carousel .owl-item {
+  height: auto;
+}
+.popup-maxrow {
+  padding: 20px;
+  margin: 0 20px;
+}
+.regi-maxrow-inner {
+  margin-right: 0;
+  float: left;
+  width: 100%;
+}
+.registration-form .popup-maxrow-inner {
+  padding-right: 0;
+  width: 100%;
+}
+.social_button a {
+  margin-bottom: 10px;
+}
+.slider-for-tabbing {
+  display: block;
+}
+.destacard-tabing {
+  display: none;
+}
+.slider-for-tabbing .chris-text {
+  left: 0;
+  margin-left: 0;
+  padding: 0;
+  position: relative;
+  right: 0;
+  width: 100%;
+}
+.slider-for-tabbing .chris-text:before {
+  width: 100%;
+}
+.slider-for-tabbing .chris-text:after {
+  content: none;
+}
+.slider-for-tabbing .chris-text span {
+  margin-top: -14px;
+}
+.slider-for-tabbing .owl-carousel .owl-item img {
+  width: auto;
+}
+.slider-for-tabbing .owl-carousel .owl-item .store-img img {
+  /*width: 100%;*/
+  width: auto;
+}
+.slider-for-tabbing .owl-theme .owl-controls {
+  float: none;
+  margin: 0 auto;
+  max-width: 138px;
+  text-align: center;
+  top: 21px;
+  width: 100%;
+}
+.slider-for-tabbing .owl-dots {
+  display: block !important;
+}
+.owl-dots {
+  display: block !important;
+}
+.cupon-row-block-image {
+  padding-right: 0;
+  text-align: center;
+  width: 100%;
+}
+.cupon-row-block-right {
+  float: left;
+  padding-right: 0;
+  width: 100%;
+  padding-top: 20px;
+}
+.cupon-row-block-right .cup-des-right {
+  margin-bottom: 22px;
+  margin-top: 11px;
+}
+.cons-cashback {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.product-brand-destacard {
+  border: none;
+  margin-top: 10px;
+}
+.brand-destacard-block-inner {
+  float: none;
+  margin-right: -18px;
+  margin-top: 27px;
+  padding-left: 0;
+  padding-right: 0;
+  width: auto;
+}
+.brand-destacard-block .shoes-img {
+  min-height: 321px;
+}
+.brand-cupon-discount, .brand-destacard-block-inner {
+  border: medium none;
+  padding-top: 0;
+  margin-top: 0;
+}
+.brand-cupon-row-block:first-child {
+  border-left: none;
+  padding-left: 0;
+  border-top: none;
+}
+.brand-cupon-row-block {
+  padding-left: 0;
+  margin-top: 0;
+  padding-right: 0;
+  float: left;
+  border-left: none;
+  border-top: 2px dotted #dddddd;
+  width: 100%;
+}
+.brand-cupon-row-block .cup-des, .cup-des-right {
+  width: 100%;
+}
+.brand-cupon-row-block .brand-cupon-title p {
+  padding-top: 16px;
+}
+.brand-cupon-row-block .cup-des {
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+.brand-cupon-row .cons-cashback {
+  margin-top: 23px;
+}
+.brand-cupon-title-desc {
+  min-height: 0;
+}
+.opinion-star {
+  margin-bottom: 10px;
+  margin-top: 35px;
+  padding-right: 0;
+  text-align: right;
+}
+.opinion-block {
+  padding: 0;
+}
+.opinion-block-left {
+  float: left;
+  width: 100%;
+}
+.opinion-block-right {
+  float: left;
+  padding-top: 14px;
+  width: 100%;
+}
+.fr-title-bottom {
+ margin-top: 0;
+}
+.up-none {
+  display: block;
+}
+.up-block {
+  display: none;
+}
+.header-right .social-login {
+	float: left;
+	margin-left: 3%;
+	margin-top: 0px;
+}
+.head-register .social-register {
+	display: none;
+}
+.blog-main-right-middle-lft{
+	width: 100%;
+}
+.cupon-list-box{
+	width: 100%;
+}
+.cupon-list-box ul{
+	width: 95%;
+}
+.christmas-special-main-mobile > .chris-text, .christmas-special-main-mobile .shoes-product-main {
+  display: none;
+}
+.ayuda_left {
+  width: 100%;
+  margin: 0 0 20px 0;
+}
+.ayuda_right {
+  width: 100%;
+  margin: 0 0 20px 0;  
+}
+.ayuda_left .acc_ayudu1 .ui-accordion-content p {
+  float: left;
+  width: 100%;
+}
+.ayuda_wrap_right .block1_ayuda .tbl .tbl-cell a {
+  width: 238px;
+  height: 50px;
+}
+.contact_page .cntact_form .input_field .form_label, 
+.contact_page .cntact_form .input_field .form_field {
+	display: block;
+    margin: 0 0 10px;
+}
+.contact_page .cntact_form .input_field .form_field input[type="text"], 
+.contact_page .cntact_form .input_field .form_field select, 
+.contact_page .cntact_form .input_field .form_field textarea {
+	width: 100%;
+}
+.contact_page .cntact_form .input_field .form_field input[type="submit"] {
+	margin: 0;
+}
+.category-page-listing .shoes-link {
+    padding-right: 0;
+  width: 100%;
+  padding: 0;
+  margin-top: 20px;
+}
+.category-page-listing.christmas-special-main {
+    margin-bottom: 0;
+}
+.category-page-listing.christmas-special-main {
+    border: medium none;
+}
+.category-rightbar-block-image > img {
+  width: 100%;
+}
+.category-rightbar-block {
+  margin: 0 0 10px;
+  padding-right: 0;
+  width: 100%;
+}
+.brand-marcas-icon {
+  border: none;
+}
+.brand-marcas {
+  border-bottom: 2px dotted #dddddd;
+  border-left: 2px dotted #dddddd;
+  padding-bottom: 29px;
+  padding-top: 20px;
+  vertical-align: middle;
+  width: 50%;
+}
+.brand-marcas:nth-child(3) {
+  border-left: none;
+}
+.brand-marcas-icon {
+  margin-bottom: 90px;
+}
+.store-title-ic > p span {
+  display: inline-block;
+}
+.fp_form_wrapper {
+  width: 96%;
+}
+}
+
+@media handheld, only screen and (max-width: 650px) {
+	.brand-cupon-row .cons-cashback{
+		margin-top: 35px;
+	}
+	.cupon-time{
+		width: 25%;
+	}	
+  .main-img-slider{
+    display: inline-block;
+    padding:0 15px;
+  }
+  .main-img-slider .owl-dots {
+    display: none !important;
+  }
+  .main-img-slider .owl-nav .owl-prev {
+  background-image: url("../../../../../bundles/iflairletsbonusfront/images/left.png");
+  background-repeat: no-repeat;
+  display: inline-block !important;
+  height: 35px;
+  left: -20px;
+  position: absolute;
+  text-indent: -9999px;
+  top: auto;
+  width: 20px;
+}
+  .main-img-slider .owl-nav .owl-next {
+  background: rgba(0, 0, 0, 0) url("../../../../../bundles/iflairletsbonusfront/images/right.png") no-repeat scroll 0 0;
+  display: block !important;
+  height: 35px;
+  left: auto;
+  position: absolute;
+  right: -20px;
+  text-indent: -9999px;
+  top: 50%;
+  width: 20px;
+  z-index: 99999;
+}
+.main-img-slider .owl-nav {
+    position: relative;
+    top: 50%;
+}
+.main-img-slider .owl-controls {
+   position: absolute;
+    top: 50%;
+    width: 100%;
+}
+  .category-rightbar-bottom-title{
+    margin: 28px 0 0;
+  }
+  
+  
+}
+
+@media handheld, only screen and (max-width: 640px) {
+  .popup-maxrow.popup_wrapper_login {
+    left: 0;
+    position: relative;
+    right: 0;
+    top: 70px;
+  }
+  .logo {
+    padding-left: 0;
+  }
+  .header-right {
+    width: 100%;
+}
+.head-register {
+    text-align: center;
+    width: 100%;
+}
+.header-right .social-login {
+  width: 100%;
+}
+.header-right .social-login {
+  display: inline-block;
+}
+  .dialog-box{
+    bottom: 0;
+    height: 100% !important;
+    left: 0 !important;
+    margin-left: 0 !important;
+    margin-top: 0 !important;
+    right: 0;
+    top: 0 !important;
+    width: 100% !important;
+  }
+  .no_scroll.html {
+    overflow-y: hidden;
+  }
+  #dialog .my-data-form .my-data-details input[type="submit"] {
+    margin-top: 80px;
+  }
+  #dialog .my-data-form .my-data-details .table label {
+    display: block;
+    width: 100%;
+  }
+  #dialog .my-data-form .my-data-details .new-div-accept p {
+    white-space: normal;
+  }
+.page_404 {
+    top: 1px;
+}
+.page_404 .page_404_text h1 {
+  font-size: 21px;
+  line-height: 30px;
+}
+.page_404 .page_404_text h2 {
+  font-size: 21px;
+  line-height: 30px;
+}
+.page_404 .page_404_text p {
+  font-size: 14px;
+  line-height: 19px;
+}
+.page_404 .page_404_text a {
+  font-size: 12px;
+  height: auto;
+  line-height: 39px;
+  margin-top: 20px;
+  padding: 0 20px;
+  width: auto;
+}
+.popup-maxrow form.login-form {
+    width: 100%;
+}
+.popup-maxrow #registration-dropdown {
+    width: 100%;
+}
+  .store-title-ic {
+  min-height: 0;
+}
+.offertas-main {
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+.offertas-block {
+  float: left;
+  margin-top: 21px;
+  padding-right: 0;
+  width: 100%;
+}
+.offertas-block-bottom p:before {
+  width: 200px;
+}
+.christmas-gift-img {
+  padding-left: 0;
+}
+.christmas-gift-img-inner {
+  padding: 0;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.big-gift-img {
+  padding: 0;
+  margin-bottom: 0;
+  margin-top: 18px;
+}
+.brand-destacard-block .shoes-img {
+  min-height: 275px;
+}
+
+}
+
+@media handheld, only screen and (max-width: 639px) {
+  .como_shopping_icons ,
+  .como_functions_page1{
+    padding-top: 45px;
+  }
+.offer-box-link {
+	width: 100%;
+	padding: 0;
+}
+.offer-box-hover {
+  top: 51px;
+}
+.destacard-tabing .offer-box-hover {
+  top: 54px;
+}
+.tab-inner {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+#tab-nav li a {
+	font-size: 10px;
+}
+.christmas-special-main .offer-box-link {
+  padding-right: 12px;
+}
+.fr-title-listing {
+  width: 100%;
+}
+.social-ic {
+  margin-top: 3px;
+}
+.shoes-product-main {
+  float: left;
+  margin-right: 0;
+  padding: 30px;
+  width: auto;
+}
+.tab-inner .offer-box-link  {
+  margin-top: 20px;
+}
+.store-title {
+  min-height: 40px;
+}
+.destacard-tabing .store-title {
+  min-height: 53px;
+}
+.store-title h4 {
+  min-height: 0;
+}
+.head-input button[type="submit"] {
+  margin-left: -2px;
+}
+.respo-block {
+  margin: 8px auto;
+  max-width: 143px;
+  display: none;
+  text-align: center;
+  width: 100%;
+}
+body #hamburger{
+	width:55px;
+	top:10px;
+}
+.logo {
+  /*display: none;*/
+  position: absolute;
+  z-index: 9999;
+  top: 0;
+}
+.join-entra-ic {
+  float: right;
+  max-width: 28px;
+  position: absolute;
+  right: 14px;
+  display: block;
+  top: 5px;
+}
+.head-register {
+  display: none;
+}
+.header {
+  padding-bottom: 0;
+}
+.header-right {
+  padding-top: 6%;
+}
+.earn-box p {
+  padding-left: 0;
+  padding-right: 0;
+}
+.store-title-ic {
+  min-height: 0;
+}
+#owl-banner2 .offer-box .store-title-ic > p {
+  padding-top: 14px;
+}
+.head-input {
+  width: 100%;
+}
+.head-register > ul {
+  display: none;
+}
+.head-input input[type="text"] {
+  width: 84.5%;
+}
+
+.head-input button[type="submit"] {
+  width: 14.5%;
+}
+.cupones {
+  margin-left: 14%;
+}
+.banner-fav {
+  display: inline-block;
+  float: left;
+  vertical-align: middle;
+  width: 15%;
+}
+.brand-banner-bottom span {
+  display: none;
+}
+.banner-social {
+  padding-left: 0;
+  width: 82%;
+}
+.banner-social ul {
+  padding-left: 0;
+  width: 100%;
+}
+.banner-social li {
+  padding-left: 0;
+  width: 21%;
+}
+.opinion-star {
+  margin-bottom: 31px;
+  margin-top: 12px;
+  padding-right: 0;
+}
+.footer-right {
+  padding-top: 0;
+}
+.fr-title-listing:first-child {
+  margin-top: 0;
+}
+.fr-title-listing {
+  margin-top: 27px;
+}
+.footer-right-inner h5:first-child {
+  padding-right: 0;
+}
+.footer-right-inner h5 {
+  background: url("../../../../../bundles/iflairletsbonusfront/images/respo-foot-bor.png") no-repeat scroll left bottom;
+  margin-bottom: 13px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.social-ic {
+  margin-top: 41px;
+}
+.paypal-ic {
+  padding: 0 10px;
+}
+.join-entra-ic{
+	display:none;
+}
+.user-icon{
+	 display:inline;
+	 float: right;
+	 padding:5px 20px 0 0;
+}
+.mm-opened body #hamburger{
+	width:100%;
+}
+.respo-desktop{
+	display:none;
+}
+.respo-mobile{
+	display:inline-block;
+	width:140px;
+	height:auto;	
+}
+.como-reg-wrap span {
+  margin: 0;
+}
+.como-reg-wrap a {
+  float: none;
+  line-height: 23px;
+  margin: 20px 0 0;
+}
+.como-reg-wrap h3 {
+  font-size: 22px;
+  line-height: 26px;
+}
+.como-reg-wrap span {
+  font-size: 22px;
+  line-height: 26px;
+}
+#como_functions .item, #como_functions_single .item,
+#como_slider2 .item, #como_slider2_single .item {
+  height: 190px;
+  background-position: -120px center !important;
+}
+.user_act.new_pg1 .new_tbl_lay .table_new input[type="text"] ,
+.user_act.new_pg1 .new_tbl_lay .table_new input[type="submit"] {
+  width: 100%;
+}
+}
+@media handheld, only screen and (max-width: 480px) {
+  .como_slider2 .owl-nav .owl-prev {
+    background-size: 18px auto;
+    background-position: left center;
+  }
+  .como_slider2 .owl-nav .owl-next {
+     background-size: 18px auto;
+    background-position: right center;
+  }
+  .como-shopping-listing ul li {
+    display: inline-block;
+    margin: 0 1% 10%;
+    padding: 1%;
+    width: 30%;
+  }
+  .como-shopping-listing1 ul li {
+    margin: 0 2% 10%;
+    width: 23%;
+  }
+.comments-listing ul li .comments-img {
+  float: left;
+  margin: 0 1% 0 0;
+  width: 100px;
+}
+  .comments-listing ul li .comments-data {
+    float: left;
+    position: relative;
+    width: 63%;
+}
+.cupones {
+  margin-left: 9px;
+}
+.chris-text {
+  left: 50%;
+  margin-left: -181px;
+  margin-top: 0;
+  position: absolute;
+  top: -3px;
+  width: auto;
+}
+}
+@media handheld, only screen and (max-width: 479px)  {
+.head-register, .head-input {
+  float: none;
+  margin: 0 auto;
+  max-width: 259px;
+  text-align: center;
+  width: 100%;
+}
+.head-register > a {
+  margin-left: 0;
+  margin-top: 0;
+  float: none;
+  margin-bottom: 15px;
+  text-align: center;
+  width: 100%;
+}
+.offertas-main {
+  margin-right: 0;
+}
+.offertas-block {
+  float: left;
+  padding-right: 0;
+  width: 100%;
+}
+.offertas-block-bottom > p {
+  margin-bottom: 11px;
+}
+#tab-nav li a {
+  font-size: 7px;
+  padding-left: 0;
+  padding-right: 0;
+}
+.earn-cashback {
+  padding-bottom: 30px;
+}
+.christmas-gift-img-inner {
+  width: 100%;
+  margin-bottom: 15px;
+}
+.head-input input[type="text"] {
+  width: 80.5%;
+  float: left;
+}
+
+.shoes-link .offer-box-hover {
+  height: 75%;
+}
+.chris-text {
+  font-size: 14px;
+  line-height: 16px;
+  margin: 0 auto;
+}
+
+.chris-text  {
+  width: 100%;
+  position: relative;
+  left: 0;
+}
+.chris-text:after {
+	display: none;
+}
+.chris-text:after, .chris-text:before {
+  margin-top: 0;
+}
+.chris-text span {
+  display: inline-block;
+  margin-top: -18px;
+  vertical-align: middle;
+}
+.head-input button[type="submit"] {
+  padding: 10px 18px 10px 18px;
+  margin-left: -4px;
+  width: 20%;
+  -webkit-appearance: none !important;
+}
+.head-register, .head-input {
+  max-width: 100%;
+}
+.offer-box-hover {
+  padding-top: 14px;
+}
+.christmas-special-main .offer-box-main {
+  padding: 30px 0px;
+}
+.slider-for-tabbing .chris-text:before {
+  content: "";
+}
+.shoes-product-slide, .customer-review-slide {
+  padding-left: 0;
+  padding-right: 0;
+}
+.customer-review-slide {
+  background: #fff;
+}
+.breadcrumb {
+  display: none;
+}
+.brand-detail-content {
+  margin-top: 17px;
+}
+.cash-back-top, .cash-back-bottom {
+  padding: 8px 6px 13px;
+  width: 100%;
+}
+.tripple-price-text {
+  padding-left: 9px;
+}
+.tripple-price-text h1 {
+  font-size: 13px;
+  line-height: 26px;
+}
+.tripple-price-text span {
+  font-size: 9px;
+  line-height: 12px;
+}
+.cash-back-top, .cash-back-bottom {
+  padding: 8px 6px 13px;
+  width: 100%;
+}
+.brand-destacard-block .shoes-img {
+  min-height: 146px;
+}
+.desta-title-price .cup-des-right b {
+  font-size: 14px;
+}
+.dest-btm-price {
+  font-size: 15px;
+  line-height: 23px;
+}
+.container.footer {
+  padding-left: 0;
+  padding-right: 0;
+}
+.paypal-ic {
+  margin: 21px 0 18px;
+}
+.my-data-loop .my-data-details .table label {
+  width: 134px;
+}
+.forget_password_page input[type="submit"] {
+    margin-left: 28%;
+  }
+}
+
+@media handheld, only screen and (max-width: 359px) {
+.head-input input[type="text"] {
+  float: left;
+  width: 78.6%;
+}
+.chris-text span {
+  margin-top: -14px;
+}
+.head-input button[type="submit"] {
+  width: 21.4%;
+}
+}
+
+@media handheld, only screen and (max-width: 360px) {
+	.cup-text p{
+		line-height: 22px;
+	}
+	.category-blog-main-right{
+		padding: 13px 0 0 8px;
+	}
+	.cupon-time{
+		width:100%;
+	}
+	.brand-cupon-row .cons-cashback{
+		margin: 35px 0 0 10%;
+	}
+	.desta-title-price-right > img{
+		 margin-right: -9px;
+	}
+	.banner-social{
+		width: 45%;
+	}
+	.banner-fav{
+		width: 118px;
+	}
+	.brand-banner-bottom span{
+		display: inline-block;
+	}
+	.banner-social{
+		width: 54%;
+	}
+	.banner-social ul{
+		width: 59%;
+		float:right;
+	}
+  .main-category-post-promo-left{
+    display: inline-block;
+    left: 171px;
+    position: relative;
+    top: 125px;
+  }
+  .sub-top-tp span{
+    position: relative;
+    top: -23px;
+  }
+  .main-category-post-promo-right{
+    position: relative;
+    top: -41px;
+  }
+  .chech-box-2{
+    position: relative;
+    top: -42px;
+  }
+  .main-category-post-promo-left{
+    top: 80px;
+    left: 130px;
+  }
+  .main-category-post-promo-bottom{
+     margin-top: 0px;
+  }
+  .main-category-post-promo-left{
+    left: 0;
+    right: 0;
+    text-align: right;
+    width: 100%;
+  }
+  .forget_password_page input[type="submit"] {
+    margin-left: 12%;
+  }
+}
+
+@media handheld, only screen and (max-width: 320px) {
+	.brand-cupon-row .cons-cashback{
+		margin: 35px 0 0 5%;
+	}
+	.desta-title-price-right > img{
+		 margin-right: -9px;
+	}
+}
+
+
+/*---------------Start Media For Retina ----------------*/
+@media 
+(-webkit-min-device-pixel-ratio: 2), 
+(min-resolution: 192dpi) { 
+
+
+}
+
+/*--------------- Greater than ie10 -----------------*/
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+	
+} 
+
+@media not all and (-webkit-min-device-pixel-ratio:0) {  
+  .head-input button[type="submit"] {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.toyrus-img {
+  margin-bottom: 8px;
+}
+/*    .chris-text {
+  margin-top: -7px;
+}*/
+}
+
+ @media screen and (-webkit-min-device-pixel-ratio:0) { 
+/*    .chris-text {
+  margin-top: -15px;
+}*/
+.head-input button[type="submit"] {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.toyrus-img {
+  margin-bottom: 8px;
+}
+} 
+
+/* category list page offer checkbox*/
+@media handheld, only screen and (max-width: 430px) {
+  .chech-box-2{
+    display: inline-block;
+    width: 100%;
+  }
+  .main-category-post-promo-right-1{
+    top: 74px;
+  }
+  .main-category-post-promo-bottom{
+    margin-top: 48px;
+  }
+}
+/* End category list page offer checkbox*/

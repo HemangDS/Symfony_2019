@@ -1,0 +1,347 @@
+<div class="container user-activity1 my-data my-data-edit">
+  <div class="row">
+    <div class="user_act">
+      <div class="my-data-list-name">
+        <h4>Mis datos</h4>
+      </div>
+        <div class="my-data-form">
+          {% if target_section == "user-data-edit" %}
+            <form class="registration-form" method="post" id="user-data-edit-form" action="{{absolute_url(path('i_flair_lets_bonus_front_user_data_update')) }}">
+              <input type="hidden" id="x" name="x" />
+              <input type="hidden" id="y" name="y" />
+              <input type="hidden" id="w" name="w" />
+              <input type="hidden" id="h" name="h" />
+              <div class="my-data-loop">
+                <div class="my-data-title">
+                  <h3>Datos personales:</h3> <a href="javascript:void(0);" id="user-data-edit" class="user-edit">(Editar)</a>
+                </div>
+                <div class="my-data-details">
+                  <div class="table">
+                    <label>Nombre:</label>
+                    {{ form_widget(form.name,{ 'id': 'username','attr':{'placeholder':'Username','maxlength': 60}}) }}
+                  </div>
+                  <div class="table">
+                    <label>Apellidos:</label>
+                    {{ form_widget(form.surname,{ 'id': 'surname','attr':{'placeholder':'Surname','maxlength': 60}}) }}
+                  </div>
+                  <div class="table">
+                    <label>Alias:</label>
+                    {{ form_widget(form.alias,{ 'id': 'alias','attr':{'placeholder':'Alias','maxlength': 60}}) }}
+                  </div>
+                  <div class="table">
+                    <label>Email:</label>
+                    {{ form_widget(form.email,{ 'id': 'email','attr':{'placeholder':'Email','maxlength': 60 }}) }}
+                  </div>
+                    <span id="edit_email_result"></span><br/>
+                  <span class="passwd-chng-lbl">
+                    <label>Change Password ?</label>
+                    <input type="checkbox" id="toggle-password-manage" />
+                  </span>
+                  <br />
+                  <div id="password-manage-section" style="display:none">
+                    <br/>
+                    <div class="table">
+                      <label>Contraseña:</label>
+                      <input type="password" placeholder="Contraseña" class="form-control" name="form[password][first]" id="edit-password" maxlength="60">
+                    </div>
+
+                    <div class="table">
+                      <label>Repetir Contraseña</label>
+                      <input type="password" placeholder="Repetir Contraseña" class="form-control" name="form[password][second]" id="edit-re-password" maxlength="60">
+                    </div>
+                    
+                    <br/>
+                    <div>
+                      <span style="color:red;" id="result"></span>
+                    </div>
+                  </div>
+
+                  <div>
+                    <span id="edit_result"></span>
+                  </div>
+                  <br/>
+                  <div class="table">
+                    <label>Género:</label>
+                    {{ form_widget(form.userGender,{ 'id': 'gender'}) }}
+                  </div>
+                  <div class="table">
+                    <label>Fecha de nacimiento:</label>
+                    {{ form_widget(form.userBirthDate,{ 'id': 'dob', 'attr':{'placeholder':'Birthdate'}}) }}
+                  </div>
+                  <div class="table">
+                    <label>Ciudad:</label>
+                    {{ form_widget(form.city,{ 'id': 'city', 'attr':{'placeholder':'City','maxlength': 60 }}) }}
+                  </div>
+                  <div class="table">
+                    <label></label>
+                    <a href="javascript:void(0);" id="cancel-edit">Cancelar</a>
+                    <input type="submit" value="Guardar cambios" name="update_user" id="user_edit_submit">
+                  </div>
+                </div>
+                <div class="my-data-pro-pic">
+                  <a id="edit-image" href="javascript:void(0);">
+                    {% if image_path is not empty %}
+                      <img id="user-image" src="{{ absolute_url( image_path ) }}" />
+                    {% else %}
+                      <img id="user-image" src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/chico_alta.png'))}}" />
+                    {% endif %}
+                    <div id="photo_container"></div>
+                  </a>
+                  <input type="file" id="profile_image" name="profile_image" style="display:none;" />
+                </div>
+              </div>
+            </form>
+          {% else %}
+            {% if userData is defined %}
+              {% if userData is not empty %}
+                  <div class="my-data-loop" id="user-data-form">
+                    <div class="my-data-title">
+                      <h3>Datos personales:</h3> <a href="javascript:void(0);" id="user-data-edit" class="user-edit">(Editar)</a>
+                    </div>
+                    <div class="my-data-details">
+                      <div class="table">
+                        <label>Nombre:</label>
+                        <span>{{ userData.name }}</span>
+                      </div>
+                      <div class="table">
+                        <label>Apellidos:</label>
+                        <span>{{ userData.surname }}</span>
+                      </div>
+                      <div class="table">
+                        <label>Alias:</label>
+                        <span>{{ userData.alias }}</span>
+                      </div>
+                      <div class="table">
+                        <label>Email:</label>
+                        <span>{{ userData.email }}</span>
+                      </div>
+                      <div class="table">
+                        <label>Contraseña:</label>
+                        <span>**********</span>
+                      </div>
+                      <div class="table">
+                        <label>Género:</label>
+                        <span>{% if userData.userGender == 0 %}Masculino{% else %}Femenino{% endif %}</span>
+                      </div>
+                      <div class="table">
+                        <label>Fecha de nacimiento:</label>
+                        <span>{{ userData.userBirthDate |date("d / m / Y") }}</span>
+                      </div>
+                      <div class="table">
+                        <label>Ciudad:</label>
+                        <span>{{ userData.city }}</span>
+                      </div>
+                    </div>
+                    <div class="my-data-pro-pic">
+                      <a href="javascript:void(0);">
+                        <img id="user-image" src="{{ absolute_url( image_path )}}" />
+                      </a>
+                    </div>
+                  </div>
+              {% endif %}
+            {% endif %}
+          {% endif %}
+
+          {% if target_section == "user-payment-edit" %}
+            <form class="registration-form" novalidate="novalidate" method="post" id="user-payment-edit-form" action="{{absolute_url(path('i_flair_lets_bonus_front_user_payment_update')) }}">
+              <div class="my-data-loop">
+                <div class="my-data-title">
+                  <h3>Información de pago</h3> <a href="javascript:void(0);" id="user-payment-edit" class="user-edit">(Editar)</a>
+                </div>
+                <div class="my-data-details">
+                  <div class="table">
+                    <label>Número de cuenta:</label>
+                     {{ form_widget(user_payment.accountnumber,{ 'id': 'accountnumber', 'attr':{'placeholder':'Account Number','maxlength': 20}}) }}
+                  </div>
+                  <div class="table">
+                    <label>SWIFT code / BIC:</label>
+                     {{ form_widget(user_payment.swiftcodebic,{ 'id': 'swiftcodebic', 'attr':{'placeholder':'SWIFT Code / BIC','maxlength': 20}}) }}
+                  </div>
+                  <div class="table">
+                    <label>Nombre del titular:</label>
+                     {{ form_widget(user_payment.ownername,{ 'id': 'ownername', 'attr':{'placeholder':'Owner Name','maxlength': 20}}) }}
+                  </div>
+                  <div class="table">
+                    <label></label>
+                    <a href="javascript:void(0);" id="cancel-edit">Cancelar</a>
+                    <input type="submit" value="Guardar cambios">
+                  </div>
+                </div>
+              </div>
+            </form>
+          {% else %}
+            <div class="my-data-loop" id="user-payment-form">
+              <div class="my-data-title">
+                <h3>Información de pago</h3> <a href="javascript:void(0);" id="user-payment-edit" class="user-edit">(Editar)</a>
+              </div>
+              {% if userPaymentData is not empty %}
+                <div class="my-data-details">
+                  <div class="table">
+                    <label>Número de cuenta:</label>
+                    <span>{{ userPaymentData.accountnumber }}</span>
+                  </div>
+                  <div class="table">
+                    <label>SWIFT code / BIC:</label>
+                    <span>{{ userPaymentData.swiftcodebic }}</span>
+                  </div>
+                  <div class="table">
+                    <label>Nombre del titular:</label>
+                    <span>{{ userPaymentData.ownername }}</span>
+                  </div>
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+
+          {% if target_section == "user-insurance-edit" %}
+            <form class="registration-form" method="post" id="user-insurance-edit-form" action="{{absolute_url(path('i_flair_lets_bonus_front_user_insurance_update')) }}">
+              <div class="my-data-loop new1">
+                <div class="my-data-title">
+                  <h3>Renovaciones de seguros y telefonía</h3> <a href="javascript:void(0);" id="user-insurance-edit" class="user-edit">(Editar)</a>
+                </div>
+                <div class="my-data-details">
+                  <div class="table">
+                    <label>Seguro de coche:</label>
+                     <select>
+                      <option>No disponible</option>
+                    </select>
+                  </div>
+                  <div class="table">
+                    <label>Seguro de Hogar:</label>
+                     <select>
+                      <option>Diciembre</option>
+                    </select>
+                    <label class="togg">Anadir</label>
+                  </div>
+                  <div class="table">
+                    <label>Contracto de telefonía:</label>
+                    <select>
+                      <option>Marzo</option>
+                    </select>
+                  </div>
+                  <div class="table">
+                    <label></label>
+                    <select>
+                      <option>Febrero</option>
+                    </select>
+                    <label class="togg">Anadir</label>
+                  </div>
+                  <div class="table">
+                    <label></label>
+                    <a href="javascript:void(0);" id="cancel-edit">Cancelar</a>
+                    <input type="submit" value="Guardar cambios">
+                  </div>
+                </div>
+              </div>
+            </form>
+          {% else %}
+            {#<div class="my-data-loop" id="user-insurance-form">
+              <div class="my-data-title">
+                <h3>Renovaciones de seguros y telefonía</h3> <a href="javascript:void(0);" id="user-insurance-edit" class="user-edit">(Editar)</a>
+              </div>
+              <div class="my-data-details">
+                <div class="table">
+                  <label>Seguro de coche:</label>
+                  <span>No disponible </span>
+                </div>
+                <div class="table">
+                  <label>Seguro de Hogar:</label>
+                  <span>Diciembre</span>
+                </div>
+                <div class="table">
+                  <label>Contracto de telefonía:</label>
+                  <span>Marzo <br/>Febrero</span>
+                </div>
+              </div>
+            </div>#}
+          {% endif %}
+
+          {% if target_section == "user-newsletter-edit" %}
+            <form class="registration-form" method="post" id="user-newsletter-edit-form" action="{{absolute_url(path('i_flair_lets_bonus_front_user_subscription_update')) }}">
+              <div class="my-data-loop">
+                <div class="my-data-title">
+                  <h3>Comunicaciones</h3> <a href="javascript:void(0);" id="user-newsletter-edit" class="user-edit">(Editar)</a>
+                </div>
+                <div class="my-data-details newsletterdata">
+                  <div class="table new_design_2">
+                    <label>Newsletter:</label>
+                    {% for sform in nw_subscription %}                  
+                      {{ form_widget(sform) }}
+                    {% endfor %}
+                  </div>
+                  <div class="table">
+                    <label></label>
+                    <a href="javascript:void(0);" id="cancel-edit">Cancelar</a>
+                    <div class="new_input_desing"><input type="submit" value="Guardar cambios"></div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          {% else %}
+            <div class="my-data-loop" id="user-newsletter-form">
+                <div class="my-data-title">
+                  <h3>Comunicaciones</h3> <a href="javascript:void(0);" id="user-newsletter-edit" class="user-edit">(Editar)</a>
+                </div>
+                <div class="my-data-details">
+                  <div class="table">
+                    <label>Newsletter:</label>
+                    <span>{% if user.is_subscribed == 0 %}No Suscrito{% else %}Suscrito{% endif %}</span>
+                  </div>
+                </div>
+              </div>
+          {% endif %}
+        </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+$(document).ready(function(){
+  $("body").on("click","#edit-image",function(){
+    $("#profile_image").trigger("click");     
+  });
+  
+
+  $("#profile_image").change(function(){
+    var file_data = $(this).prop("files")[0];   
+    var form_data = new FormData();                  
+    var url_path = "{{absolute_url(path('i_flair_lets_bonus_front_user_imageupload')) }}";
+    form_data.append("file", file_data);
+    $('#openModal').show();
+      $.ajax({
+      method: "POST",
+      url: url_path,
+      data: form_data,
+      contentType: false,
+      cache: false,
+      processData: false,
+      dataType: 'json',
+      success: function(data) {
+        $('#user-image').attr('src',data.filename);
+        /*$('#user-image').Jcrop({
+            aspectRatio: 1,
+            onSelect: updateCoords
+        });*/
+        $('#openModal').hide();
+      }
+    });
+  });
+});
+
+function checkCoords()
+{
+    if (parseInt($('#w').val())) return true;
+    alert('Select where you want to Crop.');
+    return false;
+};
+
+
+function updateCoords(c)
+{
+    $('#x').val(c.x);
+    $('#y').val(c.y);
+    $('#w').val(c.w);
+    $('#h').val(c.h);
+};
+</script>

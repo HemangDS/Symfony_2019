@@ -1,0 +1,536 @@
+{% set user_id = app.session.get('user_id') %} 
+{% set currentPath = path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) %}
+ <div class="category-rightbar-top">
+                              <div class="category-rightbar-inner">
+                                   <div class="category-rightbar-block">
+                                    {% if max_voucher_cashback is not empty %}
+                                        <div class="category-rightbar-block-image">
+                                             <img src="{{ max_voucher_cashback.top_shop_image }}" alt="">
+                                        </div>
+                                        <div class="category-rightbar-block-text">
+                                             <div class="inner-transperent">
+                                                  <div class="inner-transperent-logo">
+                                                       <img src="{{ max_voucher_cashback.brand_logo }}" alt="">
+                                                  </div>
+                                                  <div class="inner-transperent-text">
+                                                       <div class="inner-transperent-text-left">
+                                                            <p>{{ max_voucher_cashback.letsBonusPercentage }}% </p>
+                                                            <span>Cashback</span>
+                                                       </div>
+                                                       <div class="inner-transperent-text-right">
+                                                            <span>{{ max_voucher_cashback.voucher_code_count }}</span> 
+                                                            <p>Ofertas y<br> 
+                                                              Cupones </p>
+                                                       </div>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                      {% endif %}
+                                   </div>
+
+                                   <div class="category-rightbar-block">
+                                      {% if max_cashback_percentage is not empty %}
+                                        <div class="category-rightbar-block-image">
+                                             <img src="{{ max_cashback_percentage.top_shop_image }}" alt="">
+                                        </div>
+                                        <div class="category-rightbar-block-text">
+                                             <div class="inner-transperent">
+                                                  <div class="inner-transperent-logo">
+                                                       <img src="{{ max_cashback_percentage.brand_logo }}" alt="">
+                                                  </div>
+                                                  <div class="inner-transperent-text">
+                                                       <div class="inner-transperent-text-middle">
+                                                            <p>{{ max_cashback_percentage.letsBonusPercentage }}%</p><br>
+                                                            <span>Cashback</span>
+                                                       </div>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                       {% endif %}
+                                   </div>
+                           
+                                   <div class="category-rightbar-block">
+                                      {% if max_voucher_data is not empty %}
+                                        <div class="category-rightbar-block-image">
+                                             <img src="{{ max_voucher_data.top_shop_image }}" alt="">
+                                        </div>
+                                        <div class="category-rightbar-block-text">
+                                             <div class="inner-transperent">
+                                                  <div class="inner-transperent-logo">
+                                                       <img src="{{ max_voucher_data.brand_logo }}" alt="">
+                                                  </div>
+                                                  <div class="inner-transperent-text">
+                                                       <div class="inner-transperent-text-middle">
+                                                            <p>{{ max_voucher_data.voucher_code_count }}</p>
+                                                            <span>Ofertas y<br> 
+                                                              Cupones </span>
+                                                       </div>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                      {% endif %}
+
+                                   </div>
+                              </div>
+                         </div>
+                         <div id ="collection_data_ajax">
+                         <div class="category-rightbar-bottom">
+                              <!-- <div class="category-rightbar-bottom-title">
+                                   <div class="category-rightbar-title-inner">
+                                        <span>{{collection_name}}</span>
+                                   </div>
+                              </div> -->
+                              <div class="brand-lisitng main-category-post-block">
+                                    <div class="main-category-post-promo">
+                                        <div class="main-category-post-promo-left">
+                                             {#<span>Mostrando {{category_detail|length}} promociones</span>#}
+                                        </div>
+                                        {#<div class="main-category-post-promo-right">
+                                             <span>Mostrar:</span>
+                                              <a href="javascript:void(0);" class="list_view"><img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/list.png'))}}" /></a>
+                                              <a href="javascript:void(0);" class="grid_view"><img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/grid.png'))}}" /></a>
+                                        </div>#}
+
+                                        <div class="main-category-post-promo-bottom collection_list_view">
+                                                       <input type="hidden" id="collection_section_counter" value="1" />
+                                                          {% set sectionGroupItems      = 10 %}
+                                                          {% set shopSectionDivCreated  = "false" %}
+                                                          {% set productsectionCounter     = 0 %}
+                                                          {% set passedFromFirstSec = "false" %}
+                                                          {% set counter                = 0 %}
+                                                          {% set counter1                = 0 %}
+                                                            {% set i = 1%}
+
+                                                         {% for brand in category_detail %}  
+
+                                                          {% if passedFromFirstSec  == "false" %}
+                                                            {% set sectionGroupItems = 12 %}
+                                                                  {% if counter%sectionGroupItems == 0 and shopSectionDivCreated == "true" %}
+                                                                  {% set shopSectionDivCreated = "false" %}
+                                                                  {% set passedFromFirstSec = "true" %}
+                                                                     {% set counter = 0 %}
+                                                                  </div>
+                                                                {% endif %}
+                                                                  {% if counter%sectionGroupItems == 0 and shopSectionDivCreated == "false" %}
+                                                                  {% set productsectionCounter = productsectionCounter+1 %}
+                                                                  {% set shopSectionDivCreated = "true" %}
+                                                                    <div id="collection_section_{{ productsectionCounter }}">
+                                                                {% endif %}
+                                                       {% else %}
+                                                             {% set sectionGroupItems = 10%}
+                                                                  {% if counter%sectionGroupItems == 0 and shopSectionDivCreated == "true" %}
+                                                                  {% set shopSectionDivCreated = "false" %}
+                                                                  </div>
+                                                                {% endif %}
+                                                                  {% if counter%sectionGroupItems == 0 and shopSectionDivCreated == "false" %}
+                                                                  {% set productsectionCounter = productsectionCounter+1 %}
+                                                                  {% set shopSectionDivCreated = "true" %}
+                                                                    <div id="collection_section_{{ productsectionCounter }}">
+                                                                {% endif %}
+                                                        {% endif %}
+
+                                                          <div class="category-blog-main">
+                                                              <div class="category-blog-main-left">
+                                                                    <div class="category-blog-main-left-image">
+                                                                      {% if brand.slug_name is defined %}
+                                                                        <a href ="{{absolute_url(path('marcas_view', {'slug_name': brand.slug_name})) }}">
+                                                                      {% endif %}
+                                                                      <img src="{{ brand.brand_logo }}" alt="">
+                                                                      {% if brand.slug_name is defined %}
+                                                                        </a>
+                                                                      {% endif %}
+                                                                    </div>
+                                                              </div>
+                                                                                 
+                                                              <div class="category-blog-main-right">
+                                                                  {% if brand.cashback_type_value is defined%}
+                                                                     {% if brand.cashback_type_value is not empty%}
+                                                                        <label>
+                                                                        {% if brand.cashback_type_value == 'double'%}
+                                                                            Double Cacheback
+                                                                        {%endif%}
+                                                                        {% if brand.cashback_type_value == 'triple'%}
+                                                                            Triple Cacheback
+                                                                        {%endif%}
+                                                                        </label>
+                                                                      {% else %}
+                                                                        <label class="no-tag-label">&nbsp;</label>
+                                                                     {%endif%}
+                                                                     {% else %}
+                                                                      <label class="no-tag-label">&nbsp;</label>
+                                                                    {%endif%}
+                                                                  <div class="category-blog-main-right-middle">
+                                                                       <div class="blog-main-right-middle-lft">
+                                                                            <div class="cupp-cut">
+                                                                                 {% if brand.slug_name is defined %}
+                                                                                    <a href ="{{absolute_url(path('marcas_view', {'slug_name': brand.slug_name})) }}">
+                                                                                  {% endif %}
+                                                                                  <span>{{ brand.brand_name }}:</span>
+                                                                                  {% if brand.slug_name is defined %}
+                                                                                    </a>
+                                                                                  {% endif %}
+                                                                                  <p>
+                                                                                 <!--    <div class="brand-rating-box">
+                                                                                            <div style="width:{{brand.rating_percentage}}%;" class="brand-rating"></div>
+                                                                                    </div>({{brand.rating_percentage}}) -->
+                                                                                  </p>
+                                                                            </div>
+                                                                       </div>
+                                                                  </div>
+                                                                 <div class="blog-main-right-middle-right">
+                                                                    <div class="cash-back-text-promotions">
+                                                                    {% if brand.letsBonusPercentage is defined%}
+                                                                     {% if brand.letsBonusPercentage is not empty%}
+                                                                      <div class="cash-bck">
+                                                                        {% if brand.slug_name is defined %}
+                                                                          <a href ="{{absolute_url(path('marcas_view', {'slug_name': brand.slug_name})) }}">
+                                                                        {% endif %}
+                                                                        <span>{{ brand.letsBonusPercentage}}%</span>
+                                                                        <i>Cashback</i>
+                                                                        {% if brand.slug_name is defined %}
+                                                                          </a>
+                                                                        {% endif %}
+                                                                      </div>
+                                                                      {%endif%}
+                                                                    {%endif%}
+                                                                     {% if brand.voucher_code_count is defined%}
+                                                                     {% if brand.voucher_code_count is not empty%}
+                                                                      <div class="cash-offers">
+                                                                         {% if brand.slug_name is defined %}
+                                                                            <a href ="{{absolute_url(path('marcas_view', {'slug_name': brand.slug_name})) }}">
+                                                                          {% endif %}
+                                                                          <span>{{brand.voucher_code_count}} </span>Ofertas y 
+
+                                                                          cupones descuento 
+                                                                          {% if brand.slug_name is defined %}
+                                                                            </a>
+                                                                          {% endif %}
+                                                                      </div>
+                                                                       {%endif%}
+                                                                    {%endif%}
+                                                                    </div>
+                                                                 </div>
+                                                              </div>
+                                                              <div class="brand-listing-arrow">
+                                                                {% if brand.slug_name is defined %}
+                                                                  <a href ="{{absolute_url(path('marcas_view', {'slug_name': brand.slug_name})) }}">
+                                                                {% endif %}
+
+                                                                <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/arrow-brand.png'))}}" />
+
+                                                                {% if brand.slug_name is defined %}
+                                                                  </a>
+
+                                                                {% endif %}
+                                                              </div>
+                                                          </div> <!-- end class category-blog-main-->
+                                                        {% set counter = counter+1 %}
+                                                        {% endfor %}
+                                                {% if shopSectionDivCreated == "true" %}
+                                              </div>
+                                            {% endif %}
+                                         
+                                      </div><!-- End class main-category-post-promo-bottom -->
+
+                                        <div class="main-category-post-promo-bottom collection_grid_view">
+                                         {% if category_detail is not empty%}
+                                             <input type="hidden" id="collection_list_grid_section_counter" value="1" />
+                                                    {% set sectionGroupItems      = 10 %}
+                                                      {% set shopSectionDivCreated  = "false" %}
+                                                      {% set productsectionCounter     = 0 %}
+                                                      {% set passedFromFirstSec = "false" %}
+                                                      {% set counter                = 0 %}
+                                                      {% set counter1                = 0 %}
+                                                        {% set i = 1%}
+
+                                                    <div class="offer-box-main" >
+                                                    {% if category_detail is defined %}
+                                                      {% if category_detail is not empty %}
+                                                         {% for brand in category_detail %}  
+
+                                                          {% if passedFromFirstSec  == "false" %}
+                                                            {% set sectionGroupItems = 12 %}
+                                                                  {% if counter%sectionGroupItems == 0 and shopSectionDivCreated == "true" %}
+                                                                  {% set shopSectionDivCreated = "false" %}
+                                                                  {% set passedFromFirstSec = "true" %}
+                                                                     {% set counter = 0 %}
+                                                                  </div>
+                                                                {% endif %}
+                                                                  {% if counter%sectionGroupItems == 0 and shopSectionDivCreated == "false" %}
+                                                                  {% set productsectionCounter = productsectionCounter+1 %}
+                                                                  {% set shopSectionDivCreated = "true" %}
+                                                                    <div id="collection_grid_section_{{ productsectionCounter }}">
+                                                                {% endif %}
+                                                           {% else %}
+                                                                 {% set sectionGroupItems = 10%}
+                                                                      {% if counter%sectionGroupItems == 0 and shopSectionDivCreated == "true" %}
+                                                                      {% set shopSectionDivCreated = "false" %}
+                                                                      </div>
+                                                                    {% endif %}
+                                                                      {% if counter%sectionGroupItems == 0 and shopSectionDivCreated == "false" %}
+                                                                      {% set productsectionCounter = productsectionCounter+1 %}
+                                                                      {% set shopSectionDivCreated = "true" %}
+                                                                        <div id="collection_grid_section_{{ productsectionCounter }}">
+                                                                    {% endif %}
+                                                            {% endif %}
+
+
+                                                          <div class="offer-box-link">
+                                                            <div class="offer-box">
+                                                      
+                                                      <div class="store-title">
+                                                        <h4>
+                                                           {% if brand.brand_name is not empty %}
+                                                              {{brand.brand_name}}
+                                                          {% endif %}
+                                                       </h4>
+                                                      <span>
+                                                      <!--  <div class="rating-box">
+                                                        <div style="width:{{brand.rating_percentage}}%;" class="rating">
+                                                        </div>
+                                                         </div>({{brand.rating_percentage}}) -->
+                                                      </span>
+                                                    </div>
+                                       
+                                                    <div class="store-img">
+                                                       {% if brand.slug_name is not empty%}
+                                                          <a href ="{{absolute_url(path('marcas_view', {'slug_name': brand.slug_name})) }}">
+                                                          <img src="{{ brand.shop_image }}" alt="">
+                                                          </a>
+                                                        
+                                                           {% else %}
+                                                              <a href ="#">
+                                                               <img src="{{ brand.shop_image }}" alt="">
+                                                             </a>
+                                                           {% endif %}
+                                                     
+                                                    </div>
+                                                    {% if brand.cashback_type_value is defined%}
+                                                      {% if brand.cashback_type_value is not empty%}
+                                                          <span class="exe">
+                                                            {% if brand.cashback_type_value == 'double'%}
+                                                              Double Cacheback
+                                                            {%endif%}
+                                                            {% if brand.cashback_type_value == 'triple'%}
+                                                              Triple Cacheback
+                                                            {%endif%}
+                                                          </span>
+                                                      {%else%}
+                                                        <span class="no-exe">&nbsp;</span>
+                                                      {%endif%}
+                                                    {%endif%}                                                      
+
+                                                  <div class="store-title-bottom">
+                                                      <p>
+                                                         {% if brand.shop_offers == "cashback" or brand.shop_offers == 'cashback/coupons'%}
+                                                          {% if brand.shop_history_shop_title is not empty %}
+                                                                {% if brand.shop_history_shop_title|length > 60 %}
+                                                                
+                                                                  {% autoescape %}
+                                                                   {{ brand.shop_history_shop_title|striptags|truncate(60, true, "...")|raw }}
+                                                                   {% endautoescape %}
+                                                                 {% else %}
+                                                                     {% autoescape %}
+                                                                      {{ brand.shop_history_shop_title|striptags|raw  }}
+                                                                      {% endautoescape %}
+                                                                  {% endif %}
+                                                              {% endif %}
+                                                         {% elseif brand.shop_offers == "voucher" %}
+                                                              {% if brand.short_description is not empty %}
+                                                                {% if brand.short_description|length > 60 %}
+                                                                
+                                                                  {% autoescape %}
+                                                                   {{ brand.short_description|striptags|truncate(60, true, "...")|raw }}
+                                                                   {% endautoescape %}
+                                                                 {% else %}
+                                                                     {% autoescape %}
+                                                                      {{ brand.short_description|striptags|raw  }}
+                                                                      {% endautoescape %}
+                                                                  {% endif %}
+                                                              {% endif %}
+                                                           {% elseif brand.shop_offers == "offer" %}
+                                                               {% if brand.shop_history_shop_title is not empty %}
+                                                                {% if brand.shop_history_shop_title|length > 60 %}
+                                                                
+                                                                  {% autoescape %}
+                                                                   {{ brand.shop_history_shop_title|striptags|truncate(60, true, "...")|raw }}
+                                                                   {% endautoescape %}
+                                                                 {% else %}
+                                                                     {% autoescape %}
+                                                                      {{ brand.shop_history_shop_title|striptags|raw  }}
+                                                                      {% endautoescape %}
+                                                                  {% endif %}
+                                                              {% endif %}
+                                                           {% endif %}
+                                                      </p>
+                                                      <div class="store-title-ic">
+                                                       <div class="levis-ic">
+                                                          {% if brand.slug_name is defined %}
+                                                            <a href ="{{absolute_url(path('marcas_view', {'slug_name': brand.slug_name})) }}">
+                                                              <img src="{{ brand.brand_logo }}" alt="">
+                                                            </a>
+                                                          {%else %}
+                                                             <img src="{{ brand.brand_logo }}" alt="">
+                                                          {% endif %}
+                                                        </div>
+                                                          <p>
+                                                            {% if brand.slug_name is defined %}
+                                                              <a href ="{{absolute_url(path('marcas_view', {'slug_name': brand.slug_name})) }}">
+                                                            {% endif %}
+                                                           {% if brand.shop_offers == "cashback" or brand.shop_offers == 'cashback/coupons'%}
+                                                                      {% if brand.letsBonusPercentage is defined%}
+                                                                         {% if brand.letsBonusPercentage is not empty%}
+                                                                             <p><span>+{{ brand.letsBonusPercentage}}%</span> Cashback</p>
+                                                                          {%else%}
+                                                                               <p><span>+0%</span> Cashback</p>
+                                                                          {%endif%}
+                                                                        {%endif%}
+                                                          {% elseif brand.shop_offers == "voucher" %}
+                                                            <span class="grid_voucher">
+                                                                Cupón</br>descuento
+                                                              </span>
+                                                              {% if brand.voucher_expire_date is not empty%}
+                                                              <div class="cupon-time">
+                                                                          <img alt="" src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/time-ic.jpg'))}}">
+                                                                          <span>Válido hasta {{ brand.voucher_expire_date }}</span>          
+                                                              </div>
+                                                               {% endif %}
+                                                           {% elseif brand.shop_offers == "offer" %}
+                                                            <span class="grid_voucher">
+                                                                Oferta
+                                                              </span>
+                                                              {% if brand.voucher_expire_date is not empty%}
+                                                              <div class="cupon-time">
+                                                                          <img alt="" src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/time-ic.jpg'))}}">
+                                                                          <span>Válido hasta {{ brand.voucher_expire_date }}</span>          
+                                                              </div>
+                                                               {% endif %}
+                                                          {% endif %}
+                                                          {% if brand.slug_name is defined %}
+                                                            </a>
+                                                          {% endif %}
+                                                          </p>
+                                                      </div>
+                                                        <span class="save-wing go_to_store_up">
+                                                              <a onclick="registerClick('{{brand.shop_id}}','{{brand.shop_history_id}}','{{brand.shop_offers}}','{{ tabType }}','{{ tabId }}','{{ i }}','{{absolute_url(path('i_flair_lets_bonus_front_clicks')) }}','{{brand.shop_affiliate_url}}','{{user_id}}',event);" href="{% if user_id is not null %} {{brand.shop_affiliate_url}} {% else %}{{"javascript:void(0);"}}{% endif %}" target="_blank">
+                                                                    {% if brand.shop_offers == "cashback" or brand.shop_offers == 'cashback/coupons'%}
+                                                                     Conseguir Cashback
+                                                                  {% elseif brand.shop_offers == "voucher" %}
+                                                                    Usar cupón
+                                                                  {% elseif brand.shop_offers == "offer" %}
+                                                                    Ver Oferta
+                                                                  {% endif %}
+                                                          </a>
+                                                        </span>
+
+                                                      <div class="conditions-txt">
+                                                          <span>
+                                                          Condiciones
+                                                          <div class="offer-box-hover condition animated fadeInUp">
+                                                            <div class="cashback-store">
+                                                              {% autoescape %}
+                                                                  {{ brand.shop_terms|raw  }}
+                                                                {% endautoescape %}
+                                                            </div>
+                                                            <div class="cashback-condition-arrow">
+                                                              <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/condition-downarrw.png'))}}" alt="">
+                                                            </div>
+                                                          </div>
+                                                        </span>
+                                                            {% if brand.voucher_code_count is defined%}
+                                                             {% if brand.voucher_code_count is not empty%}
+                                                             {% if brand.slug_name is not empty%}
+                                                               
+                                                                  <a href="{{absolute_url(path('marcas_view', {'slug_name': brand.slug_name})) }}" class="cupones" title="6 cupones">{{brand.voucher_code_count}}  cupones</a>
+                                                                {% else %}
+                                                                  <a class="cupones" title="6 cupones">{{brand.voucher_code_count}}  cupones</a>
+                                                             {% endif %}
+                                                            
+                                                               {%endif%}
+                                                            {%endif%}
+                                                        <div class="conditions-ic">
+                                                          <a href="javascript:void(0);" class="prod_like_icon" id="tiendas_add_to_fev_{{ brand.shop_id }}"> 
+
+                                {% if brand.shop_id in addtofevlist  %}
+                                                      
+                                  <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/heart-grey-ic.png'))}}" alt=""  id="add_to_fev_{{ brand.shop_id }}" style="display:none;">
+                                  <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/heart-hover-ic.png'))}}" alt="" id="add_to_fev_selected_{{ brand.shop_id }}" >
+                                {% else %}
+                                  <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/heart-grey-ic.png'))}}" alt=""  id="add_to_fev_{{ brand.shop_id }}">
+                                  <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/heart-hover-ic.png'))}}" alt="" id="add_to_fev_selected_{{ brand.shop_id }}" style="display:none;">
+                                {% endif %}
+                              </a>
+                                    <script type="text/javascript">
+                                      $(document).ready(function(){
+                                        $("#add_to_fev_{{ brand.shop_id }}").click(function(){
+                                          {% if user_id is null %}
+                                            $("#gotostore_login").show();
+                                          {% else %}
+                                            {% if brand.shop_history_id  is defined %}
+                                              {% if brand.shop_history_id  is not empty %}
+                                                $("#add_to_fev_{{ brand.shop_id }}").hide();
+                                                $("#add_to_fev_selected_{{ brand.shop_id }}").css("display","block" );
+                                                $.ajax({
+                                                  type:"POST",
+                                                  data:{shop_history_id: {{ brand.shop_history_id }}},
+                                                  dataType: "text",
+                                                  url: 'addtofev/{{ brand.shop_id }}',
+                                                });
+                                              {% endif %}
+                                            {% endif %}     
+                                          {% endif %}
+                                        });
+                                        $("#add_to_fev_selected_{{ brand.shop_id }}").click(function(){
+                                          {% if brand.shop_history_id  is defined %}
+                                            {% if brand.shop_history_id  is not empty %}
+                                              $("#add_to_fev_{{ brand.shop_id }}").css("display","block" );
+                                              $("#add_to_fev_selected_{{ brand.shop_id }}").css("display","none" );
+                                              $.ajax({
+                                                type:"POST",
+                                                data:{shop_history_id: {{ brand.shop_history_id }}},
+                                                dataType: "text",
+                                                url: 'removefromfev/{{ brand.shop_id }}',
+                                              });
+                                            {% endif %}
+                                          {% endif %}    
+                                        });
+                                     
+                                      });
+                                    </script>
+                                                        </div>
+                                                      </div> {# div conditions-txt #}
+                                                    </div> {# div store-title-bottom #}
+                                                  </div> {# div offer-box #}
+                                                </div>{# div offer-box-link #}
+                                              {% set counter = counter+1 %}
+                                                 {% set i = i+1 %}
+                                            {% endfor %}
+                                          {% endif %}
+                                        {% endif %}
+                                        {% if shopSectionDivCreated == "true" %}
+                                          </div>
+                                        {% endif %}
+                                       <!--  <div id="product_view_more" class="show-more">
+                                          <a href="javascript:void(0);" title="Ver más">Ver más</a>
+                                        </div> -->
+                                      </div>
+                                 {%else%}
+                                        NO record found
+                                        {% endif %}
+                                        </div><!-- End class main-category-post-promo-bottom brand_grid_view -->
+
+
+
+                                    </div>
+                              </div>
+                               {#{% if category_detail|length != 0 %}#}
+                               {% if remove_load_more == 0 %}
+                                <div class="collection-view-more-btn" id="collection_view_more1"
+                                onclick="front.collection.loadMore({{ target_count }},'{{ currentPath }}','{{ OF }}','{{ AF }}','{{ CF }}')">
+                                
+                                  <a href="javascript:void(0);" title="Ver más">
+                                  Ver más 
+                                 </a>
+                                </div>
+                               {% endif %}
+                        </div>

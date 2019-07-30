@@ -1,0 +1,140 @@
+{% set statusPending = constant('iFlair\\LetsBonusAdminBundle\\Entity\\cashbackTransactions::STATUS_TYPE_PENDING') %}
+{% set statusConfirmed = constant('iFlair\\LetsBonusAdminBundle\\Entity\\cashbackTransactions::STATUS_TYPE_CONFIRMED') %}
+{% set statusPayed = constant('iFlair\\LetsBonusAdminBundle\\Entity\\cashbackTransactions::STATUS_TYPE_PAYED') %}
+{% set statusCancelled = constant('iFlair\\LetsBonusAdminBundle\\Entity\\cashbackTransactions::STATUS_TYPE_DENIED') %}
+{% set statusApproved = constant('iFlair\\LetsBonusAdminBundle\\Entity\\cashbackTransactions::STATUS_TYPE_APPROVED') %}
+<div class="container user-activity1">
+    <div class="row">
+        <div class="user_act">
+            <div class="listing-user-drp">
+                <label>Estado:</label>
+                <select name="user_history_type" id="user_history_type"
+                        data-url="{{ absolute_url(path('i_flair_lets_bonus_front_user_history')) }}">
+                    <option value="all" {% if requestedStatus == 'all' %} selected="selected" {% endif %}>Todos</option>
+                    <option value="{{ statusPending }}" {% if requestedStatus == statusPending %} selected="selected" {% endif %}>
+                        Pendiente
+                    </option>
+                    <option value="{{ statusConfirmed }}" {% if requestedStatus == statusConfirmed %} selected="selected" {% endif %}>
+                        Confirmado
+                    </option>
+                    <option value="{{ statusPayed }}" {% if requestedStatus == statusPayed %} selected="selected" {% endif %}>
+                        Pagado
+                    </option>
+                    <option value="{{ statusCancelled }}" {% if requestedStatus == statusCancelled %} selected="selected" {% endif %}>
+                        Cancelado
+                    </option>
+                </select>
+            </div>
+            <div class="listing-user-table">
+                <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                    <thead>
+                    <tr>
+                        <td>Marca y Fecha<br/>de compra</td>
+                        <td>Importe*</td>
+                        <td>Cashback</td>
+                        <td>Promoción</td>
+                        <td>Cashback total</td>
+                        <td>Ahorro en €</td>
+                        <td>Estado</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% if userData is not empty %}
+                        {% for data in userData %}
+                            <tr>
+                                <td><b>{{ data.brand }}</b><br/>{{ data.date }}</td>
+                                <td class="number">{{ data.amount }}€</td>
+                                <td class="number">{{ data.cashback|number_format(2) }}%</td>
+                                <td>{{ data.promotion }}</td>
+                                <td class="number">{{ data.totalCashback|number_format(2)}}%</td>
+                                <td class="number">{{ data.amountCashback|number_format(2) }}€</td>
+                                <td class="status">{{ data.statusTxt }}</td>
+                                <td class="link" width="130">
+                                    {% if data.status == statusConfirmed or data.status == statusApproved %}
+                                        <a href="javascript:void(0);" breadcrumb="Mi Cashback"
+                                           userroute="{{ absolute_url(path('i_flair_lets_bonus_front_user_cashback')) }}">Transferir
+                                            mi dinero</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="8">No hay transacciones</td>
+                        </tr>
+                    {% endif %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="listing-user-btn">
+                <p>*El importe corresponde al precio pagado descontando el IVA y los gastos de envío.</p>
+                <a href="{{ absolute_url(path('i_flair_lets_bonus_front_faq')) }}" title="¿Necesitas ayuda?">¿Necesitas
+                    ayuda?</a>
+            </div>
+        </div>
+        <div class="user_act_responsive">
+            <div class="listing-user" style="padding-bottom:20px">
+                <label>Estado:</label>
+                <select name="user_history_type" id="user_history_type"
+                        data-url="{{ absolute_url(path('i_flair_lets_bonus_front_user_history')) }}">
+                    <option value="all" {% if requestedStatus == 'all' %} selected="selected" {% endif %}>Todos</option>
+                    <option value="{{ statusPending }}" {% if requestedStatus == statusPending %} selected="selected" {% endif %}>
+                        Pendiente
+                    </option>
+                    <option value="{{ statusConfirmed }}" {% if requestedStatus == statusConfirmed %} selected="selected" {% endif %}>
+                        Confirmado
+                    </option>
+                    <option value="{{ statusPayed }}" {% if requestedStatus == statusPayed %} selected="selected" {% endif %}>
+                        Pagado
+                    </option>
+                    <option value="{{ statusCancelled }}" {% if requestedStatus == statusCancelled %} selected="selected" {% endif %}>
+                        Cancelado
+                    </option>
+                </select>
+            </div>
+            <div class="list_block1">
+                <h4>Actividad</h4>
+                <div class="listing-details-resp">
+                    {% if userData is not empty %}
+                        {% for data in userData %}
+                            <div class="list-det-wrap">
+                                <div class="list-det-wrap-r1">
+                                    <div class="list-det-wrap-r1-1-2"><b>{{ data.brand }}</b></div>
+                                    <div class="list-det-wrap-r1-1-2">{{ data.date }}</div>
+                                </div>
+                                <div class="list-det-wrap-r1">
+                                    <div class="list-det-wrap-r1-1-5">{{ data.amount }}€</div>
+                                    <div class="list-det-wrap-r1-1-5">{{ data.cashback }}%</div>
+                                    <div class="list-det-wrap-r1-1-5">{{ data.promotion }}</div>
+                                    <div class="list-det-wrap-r1-1-5">{{ data.totalCashback }}%</div>
+                                    <div class="list-det-wrap-r1-1-5">{{ data.amountCashback }}€</div>
+                                </div>
+                                <div class="list-det-wrap-r1 status_wrapper">
+                                    <div class="list-det-wrap-r1-1-1 status">{{ data.statusTxt }}</div>
+                                </div>
+                                {% if data.status == statusConfirmed or data.status == statusApproved %}
+                                    <div class="list-det-wrap-r1">
+                                        <div class="list-det-wrap-r1-1-1 link">
+                                            <a href="javascript:void(0);" breadcrumb="Mi Cashback"
+                                               userroute="{{ absolute_url(path('i_flair_lets_bonus_front_user_cashback')) }}">Transferir
+                                                mi dinero</a>
+                                        </div>
+                                        <div class="list-det-wrap-r1-1-1"><span class="transfer_request_msg"></span>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="list-det-wrap">
+                            <div class="list-det-wrap-r1">
+                                <div class="list-det-wrap-r1-1">No hay transacciones</div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

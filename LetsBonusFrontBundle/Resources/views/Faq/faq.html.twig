@@ -1,0 +1,70 @@
+{% extends '::base.html.twig' %}
+{% block page_title %}
+  - preguntas frecuentes
+{% endblock %}
+{% block content %}
+<div class="container breadcrumb">
+     <div class="row">
+          <ul>
+               <li><a href="{{ url('i_flair_lets_bonus_front_homepage') }}" title="Home">Home</a></li>
+               <li class="active">Ayuda</li>
+          </ul>
+     </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="ayuda_full">
+            <div class="ayuda_title">
+                <h1>PREGUNTAS FRECUENTES</h1>
+            </div>
+            <div class="ayuda_wrapp">
+                <div class="ayuda_left accordion">
+                  {% if faqs is defined %}
+                    {% if faqs is not empty %}                      
+                      {% for categoryname, faq in faqs %}
+                        <div class="acc_ayudu1">
+                          <h2>{{ categoryname }}</h2>
+                          <div class="accordion_content">
+                            {% for fa in faq %}
+                                  <h3>{{ fa.question }}</h3>
+                                  <div>
+                                    <p>
+                                      {{ fa.answer | raw }}
+                                    </p>
+                                  </div>
+                            {% endfor %}        
+                          </div>
+                        </div>
+                      {% endfor %}
+                    {% endif %}
+                  {% endif %}
+                  </div>
+                <div class="ayuda_right">
+                  <div class="ayuda_wrap_right">
+                      <div class="block1_ayuda">
+                          <div class="tbl">
+                              <div class="tbl-cell">
+                                <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/ayudu-mail.png'))}}" alt="ayudu-mail" />
+                                <h4>Haznos llegar tu consulta</h4>
+                                <a href="{{ url('i_flair_lets_bonus_front_contact') }}" title="Ir al formulario">Ir al formulario</a>
+                              </div>
+                          </div>
+                      </div>
+                      {#<div class="block1_ayuda hidden">
+                          <div class="tbl">
+                              <div class="tbl-cell">
+                                <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/call-ayuda.png'))}}" alt="ayudu-mail" />
+                                <h4>¿Necesitas más ayuda?</h4>
+                                <p>Contacta con nuestro Servicio<br/>de Atención al Cliente</p>
+                                <p class="ph_no">93 590 16 16  /  91 790 63 53</p>
+                                <p>de Lunes a Viernes<br/>de 9:00 a 18:00</p>
+                              </div>
+                          </div>
+                      </div>#}
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

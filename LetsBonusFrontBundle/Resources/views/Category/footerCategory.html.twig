@@ -1,0 +1,19 @@
+<div class="fr-title-listing">
+  <h5>CATEGORÍAS</h5>
+  <ul class="category-list">
+    {% if parentcategories is defined %}
+      {% if parentcategories is not empty %}
+        {% for parentCategory in parentcategories|slice(0, 12) %}
+          <li id="parentcatimage_{{ parentCategory.id }}">
+            <a id="parent_cat_{{ parentCategory.id }}" href="
+            {% if parentCategory.parenturlSlug is not empty %}
+                {{absolute_url(path('i_flair_lets_bonus_front_category_slug',{'parent_category': parentCategory.parenturlSlug}))}}
+              {% else %}
+                {{ url('i_flair_lets_bonus_front_category') }}
+              {% endif %}" title="{{ parentCategory.name }}">{{ parentCategory.name }}</a>    
+          </li>
+        {% endfor %}
+      {% endif %}
+    {% endif %}
+  </ul>                            
+</div>

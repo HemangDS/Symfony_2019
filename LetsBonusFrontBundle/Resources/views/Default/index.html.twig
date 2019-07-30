@@ -1,0 +1,23 @@
+{% extends '::base.html.twig' %}
+{% block stylesheets %}
+	{% stylesheets
+	'@iFlairLetsBonusFrontBundle/Resources/public/css/styles.css' filter='cssrewrite'
+	'@iFlairLetsBonusFrontBundle/Resources/public/css/responsive.css' filter='cssrewrite'
+	'@iFlairLetsBonusFrontBundle/Resources/public/css/animate.css' filter='cssrewrite'
+	'@iFlairLetsBonusFrontBundle/Resources/public/css/jquery.mmenu.all.css' filter='cssrewrite'
+	'@iFlairLetsBonusFrontBundle/Resources/public/css/owl.theme.css' filter='cssrewrite'
+	'@iFlairLetsBonusFrontBundle/Resources/public/css/owl.carousel.css' filter='cssrewrite'
+	'@iFlairLetsBonusFrontBundle/Resources/public/css/owl.carousel2.css' filter='cssrewrite'
+	%}
+	<link rel="stylesheet" href="{{ asset_url }}" />
+	{% endstylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+	{% javascripts
+	'@iFlairLetsBonusFrontBundle/Resources/public/js/jquery.1.10.2.min.js'
+	'@iFlairLetsBonusFrontBundle/Resources/public/js/assets/*'
+	%}
+	<script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+{% endblock %}

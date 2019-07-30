@@ -1,0 +1,22 @@
+{% extends 'SonataAdminBundle:CRUD:base_edit.html.twig' %}
+
+{% block javascripts %}
+{{ parent() }}
+	{% javascripts
+	'@iFlairLetsBonusAdminBundle/Resources/public/js/custom.js'
+	%}
+	<script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+<script type="text/javascript">
+	var modeEdit = '{{ app.request.get('id') }}';
+	// console.log(modeEdit);
+	var	tradedoublerNetwork	=	'{{  constant('iFlair\\LetsBonusAdminBundle\\Entity\\Network::TRADEDOUBLER') }}';
+	var	zanoxNetwork	=	'{{  constant('iFlair\\LetsBonusAdminBundle\\Entity\\Network::ZANOX') }}';
+	var	tdiNetwork	=	'{{  constant('iFlair\\LetsBonusAdminBundle\\Entity\\Network::TDI') }}';
+	var	ebayNetwork	=	'{{  constant('iFlair\\LetsBonusAdminBundle\\Entity\\Network::EBAY') }}';
+	var	webgainsNetwork	=	'{{  constant('iFlair\\LetsBonusAdminBundle\\Entity\\Network::WEBGAINS') }}';
+	var	cjNetwork	=	'{{  constant('iFlair\\LetsBonusAdminBundle\\Entity\\Network::CJ') }}';
+	var	amazonNetwork	=	'{{  constant('iFlair\\LetsBonusAdminBundle\\Entity\\Network::AMAZON') }}';
+	admin.manageNetworkCredentials(tradedoublerNetwork,zanoxNetwork,tdiNetwork,ebayNetwork,webgainsNetwork,cjNetwork,amazonNetwork,modeEdit);
+</script>
+{% endblock %}

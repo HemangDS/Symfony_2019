@@ -1,0 +1,29 @@
+{% extends 'SonataAdminBundle:CRUD:base_show.html.twig' %}
+
+{% block javascripts %}
+{{ parent() }}
+    {% javascripts
+        '@iFlairLetsBonusAdminBundle/Resources/public/js/custom.js'
+    %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+<script type="text/javascript">
+    $(document).ready(function(){
+  
+        var elements =$.parseJSON('{{ shop | raw }}');
+        admin.cashbackSettingsShow(elements);
+    });
+</script>
+{% endblock %}
+{% block stylesheets %}
+{{ parent() }}
+    <style type="text/css">
+     
+        .sonata-ba-show-many-to-many 
+        {
+            list-style: outside none none;
+            padding: 0;
+        }
+    </style>
+  
+{% endblock %}

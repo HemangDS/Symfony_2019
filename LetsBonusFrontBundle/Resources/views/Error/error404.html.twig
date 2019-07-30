@@ -1,0 +1,28 @@
+{% extends '::base.html.twig' %}
+{% block content %}
+
+{% set refer = app.request.headers.get('referer') %}
+{% set baseUrl = app.request.baseUrl %}
+{% set hrefUrl = absolute_url(app.request.baseUrl) %}
+{% if baseUrl is not empty and refer is not empty %}
+	{% if baseUrl in refer %}
+		{% set hrefUrl =  refer %}
+	{% endif %}
+{% endif %}
+
+	<div class="container not_found_page">
+	  <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/new_bann.png'))}}" />
+	  <div class="row">
+	    <div class="page_404">
+	      <div class="page_404_text">
+	        <h1> OOPS!</h1>
+	        <h2>Error 404</h2>
+	        <p>LA PÁGINA SOLICITADA NO EXISTE</p>
+	        <a href='{{ hrefUrl }}'>regresa a shoppiday</a>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+
+{% endblock %}

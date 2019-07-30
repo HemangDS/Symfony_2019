@@ -1,0 +1,60 @@
+<div class="container user-activity1 my-data my-data-edit">
+    <div class="row">
+        <div class="user_act">
+            <div class="my-data-list-name">
+                <h4>Mis datos</h4>
+            </div>
+            <div class="my-data-form">
+                <form class="registration-form" novalidate="novalidate" method="post" id="user-payment-edit-form"
+                      action="{{ absolute_url(path('i_flair_lets_bonus_front_user_payment_update')) }}">
+                    {{ form_widget(form._token,{ 'id': '_token'}) }}
+                    <div class="my-data-loop">
+                        <div class="my-data-title">
+                            <h3>Información de pago</h3> <a href="javascript:void(0);" id="user-payment-edit"
+                                                            class="user-edit">(Editar)</a>
+                        </div>
+                        <div class="my-data-details">
+                            <div class="table">
+                                <label>Número de cuenta (IBAN):</label>
+                                {{ form_widget(form.accountnumber,{ 'id': 'accountnumber', 'attr':{'placeholder':'IBAN','maxlength': 24}}) }}
+                            </div>
+                            <span id="edit_iban_result" class="short"></span><br/>
+                            <div class="table">
+                                <label>SWIFT code / BIC:</label>
+                                {{ form_widget(form.swiftcodebic,{ 'id': 'swiftcodebic', 'attr':{'placeholder':'SWIFT Code / BIC','maxlength': 20}}) }}
+                            </div>
+                            <div class="table">
+                                <label>Nombre del titular:</label>
+                                {{ form_widget(form.ownername,{ 'id': 'ownername', 'attr':{'placeholder':'Nombre del titular','maxlength': 20}}) }}
+                            </div>
+                            <div class="table">
+                                <label></label>
+                                <a href="javascript:void(0);" id="cancel-edit">Cancelar</a>
+                                <input type="submit" value="Guardar cambios" name="update_user_pay"
+                                       id="user_pay_submit">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{{absolute_url(asset('bundles/iflairletsbonusfront/js/iban.js'))}}"></script>
+<script>
+    $(document).ready(function(){
+        $("#accountnumber").change(function(){
+            validateIban(this);
+        });
+        function validateIban(obj) {
+            if(!IBAN.isValid($(obj).val())) {
+                $('#edit_iban_result').text('Numero IBAN incorrecto');
+                return false;
+            }else{
+                $('#edit_iban_result').text('');
+                return true;
+            }
+        }
+    });
+</script>
+

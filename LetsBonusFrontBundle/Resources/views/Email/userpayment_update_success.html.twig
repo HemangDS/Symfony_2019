@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="{{ app.request.locale }}">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content ="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no">
+    <style type="text/css">
+        @media handheld, only screen and (max-width: 600px) {
+            table {
+                width: 100%;
+            }
+            td {
+                display: block;
+                width: 100%;
+                box-sizing: border-box;
+            }
+        }
+    </style>
+</head>
+<body style="margin: 0;padding: 0;">
+<table width="600" border="0" cellspacing="0" align="center" bgcolor="" style="margin: 0 auto;">
+    <tr>
+        <td style="padding: 20px 15px 0 15px;" align="center">
+            <a href="{{ app.request.getSchemeAndHttpHost() }}">
+                <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/new_logo1.png'))}}" />
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td style="padding: 15px 15px 0 15px; font-family: arial,serif;color:#717271; font-size: 16px; line-height: 24px;">
+            Hola {{name}},
+        </td>
+    </tr>
+    <tr>
+        <td style="padding: 10px 15px 20px 15px; font-family: arial,serif;color:#717271; font-size: 16px; line-height: 24px;">
+            Has modificado tus datos bancarios en el área de usuario.
+        </td>
+    </tr>
+    <tr>
+        <td style="padding: 10px 15px 20px 15px; font-family: arial,serif;color:#717271; font-size: 16px; line-height: 24px;">
+            Si no has realizado este cambio accede a tu área de usuario para revisar tus datos.
+        </td>
+    </tr>
+    <tr>
+        <td style="padding: 10px 15px 20px 15px; font-family: arial,serif;color:#717271; font-size: 16px; line-height: 24px;">
+           <a href="{{url}}">{{url}}</a>
+        </td>
+    </tr>
+    <tr>
+        <td style="padding: 10px 15px 20px 15px; font-family: arial,serif;color:#717271; font-size: 16px; line-height: 24px;">
+            Gracias por tu confianza en Shoppiday.
+        </td>
+    </tr>
+    <tr>
+        <td align="center" style="background-color:#717171; border-top: 3px solid #FE4C41;">
+            {% include "iFlairLetsBonusFrontBundle:Email:legal.footer.html.twig" %}
+        </td>
+    </tr>
+</table>
+</body>
+</html>
+

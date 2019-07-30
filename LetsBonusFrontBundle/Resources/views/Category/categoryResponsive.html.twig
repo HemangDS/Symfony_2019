@@ -1,0 +1,35 @@
+<a href="#" title="CATEGORÍAS">CATEGORÍAS</a>
+<ul class="sub-menu child-sub-menu">  
+    {% if parentcategories is defined %}
+      {% if parentcategories is not empty %}
+        {% for parentCategory in parentcategories %}
+          <li id="parentcatimage_{{ parentCategory.id }}">
+            <a id="parent_cat_{{ parentCategory.id }}" href="javascript:void(0);" title="{{ parentCategory.name }} ({{ parentCategory.counts }})">{{ parentCategory.name }} ({{ parentCategory.counts }})</a>    
+            {% for categoryid, categorydata in categories %}
+              {% if parentCategory.id == categoryid %}
+                <ul class="sub-menu">
+                  {% for category in categorydata %}
+                    <li id="categoryimage_{{ categoryid }}_{{ category.id }}">
+                      <a id="category_menu_{{ category.id }}" href="javascript:void(0);" title="{{ category.name }} ({{ category.counts }})">{{ category.name }} ({{ category.counts }}) </a>
+                        {% for childcategoryid, childcategorydata in childcategories %}
+                          {% if category.id == childcategoryid %}
+                            <ul class="sub-menu">
+                                {% for childcategory in childcategorydata %}
+                                    <li id="childcatimage_{{ childcategoryid }}_{{ childcategory.id }}"><a href="javascript:void(0);" title="{{ childcategory.name }} ({{ childcategory.counts }})">{{ childcategory.name }} ({{ childcategory.counts }})</a></li>
+                                {% endfor %}
+                              <span>Todas</span>
+                            </ul>
+                          {% endif %}
+                        {% endfor %}
+                    </li>
+                  {% endfor %}
+                  <span>Todas</span>
+                </ul>
+              {% endif %}
+            {% endfor %}
+          </li>
+        {% endfor %}
+      {% endif %}
+    {% endif %}
+    <span>Todas</span>
+</ul>

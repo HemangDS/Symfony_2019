@@ -1,0 +1,697 @@
+<a id="marca_main" href="{{absolute_url(path('i_flair_lets_bonus_front_tiendas'))}}" title="Tiendas">Tiendas</a>
+<div class="inner-menu inner-menu-sec">
+	<div class="sub-menu-wrapper">
+		<ul class="sub-menu">
+			<h4>Top Marcos</h4>
+			{% if marcas is defined %}
+				{% if marcas is not empty %}
+					{% for marca in marcas %}
+						<li id="marca_{{ marca.id }}">
+							{% if marca.slug_name is defined%}
+								<a href="{{absolute_url(path('marcas_view', {'slug_name': marca.slug_name})) }}" title="{{ marca.program_name }}">
+							{% endif %}
+
+							{% if marca.program_name |length > 20 %}
+                              {% autoescape %}
+                                  {{ marca.program_name|striptags|truncate(20, true, "...")|raw }}
+                              {% endautoescape %}
+                          	{% else %}
+                              {% autoescape %}
+                                  {{ marca.program_name|striptags|raw  }}
+                              {% endautoescape %}
+                          	{% endif %}
+
+							{% if marca.slug_name is defined%}
+								</a>
+							{% endif %}
+						</li>
+					{% endfor %}
+				{% endif %}
+			{% endif %}
+			<span><a href="{{absolute_url(path('i_flair_lets_bonus_front_tiendas'))}}" class="menu-todas" title="Todas">Todas</a></span>
+		</ul>
+	</div>
+	{% if marcas is defined %}
+		{% if marcas is not empty %}
+			{% for marca in marcas|slice(0, 12) %}
+				<div id="related_brand_{{ marca.id }}" style="display:none;" class="related-marcaas gift-shop-image"> 
+					<div class="gift-inner-image">
+						<div class="gift-inner-image-block">
+							{% if marca.related_brands is defined %}
+								{% if marca.related_brands is not empty %}
+									{% set id0              = null %}
+									{% set id1              = null %}
+									{% set id2              = null %}
+									{% set id3              = null %}
+									{% set slugName0         = null %}
+									{% set slugName1         = null %}
+									{% set slugName2         = null %}
+									{% set slugName3         = null %}									
+									{% set imgLink0         = null %}
+									{% set imgLink1         = null %}
+									{% set imgLink2         = null %}
+									{% set imgLink3         = null %}
+									{% set cashbackPrice0 = null %}
+									{% set cashbackPrice1 = null %}
+									{% set cashbackPrice2 = null %}
+									{% set cashbackPrice3 = null %}
+									{% set cashbackPercent0 = null %}
+									{% set cashbackPercent1 = null %}
+									{% set cashbackPercent2 = null %}
+									{% set cashbackPercent3 = null %}
+
+									{% if marca.related_brands.0 is defined %}
+										{% if marca.related_brands.0 is not empty %}
+											{% if marca.related_brands.0.id is defined %}
+												{% set id0              = marca.related_brands.0.id %}
+											{% endif %}
+											{% if marca.related_brands.0.slug_name is defined %}
+												{% set slugName0              = marca.related_brands.0.slug_name %}
+											{% endif %}
+											{% if marca.related_brands.0.logo_path is defined %}
+												{% set imgLink0         = marca.related_brands.0.logo_path %}
+											{% endif %}
+											{% if marca.related_brands.0.cashback_percent is defined %}
+												{% set cashbackPercent0 = marca.related_brands.0.cashback_percent %}
+											{% endif %}
+											{% if marca.related_brands.0.cashback_price is defined %}
+												{% set cashbackPrice0 = marca.related_brands.0.cashback_price %}
+											{% endif %}
+										{% endif %}
+									{% endif %}
+
+									{% if marca.related_brands.1 is defined %}
+										{% if marca.related_brands.1 is not empty %}
+											{% if marca.related_brands.1.id is defined %}
+												{% set id1              = marca.related_brands.1.id %}
+											{% endif %}
+											{% if marca.related_brands.1.slug_name is defined %}
+												{% set slugName1              = marca.related_brands.1.slug_name %}
+											{% endif %}
+											{% if marca.related_brands.1.logo_path is defined %}
+												{% set imgLink1         = marca.related_brands.1.logo_path %}
+											{% endif %}
+											{% if marca.related_brands.1.cashback_percent is defined %}
+												{% set cashbackPercent1 = marca.related_brands.1.cashback_percent %}
+											{% endif %}
+											{% if marca.related_brands.1.cashback_price is defined %}
+												{% set cashbackPrice1 = marca.related_brands.1.cashback_price %}
+											{% endif %}
+										{% endif %}
+									{% endif %}
+
+									{% if marca.related_brands.2 is defined %}
+										{% if marca.related_brands.2 is not empty %}
+											{% if marca.related_brands.2.id is defined %}
+												{% set id2              = marca.related_brands.2.id %}
+											{% endif %}
+											{% if marca.related_brands.2.slug_name is defined %}
+												{% set slugName2              = marca.related_brands.2.slug_name %}
+											{% endif %}
+											{% if marca.related_brands.2.logo_path is defined %}
+												{% set imgLink2         = marca.related_brands.2.logo_path %}
+											{% endif %}
+											{% if marca.related_brands.2.cashback_percent is defined %}
+												{% set cashbackPercent2 = marca.related_brands.2.cashback_percent %}
+											{% endif %}
+											{% if marca.related_brands.2.cashback_price is defined %}
+												{% set cashbackPrice2 = marca.related_brands.2.cashback_price %}
+											{% endif %}
+										{% endif %}
+									{% endif %}
+
+									{% if marca.related_brands.3 is defined %}
+										{% if marca.related_brands.3 is not empty %}
+											{% if marca.related_brands.3.id is defined %}
+												{% set id3              = marca.related_brands.3.id %}
+											{% endif %}
+											{% if marca.related_brands.3.slug_name is defined %}
+												{% set slugName3              = marca.related_brands.3.slug_name %}
+											{% endif %}
+											{% if marca.related_brands.3.logo_path is defined %}
+												{% set imgLink3         = marca.related_brands.3.logo_path %}
+											{% endif %}
+											{% if marca.related_brands.3.cashback_percent is defined %}
+												{% set cashbackPercent3 = marca.related_brands.3.cashback_percent %}
+											{% endif %}
+											{% if marca.related_brands.3.cashback_price is defined %}
+												{% set cashbackPrice3 = marca.related_brands.3.cashback_price %}
+											{% endif %}
+										{% endif %}
+									{% endif %}
+
+									<div class="inner-image-block inner-image-block-first">										
+										<a {% if slugName0 is not empty %} href="{{absolute_url(path('marcas_view', {'slug_name': slugName0})) }}" {% else %} href="javascript:void(0);" {% endif %}>
+											<div class="inner-sm-block">
+												<img src="{{ imgLink0 }}" alt="">
+											</div>
+											<div class="inner-sm-text">
+												{% if cashbackPercent0 is not empty %}
+													<p>
+														{% if cashbackPercent0 > 0 %}
+															<span>{{ cashbackPercent0 }}%</span>
+														Cashback
+														{% endif %}
+													</p>
+												{% elseif cashbackPrice0 is not empty %}
+													<p>
+														{% if cashbackPrice0 > 0 %}
+															<span>{{ cashbackPrice0 }}€</span>
+														Cashback
+														{% endif %}
+													</p>					
+												{% endif %}
+											</div>
+										</a>
+									</div>
+									<div class="inner-image-block inner-image-block-second">										
+										<a {% if slugName1 is not empty %} href="{{absolute_url(path('marcas_view', {'slug_name': slugName1})) }}" {% else %} href="javascript:void(0);" {% endif %}>
+											<div class="inner-sm-block">
+												<img src="{{ imgLink1 }}" alt="">
+											</div>
+											<div class="inner-sm-text">
+												{% if cashbackPercent1 is not empty %}
+													<p>
+														{% if cashbackPercent1 > 0 %}
+															<span>{{ cashbackPercent1 }}%</span>
+														Cashback
+														{% endif %}
+													</p>
+												{% elseif cashbackPrice1 is not empty %}
+													<p>
+														{% if cashbackPrice1 > 0 %}
+															<span>{{ cashbackPrice1 }}€</span>
+														Cashback
+														{% endif %}
+													</p>					
+												{% endif %}
+											</div>
+										</a>
+									</div>
+									<div class="inner-image-block inner-image-block-third">										
+										<a {% if slugName2 is not empty %} href="{{absolute_url(path('marcas_view', {'slug_name': slugName2})) }}" {% else %} href="javascript:void(0);" {% endif %}>
+											<div class="inner-sm-block">
+												<img src="{{ imgLink2 }}" alt="">
+											</div>
+											<div class="inner-sm-text">
+												{% if cashbackPercent2 is not empty %}
+													<p>
+														{% if cashbackPercent2 > 0 %}
+															<span>{{ cashbackPercent2 }}%</span>
+														Cashback
+														{% endif %}
+													</p>
+												{% elseif cashbackPrice2 is not empty %}
+													<p>
+														{% if cashbackPrice2 > 0 %}
+															<span>{{ cashbackPrice2 }}€</span>
+														Cashback
+														{% endif %}
+													</p>					
+												{% endif %}
+											</div>
+										</a>
+									</div>
+									<div class="inner-image-block inner-image-block-fourth">										
+										<a {% if slugName3 is not empty %} href="{{absolute_url(path('marcas_view', {'slug_name': slugName3})) }}" {% else %} href="javascript:void(0);" {% endif %}>
+											<div class="inner-sm-block">
+												<img src="{{ imgLink3 }}" alt="">
+											</div>
+											<div class="inner-sm-text">
+												{% if cashbackPercent3 is not empty %}
+													<p>
+														{% if cashbackPercent3 > 0 %}
+															<span>{{ cashbackPercent3 }}%</span>
+														Cashback
+														{% endif %}
+													</p>					
+												{% elseif cashbackPrice3 is not empty %}
+													<p>
+														{% if cashbackPrice3 > 0 %}
+															<span>{{ cashbackPrice3 }}€</span>
+														Cashback
+														{% endif %}
+													</p>					
+												{% endif %}
+											</div>
+										</a>
+									</div>
+								{% else %}
+									<div class="inner-image-block inner-image-block-first">
+										<div class="inner-sm-block">
+											<img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/amazon-ic-new.jpg'))}}" alt="">
+										</div>
+										<div class="inner-sm-text">
+											<p><span>5%</span> Cashback</p>
+										</div>
+									</div>
+									<div class="inner-image-block inner-image-block-second">
+										<div class="inner-sm-block">
+											<img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/ebay-ic-new.jpg'))}}" alt="">
+										</div>
+										<div class="inner-sm-text">
+											<p><span>5%</span> Cashback</p>
+										</div>
+									</div>
+									<div class="inner-image-block inner-image-block-third">
+										<div class="inner-sm-block">
+											<img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/desigual-ic.jpg'))}}" alt="">
+										</div>
+										<div class="inner-sm-text">
+											<p><span>5%</span> Cashback</p>
+										</div>
+									</div>
+									<div class="inner-image-block inner-image-block-fourth">
+										<div class="inner-sm-block">
+											<img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/asos-ic-new.jpg'))}}" alt="">
+										</div>
+										<div class="inner-sm-text">
+											<p><span>5%</span> Cashback</p>
+										</div>
+									</div>
+								{% endif %}
+							{% endif %}
+						</div>
+					</div>
+
+					{% set shop_image_path    = absolute_url(asset('/bundles//iflairletsbonusfront/images/offer-shoes.jpg')) %}
+					{% set tagname            = "" %}
+					{% set introduction       = null %}
+					{% set shop_logo_path          = absolute_url(asset('/bundles//iflairletsbonusfront/images/toyrus-img.png')) %}
+					{% set cashbackPercentage = "0.00" %}
+					{% set shop_title = "" %}
+					{% set shop_slug_name = "" %}
+
+					{% if marca.related_shop.0.shop_image_path is defined %}
+						{% if marca.related_shop.0.shop_image_path is not empty %}
+							{% set shop_image_path    =  marca.related_shop.0.shop_image_path %}
+						{% endif %}
+					{% endif %}
+
+					{% if marca.related_shop.0.shop_logo_path is defined %}
+						{% if marca.related_shop.0.shop_logo_path is not empty %}
+							{% set shop_logo_path    =  marca.related_shop.0.shop_logo_path %}
+						{% endif %}
+					{% endif %}
+
+
+					{% if marca.related_shop.0.tagname is defined %}
+						{% if marca.related_shop.0.tagname is not empty %}
+							{% set tagname    =  marca.related_shop.0.tagname %}
+						{% endif %}
+					{% endif %}
+					{% if marca.related_shop.0.title is defined %}
+						{% if marca.related_shop.0.title is not empty %}
+							{% set introduction =  marca.related_shop.0.title %}
+						{% endif %}
+					{% endif %}
+					
+					{% if marca.related_shop.0.cashbackPercentage is defined %}
+						{% if marca.related_shop.0.cashbackPercentage is not empty %}
+							{% set cashbackPercentage    =  marca.related_shop.0.cashbackPercentage %}
+						{% endif %}
+					{% endif %}
+
+					{% if marca.related_shop.0.slugName is defined %}
+						{% if marca.related_shop.0.slugName is not empty %}
+							{% set shop_slug_name = absolute_url(path('marcas_view', {'slug_name': marca.related_shop.0.slugName})) %}
+						{% endif %}
+					{% endif %}
+
+					{% if marca.related_shop.0.program_name is defined %}
+						{% if marca.related_shop.0.program_name is not empty %}
+							{% set shop_title = marca.related_shop.0.program_name %}
+						{% endif %}
+					{% endif %}
+
+					{% if marca.related_shop.0.offers is defined %}
+						{% if marca.related_shop.0.offers is not empty %}
+							{% set shop_offers = marca.related_shop.0.offers %}
+						{% endif %}
+					{% endif %}
+
+					{% if marca.related_shop is defined and marca.related_shop is not empty %}
+
+						<div id="related_shop_{{ marca.id }}" style="display:none;" class="related-shops cash-back-img">
+							<div class="offerdeal-bottom">
+								<div class="offerdeal-image">
+									<a href="{{ shop_slug_name }}" title="{{ shop_title }}">
+										<img src="{{ shop_image_path }}" alt="">
+									</a>
+								
+									{% if tagname is defined%}
+			                            {% if tagname is not empty%}
+			                             	<span class="exe">{{ tagname|capitalize }}</span>
+			                            {% else %}
+			                            	<span class="no-exe">&nbsp;</span>
+			                            {%endif%}
+			                        {% else %}
+			                        	<span class="no-exe">&nbsp;</span>
+			                        {%endif%}
+
+
+
+
+								</div> 
+								<div class="offerdeal-text">
+									<p class="lessdescription">
+										{% autoescape %}
+										{{ introduction|length > 65 ? introduction|slice(0, 65) ~ '...' : introduction }}
+										{% endautoescape %}
+									</p>
+									<div class="toyrus-img">
+										<div class="toyrus-img-inner">
+											<a href="{{ shop_slug_name }}" title="{{ shop_title }}">
+											<img src="{{ shop_logo_path }}" alt="{{ shop_title }}" title="{{ shop_title }}">
+											</a>
+										</div>
+										<div class="rightblock-percentage">
+											<p>
+												<a href="{{ shop_slug_name }}" title="{{ shop_title }}">
+													{% if shop_offers == "cashback" %}
+													<span>{{ cashbackPercentage }}%</span> Cashback 
+													{% endif %}
+													<img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/price-arrow.jpg'))}}" alt="">
+												</a>
+											</p>
+										</div>
+										{% if shop_offers == "cashback" %}
+										<span class="expira-txt" style="display: none;">Expira en 24h</span>
+										<div class="expira-share" style="display: none;">
+											<a title="" href="#"><img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/share-small-ic.png'))}}" alt=""></a>
+										</div>
+										{% endif %}
+									</div>
+								</div>
+							</div>
+						</div>
+					{% else %}
+						<div class="cash-back-img">
+							<div class="offerdeal-bottom">
+								<div class="offerdeal-image">
+									<img alt="" src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/offer-shoes.jpg'))}}">
+									<span>Doble Cashback</span>
+								</div>
+								<div class="offerdeal-text">
+									<p class="lessdescription">
+										Description of the offer lorem de
+									</p>
+									<div class="toyrus-img">
+										<div class="toyrus-img-inner">
+											<img alt="" src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/toyrus-img.png'))}}">
+										</div>
+										<div class="rightblock-percentage"><p><span>25.00%</span> Cashback <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/price-arrow.jpg'))}}" alt=""></p></div>
+										<span class="expira-txt" style="display: none;">Expira en 24h</span>
+										<div class="expira-share" style="display: none;">
+											<a title="" href="#"><img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/share-small-ic.png'))}}" alt=""></a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					{% endif %}
+				</div>
+			{% endfor %}
+		{% endif %}
+	{% endif %}
+	{% if mainDefaultMarcasMenuDatas is defined %}
+		{% if mainDefaultMarcasMenuDatas is not empty %}
+
+			{% set id0               = null %}
+			{% set logo_path0        = null %}
+			{% set cashback_percent0 = null %}
+			{% set cashback_price0 = null %}
+
+			{% set id1               = null %}
+			{% set logo_path1        = null %}
+			{% set cashback_percent1 = null %}
+			{% set cashback_price1 = null %}
+
+			{% set id2               = null %}
+			{% set logo_path2        = null %}
+			{% set cashback_percent2 = null %}
+			{% set cashback_price2 = null %}
+
+			{% set id3               = null %}
+			{% set logo_path3        = null %}
+			{% set cashback_percent3 = null %}
+			{% set cashback_price3 = null %}
+
+
+			{% set slug_name0 = "" %}
+
+			{% for mainDefaultMarcasMenuData in mainDefaultMarcasMenuDatas|slice(0, 1) %}
+				<div id="related_brand_main" style="display:none;" class="related-marcaas gift-shop-image">
+					<div class="gift-inner-image">
+						<div class="gift-inner-image-block">
+
+							{% if mainDefaultMarcasMenuData.related_brands.0.id is defined %}
+								{% if mainDefaultMarcasMenuData.related_brands.0.id is not empty %}
+									{% set id0    =  mainDefaultMarcasMenuData.related_brands.0.id %}
+								{% endif %}
+							{% endif %}
+							{% if mainDefaultMarcasMenuData.related_brands.0.slug_name is defined %}
+								{% if mainDefaultMarcasMenuData.related_brands.0.slug_name is not empty %}
+									{% set slug_name0    =  mainDefaultMarcasMenuData.related_brands.0.slug_name %}
+								{% endif %}
+							{% endif %}
+							{% if mainDefaultMarcasMenuData.related_brands.0.logo_path is defined %}
+								{% if mainDefaultMarcasMenuData.related_brands.0.logo_path is not empty %}
+									{% set logo_path0    =  mainDefaultMarcasMenuData.related_brands.0.logo_path %}
+								{% endif %}
+							{% endif %}
+							{% if mainDefaultMarcasMenuData.related_brands.0.cashback_percent is defined %}
+								{% if mainDefaultMarcasMenuData.related_brands.0.cashback_percent is not empty %}
+									{% set cashback_percent0    =  mainDefaultMarcasMenuData.related_brands.0.cashback_percent %}
+								{% endif %}
+							{% endif %}
+							{% if mainDefaultMarcasMenuData.related_brands.0.cashback_price is defined %}
+								{% if mainDefaultMarcasMenuData.related_brands.0.cashback_price is not empty %}
+									{% set cashback_price0    =  mainDefaultMarcasMenuData.related_brands.0.cashback_price %}
+								{% endif %}
+							{% endif %}
+
+							{% if mainDefaultMarcasMenuData.related_brands.1.id is defined %}
+								{% if mainDefaultMarcasMenuData.related_brands.1.id is not empty %}
+									{% set id1    =  mainDefaultMarcasMenuData.related_brands.1.id %}
+								{% endif %}
+							{% endif %}
+							{% if mainDefaultMarcasMenuData.related_brands.1.slug_name is defined %}
+								{% if mainDefaultMarcasMenuData.related_brands.1.slug_name is not empty %}
+									{% set slug_name1    =  mainDefaultMarcasMenuData.related_brands.1.slug_name %}
+								{% endif %}
+							{% endif %}
+							{% if mainDefaultMarcasMenuData.related_brands.1.logo_path is defined %}
+								{% if mainDefaultMarcasMenuData.related_brands.1.logo_path is not empty %}
+									{% set logo_path1    =  mainDefaultMarcasMenuData.related_brands.1.logo_path %}
+								{% endif %}
+							{% endif %}
+							{% if mainDefaultMarcasMenuData.related_brands.1.cashback_percent is defined %}
+								{% if mainDefaultMarcasMenuData.related_brands.1.cashback_percent is not empty %}
+									{% set cashback_percent1    =  mainDefaultMarcasMenuData.related_brands.1.cashback_percent %}
+								{% endif %}
+							{% endif %}
+							{% if mainDefaultMarcasMenuData.related_brands.1.cashback_price is defined %}
+								{% if mainDefaultMarcasMenuData.related_brands.1.cashback_price is not empty %}
+									{% set cashback_price1    =  mainDefaultMarcasMenuData.related_brands.1.cashback_price %}
+								{% endif %}
+							{% endif %}
+
+							{% if mainDefaultMarcasMenuData.related_brands.2.id is defined %}
+								{% if mainDefaultMarcasMenuData.related_brands.2.id is not empty %}
+									{% set id2    =  mainDefaultMarcasMenuData.related_brands.2.id %}
+								{% endif %}
+							{% endif %}
+							{% if mainDefaultMarcasMenuData.related_brands.2.slug_name is defined %}
+								{% if mainDefaultMarcasMenuData.related_brands.2.slug_name is not empty %}
+									{% set slug_name2    =  mainDefaultMarcasMenuData.related_brands.2.slug_name %}
+								{% endif %}
+							{% endif %}
+							{% if mainDefaultMarcasMenuData.related_brands.2.logo_path is defined %}
+								{% if mainDefaultMarcasMenuData.related_brands.2.logo_path is not empty %}
+									{% set logo_path2    =  mainDefaultMarcasMenuData.related_brands.2.logo_path %}
+								{% endif %}
+							{% endif %}
+							{% if mainDefaultMarcasMenuData.related_brands.2.cashback_percent is defined %}
+								{% if mainDefaultMarcasMenuData.related_brands.2.cashback_percent is not empty %}
+									{% set cashback_percent2    =  mainDefaultMarcasMenuData.related_brands.2.cashback_percent %}
+								{% endif %}
+							{% endif %}
+							{% if mainDefaultMarcasMenuData.related_brands.2.cashback_price is defined %}
+								{% if mainDefaultMarcasMenuData.related_brands.2.cashback_price is not empty %}
+									{% set cashback_price2    =  mainDefaultMarcasMenuData.related_brands.2.cashback_price %}
+								{% endif %}
+							{% endif %}
+
+							{% if mainDefaultMarcasMenuData.related_brands.3.id is defined %}
+								{% if mainDefaultMarcasMenuData.related_brands.3.id is not empty %}
+									{% set id3    =  mainDefaultMarcasMenuData.related_brands.3.id %}
+								{% endif %}
+							{% endif %}
+							{% if mainDefaultMarcasMenuData.related_brands.3.slug_name is defined %}
+								{% if mainDefaultMarcasMenuData.related_brands.3.slug_name is not empty %}
+									{% set slug_name3    =  mainDefaultMarcasMenuData.related_brands.3.slug_name %}
+								{% endif %}
+							{% endif %}
+							{% if mainDefaultMarcasMenuData.related_brands.3.logo_path is defined %}
+								{% if mainDefaultMarcasMenuData.related_brands.3.logo_path is not empty %}
+									{% set logo_path3    =  mainDefaultMarcasMenuData.related_brands.3.logo_path %}
+								{% endif %}
+							{% endif %}
+							{% if mainDefaultMarcasMenuData.related_brands.3.cashback_percent is defined %}
+								{% if mainDefaultMarcasMenuData.related_brands.3.cashback_percent is not empty %}
+									{% set cashback_percent3    =  mainDefaultMarcasMenuData.related_brands.3.cashback_percent %}
+								{% endif %}
+							{% endif %}
+							{% if mainDefaultMarcasMenuData.related_brands.3.cashback_price is defined %}
+								{% if mainDefaultMarcasMenuData.related_brands.3.cashback_price is not empty %}
+									{% set cashback_price3    =  mainDefaultMarcasMenuData.related_brands.3.cashback_price %}
+								{% endif %}
+							{% endif %}
+
+							<div class="inner-image-block inner-image-block-first">								
+								<a {% if slug_name0 is not empty %} href="{{absolute_url(path('marcas_view', {'slug_name': slug_name0})) }}" {% else %} href="javascript:void(0);" {% endif %}>
+									<div class="inner-sm-block">
+										<img src="{{ logo_path0 }}" alt="">
+									</div>
+									<div class="inner-sm-text">
+										{% if cashback_percent0 is not empty %}
+											<p>
+												{% if cashback_percent0 > 0 %}
+												<span>{{ cashback_percent0 }}%</span>
+												{% else %}
+												<span>{{ cashback_price0 }}€</span>
+												{% endif %}
+											 Cashback</p>
+										{% endif %}
+									</div>
+								</a>
+							</div>
+							<div class="inner-image-block inner-image-block-second">
+								<a {% if id1 is not empty %} href="{{absolute_url(path('marcas_view', {'slug_name': slug_name1})) }}" {% else %} href="javascript:void(0);" {% endif %}>
+									<div class="inner-sm-block">
+										<img src="{{ logo_path1 }}" alt="">
+									</div>
+									<div class="inner-sm-text">
+										{% if cashback_percent1 is not empty %}
+											<p>
+												{% if cashback_percent1 > 0 %}
+												<span>{{ cashback_percent1 }}%</span>
+												{% else %}
+												<span>{{ cashback_price1 }}€</span>
+												{% endif %}												
+												 Cashback</p>
+										{% endif %}
+									</div>
+								</a>
+							</div>
+							<div class="inner-image-block inner-image-block-third">								
+								<a {% if id2 is not empty %} href="{{absolute_url(path('marcas_view', {'slug_name': slug_name2})) }}" {% else %} href="javascript:void(0);" {% endif %}>
+									<div class="inner-sm-block">
+										<img src="{{ logo_path2 }}" alt="">
+									</div>
+									<div class="inner-sm-text">
+										{% if cashback_percent2 is not empty %}
+											<p>
+												{% if cashback_percent2 > 0 %}
+												<span>{{ cashback_percent2 }}%</span>
+												{% else %}
+												<span>{{ cashback_price2 }}€</span>
+												{% endif %}												
+												 Cashback</p>
+										{% endif %}
+									</div>
+								</a>
+							</div>
+							<div class="inner-image-block inner-image-block-fourth">								
+								<a {% if id3 is not empty %} href="{{absolute_url(path('marcas_view', {'slug_name': slug_name3})) }}" {% else %} href="javascript:void(0);" {% endif %}>
+									<div class="inner-sm-block">
+										<img src="{{ logo_path3 }}" alt="">
+									</div>
+									<div class="inner-sm-text">
+										{% if cashback_percent3 is not empty %}
+											<p>
+												{% if cashback_percent3 > 0 %}
+												<span>{{ cashback_percent3 }}%</span>
+												{% else %}
+												<span>{{ cashback_price3 }}€</span>
+												{% endif %}												
+												 Cashback</p>
+										{% endif %}
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+
+					{# commented below code to hide default menu hover related shop #}
+					{#
+					{% set shop_image_path = absolute_url(asset('/bundles//iflairletsbonusfront/images/offer-shoes.jpg')) %}
+					{% set tagname = "0" %}
+					{% set introduction = null %}
+					{% set logo_path = null %}
+					{% set cashbackPercentage = 0.00 %}
+
+
+					{% if mainDefaultMarcasMenuData.related_shop.0.shop_image_path is defined %}
+						{% set shop_image_path = mainDefaultMarcasMenuData.related_shop.0.shop_image_path %}
+					{% endif %}
+
+					{% if mainDefaultMarcasMenuData.related_shop.0.tagname is defined %}
+						{% set tagname = mainDefaultMarcasMenuData.related_shop.0.tagname %}
+					{% endif %}
+
+					{% if mainDefaultMarcasMenuData.related_shop.0.title is defined %}
+						{% set introduction = mainDefaultMarcasMenuData.related_shop.0.title %}
+					{% endif %}
+
+					{% if mainDefaultMarcasMenuData.related_shop.0.logo_path is defined %}
+						{% set logo_path = mainDefaultMarcasMenuData.related_shop.0.logo_path %}
+					{% endif %}
+
+					{% if mainDefaultMarcasMenuData.related_shop.0.cashbackPercentage is defined %}
+						{% set cashbackPercentage = mainDefaultMarcasMenuData.related_shop.0.cashbackPercentage %}
+					{% endif %}
+
+					<div id="related_shop_main" style="display:none;" class="related-shops cash-back-img">
+						<div class="offerdeal-bottom">
+							<div class="offerdeal-image">
+								<img src="{{ shop_image_path }}" alt="">
+								
+								{% if tagname is defined%}
+		                            {% if tagname is not empty%}
+		                             	<span class="exe">{{ tagname|capitalize }}</span>
+		                            {% else %}
+		                            	<span class="no-exe">&nbsp;</span>
+		                            {%endif%}
+		                        {% else %}
+		                        	<span class="no-exe">&nbsp;</span>
+		                        {%endif%}
+
+							</div>
+							<div class="offerdeal-text">
+								<span class="description">
+									<p class="lessdescription">
+										{{ introduction|length > 65 ? introduction|slice(0, 65) ~ '...' : introduction }}
+									</p>
+								</span>
+								<div class="toyrus-img">
+									<div class="toyrus-img-inner">
+										<img src="{{ logo_path }}" alt="">
+									</div>
+									<div class="rightblock-percentage"><p><span>{{ cashbackPercentage }}%</span> Cashback <img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/price-arrow.jpg'))}}" alt=""></p></div>
+									<span style="display: none;" class="expira-txt">Expira en 24h</span>
+									<div class="expira-share" style="display: none;">
+										<a title="" href="#"><img src="{{absolute_url(asset('bundles/iflairletsbonusfront/images/share-small-ic.png'))}}" alt=""></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					#}
+					{# commented above code to hide default menu hover related shop #}
+				</div>
+			{% endfor %}
+		{% endif %}
+	{% endif %}
+</div>
